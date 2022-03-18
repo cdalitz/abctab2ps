@@ -44,6 +44,8 @@ Note that abctab2ps will create a *postscript* file. This means that
 you will additionally need a postscript interpreter like [ghostscript][1]
 to convert the PS file to PDF or to view it directly.
 
+[1] https://www.ghostscript.com/
+
 
 Binary packages
 ---------------
