@@ -41,10 +41,9 @@ with the current version of abctab2ps):
 	$ sudo dpkg -i linux-platform/abctab2ps-x.y.z.rpm
 
 Note that abctab2ps will create a *postscript* file. This means that
-you will additionally need a postscript interpreter like [ghostscript][1]
+you will additionally need a postscript interpreter like [ghostscript](https://www.ghostscript.com/)
 to convert the PS file to PDF or to view it directly.
 
-[1] https://www.ghostscript.com/
 
 
 Binary packages
