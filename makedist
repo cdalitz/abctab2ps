@@ -1,0 +1,114 @@
+#!/bin/sh
+
+#
+# makedist - makes current abctab2ps distribution
+#
+
+# abctab2ps version
+VERSION=""
+
+# file with list of files to include (is generated)
+LF=Include
+
+# command line arguments
+#------------------------
+
+USAGEMSG="USAGE: `basename $0` -v version"
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+      -v) VERSION="$2"; shift;;
+      *)  echo "$USAGEMSG" 1>&2; exit 1;;
+    esac
+    shift
+done
+
+if [ -z "$VERSION" ]
+then
+    echo "$USAGEMSG" 1>&2
+    exit 1
+fi
+
+# plausi checks
+_srcver="`grep '^#define.*VERSION' src/abctab2ps.h | sed 's/^[^\"]*"\([^\"]*\).*/\1/'`"
+_srcrev="`grep '^#define.*REVISION' src/abctab2ps.h | sed 's/^[^\"]*"\([^\"]*\).*/\1/'`"
+_srcversion=$_srcver.$_srcrev
+if [ "$_srcversion" = "$VERSION" ]
+then
+    :
+else
+    echo "Version in source code ($_srcversion) different from $VERSION"
+    echo -n "Continue? (y/n) [n] "; read ok
+    test "$ok" = "y" -o "$ok" = "Y" || exit
+fi
+if grep -q "^%version $VERSION" src/abctab2ps.list
+then
+    :
+else
+    echo "Version in EPM list different from $VERSION" 1>&2
+	exit 1
+fi
+if grep -q "abctab2ps version $VERSION" doc/userguide/userguide.tex
+then
+    :
+else
+    echo "Version in user's guide different from $VERSION" 1>&2
+    echo -n "Continue? (y/n) [n] "; read ok
+    test "$ok" = "y" -o "$ok" = "Y" || exit
+fi
+if [ \( doc/userguide/userguide.tex -nt doc/userguide/userguide.pdf \) ]
+then
+    echo "PDF version of user's guide not current" 1>&2
+    exit 1
+fi
+
+# create list of files to archive
+#---------------------------------
+
+# temporary directory link
+DIR=abctab2ps-$VERSION
+
+ln -s . $DIR
+
+# Readme, License, History
+echo $DIR/README > $LF
+echo $DIR/CHANGES >> $LF
+echo $DIR/LICENSE >> $LF
+
+# source code
+find $DIR/src -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -iname "Makefile*" -o -iname "Readme*" | grep -v "problems/" >> $LF
+
+# epm config file
+echo "$DIR/src/abctab2ps.list" >> $LF
+
+# font definitions
+find $DIR/src/fonts -name "it*.ps" -o -name "fr*.ps" -o -name "de*.ps" | grep -v "design/" >> $LF
+
+# test sample in source directory
+echo "$DIR/src/sample.abc" >> $LF
+
+# sample files
+echo "$DIR/doc/examples" >> $LF
+
+# man pages
+echo "$DIR/doc/manpages" >> $LF
+
+# userguide
+echo "$DIR/doc/userguide/userguide.pdf" >> $LF
+find $DIR/doc/userguide -name "*.html" -o -name "*.gif" -o -name "*.png" -o -name "*.css" | grep -v '/pngimages-saved/' >> $LF
+
+# faq
+echo "$DIR/doc/faq.html" >> $LF
+
+
+# write archive
+#-----------------
+
+tar czvf abctab2ps-$VERSION.tar.gz -T $LF
+
+
+# clean up
+#--------------
+
+rm $LF $DIR

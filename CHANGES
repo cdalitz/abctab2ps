@@ -1,0 +1,926 @@
+Change log of abctab2ps
+=======================
+
+Version 1.8.18, Mar 16 2022
+---------------------------
+
+ - new tab type "neapoltab" (thanks to Markus Lutz):
+   like "spanishtab" or "guitartab", but starts with 1 instead of 0
+
+ - diapasons in "germantab" drawn like in "frenchtab" (thanks to Markus Lutz)
+
+
+Version 1.8.17, Sep 25 2020
+---------------------------
+
+ - fixed bug in bourdons for french5tab and french4tab
+
+ - dotted rhythm in tab now adds flag on following chord to clarify rhythm
+
+
+Version 1.8.16, May 25 2020
+---------------------------
+
+ - fixed bug that prevented tabdeco 'L' on top course
+
+
+Version 1.8.15, Mar 11 2020
+---------------------------
+
+ - escaped percentage ("\%") recognized in %%center, %%right, and %%text lines
+
+ - now error message when input filename too long
+
+
+Version 1.8.14, Nov 05 2019
+---------------------------
+
+ - additional bourdon {15} supported
+
+
+Version 1.8.13, May 25 2019
+---------------------------
+
+ - bourdons also supported in french4tab and french5tab
+   (thanks to Markus Lutz)
+
+
+Version 1.8.12, Jun 24 2015
+---------------------------
+
+ - ported to clang (OSX 10.10)
+
+ - fixed PS error in dynamic marks
+
+
+Version 1.8.11, Apr 26 2011
+---------------------------
+
+ - new boolean option %%tabfirstflag to draw flag
+   only for rhythm changes or after bar line
+
+ - when seventh course is used, additional bourdons moved down
+
+
+Version 1.8.10, Mar 08 2011
+---------------------------
+
+ - new format parameter %%stafflinethickness
+
+ - appogiaturas to chords now tied to first note in chord
+
+
+Version 1.8.9, Dec 27 2009
+--------------------------
+
+ - new clef treble8up for soprano recorder
+
+
+Version 1.8.8, Mar 14 2009
+--------------------------
+
+ - option -F no longer ignored in %! line
+
+
+Version 1.8.7, Mar 10 2009
+--------------------------
+
+ - new format parameter %%tabgchordspace
+
+ - size limit of 50 characters for words in text removed
+
+
+Version 1.8.6, Aug 18 2008
+--------------------------
+
+ - corrected positioning of tabdecos for chords that only
+   contain invisible notes (was broken since version 1.7.1)
+
+
+Version 1.8.5, Aug 15 2008
+--------------------------
+
+ - new dynamic marks !sf! and !sfz!
+
+ - separator line between systems in German lute tablature
+   (can be suppressed with "%%tabgermansepline no")
+
+ - last ledger line slightly wider for brevis and longa
+
+ - all notes in a tune can be made stemless with %%nostems
+   (useful for modern plainchant notation)
+
+ - fixed an error in parsing special lyrics symbols '*' and '~'
+   Escaping of '~' with "\~" now works again
+
+ - frets 18-21 added in fonts itTimes and itBorrono
+   (thanks to Martin Fick)
+
+
+Version 1.8.4, Feb 21 2008
+--------------------------
+
+ - grace sequence before phrase mark "(" no longer lost during parsing
+
+ - grace notes can now have length. The behaviour is as follows:
+
+    o when no length specified, the old abc standard applies,
+      i.e., single notes are accacciaturas (eighth note with stroke;
+      the stroke can optionally be suppressed with %%nogracestroke)
+      and more than one note means "sixteenth notes"
+
+    o when a length is specified it applies to all grace notes
+      in the same brace pair. When more than one length is given,
+      the last length applies
+
+ - fixed some possible causes for crashes when parsing grace sequence
+   or decorations
+
+
+Version 1.8.3, Dec 16 2007
+--------------------------
+
+ - new font deFraktur for German lute tablature (thanks to Michael Burzan)
+
+ - new music decoration !wedge! (thanks to Michael Burzan)
+
+
+Version 1.8.2, Aug 23 2007
+--------------------------
+
+ - corrected horizontal spacing errors for brevis and longa
+
+ - longa stem now always at the right and downward
+
+ - inline meter change now affects bar numbering even
+   when "display=none" is used
+
+ - fixed a potential crash when empty voice
+
+
+Version 1.8.1, May 19 2007
+--------------------------
+
+ - author (full name of calling user) now written to PS file;
+   in case of a PDF conversion, it will become the PDF author tag.
+   Can be suppressed with command line option "-noauthor".
+
+ - first bar number suppressed in tablature (now same as in music)
+
+ - no longer double bar labels when label on last bar in line.
+   Label on last bar in line is always moved to beginning of next
+   line. To suppress this, put the label on an invisible bar
+   before the last bar in the line.
+
+ - no longer floating exception when default note length cannot be
+   determined due to inproperly closed header. abctab2ps now stops
+   and reports stopping point in abc file instead.
+
+ - trailing comma in tab chords no longer causes erroneous postscript
+
+
+Version 1.8.0, Apr 23 2007
+--------------------------
+
+ - printing of metronome marks (Q:...) for abc2midi can be
+   suppressed in postscript output with "%%printmetronome no"
+
+ - prelimary support for German lute tablature (see example waissel.abc)
+   (still lacks a nice Fraktur font)
+
+
+Version 1.7.1, Apr 17 2007
+--------------------------
+
+ - epm description file abctab2ps.list corrected
+   => userguide now correctly installed in Linux RPM and DEB
+
+ - new format parameter %%nogracestroke to suppress stroke through
+   single eighth gracenotes
+
+ - tablature: y (invisible fret symbol) ignored in positioning decos 
+   that apply to an entire chord (right hand fingering etc.)
+
+
+Version 1.7.0, Jul 31 2006
+--------------------------
+
+ - tenuto strokes in tablature chords with !ten(! and !ten)!
+
+ - notehead size in historic style reduced
+
+ - fixed a memory error in music.cpp:draw_sysbars()
+
+
+Version 1.6.8, Mar 18 2006
+--------------------------
+
+ - segfault fixed when empty V: field
+
+ - long lyrics word under melisma no longer causes uneven spacing
+
+
+Version 1.6.7, Mar 16 2006
+--------------------------
+
+ - abc2midi voice parameter "octave" ignored
+
+ - "make install" also installs documentation and examples
+
+ - error in parsing empty %%text lines fixed
+
+ - '%' now allowed inside guitar chords
+
+ - display of dotted whole rest in music corrected
+
+
+Version 1.6.6, Nov 18 2005
+--------------------------
+
+ - new format parameter "historicstyle" for diamond shaped
+   note heads in music
+
+ - new format parameter "nobeams" for suppressing beams in music
+
+ - new format parameter "gchordspace" (music only)
+
+ - brace across tablature lines now correctly drawn
+
+ - fixed wrong bar numbering when voice starts with multibar rest
+
+ - better spacing of meter signature in tablature
+
+ - fixed possible wrong ligatura brackets (full instead half)
+
+ - documentation directories in epm control file are now /usr/share/doc
+   and /usr/share/man for all package formats
+
+
+Version 1.6.5, Feb 19 2005
+--------------------------
+
+ - better support for mensural notation transcriptions:
+   %%slurisligatura prints ligatura brackets instead of slurs
+   
+ - now compiles with MingW32 3.x
+
+
+Version 1.6.4, Jan 03 2005
+--------------------------
+
+ - third, forth etc. repeats with [3, [4 etc. (maximum: [9)
+
+ - first/second ending box clash with guitar chords solved
+
+ - fixed a number of buffer overflow bugs (thanks to D.J. Bernstein
+   and Limin Wang for reporting their possible danger), among
+   them are those under SecurityFocus bugtraq id 12026
+
+ - removed undocumented title change when ending with ", The"
+
+ - new tablature format parameter "taballflags"
+
+ - new tabrhstyle "modernbeams"
+
+
+Version 1.6.3, Aug 20 2004
+--------------------------
+
+ - new format parameter %%meterdisplay for displaying a meter
+   different from the mathematical meter, eg. %%meterdisplay 3/2=3
+   (replaces "M:3/2" in the postscript output with "M:3")
+
+ - changes to M: field
+    o removed support for undocumented modifiers 's' and 'l'
+    o new optional keyword "display" for displaying a meter different
+      from the mathematical meter, eg. "M:3/2 display=3"
+      (overrides global %%meterdisplay setting, see above)
+
+ - handling of %%stretchlast corrected
+   (thanks to Werner v. Hoersten)
+   changed stretchlast's default value to "yes"
+
+ - limitation on input line size removed
+ 
+ - increased output buffer size (actually I consider a limited
+   buffer size a bug, but it is currently too much effort to change
+   this)
+
+ - interactive mode (option -i) dropped
+
+ - new tabdecos !strumup! and !strumdown!
+   (see doc/examples/sanz.abc)
+
+ - new command line option -transposechords for
+   translation of guitar chords during transposition
+
+ - switched meaning of environment variables PAPERSIZE and PAPERCONFIG
+   in anlogy to libpaper, which swapped their meaning with version 1.1.13
+
+ - fonts corrected (pen macros now local to font dictionary)
+
+
+Version 1.6.2, Mar 20 2004
+--------------------------
+
+ - new option %%endingdots for dot after number in first/second endings
+
+ - new music decoration !breath!
+
+ - decos also on breaks
+
+ - fixed error in fermata postscript macro /hld
+
+
+Version 1.6.1, Feb 24 2004
+--------------------------
+
+ - n-plet symbols no longer printed in %%tabrhstyle none
+
+ - no denominator in time signature M: now also in tab possible
+
+
+Version 1.6.0, Jan 22 2004
+--------------------------
+
+ - letters p q r s added in fonts (except frBaroqueml)
+
+ - enhancements in decorations:
+    o decorations also applicable to barlines
+    o new music decorations !turn!, !plus!, X (or !x!)
+    o new dynamic marks !pp!, !p!, !mp!, !mf!, !f!, !ff!
+      both in music and tablature
+    o decos within []-chords in music allowed
+      (are applied to entire chord)
+
+ - more than one guitar chord per note allowed
+   guitar chords are equally spaced horizontally above note
+   useful for changing harmony on long note in figured bass
+
+ - corrected barnumbering with "-k 0" (occasionally picked
+   number of second bar instead of first bar in line)
+
+ - voice parameters bracket and brace now together possible
+
+ - added missing %%Pages DSC comment in Postscript output
+
+ - ties/slurs now work over line break without bar line
+
+ - empty w: line now takes vertical space (see victoria.abc)
+
+ - native MacOs X package creation in Makefile added
+   can be invoked with "make osx", provided epm is installed
+
+ - added the full text of the licensing terms
+   the licensing terms are now also made plain in the FAQ
+
+ - moved to C++ and Standard Template Library (STL)
+
+
+Version 1.5.3, Jul 22 2003
+--------------------------
+
+ - ported again to MacOS 8/9 (thanks to Frank Nordberg)
+
+ - support for very long notes:
+    o longa (quadruple) notes
+    o new parameter %%squarebrevis (prints |=| instead of |O|)
+    o brevis/longa in tablature added
+
+ - header field F: (file name) accepted
+
+ - nonzero returncode on invalid input
+
+
+Version 1.5.2, May 05 2003
+--------------------------
+
+ - fixed memory errors that could result in crashes
+
+
+Version 1.5.1, Apr 19 2003
+--------------------------
+
+ - %%staffwidth etc. now recognized when option -paper is used
+
+ - Makefile.Mint in Makefile.Unix integrated
+   entry for MacOS X added in Makefile.Unix
+   support for native win32 binary with cygwin (-mno-cygwin)
+
+
+Version 1.5.0, Feb 20 2003
+--------------------------
+
+ - new clef italian8tab
+
+ - support for !...! decorations from the abc draft standard
+   (see userguide section "Graces and decorations" for details)
+ 
+ - new decorations for music:
+    o !pralltriller!, !uppermordent! or P
+    o !mordent!, !lowermordent! or M
+    o !emphasis! or L (identical to !accent! or k)
+      added for compatibility with abc draft standard
+    o !tenuto! or N
+
+ - letters > 'o' are now allowed for tab (depends on tabfont,
+   whether something is printed or not)
+
+ - new tab letter y for invisble fret letter/number
+   (useful for ties/slurs/decorations on unplucked courses;
+   see doc/examples/bataille.abc for an example)
+
+ - global accidental octaves corrected for C clefs
+
+ - slurs and decorations inside chords now also work on bourdons
+
+ - ported to Borland C compiler
+
+
+Version 1.4.4, Nov 30 2002
+--------------------------
+
+ - fermata in italian7tab no longer printed across bourdon numbers
+
+
+Version 1.4.3, Oct 04 2002
+--------------------------
+
+ - bug fixes in display of full bar chords:
+   now only moved to the beginning of the bar when full bar rest,
+   not when full bar note. Correction for first/second endings.
+
+ - font error in manpage fixed
+
+
+Version 1.4.2, Aug 15 2002
+--------------------------
+
+ - %%vskip and %%newpage no longer suppress next bar number
+
+ - TAB characters (\t) in V: lines now treated as white space
+ 
+ - infinite loop in parsing K: line fixed
+
+ - man page included in HTML format instead of Postscript
+
+
+Version 1.4.1, Jul 30 2002
+--------------------------
+
+ - version 1.4.0 did not display diapasons in single note chords
+   this is now fixed
+
+
+Version 1.4.0, May 30 2002
+--------------------------
+
+ - new decoration 'O' for Coda in music and in tablature
+   (thanks to LP Gasparotto)
+
+ - multibar rests with capital Z, eg. Z4 for a four bar rest
+   syntax is compatible with abcm2ps
+   (thanks to LP Gasparotto)
+
+ - chords without letters now possible in tablature
+   examples: ",1" or "[,2]"
+   replaces the capital Z notation in %%tabrhstyle modern
+   for flags without chord; capital Z now means "multi bar rest"
+
+ - guitar chords over full bar rests no longer printed in
+   the middle, but at the beginning of the bar
+
+
+Version 1.3.1, Feb 07 2002
+--------------------------
+
+ - crash on Win32 fixed when music line starts with
+   gchord on bar line
+
+
+Version 1.3.0, Feb 02 2002
+--------------------------
+
+ - clefs in music:
+    o support for the "clef=" modifier in K: fields
+    o consistent handling of octave modifiers (+8,-8 etc.)
+    o more clefs (frenchviolin, tenor, soprano...)
+
+ - denominator in meter specification can be omitted
+
+ - better horizontal placement for %%tabrhstyle modern:
+   note heads centered instead of note necks
+
+ - papersize:
+    o automatic papersize determination on Debian Linux
+      and other Unix platforms using /etc/papersize
+      (see the papersize FAQ or the man page for details)
+    o more papersizes (a5, folio, quarto...)
+
+ - outputfile removed when program killed by SIGTERM
+
+
+Version 1.2.2, Nov 29 2001
+--------------------------
+
+ - version 1.2.1 was broken on multivoice music with pickups
+   this is now fixed
+
+
+Version 1.2.1, Nov 04 2001
+--------------------------
+
+ - new command line option -paper [a4|letter]
+
+ - output file is now removed when no tunes in input
+
+ - bugfix in page breaks with %%newpage:
+    o option "-k 0" now also works after page break
+    o ties now work across page breaks
+
+ - no double bar numbers after linebreaks before pickups
+
+
+Version 1.2.0, Jul 22 2001
+--------------------------
+
+ - guitar chords:
+    o up to eight lines allowed (line breaks with '\n')
+    o proper accidentals with '\#', '\b' and '\='
+      (syntax is compliant to abcm2ps)
+
+ - new tabrhstyle "grid"
+    o draws beams on rhythm flags for notes not seperated
+      by white space (same principle as in music)
+    o works otherwise like tabrhstyle "simple"
+    o see doc/examples/carcassi.abc
+
+ - changed tabfont lookup method:
+    o Fonts are now installed in $(PREFIX)/share/abctab2ps
+      with "make install" for better FHS compliance
+    o when $ABCTABFONTS is unset, the following directories
+      are searched:
+      /usr/share/abctab2ps;/usr/local/share/abctab2ps;fonts
+      This means that abctab2ps now works on Unix WITHOUT
+      setting of $ABCTABFONTS.
+    o $ABCTABFONTS can now be a semicolon separated list
+      of directories. This allows for private fonts in a
+      separate directory.
+
+ - added support for RPM and DEB creation (Linux package formats)
+    o requires the epm package manager
+    o "make rpm"/"make deb" generate RPM/DEB package
+
+
+Version 1.1.3, May 21 2001
+--------------------------
+
+ - memory on allocation initialized to zero in
+   order to make abc2ps legacy code work
+   (fixes crashes on Atari and MacOs)
+
+ - increased max number of lyric lines from 5 to 16
+
+
+Version 1.1.2, Apr 04 2001
+--------------------------
+
+ - bug fixed that caused crash with Borland compiler
+ 
+ - removed C++ keywords, now also compiles with a C++ compiler
+ 
+
+Version 1.1.1, Mar 31 2001
+--------------------------
+
+ - fixed some memory bugs and infinite loops
+   (Mingw32 crash is now fixed!)
+   
+ - error message when ties on empty courses
+
+ - changes for compatibility with "pre X" Mac0s's
+   (should now compile out of the box with MPW)
+ 
+
+Version 1.1.0, Jan 31 2001
+--------------------------
+
+ - arbitrary first barnumber with %%barnumberfirst
+   (must stand before T: field)
+
+ - right aligned text with %%right
+
+ - new decoration 'V' in tablature:
+   like 'U', but drawn BELOW tabletter
+
+ - scope of pseudo comments documented in user's guide
+ 
+ - default value for vocalfont Roman instead of Bold
+
+ - bugfix: options in %!-line now affect all tunes
+
+Version 1.0.5, Dec 06 2000
+--------------------------
+
+ - fixed bugs with uninitialized variables
+
+ - new compilation option -DUS_LETTER for US letter
+   format as default (see Makefiles)
+
+ - new clefs "french4tab", "french5tab", "italian4tab",
+   "italian5tab", "spanish4tab", "spanish5tab"
+   (thanks to Anders Wiren for contribution)
+
+Version 1.0.0, Oct 17 2000
+--------------------------
+
+ - support for 4-string banjo and ukulele tablature
+   clef names are "banjo4tab" and "ukuleletab"
+
+ - new decoration 'S' for Segno in music and in tablature
+   (adopted from abcm2ps; thanks to Jef Moine)
+ 
+ - first and second repeats in tablature
+
+ - bugfixes in tablature fermata
+    o rhythm flags after fermata were not printed
+    o height adjusted for banjo5tab
+
+ - correction voice label position in single staff tablature
+
+ - better error handling when chord not closed
+   (could result in segmentation fault)
+
+Version 0.9.5, Sep 13 2000
+--------------------------
+
+ - new format parameter %%tabfontscale
+   especially useful for Francisque font
+
+ - dynamic memory allocation
+   flags -maxs and -maxv no longer necessary
+
+ - FAQ's added in documentation
+
+Version 0.9, Jul 29 2000
+------------------------
+
+ - italian7tab implemented
+ 
+ - bourdons completed in tabfonts itTimes and itBorrono
+ 
+ - new format parameter %%tabflagspace
+
+ - gchords in tablature (drawn below system)
+
+ - support for 5-string banjo tablature:
+    o new clef "banjo5tab"
+    o new tabrhstyle "none" (no rhythm flags)
+    o new decoration "L" (oblique line) for long notes
+   (thanks to John Wright for contribution)
+
+ - bug in braces/brackets over tablines fixed
+ 
+ - voice modifier "space" also works on tablines
+ 
+ - bug fixed in ties in tablature
+
+ - 7th course now on same position with(out) %%tabledgeabove
+ 
+ - Makefile provided for translation of examples
+
+
+Version 0.8, Jun 12 2000
+------------------------
+
+ - command line options can be specified in first line with
+     %!abctab2ps [options]
+
+ - New decorations '#' and '*'. Formerly, '#' stood for an
+   X after a note; this is now coded -more intuitively- 'X'
+
+ - decorations on different chord notes than top notes
+
+ - triplets and general nplets not only parsed, but also drawn
+
+ - new font "frBaroqml.ps" contributed by Markus Lutz
+   (this font looks best at 10pt or 11pt size)
+
+ - default values for maximum number of voices and maximum  
+   number of symbols reduced again (caused trouble on low end systems)
+
+
+Version 0.7, Apr 30 2000
+------------------------
+
+ - support for (six course) italian tablature
+
+ - new font itBorrono (many thanks to Alain Veylit for the
+   permission to adopt this font from his StringWalker package)
+
+ - new option %%tabledgeabove for ledger lines above
+   letters in frenchtab bourdons
+
+ - fixed bug in tablature fermata
+ 
+ - new decorations in tablature:
+    o U for accent from below
+    o T for "tr." in italian tablature
+
+ - vertical spacing and system brackets/braces now correct when
+   top voice is tablature or more than one tablature staff within system
+
+ - default values for maximum number of voices and maximum  
+   number of symbols inreased
+ 
+
+Version 0.6, Mar 29 2000
+------------------------
+
+ - PS macros for tablature are not automatically omitted in
+   output, when no tablature voice in the first tune
+   
+ - new command line options -notab, -nofrenchtab, -noitaliantab
+
+
+Version 0.5, Mar 19 2000
+------------------------
+
+ - "make install" now works with all Makefiles (even on Windows 9x/NT!)
+
+ - size of tabfont can also be specified in the abc file with the
+   new pseudocomment %%tabfontsize
+
+ - tablature PS macros and tabfonts are only loadad when necessary
+   (=> smaller output files for music-only input)
+
+ - font loading mechanism changed:
+   Rather than a environment variable $ABCTABONT for one font file
+   there is now a variable $ABCTABFONTS for the directory with
+   font files.
+   Please consult the section "Tablature Fonts" in the user's guide
+   for details of the new font loading scheme.
+
+ - new pseudocomments %%tabfontfrench and %%tabfontitalian
+
+ - support for spanish (guitar) tablature
+
+
+Version 0.4, Dec 25 1999
+------------------------
+
+ - double note (brevis) also for tabrhstyle = simple
+
+ - barnumbers also when top voice is tablature
+
+ - ties/slurs in tablature
+
+ - documentation of tablature font in user's guide
+
+
+Version 0.3, Oct 30 1999
+------------------------
+
+ - command line changed:
+     o "-o" is implicit
+     o when no infile is specified, input is read from stdin
+       (thus you can pipe the output of other programs into abctab2ps)
+
+ - invisible metrum in music and tablature (M:none)
+   (no meter specification now defaults to M:none)
+   New metrum M:3 for triple time
+
+ - avoid recalculation of default note length when inline
+   meter change
+
+ - double note (brevis) in music added
+
+ - options for tablature format fine tuning:
+     o command line option "-tabsize <fontsize>"
+     o format parameter "tabaddflags <integer>"
+     o format parameter "tabrhstyle [simple|modern|diamond]"
+
+ - alternative tablature rhythm flags with note heads (tabrhstyle)
+   also affects rest symbols
+
+ - bourdon numbers 4-7 (french style) and 8-14 (italian style)
+
+ - fret letters are case sensitive again (necessary for grace signs)
+
+ - support for old style chord notation "+...+" dropped
+
+ - decorations in tablature:
+     o fermata ('H')
+     o right hand fingering ('.' for index, ':' for medius,
+       ';' for annularius, '+' for pollix)
+     o trill ('#') and appogiatura (''') signs
+
+ - indent space for clef omitted when only tablature lines
+
+ - brackets drawn high enough when top voice is tablature
+
+
+Version 0.2, Sep 12 1999
+------------------------
+
+ - navigation buttons in online user's guide added
+
+ - space added to staffsep when tablature is top voice
+
+ - only selected voices (command line option -V) are considered
+   for spacing of tablature lines
+
+ - bourdons now also work when not preceeded by another course
+   (ie. now "{,,a}" is sufficient rather than ",{,,a}")
+
+ - fret letters are recognised case insensitive
+
+ - letters m,n,o added in TabFont (does anyone need them?)
+
+ - ported to Ansi C
+
+ - time signature in tablature
+
+ - support for invisible rests (x) in tablature
+
+ - more examples added and commented
+
+ - postscript level 1 type font selection changed to level 2
+   (now ps2epsi works on abctab2ps output!)
+
+
+Version 0.1, Aug 28 1999
+------------------------
+
+ - music typesetting is identical with abc2ps 1.3.3
+   except for the following additional features:
+     o new clef "treble8" (modern tenor clef)
+     o support for figured bass as "stacked guitar chords"
+       "\n" creates a line break in a guitar chord, eg
+          "6\n4"D "5\n3#"D,
+       Not more than one line break is possible.
+
+ - support for ten course french tablature
+
+ - detailed user's guide and man page
+
+
+TODO in future versions
+-----------------------
+
+ - M:none can result in 4/4 in tablature rather than none
+   (example file???)
+
+ - crescendo and decrescondo signs with !crescendo(! etc.
+
+ - ligatura brackets must be shifted up when high slurs below bracket
+   (see music.cpp::draw_bracket())
+
+ - include tabfonts only when necessary
+
+ - "historicstyle" should also effect clefs and rests
+
+ - Q: field should be possible inline
+
+ - have a look at note length after dotted rhythms in tablature ">"
+
+ - improve default values for topmargin/topspace
+
+ - include bordun slashes in french tabfonts
+   (scales better and takes care of letter widths)
+
+ - make transpose a format parameter to allow for transposition
+   of individual tunes
+
+ - option to transpose figured bass
+
+ - fullbar repeats (how to code in abc??)
+
+ - remove hard coded limitation on filename lengths
+
+ - replace writing output file (PUT0 etc) with fprintf()
+   (fixes BUFSZ limits)
+
+ - scope %%leftmargin is current page, not current tune
+
+ - pseudocomment option for different staffwidth in last line
+
+ - new decorations !invertedfermata! resp. !note+fermata!
+   for fermata below staff resp. fermata over flag in tab
+   new decoration !open! for flageoletts
+
+ - new escape sequences \5 and \6 in gchords
+   (figbass shorthand notation for diminished chords)
+
+ - support for invisible rests in tabrhstyle grid
+   problem: symbol type is reset from REST to NOTE
+   more analysis of abc2ps code required
+
+ - change of first page for page numbering with %%firstpage
+   (better solution realized with script pspage)
+
+ - scordatura signs
+   (in analogy to global accidentals in music) 
+
+ - problem if %%tabfontsize in first tune different from next
+   tunes; solution: do not anchor tabfontsize in PS-macros
