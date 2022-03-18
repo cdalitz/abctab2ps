@@ -1,0 +1,63 @@
+% Help functions for drawing letters with a pen
+%
+% lower end of pen, must be set before call to penfunctions
+/penend 2 array def
+
+% parameters in the following functions refer to upper end of pen
+
+/penlineto { % usage like lineto
+  currentpoint 4 2 roll % save startpoint
+  lineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll penend 0 get add
+  2 1 roll penend 1 get add
+  lineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/penrlineto { % usage like rlineto
+  2 copy   % save arguments
+  rlineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll neg
+  2 1 roll neg
+  rlineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/pencurveto { % usage like curveto
+  6 copy currentpoint 8 2 roll   % save position and arguments
+  curveto
+  currentpoint 10 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  4 2 roll pop pop 4 2 roll 6 2 roll
+  3 {
+    6 5 roll penend 0 get add
+    6 5 roll penend 1 get add
+  } repeat
+  curveto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/penrcurveto { % usage like rcurveto
+  6 copy   % save arguments
+  rcurveto
+  currentpoint 8 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  neg exch neg exch 
+  6 2 roll exch 5 index add exch 4 index add
+  4 2 roll exch 5 index add exch 4 index add
+  6 -2 roll
+  rcurveto
+  penend 0 get neg penend 1 get neg rlineto
+  fill moveto % fill and move to targetpoint
+} bind def

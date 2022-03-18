@@ -1,0 +1,7 @@
+X:1
+L:1/4
+K:C
+V:1 clef=frenchtab 
+%%stretchlast yes
+%%staffwidth 3cm
+[V:1] x [,abc,a] x2

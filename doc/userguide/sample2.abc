@@ -1,0 +1,7 @@
+%!abctab2ps -notab 
+%%staffwidth 13cm
+%%strictness1 0
+X:1
+L:1/4
+K:C
+x "G"G x "G/"G/ x "G//"G// x "G3/2"G3/2 x "G3"G3 x "G4"G4 x "G6"G6 x "G8"G8 x "G16"G16 |]

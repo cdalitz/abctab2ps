@@ -1,0 +1,541 @@
+%!PS-Adobe-3.0 Resource-Font
+%-----------------------------------------------
+% Font for German tablature in abctab2ps
+% simply uses letters from Courier font
+% Copyright (c) 2007 Christoph Dalitz
+
+%%BeginResource: font GermanTabfont
+/detabfont 15 dict def
+detabfont begin
+
+/FontType 3 def
+
+% helper functions
+/M { moveto } bind def
+
+% chars are defined in 20x20 System
+/FontBBox [0 0 20 20] def
+/FontMatrix [0.05 0 0 0.05 0 0 ] def
+
+% pen definitions for different font types
+/Timespen [ -2 -2 ] def   % letters in frenchtab
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+Encoding
+% function names: c5f0 = course 5, fret 0 etc.
+% courses 5-1
+dup  32 /c5f0 put
+dup  33 /c4f0 put
+dup  34 /c3f0 put
+dup  35 /c2f0 put
+dup  36 /c1f0 put
+dup  37 /c5f1 put
+dup  38 /c4f1 put
+dup  39 /c3f1 put
+dup  40 /c2f1 put
+dup  41 /c1f1 put
+dup  42 /c5f2 put
+dup  43 /c4f2 put
+dup  44 /c3f2 put
+dup  45 /c2f2 put
+dup  46 /c1f2 put
+dup  47 /c5f3 put
+dup  48 /c4f3 put
+dup  49 /c3f3 put
+dup  50 /c2f3 put
+dup  51 /c1f3 put
+dup  52 /c5f4 put
+dup  53 /c4f4 put
+dup  54 /c3f4 put
+dup  55 /c2f4 put
+dup  56 /c1f4 put
+dup  57 /c5f5 put
+dup  58 /c4f5 put
+dup  59 /c3f5 put
+dup  60 /c2f5 put
+dup  61 /c1f5 put
+dup  62 /c5f6 put
+dup  63 /c4f6 put
+dup  64 /c3f6 put
+dup  65 /c2f6 put
+dup  66 /c1f6 put
+dup  67 /c5f7 put
+dup  68 /c4f7 put
+dup  69 /c3f7 put
+dup  70 /c2f7 put
+dup  71 /c1f7 put
+dup  72 /c5f8 put
+dup  73 /c4f8 put
+dup  74 /c3f8 put
+dup  75 /c2f8 put
+dup  76 /c1f8 put
+dup  77 /c5f9 put
+dup  78 /c4f9 put
+dup  79 /c3f9 put
+dup  80 /c2f9 put
+dup  81 /c1f9 put
+dup  82 /c5f10 put
+dup  83 /c4f10 put
+dup  84 /c3f10 put
+dup  85 /c2f10 put
+dup  86 /c1f10 put
+% course 6 in brummerstyle 'ABC'
+dup 128 /c6f0_ABC put
+dup 129 /c6f1_ABC put
+dup 130 /c6f2_ABC put
+dup 131 /c6f3_ABC put
+dup 132 /c6f4_ABC put
+dup 133 /c6f5_ABC put
+dup 134 /c6f6_ABC put
+dup 135 /c6f7_ABC put
+dup 136 /c6f8_ABC put
+dup 137 /c6f9_ABC put
+dup 138 /c6f10_ABC put
+% course 6 in brummerstyle '1AB'
+dup 144 /c6f0_1AB put
+dup 145 /c6f1_1AB put
+dup 146 /c6f2_1AB put
+dup 147 /c6f3_1AB put
+dup 148 /c6f4_1AB put
+dup 149 /c6f5_1AB put
+dup 150 /c6f6_1AB put
+dup 151 /c6f7_1AB put
+dup 152 /c6f8_1AB put
+dup 153 /c6f9_1AB put
+dup 154 /c6f10_1AB put
+% course 6 in brummerstyle '123'
+dup 160 /c6f0_123 put
+dup 161 /c6f1_123 put
+dup 162 /c6f2_123 put
+dup 163 /c6f3_123 put
+dup 164 /c6f4_123 put
+dup 165 /c6f5_123 put
+dup 166 /c6f6_123 put
+dup 167 /c6f7_123 put
+dup 168 /c6f8_123 put
+dup 169 /c6f9_123 put
+dup 170 /c6f10_123 put
+
+
+% drawing procedures
+/drawchar 50 dict def
+drawchar begin
+  /.notdef {} def
+
+  % courses 5-1
+  /c5f0 {
+    /Courier 20 selectfont
+    4 3 M (1) show
+  } def
+  /c4f0 {
+    /Courier 20 selectfont
+    4 3 M (2) show
+  } def
+  /c3f0 {
+    /Courier 20 selectfont
+    4 3 M (3) show
+  } def
+  /c2f0 {
+    /Courier 20 selectfont
+    4 3 M (4) show
+  } def
+  /c1f0 {
+    /Courier 20 selectfont
+    4 3 M (5) show
+  } def
+  /c5f1 {
+    /Courier 20 selectfont
+    4 3 M (a) show
+  } def
+  /c4f1 {
+    /Courier 20 selectfont
+    4 3 M (b) show
+  } def
+  /c3f1 {
+    /Courier 20 selectfont
+    4 3 M (c) show
+  } def
+  /c2f1 {
+    /Courier 20 selectfont
+    4 3 M (d) show
+  } def
+  /c1f1 {
+    /Courier 20 selectfont
+    4 3 M (e) show
+  } def
+  /c5f2 {
+    /Courier 20 selectfont
+    4 3 M (f) show
+  } def
+  /c4f2 {
+    /Courier 20 selectfont
+    4 3 M (g) show
+  } def
+  /c3f2 {
+    /Courier 20 selectfont
+    4 3 M (h) show
+  } def
+  /c2f2 {
+    /Courier 20 selectfont
+    4 3 M (i) show
+  } def
+  /c1f2 {
+    /Courier 20 selectfont
+    4 3 M (k) show
+  } def
+  /c5f3 {
+    /Courier 20 selectfont
+    4 3 M (l) show
+  } def
+  /c4f3 {
+    /Courier 20 selectfont
+    4 3 M (m) show
+  } def
+  /c3f3 {
+    /Courier 20 selectfont
+    4 3 M (n) show
+  } def
+  /c2f3 {
+    /Courier 20 selectfont
+    4 3 M (o) show
+  } def
+  /c1f3 {
+    /Courier 20 selectfont
+    4 3 M (p) show
+  } def
+  /c5f4 {
+    /Courier 20 selectfont
+    4 3 M (q) show
+  } def
+  /c4f4 {
+    /Courier 20 selectfont
+    4 3 M (r) show
+  } def
+  /c3f4 {
+    /Courier 20 selectfont
+    4 3 M (s) show
+  } def
+  /c2f4 {
+    /Courier 20 selectfont
+    4 3 M (t) show
+  } def
+  /c1f4 {
+    /Courier 20 selectfont
+    4 3 M (v) show
+  } def
+  /c5f5 {
+    /Courier 20 selectfont
+    4 3 M (x) show
+  } def
+  /c4f5 {
+    /Courier 20 selectfont
+    4 3 M (y) show
+  } def
+  /c3f5 {
+    /Courier 20 selectfont
+    4 3 M (z) show
+  } def
+  /c2f5 {
+    /Courier 20 selectfont
+    4 3 M (&) show
+  } def
+  /c1f5 {
+    /Courier 20 selectfont
+    4 3 M (9) show
+  } def
+  /c5f6 {
+    /Courier 20 selectfont
+    4 3 M (a) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f6 {
+    /Courier 20 selectfont
+    4 3 M (b) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f6 {
+    /Courier 20 selectfont
+    4 3 M (c) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f6 {
+    /Courier 20 selectfont
+    4 3 M (d) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f6 {
+    /Courier 20 selectfont
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+    4 3 M (e) show
+  } def
+  /c5f7 {
+    /Courier 20 selectfont
+    4 3 M (f) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f7 {
+    /Courier 20 selectfont
+    4 3 M (g) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f7 {
+    /Courier 20 selectfont
+    4 3 M (h) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f7 {
+    /Courier 20 selectfont
+    4 3 M (i) show
+	1.0 setlinewidth 4.5 15.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f7 {
+    /Courier 20 selectfont
+    4 3 M (k) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f8 {
+    /Courier 20 selectfont
+    4 3 M (l) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f8 {
+    /Courier 20 selectfont
+    4 3 M (m) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f8 {
+    /Courier 20 selectfont
+    4 3 M (n) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f8 {
+    /Courier 20 selectfont
+    4 3 M (o) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f8 {
+    /Courier 20 selectfont
+    4 3 M (p) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f9 {
+    /Courier 20 selectfont
+    4 3 M (q) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f9 {
+    /Courier 20 selectfont
+    4 3 M (r) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f9 {
+    /Courier 20 selectfont
+    4 3 M (s) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f9 {
+    /Courier 20 selectfont
+    4 3 M (t) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f9 {
+    /Courier 20 selectfont
+    4 3 M (v) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f10 {
+    /Courier 20 selectfont
+    4 3 M (x) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f10 {
+    /Courier 20 selectfont
+    4 3 M (y) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f10 {
+    /Courier 20 selectfont
+    4 3 M (z) show
+	1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f10 {
+    /Courier 20 selectfont
+    4 3 M (&) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f10 {
+    /Courier 20 selectfont
+    4 3 M (9) show
+	1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  % course 6 in brummerstyle 'ABC'
+  /c6f0_ABC {
+    /Courier 20 selectfont
+    4 3 M (A) show
+  } def
+  /c6f1_ABC {
+    /Courier 20 selectfont
+    4 3 M (B) show
+  } def
+  /c6f2_ABC {
+    /Courier 20 selectfont
+    4 3 M (C) show
+  } def
+  /c6f3_ABC {
+    /Courier 20 selectfont
+    4 3 M (D) show
+  } def
+  /c6f4_ABC {
+    /Courier 20 selectfont
+    4 3 M (E) show
+  } def
+  /c6f5_ABC {
+    /Courier 20 selectfont
+    4 3 M (F) show
+  } def
+  /c6f6_ABC {
+    /Courier 20 selectfont
+    4 3 M (G) show
+  } def
+  /c6f7_ABC {
+    /Courier 20 selectfont
+    4 3 M (H) show
+  } def
+  /c6f8_ABC {
+    /Courier 20 selectfont
+    4 3 M (I) show
+  } def
+  /c6f9_ABC {
+    /Courier 20 selectfont
+    4 3 M (K) show
+  } def
+  /c6f10_ABC {
+    /Courier 20 selectfont
+    4 3 M (L) show
+  } def
+  % course 6 in brummerstyle '1AB'
+  /c6f0_1AB {
+    /Courier 20 selectfont
+    4 3 M (1) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f1_1AB {
+    /Courier 20 selectfont
+    4 3 M (A) show
+  } def
+  /c6f2_1AB {
+    /Courier 20 selectfont
+    4 3 M (B) show
+  } def
+  /c6f3_1AB {
+    /Courier 20 selectfont
+    4 3 M (C) show
+  } def
+  /c6f4_1AB {
+    /Courier 20 selectfont
+    4 3 M (D) show
+  } def
+  /c6f5_1AB {
+    /Courier 20 selectfont
+    4 3 M (E) show
+  } def
+  /c6f6_1AB {
+    /Courier 20 selectfont
+    4 3 M (F) show
+  } def
+  /c6f7_1AB {
+    /Courier 20 selectfont
+    4 3 M (G) show
+  } def
+  /c6f8_1AB {
+    /Courier 20 selectfont
+    4 3 M (H) show
+  } def
+  /c6f9_1AB {
+    /Courier 20 selectfont
+    4 3 M (I) show
+  } def
+  /c6f10_1AB {
+    /Courier 20 selectfont
+    4 3 M (K) show
+  } def
+  % course 6 in brummerstyle '123'
+  /c6f0_123 {
+    /Courier 20 selectfont
+    4 3 M (1) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f1_123 {
+    /Courier 20 selectfont
+    4 3 M (2) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f2_123 {
+    /Courier 20 selectfont
+    4 3 M (3) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f3_123 {
+    /Courier 20 selectfont
+    4 3 M (4) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f4_123 {
+    /Courier 20 selectfont
+    4 3 M (5) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f5_123 {
+    /Courier 20 selectfont
+    4 3 M (6) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f6_123 {
+    /Courier 20 selectfont
+    4 3 M (7) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f7_123 {
+    /Courier 20 selectfont
+    4 3 M (8) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f8_123 {
+    /Courier 20 selectfont
+    4 3 M (9) show
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f9_123 {
+    /Courier 20 selectfont 0.75 1.0 scale
+    2 3 M (10) show
+	1.0 setlinewidth 2 7 M 17.5 5 rlineto stroke
+  } def
+  /c6f10_123 {
+    /Courier 20 selectfont 0.75 1.0 scale
+    2 3 M (11) show
+	1.0 setlinewidth 2 7 M 17.5 5 rlineto stroke
+  } def
+
+end
+
+% enable new font
+/BuildChar {
+20 0
+0 0 20 20
+setcachedevice
+/char exch def
+0.1 setlinewidth
+begin
+  Encoding char get
+  drawchar exch get
+  exec
+  end
+}def
+
+end
+
+/GermanTabfont detabfont definefont pop
+%%EndResource
+%----------------------------------------------------------------

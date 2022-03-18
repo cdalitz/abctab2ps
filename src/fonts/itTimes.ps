@@ -1,0 +1,251 @@
+%!PS-Adobe-3.0 Resource-Font
+%-----------------------------------------------
+% Font for italian tablature in abctab2ps
+% simply uses digits of Times font
+% Copyright (c) 2000-2004 Christoph Dalitz
+
+%%BeginResource: font ItalianTabfont
+/itabfont 15 dict def
+itabfont begin
+
+/FontType 3 def
+
+% helper functions
+/M { moveto } bind def
+
+% chars are defined in 20x20 System
+/FontBBox [0 0 20 20] def
+/FontMatrix [0.05 0 0 0.05 0 0 ] def
+
+% pen definitions for different font types
+/Timespen [ -2 -2 ] def   % letters in frenchtab
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+Encoding
+% frenchtab:  a-s
+% italiantab: 0-17
+dup  97 /italian_0 put
+dup  98 /italian_1 put
+dup  99 /italian_2 put
+dup 100 /italian_3 put
+dup 101 /italian_4 put
+dup 102 /italian_5 put
+dup 103 /italian_6 put
+dup 104 /italian_7 put
+dup 105 /italian_8 put
+% 106 unused
+dup 107 /italian_9 put
+dup 108 /italian_10 put
+dup 109 /italian_11 put
+dup 110 /italian_12 put
+dup 111 /italian_13 put
+dup 112 /italian_14 put
+dup 113 /italian_15 put
+dup 114 /italian_16 put
+dup 115 /italian_17 put
+dup 116 /italian_18 put
+dup 117 /italian_19 put
+dup 118 /italian_20 put
+dup 119 /italian_21 put
+% french bourdons: D-G
+dup  68 /bourdon_4 put  % D
+dup  69 /bourdon_5 put  % E
+dup  70 /bourdon_6 put  % F
+dup  71 /bourdon_7 put  % G
+% italian bourdons: H-N
+dup  72 /bourdon_8  put % H
+dup  73 /bourdon_9  put % I
+dup  74 /bourdon_10 put % J
+dup  75 /bourdon_11 put % K
+dup  76 /bourdon_12 put % L
+dup  77 /bourdon_13 put % M
+dup  78 /bourdon_14 put % N
+dup  79 /bourdon_15 put % O
+
+
+% drawing procedures
+/drawchar 50 dict def
+drawchar begin
+  /.notdef {} def
+
+  % italian numbers
+  /italian_0 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (0) show
+  } def
+  /italian_1 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (1) show
+  } def
+  /italian_2 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (2) show
+  } def
+  /italian_3 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (3) show
+  } def
+  /italian_4 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (4) show
+  } def
+  /italian_5 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (5) show
+  } def
+  /italian_6 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 M (6) show
+  } def
+  /italian_7 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 M (7) show
+  } def
+  /italian_8 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 M (8) show
+  } def
+  /italian_9 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 M (9) show
+  } def
+  /italian_10 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 4 M (x) show
+  } def
+  /italian_11 {
+    /Times 20 selectfont 1 0.9 scale
+    3 4 M (1) show
+    9 4 M (1) show
+  } def
+  /italian_12 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (2) show
+  } def
+  /italian_13 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (3) show
+  } def
+  /italian_14 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (4) show
+  } def
+  /italian_15 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (5) show
+  } def
+  /italian_16 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (6) show
+  } def
+  /italian_17 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (7) show
+  } def
+  /italian_18 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (8) show
+  } def
+  /italian_19 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (1) show
+    8.5 4 M (9) show
+  } def
+  /italian_20 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (2) show
+    8.5 4 M (0) show
+  } def
+  /italian_21 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 M (2) show
+    8.5 4 M (1) show
+  } def
+
+  % french bourdons
+  % (not used in italiantab)
+  /bourdon_4 {
+  } def
+  /bourdon_5 {
+  } def
+  /bourdon_6 {
+  } def
+  /bourdon_7 {
+  } def
+
+  % italian bourdons
+  /bourdon_8 {
+    /Times 20 selectfont 1.5 1.2 scale
+    2.5 2 M (8) show
+  } def
+  /bourdon_9 {
+    /Times 20 selectfont 1.5 1.2 scale
+    2.5 2 M (9) show
+  } def
+  /bourdon_10 {
+    /Times 20 selectfont 1.2 1.2 scale
+    2.5 2 M (X) show
+  } def
+  /bourdon_11 {
+    /Times 20 selectfont 1.2 1.2 scale
+    2.5 2 M (V) show
+  } def
+  % alternative version
+  %/bourdon_11 {
+  %  /Times 20 selectfont 1.2 1.2 scale
+  %  1.0 2 M (1) show
+  %  7.0 2 M (1) show
+  %} def
+  /bourdon_12 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 M (1) show
+    7.0 2 M (2) show
+  } def
+  /bourdon_13 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 M (1) show
+    7.0 2 M (3) show
+  } def
+  /bourdon_14 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 M (1) show
+    7.0 2 M (4) show
+  } def
+  /bourdon_15 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 M (1) show
+    7.0 2 M (5) show
+  } def
+
+  /test_t {   % test output
+  } def
+end
+
+% enable new font
+/BuildChar {
+20 0
+0 0 20 20
+setcachedevice
+/char exch def
+0.1 setlinewidth
+begin
+  Encoding char get
+  drawchar exch get
+  exec
+  end
+}def
+
+end
+
+/ItalianTabfont itabfont definefont pop
+%%EndResource
+%----------------------------------------------------------------

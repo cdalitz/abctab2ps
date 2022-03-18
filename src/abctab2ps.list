@@ -1,0 +1,49 @@
+# EPM specification file for binary distributions
+
+# general information
+%product abctab2ps
+%copyright 1999-2022 by Christoph Dalitz, based upon code by Michael Methfessel
+%vendor Christoph Dalitz
+%license ../LICENSE
+%readme ../README
+%description A music and tablature typesetting program based on
+%description Chris Walshaw's abc music language. abctab2ps converts
+%description abc files directly into postscript without the need
+%description of additional software.
+%description In addition to the abc standard which only supports
+%description music, abctab2ps supports lute and guitar tablature.
+%version 1.8.18
+
+# definitions for installation directories
+$prefix=/usr
+$bindir=$prefix/bin
+$fontdir=$prefix/share/abctab2ps
+$mandir=$prefix/share/man/man1
+$docdir=$prefix/share/doc/abctab2ps
+
+# list of installation files
+f 755 root root $bindir/abctab2ps abctab2ps
+f 644 root root $mandir/abctab2ps.1 ../doc/manpages/abctab2ps.1
+
+d 755 root root $fontdir
+f 644 root root $fontdir ../src/fonts/it*.ps
+f 644 root root $fontdir ../src/fonts/fr*.ps
+f 644 root root $fontdir ../src/fonts/de*.ps
+
+d 755 root root $docdir
+f 644 root root $docdir/README ../README
+f 644 root root $docdir/CHANGES ../CHANGES
+f 644 root root $docdir/LICENSE ../LICENSE
+f 644 root root $docdir/faq.html ../doc/faq.html
+f 644 root root $docdir/abctab2ps-man.html ../doc/manpages/abctab2ps-man.html
+f 644 root root $docdir/userguide.ps ../doc/userguide/userguide.pdf
+
+d 755 root root $docdir/examples
+f 644 root root $docdir/examples ../doc/examples/*.abc
+f 644 root root $docdir/examples/Readme ../doc/examples/Readme
+
+d 755 root root $docdir/userguide
+f 644 root root $docdir/userguide/html ../doc/userguide/html/*.html
+f 644 root root $docdir/userguide/html ../doc/userguide/html/*.gif
+f 644 root root $docdir/userguide/html ../doc/userguide/html/*.png
+f 644 root root $docdir/userguide/html ../doc/userguide/html/*.css

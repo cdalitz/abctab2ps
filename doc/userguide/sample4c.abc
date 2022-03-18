@@ -1,0 +1,12 @@
+%%staffwidth     6cm
+%%sysstaffsep    50.0pt
+%%gchordfont     ZapfChancery-MediumItalic
+X:1
+L:1/4
+M:none
+K:GDorian
+%
+V:1 clef=treble
+c/A/B/G/ TA>G | G4 ||
+V:2 clef=bass
+"7\n#""6\n4"d2 "5\n4""#"D2 | "#"g4 ||

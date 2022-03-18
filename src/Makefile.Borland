@@ -1,0 +1,65 @@
+#
+# makefile for abctab2ps
+#
+# version for Borland C compiler 
+# on Win32 
+#==============================
+
+
+# compilation options
+#------------------------------
+
+CC = bcc32.exe
+CFLAGS = 
+LDFLAGS = 
+
+# possible preprocessor options:
+CPPFLAGS = 
+
+# installation directories
+# (adjust to your preferences)
+#------------------------------
+
+# directory for the binary
+# make sure it is in your search PATH ($WINDIR always is)
+BINDIR = $(WINDIR)
+
+
+# from here on, no alterations
+# should be necessary
+#--------------------------------
+
+PROGRAM = abctab2ps.exe
+
+OBJECTS = abctab2ps.obj parse.obj syms.obj style.obj buffer.obj format.obj pssubs.obj subs.obj util.obj music.obj tab.obj
+
+
+$(PROGRAM): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LDFLAGS)
+
+. .c.obj:
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+
+test:
+	$(PROGRAM) sample.abc
+
+install:
+	# let's try an installation with the crappy Dos Shell...
+	@echo installing abctab2ps...
+	copy $(PROGRAM) $(BINDIR)
+
+	# inform user about postinstall tasks
+	@echo +++++++++++++++++++++++++++++++++++++++++++++
+	@echo + abctab2ps successfully installed.
+	@echo + Before you can use it, you must add the
+	@echo + environment variable ABCTABFONTS to the
+	@echo + system environment and set it to:
+	@cd
+	@echo +++++++++++++++++++++++++++++++++++++++++++++
+
+uninstall:
+	del $(BINDIR)\$(PROGRAM)
+
+clean:
+	del *.obj $(PROGRAM) Out.ps
+

@@ -1,0 +1,334 @@
+.TH ABCTAB2PS 1 "18. May 2007"
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH NAME
+.\"---------------------------------------------------------------------
+\fBabctab2ps\fP \- typesets music in abc format directly in postscript
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH SYNOPSIS
+.\"---------------------------------------------------------------------
+abctab2ps [-1bcEhHIlnNopPx] 
+[-a \fIalfa\fP] [-B \fIbarsperline\fP] 
+[-d \fIdistance\fP] [-D \fIfmtdir\fP]
+[-eCRST \fIselectors\fP] [-f \fIinfile\fP] 
+[-F \fIformatfile\fP] [-g shrink|space|stretch|fill]
+[-k \fInbars\fP] [-m \fImargin\fP] [-paper \fIformat\fP]
+[-noauthor] [-notab] [-nofrenchtab] [-noitaliantab] [-nogermantab]
+[-O \fIoutfile\fP] [-s \fIscale\fP]
+[-t \fItransposition\fP]
+[-tabsize \fIfontsize\fP] [-transposegchords]
+[-v \fIverbosity\fP] [-V \fIvoices\fP]
+[-w \fIwidth\fP] [-X \fIstrictness\fP]
+[\fIinfile\fP[.abc]]
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH DESCRIPTION
+.\"---------------------------------------------------------------------
+\fBabctab2ps\fP reads an input file containing music in abc format
+and typesets it directly in PostScript.
+For a description of the abc syntax, please see the separate user's guide.
+.PP
+Basically, the usage is \fIabctab2ps file1 file2 ...\fP 
+where file1, file2 ... are the abc input files. This will write the
+Postscript output to the file \fIOut.ps\fP; for a different filename
+use flag -O. If no input file is specified, abctab2ps reads its input
+from stdin so that you can pipe the output of some other abc tool into
+abctab2ps.
+.PP
+Note that most flags (see OPTIONS) can be used in any sequence. 
+However, the position does matter for flags e,f,C,S,R,T since
+these determine how the following arguments are interpreted.
+.PP
+Flags can be contracted together if the meaning is clear, 
+and a numerical argument for the last flag can be appended.
+That is, "-b -s 0.7 -v 1" can be contracted to "-bs0.7 -v1".
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH OPTIONS
+.\"---------------------------------------------------------------------
+.TP
+.B -1
+writes every tune on a separate page.
+.TP
+.B -a \fIalfa\fP
+set the maximal amount of permitted shrinking to \fIalfa\fP,
+where 0 <= \fIalfa\fP <= 1. A value of 0.0 means that no 
+shrinking is allowed, and a value of 1.0 allows shrinking until 
+the symbols are almost touching. In conjunction with -c, by default alfa 
+is set to an intermediate value (displayed with "abctab2ps -c -h"). 
+When -c is not used, maximal shrinking and stretching are allowed.
+.TP
+.B -b
+break at all line ends, even if they end with the continuation 
+symbol "\\".
+.TP
+.B -B \fIbarsperline\fP
+try to typeset with \fIbarsperline\fP bars on each line.
+.TP
+.B -c
+consider the input as one long line, ie., implicitly append 
+the continuation symbol '\\' to every line of music.
+When doing automatic line breaking with -c, the user can control the 
+spacing of the symbols along the staff by specifying the "compression 
+parameter" alfa with the -a flag.  
+.TP
+.B -d \fIdistance\fP
+set staff distance to \fIdistance\fP (cm/in/pt).
+.TP
+.B -D \fIfmtdir\fP
+look for format files in directory \fIfmtdir\fP.
+.TP
+.B -e \fIselector1 [selector2 ...]\fP
+typesets only the tunes matching the xref numbers \fIselector1 
+[selector2 ...]\fP. 
+Optionally, the search can be done on other fields using in place of -e
+the flags -R (seaches the rhythm field), -C (searches the composer field),
+-S (searches the source field), -T (seaches the title field (default)).
+.TP
+.B -E
+make EPSF (encapsulated postscript) output. Each tune is then put into 
+a separate file with a correct bounding box and no page breaks.
+.TP
+.B -f \fIinfile\fP
+sets the input file. Has the same effect as omitting this flag.
+.TP
+.B -F \fIformatfile\fP
+read format from file \fIformatfile\fP.fmt. The directory can be set
+with flag -D.
+.TP
+\fB-g\fP shrink|space|stretch|fill
+sets the "glue mode".
+The default mode is fill, which fills the staff.
+This flag is useful when changing the layout parameters, 
+to see what effect the changes have for each mode separately.
+.TP
+.B -h
+quick help, equivalent to "abctab2ps" without any arguments.
+This also shows the default settings for some parameters.
+.TP
+.B -H
+show the default format parameters.
+.TP
+.B -I
+write index file "Ind.ps".
+.TP
+.B -k \fInbars\fP
+number every \fInbars\fP. To number every first bar per staff, set
+\fInbars\fP to 0.
+.TP
+.B -l
+print in landscape mode.
+.TP
+.B -m \fImargin\fP
+sets the left margin to \fImargin\fP (cm/in/pt).
+.TP
+.B -maxs \fInsymbols\fP
+obsolete option for different memory allocation.
+No longer necessary because memory is now allocated dynamically.
+.TP
+.B -maxv \fInvoices\fP
+obsolete option for different memory allocation.
+No longer necessary because memory is now allocated dynamically.
+.TP
+.B -noauthor
+suppresses the postscript DSC comment for the author (%%For).
+Useful when abctab2ps is run automatically on a webserver or when
+you do not want your name listed in the ouput file.
+.TP
+.B -notab
+suppresses all tablature specific postscript routines and fonts
+in the output file; useful for music only input, because the 
+resulting output file is smaller. Basically, \fIabctab2ps\fP should
+behave like \fIabc2ps\fP with this option.
+.TP
+.B -nofrenchtab
+does not include the font for french tab into the output
+file; useful if you only use a different tab, because the
+resulting output file is smaller.
+.TP
+.B -noitaliantab
+does not include the font for italian tab (and other number based
+tabs) into the output file; useful if you only use a different tab,
+because the resulting output file is smaller.
+.TP
+.B -nogermantab
+does not include the font for german tab into the output
+file; useful if you only use a different tab, because the
+resulting output file is smaller.
+.TP
+.B -n
+includes historical notes and other stuff at the bottom 
+of each tune.
+.TP
+.B -N
+write page numbers
+.TP
+.B -o
+obsolete option that is ignored. In abc2ps, only with this option 
+postscript output was generated.
+.TP
+.B -O \fIoutfile\fP
+in PS (EPS) mode, the output is written to \fIoutfile\fP.ps
+(\fIoutfile\fP001.eps). If the parameter to -O is '=', output 
+for "foo.abc" is written to "foo.ps" ("foo001.eps").
+.TP
+.B -p
+generates pretty output, with more whitespace between tunes,
+larger fonts for titles, and larger music symbols. By default, 
+the layout squeezes the tunes to reduce the number of pages.
+.TP
+.B -P
+another pretty output format.
+.TP
+.B -paper \fIformat\fP
+sets paper format. Typical values for \fIformat\fP are "a4" or "letter".
+This command line option overrides the system-wide default papersize
+given in \fI/etc/papersize\fP.
+For a list of all possible values try an invalid value for \fIformat\fP;
+this will also print the default papersize on your system.
+.TP
+.B -s \fIscale\fP
+scales the music output by factor \fIscale\fP.
+.TP
+.B -t \fItransposition\fP
+transpose all music. If \fItransposition\fP is a number, the music
+is transposed up as many halftones; for downward transposition start 
+the number with an underscore "_". If \fItransposition\fP is a note name, 
+this note becomes the root.
+.TP
+.B -tabsize \fIfontsize\fP
+sets the size of the tablature font TabFont to \fIfontsize\fP.
+.TP
+.B -transposegchords
+transpose guitar chords too (in combination with option -t), 
+in case you use guitar chords actually for chord letters
+.TP
+.B -v \fIverbosity\fP
+sets the verbosity for output to the screen to \fIverbosity\fP.
+Hereby -v0 gives very little, -v1,v2,v3.. show successively 
+more information. Verbosity >= 10 is for debugging.
+.TP
+.B -V \fIvoices\fP
+select specified voices, eg. "-V 1,4-5"
+.TP
+.B -w \fIwidth\fP
+sets the width of the staff to \fIwidth\fP (cm/in/pt).
+.TP
+.B -x
+includes the xref numbers in the tune title.
+.TP
+.B -X \fIstrictness\fP
+set strictness for note spacing; 0 < \fIstrictness\fP < 1.
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH ENVIRONMENT
+.\"---------------------------------------------------------------------
+.TP
+.B ABCTABFONTS
+Semicolon separated list of directories which abctab2ps searches
+for tablature font files. If unset, fonts files are searched in
+\fI/usr/share/abctab2ps\fP, \fI/usr/local/share/abctab2ps\fP and \fIfonts\fP
+(in that order) on Unix/Win32/MacOs X and in \fI:fonts\fP on MacOs 8/9.
+Please note that the separator is a semicolon ";" rather than a colon ":".
+This is necessary because colons are part of path names on MacOs and Win32. 
+.TP
+.B PAPERSIZE
+Sets the default paper format (\fIa4\fP or \fIletter\fP); overrides 
+entry in \fI/etc/papersize\fP.
+.TP
+.B PAPERCONF
+Full path to a file containing the default paper size (\fIa4\fP or 
+\fIletter\fP).
+If unset, \fI/etc/papersize\fP is used.
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH FILES
+.\"---------------------------------------------------------------------
+.TP
+.B /etc/papersize
+Contains the name of the system-wide default paper size (\fIa4\fP or 
+\fIletter\fP). A different file can be given with the environment variable
+\fIPAPERCONF\fP.
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH EXAMPLES
+.\"---------------------------------------------------------------------
+Typeset all tunes from mytunes.abc into Out.ps, choosing all line 
+breaks automatically:
+.PP
+\	\fCabctab2ps mytunes.abc -c\fP
+.PP
+Squeeze notes together more and write the output to
+mytunes.ps:
+.PP
+\	\fCabctab2ps mytunes.abc -O '=' -c -a0.9\fP
+.PP
+Equivalent commands to typeset tunes 1 to 10 in bla.abc and 11-20 
+in fasel.abc:
+.PP
+\	\fCabctab2ps bla -e 1-10 -f fasel -e 11-20 \fP
+.PP
+\	\fCabctab2ps bla.abc 1-10 fasel.abc 11-20 \fP
+.PP
+\	\fCabctab2ps bla 1-10 fasel.abc 11-20 \fP
+.PP
+Typeset all tunes with the string 'House' in the title or with
+xref numbers 10-12, in all abc files whose name starts with X,
+including historical notes and xref numbers in the output, 
+forcing a line break at continuation lines, with reduced size
+of the symbols, putting one tune per page:
+.PP
+\	\fCabctab2ps X*.abc -e House 10,11,12 -nx -s0.9 -b1\fP
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH BUGS
+.\"---------------------------------------------------------------------
+abctab2ps currently has a number of hard coded limits:
+.IP -
+Info fields must not exceed 300 characters
+.IP -
+file names must not exceed 100 characters
+.IP -
+the size of an output page is limited
+.PP
+If you encounter a limit, you currently need to change the hard coded
+value in \fIabctab2ps.h\fP and recompile.
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH AUTHOR
+.\"---------------------------------------------------------------------
+Christoph Dalitz <christoph(dot)dalitz[at]hs-niederrhein(dot)de>
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH VERSION
+.\"---------------------------------------------------------------------
+This man page describes abctab2ps version 1.8.1 from May 2007.
+This version is built on Michael Methfessel's abc2ps 1.3.3 from December 1998.
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH COPYRIGHT
+.\"---------------------------------------------------------------------
+Copyright 1999-2007 by Christoph Dalitz
+.PP
+abctab2ps is supplied "as is" without any warranty. It
+is free software and can be used, copied, modified and
+distributed without fee under the terms of the GNU General 
+Public License. 
+.\"
+.\"
+.\"---------------------------------------------------------------------
+.SH SEE ALSO
+.\"---------------------------------------------------------------------
+abcselect(1)

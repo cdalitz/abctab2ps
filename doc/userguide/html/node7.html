@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Scores</TITLE>
+<META NAME="description" CONTENT="Scores">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html130"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html132"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node8.html">Tablature</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node6.html">Text</A>
+ &nbsp; <B>  <A ID="tex2html131"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html133"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html134"
+  HREF="node7.html#SECTION00071000000000000000">Multi stave music</A>
+<LI><A ID="tex2html135"
+  HREF="node7.html#SECTION00072000000000000000">Polyphonic music</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00070000000000000000">
+Scores</A>
+</H1>
+
+<P>
+
+<H2><A ID="SECTION00071000000000000000"></A>
+<A ID="sec:MultiStaveMusic"></A><A NAME="326"></A>
+<BR>
+Multi stave music
+</H2>
+abctab2ps supports multi stave music (scores). There are two different
+ways for the notation of scores. You can either define the different
+voices in V: lines at the end of the header just before the first music
+line and use inline V: references "[V:...]" to associate music lines 
+with specific voices, as in the following example:
+
+<P><PRE>
+X:1
+T:Sonata II
+C:B. Marcello, 1712
+M:C
+L:1/8
+K:DDorian
+%
+V:F clef=treble    name=Flauto space=+5pt
+V:B clef=bass      name=Basso  
+%
+Q:"Adagio"
+[V:F] ad fe/d/ eA z A | dd d/e/f/g/ aA z a | 
+[V:B] d2 d'2 ^c'2 =c'2 | =b2 _b2 aa/g/ fd |
+</PRE>
+
+<P>
+Alternatively, you can write all music of a specific voice immediately
+after its voice definition. In this notation the above example reads:
+
+<P><PRE>
+X:1
+T:Sonata II
+C:B. Marcello, 1712
+M:C
+L:1/8
+K:DDorian
+%
+Q:"Adagio"
+V:F clef=treble    name=Flauto space=+5pt
+ad fe/d/ eA z A | dd d/e/f/g/ aA z a | 
+%
+V:B clef=bass      name=Basso  
+d2 d'2 ^c'2 =c'2 | =b2 _b2 aa/g/ fd |
+</PRE>
+
+<P>
+The syntax of a voice definition is
+
+<P><PRE>
+V: &lt;label&gt; &lt;par1&gt;=&lt;value1&gt; &lt;par2&gt;=&lt;value2&gt;  ...
+</PRE>
+
+<P>
+where <I><code>&lt;</code>label<code>&gt;</code> </I> is used to switch to the voice in later 
+V: lines. Each <I><code>&lt;</code>par<code>&gt;</code> = <code>&lt;</code>value<code>&gt;</code> </I> pair sets one 
+parameter for the current voice. <I><code>&lt;</code>par<code>&gt;</code> </I> can be any 
+of the following parameters or abbreviations:
+
+<P>
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT"><B>Parameter</B></TD>
+<TD CLASS="LEFT"><B>Abbrev.</B></TD>
+<TD CLASS="LEFT"><B>Example</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198><B>Description</B></TD>
+</TR>
+<TR><TD CLASS="LEFT">name</TD>
+<TD CLASS="LEFT">nm</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">nm="Violin I"</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This sets the long version of the voice name, to be
+    written before the staves at the start of a piece.
+    If the string contains <code>\\</code>, this is interpreted
+    as a line break and the pieces are writen above 
+    each other.</TD>
+</TR>
+<TR><TD CLASS="LEFT">sname</TD>
+<TD CLASS="LEFT">snm</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">snm="Vl. I"</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>Short version of the name, written before
+    subsequent staves.</TD>
+</TR>
+<TR><TD CLASS="LEFT">clef</TD>
+<TD CLASS="LEFT">cl</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">clef=bass</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>Chooses the clef (treble, alto, or bass).
+    It can also be bass+8 and so on.</TD>
+</TR>
+<TR><TD CLASS="LEFT">staves</TD>
+<TD CLASS="LEFT">stv</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">stv=2</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This is the number of staves (starting from the
+      current one) to connect by tall vertical bar lines.</TD>
+</TR>
+<TR><TD CLASS="LEFT">brace</TD>
+<TD CLASS="LEFT">brc</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">brace=2</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This is the number of staves (starting from the
+      current one) to be grouped together with a brace.
+      When this option is used, the name defined in the
+      same V: line is written at the centre of the brace.</TD>
+</TR>
+<TR><TD CLASS="LEFT">bracket</TD>
+<TD CLASS="LEFT">brk</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">brk=4</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>The number of staves to be grouped together by
+      a bracket. This option does not change the way
+      in which the names are written.</TD>
+</TR>
+<TR><TD CLASS="LEFT">space</TD>
+<TD CLASS="LEFT">spc</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">spc=40</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This defines or modifies the vertical space between
+      this staff and the one below it. The space can be
+      given in pt (default) or with a unit in the form 
+      1cm or 0.4in. Furthermore: if a + or - sign
+      comes after the start of the number, the value
+      is an increment to be added to or subtracted
+      from the default setting.</TD>
+</TR>
+<TR><TD CLASS="LEFT">gchords</TD>
+<TD CLASS="LEFT">gch</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">gch=0</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This controls whether any guitar chords 
+      embedded in the current voice are actually written.
+      True/false are specified as for the %% formats.</TD>
+</TR>
+<TR><TD CLASS="LEFT">stems</TD>
+<TD CLASS="LEFT">stm</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">stems=up</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>This is parsed but not yet used in the program.</TD>
+</TR>
+<TR><TD CLASS="LEFT">octave</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT"><SPAN style="font-family:monospace">octave=-2</SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=198>Silently ignored by abctab2ps for compatibility with abc2midi.</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+The various settings (key, default length, etc) are 
+maintained for each voice separately.
+Guitar chords, first and second endings, and line breaks are 
+taken from the top voice only. Vocals can be set under each
+voice separately.
+
+<P>
+
+<H2><A ID="SECTION00072000000000000000"></A>
+<A ID="sec:PolyphonicMusic"></A><A NAME="363"></A> <A NAME="364"></A>
+<BR>
+Polyphonic music
+</H2>
+More than one voice on a single stave (polyphonie) is
+currently not supported by abctab2ps. However, there is Jean F. Moine's
+version of abc2ps named <I>abcm2ps</I> which handles up to two voices
+per stave. This does not sound too exciting, but if you consider that 
+each voice can consist of chords, you will realize that almost all 
+kind of music can be written in two voices.
+
+<P>
+In abcm2ps, a pseudo comment of the form<PRE>
+%%staves &lt;definition&gt;
+</PRE>
+determines on which staves the voices go. 
+<I><code>&lt;</code>definition<code>&gt;</code> </I> must contain all the voice names with any
+pair of "[]", "{}" and "()":
+
+<UL>
+<LI>when not enclosed by special characters, the voices go on separate
+  staves.
+</LI>
+<LI>when enclosed by brackets "[]", a bracket is displayed at the 
+  beginning of each line.
+</LI>
+<LI>when enclosed by braces "{}", the voices go on a single couple 
+  of staves (keyboard score). There cannot be more than 4 voices between 
+  the braces.
+</LI>
+<LI>when enclosed by parenthesis "()", the voices go on the same staff (no
+  more than two voices).
+</LI>
+</UL>
+When this pseudo comment appears inside a tune, the postscript generation
+is restarted as if there was a new tune.
+
+<P>
+Since abcm2ps is based on an older version of abc2ps, it only accepts
+the voice parameters <I>clef</I>, <I>name</I> or <I>nm</I>, <I>snm</I>.
+The other definitions are ignored.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html130"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html132"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node8.html">Tablature</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node6.html">Text</A>
+ &nbsp; <B>  <A ID="tex2html131"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html133"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

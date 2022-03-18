@@ -1,0 +1,535 @@
+%!abctab2ps -notab
+%
+%%topmargin 1.5cm
+%%sysstaffsep 28pt
+%%systemsep 90pt
+%%stretchlast yes
+%%vocalfont Times-Roman 16.0
+%%partsfont Times-Roman 14.0
+%
+X:1
+%
+%%barnumbers -1
+%%titlespace 0.5cm
+%%subtitlespace 0.60cm
+%%musicspace 0.5cm
+%%titlefont  Times-Roman 18.0
+%
+T:Magnificat secundi toni
+T:Tom\'as Luis de Victoria (1548-1611)
+L:1/4
+M:none
+K:GDorian
+%
+%%indent 7.5cm
+%%staffwidth 12cm
+%%nostems
+%
+V:Choral clef=treble8
+F GFB B B ||
+w: Ma-gni - - fi-cat
+
+%---------------------------------------------------------------------------
+X:2
+%
+%%barnumbers 0
+%%barnumberfirst 1
+%%topspace -1.5cm
+%%indent 2cm
+%%sysstaffsep 30pt
+%
+L:1/4
+M:C|
+K:F
+%
+V:S clef=treble name=Superius bracket=4
+V:A clef=treble8 name=Altus
+V:T clef=treble8 name=Tenor
+V:B clef=bass name=Bassus
+%
+[V:S] z4 | z4 | z4 | z4 |
+w: 
+[V:A] B2 BB | G/A/B/c/ d G | B/c/d/B/ c/B/A/G/ | A B A A |
+w:  a-ni-ma me**- * a Do*** -*** *-* mi-
+[V:T] z2 B2 | BB B2- | B2 A2 | F G2 ^F |
+w:  a-ni-ma me - a Do - mi-
+[V:B] z4 | z4 | z4 | z4 |
+w:
+%
+[V:S] z2 B2 | BB B2- | B2 A2 | F G2 ^F | G4 |]
+w: a-ni-ma me - a Do - mi-num
+[V:A] G4 | z d d d | B/c/d/e/ f e | d3 A | =B4 |]
+w:  num. a-ni-ma me**- * a Do-mi-num.
+[V:T] G/A/B/c/ B d | d d B/A/B/c/ | d3 c | B2 A2 | G4 |]
+w:  num.**** a-ni-ma me**- * a Do-mi-num.
+[V:B] z4 | B2 BB | G/A/B/c/ d A | B>c d d | G4 |]
+w:  a-ni-ma me**- * a Do -* mi-num.
+
+%---------------------------------------------------------------------------
+X:3
+%
+L:1/4
+M:none
+K:GDorian
+%
+%%barnumbers -1
+%%indent 1cm
+%%staffwidth 16cm
+%%nostems
+%
+V:Choral clef=treble8
+F GFBB BBB cB | B BB BBBA FG ||
+w: Et ex-sul-t\'a-vit spi-ri-tus m\'e-us In De-o sa-lu-t\'a-ri me-o.
+
+%---------------------------------------------------------------------------
+X:4
+%
+%%barnumbers 0
+%%barnumberfirst 10
+%%topspace -0.5cm
+%
+L:1/4
+M:C|
+K:F
+%
+V:S clef=treble bracket=4
+V:A clef=treble8
+V:T clef=treble8
+V:B clef=bass
+%
+[V:S] [|] z4 | z4 | z FAA | B3/2 A/G/F/ G | FBBB |
+w: Qui-a re- spe**-*xit hu-mi-li-
+[V:A] z4 | B4 | c2 z c | dd _e2 | d2 z G |
+w: Qui-a, qui-a re-spe-xit hu-
+[V:T] F4 | G4 | F4 | B4 | B2 z B |
+w: Qui-a re-spe-xit hu-
+[V:B] z Bdd | _e3/2 f/g/a/ b- | ba/g/ fa | g3/2 f/_e/d/ _e | B2 z _e |
+w: Qui-a re-spe****-****-****xit hu-
+%
+%%vskip 0.5cm
+%
+[V:S] B2 GB | BB G>A | B/c/ d>c B- | B A/G/ A2 | B d2 c |
+w: ta-tem an-ci-llae su***-****-*ae. E-cce
+[V:A] GG G2 | FG G/A/B/c/ | d/e/ f2 f | f4 | f2 z f- |
+w: mi-li-ta-tem an-ci***-**llae su-ae. E-
+[V:T] BB B2 | B2 z B | B2 B2 | c4 | B2 z2 |
+w:mi-li-ta-tem an-ci-llae su-ae.
+[V:B] _ee e2 | B_e e2 | B4 | f4 | B b2 a |
+w: mi-li-ta-tem an-ci-llae su-ae. E-cce
+%
+%%newpage
+%
+[V:S] B2 A2 | G2 F2 | z B2 A | G2 G2 | _E2 Dd | d2 B2 |
+w: e-nim ex hoc, e-cce e-nim ex hoc be-a-tam
+[V:A] fecd- | dc d2- | d4 | z _edB- | BA B2 | G2 zg |
+w: -cce e-nim* ex hoc,* e-cce e - nim ex hoc be-
+[V:T] z4 | z2z B- | BB GA | B2 B2 | z2z B | B2 BB |
+w: E - cce e-nim ex hoc be-a-tam me
+[V:B] G2F2 | _e2 B>A | Gg2 f | _e2 B2 | c2 G2 | z gg2 |
+w: e-nim ex hoc,** e-cce e-nim ex hoc be-a-
+%
+[V:S] GB>AF | G/A/ B2 A | B F2 F | FF F2- | FE C2 |
+w: me di -**-*-cent o-mnes ge-ne-ra - ti-o
+[V:A] g2 fd | _e2 c2 | d4- | d4 | z4 |
+w: a-tam me di - cent*
+[V:T] B2 B2- | B2 z2 | z2 B2- | BBBB | B3A |
+w: di-cent* o - mnes ge-ne-ra-ti-
+[V:B] _e2 B2 | _e2 f2 | B2 z2 | B>BBB | de f2 |
+w:tam me di - cent o-mnes ge-ne-ra-ti-o-
+%
+[V:S] D4 | z B2 B | BB B2- | BGF>G | AB A2 | =B4 |]
+w: nes, o-mnes ge-ne-ra -ti-o*-**nes.
+[V:A] B>BBA | G/A/B/c/ d_e | d3G | d4- | d4 | d4 |]
+w: o-mnes ge-ne-ra**-*ti-o-*--nes.
+[V:T] FG2 ^F | G2 B2- | BBBB | B3A | FG2 ^F | G4 |]
+w: o *- nes, o - mnes ge-ne-ra-ti-o *- nes.
+[V:B] B>G d2 | Gg2 g | gg g2 | G2 d2- | dG d2 | G4 |]
+w: -** nes, o-mnes ge-ne-ra-ti-o -** nes.
+
+
+%---------------------------------------------------------------------------
+X:5
+%
+L:1/4
+M:none
+K:GDorian
+%
+%%barnumbers -1
+%indent 1cm
+%%nostems
+%
+V:Choral clef=treble8
+FG FB BB BB B cB B | B BB BA FG ||
+w: Qui-a fe-c\'it mi-hi ma-gna qui p\'o-tens est, Et san-ctum n\'o-men e-jus.
+
+%---------------------------------------------------------------------------
+X:6
+%
+%%barnumbers 0
+%%barnumberfirst 37
+%%topspace -0.5cm
+%
+L:1/4
+M:C|
+K:F
+%
+V:S  clef=treble  bracket=4
+V:A1 clef=treble8 brace=2
+V:A2 clef=treble8
+V:T  clef=treble8
+%
+P:Bassus tacet
+[V:S] z4 | z4 | z2 F2- | F2 G2 | F2 B2- |
+w: Et* mi-se -
+[V:A1] z2 f2 | f f2 e | fg f B/c/ | d/e/ f2 e | f2 d2 |
+w: Et mi-se-ri-cor-di-a e* **-* - jus
+[V:A2] B2 BB- | BA Bc | B G/A/B/c/ d- | dc dc- | c/A/ d3/2 c/B/A/ |
+w: Et mi-se - ri-cor-di-a e*** - **-* ***-** 
+[V:T] z4 | z4 | B2 BB- | BA Bc | A B3/2 A/G/F/ |
+w: Et mi-se - ri-cor-di-a e -**
+%
+%%vskip 0.5cm
+%
+[V:S] BB B2 | BB B2 | B4 | z2 B2- |
+w: - ri-cor-di-a e-jus a
+[V:A1] z B2 G | B>c d_e | d/c/B/A/ G2 | z B2 G |
+w: a pro-ge -* ni-e,**** a pro-
+[V:A2] GF G/A/B/c/ | d2 G2 | z B2 G | B>c d_e |
+w: **-*** - jus a pro-ge -* ni-
+[V:T] _ED _E2 | B, B2 G | B>c d_e | d/c/B/A/ G2- |
+w: -* - jus a pro-ge -* ni-e****
+%
+%%newpage
+%
+[V:S] BBBB | B2 z B- | BB cd- | d/c/ B2 A | B4 |
+w: * pro-ge-ni-e in* pro-ge - **- ni-es
+[V:A1] B>c d_e | d2 z G | d2 f>e | d3/2 c//B// cc | Bd d2- |
+w: ge -* ni-e in pro-ge* -*** ni-es ti-men-
+[V:A2] d/c/B/A/ GB- | BB cd- | d/c/ B2 A | B/c/d/e/ f2- | f2 z f |
+w: e**** in* pro-ge - **- ni-es***** ti-
+[V:T] G2 z G- | GG AB- | B/A/G F2 | G2 F2 | z B B2- |
+w: * in* pro-ge - **-* ni-es ti-men-
+%
+[V:S] z4 | z4 | z2 z B | B3 A | A2 FG- |
+w: ti-men-ti-bus e -
+[V:A1] dc c2 | AB A2 | Gg g2- | gf f2 | ef2 e/d/ |
+w: - ti-bus e *- um, ti-men - ti-bus e *-*
+[V:A2] f2 ec | d>B c2 | B_e e2- | ed d2 | cd2 c/B/ |
+w: men-ti-bus e *- um, ti-men - ti-bus e - -*
+[V:T] BA A2 | FG2 ^F | G2 z2 | z4 | z4 |
+w: - ti-bus e -- um,
+%
+[V:S] G^F GB | B3 A | A2 F2 | G3^F | G4 |]
+w: -* um, ti-men-ti-bus e - * um.
+[V:A1] c2 d2- | d2 z2 | z f f2 | _ec d2 | d4 |]
+w: - um,* ti-men-ti-bus e-um.
+[V:A2] A2 G2 | z d d2 | cA2 B- | B A/G/ A2 | G4 |]
+w: - um, ti-men-ti-bus e -**- um.
+[V:T] z2 z G | G3 F | F2 D2 | _E2 D2 | G4 |]
+w: ti-men-ti-bus e -* um.
+
+%---------------------------------------------------------------------------
+X:7
+%
+L:1/4
+M:none
+K:GDorian
+%
+%%barnumbers -1
+%%staffwidth 12cm
+%%leftmargin 3.20cm
+%%nostems
+%
+V:Choral clef=treble8
+FG FBBB B BBB c B |
+w: Fe-cit po-t\'en-ti-am in bra-chi-o s\'u-o.
+BBB BBB BB BA FG ||
+w: Di-sper-sit su-per-bos men-te c\'or-dis su-i.
+
+%---------------------------------------------------------------------------
+X:8
+%
+%%barnumbers 0
+%%barnumberfirst 61
+%%topspace -0.5cm
+%%systemsep 80pt
+%%sysstaffsep 25pt
+%
+%-- try & error value for leftmargin to reset margin of previous tune
+%--- on same page. Reason: %%leftmargin is partly affected by %%scale
+%
+%%leftmargin 0.40cm
+%
+L:1/4
+M:C|
+K:F
+%
+V:S  clef=treble  bracket=3
+V:A  clef=treble8
+V:B  clef=bass
+%
+P:Tenor tacet
+%
+[V:S] F4 | G2 F2 | B3 A | GF G>F | G/A/ B2 A |
+w: De-po - - su-it po-ten - **-*
+[V:A] z4 | z2 B2- | B2 c2 | B2 _e2- | ed cd- |
+w: De - po- - - - su-it po-
+[V:B] z4 | z4 | z4 | z4 | z2 f2 |
+w: De-
+%
+%%vskip 0.5cm
+%
+[V:S] B2 zB | d3 c | BAGF | G2 FG | F G3/2 A/B/G/ |
+w: tes, de-po-su-it po-ten * - tes de se *-**
+[V:A] d/c/B A/B/c/A/ | BG F2 | z2 B2- | B2 B2 | B2 B2 |
+w: *-* ten *-* -* tes, po - ten-tes de
+[V:B] g2f2 | b3a | gf _ed | _e2 B_e | d_e>fg |
+w: po - - su-it po-ten - - tes de se *-*
+%
+%%newpage
+%
+%-- now we must reset leftmargin to its default value, because %%newpage
+%-- resets the initial page translation
+%-- (yes, this is ugly, but not easy to fix)
+%
+%%leftmargin 1.8cm
+%
+[V:S] AB2 A | B3/2 A//G// FG | GG G2 | FG2 F/E/ |
+w: *-* | de*** et ex-al-ta-vit hu -*
+[V:A] cd c2 | B4 | z BBB | B2 GB- |
+w: se *- de et ex-al-ta-vit hu-
+[V:B] fd_ef | B2 z_e | _eee2 | d_e2 d/c/ |
+w: **-* de et ex-al-ta-vit hu -*
+%
+[V:S] DE F>G | AG2 ^F | G2 zB | BB B2- | BA FF |
+w: **-* *- mi-les, et ex-al-ta- - vit hu-mi-
+[V:A] BA/G/ F/G/A/B/ | c2 A2 | Gddd | d3 G | Bc d/A/d- |
+w: *** -*** - mi-les, et ex-al-ta-vit hu *-**
+[V:B] Bcd2 | c2d2 | G2 zg | ggg2- | gf d2 |
+w: *-* - mi-les, et ex-al-ta- - vit hu-
+%
+[V:S] G2 zd | dd d2- | dc AB- | B/A/ G2 ^F |
+w: les, et ex-al-ta- - vit hu - **- mi-
+[V:A] dc d2 | zfff | de f/e/d/c/ | B2 A2 |
+w: - mi-les, et ex-al-ta-vit hu *-* - mi-
+[V:B] _e2 Bb | bbb2- | bafg- | g/f/_e/d/ cd |
+w: mi-les, et ex-al-ta- - vit hu- * -***- mi-
+%
+[V:S] GBBB | G3/2 A/B/c/ d- | dc AB- | B/A/ G2 ^F | G4 |]
+w: les, et ex-al-ta *-** - vit hu - **- mi-les.
+[V:A] G2 zB | BB B2- | BA F2 | G2 A2 | G4 |]
+w: les, et ex-al-ta- - vit hu - mi-les.
+[V:B] Gggg | _e3 d/c/ | BcdB | _e2d2 | G4 |]
+w: les, et ex-al-ta- ** - vit hu- * - mi-les.
+
+%---------------------------------------------------------------------------
+X:9
+%
+L:1/4
+M:none
+K:GDorian
+%
+%%barnumbers -1
+%%nostems
+%
+V:Choral clef=treble8
+FGFBB BBB cB | B BBB BBB AFG ||
+w: E-su-ri-\'en-tes im-ple-vit b\'o-nis Et di-vi-tes di-mi-s\'it i-na-nes.
+
+%---------------------------------------------------------------------------
+X:10
+%
+%%barnumbers 0
+%%barnumberfirst 90
+%%topspace -0.5cm
+%
+L:1/4
+M:C|
+K:F
+%
+V:S clef=treble bracket=4
+V:A clef=treble8
+V:T clef=treble8
+V:B clef=bass
+%
+[V:S] F4 | G2 F2 | B3 A/G/ | A/B/ c2 =B | c4 |
+w: Sus-ce-pit I -* *-* sra-el,
+[V:A] z4 | z4 | z2 c2- | c2 d2 | c4 |
+w: Sus - ce-pit
+[V:T] z2 B2 | Bcd>c | BG F2 | z4 | z FFG |
+w: Sus-ce-pit I- *- sra-el, sus-ce-pit
+[V:B] z4 | z4 | z4 | f2 fg | a>gfe |
+w: Sus-ce-pit I -* sra-
+%
+%%vskip 0.5cm
+%
+[V:S] z2 z B | Bcd>c | BA G2 | z2 z B |
+w: sus-ce-pit I- * - sra-el pu-
+[V:A] f3f | f4- | f2 z2 | z f2 f |
+w: I-sra-el* pu-e-
+[V:T] A3/2 G/F/D/ d- | dcBF- | FFCc | ABcd |
+w: I- *** -* sra-el, I - sra-el pu-e-rum su - 
+[V:B] d2 z B | BAB>c | d/e/ f2 e | fBAB |
+w: el, sus-ce-pit I- **-* sra-el pu-e-rum
+%
+%%newpage
+%
+[V:S] ABc2 | d2 B2- | BBBc- | c/B/ B2 A | B2 z2 |
+w: e-rum su-um, pu- - e-rum su -*-- um,
+[V:A] f4- | f2 g2- | g4 | f4- | f4 |
+w: rum* su - um,*
+[V:T] cB2 A | B2 _E_e- | eB _e2 | dc/B/ c2 | Bd2 c- |
+w: *-* - um, pu - e-rum su *-* um, re-cor-
+[V:B] f4 | Bb2 _e  | _e4 | f4 | Bb2 a |
+w: su-um, pu-e-rum su-um, re-cor-
+%
+[V:S] d3c | B3/2 A/F/G/ A | D2 z F- | FE D2 | C2 z A |
+w: re-cor-da *-** tus, re - cor-da-tus mi-
+[V:A] z2 f2- | ff f2 | f4 | z4 | z2 f2 |
+w: re- - cor-da-tus mi-
+[V:T] cB2 A | Bd2 c- | cB2 A | B/A/ A2 G | A4 |
+w: - da - tus, re-cor - da- * **-* tus
+[V:B] g2f2 | z B2 A | B3/2 A/B/c/ d- | dc B2 | Ffff |
+w: da-tus, re-cor-da **-* *-* tus mi-se-ri-
+%
+[V:S] AAA2- | AG G2 | A>F G2 | FG2 ^F | G2 z d |
+w: se-ri-cor- - di-ae su *- *-* ae, mi-
+[V:A] fff2- | fe e2 | cd2 c | d4- | d4 |
+w: se-ri-cor- - di-ae su -* ae,*
+[V:T] z ccc | c3 c | A2 G>A | B2 A2 | GBBB |
+w: mi-se-ri-cor-di-ae su - *- ae, mi-se-ri-
+[V:B] f3 F | cc>de | fd _e2 | B>c d2 | Gggg |
+w: cor-di-ae su -* -** -** ae, mi-se-ri-
+%
+[V:S] ddd2 | cdA>B | cd2 c/B/ | AG2 ^F |
+w: se-ri-cor-di-ae su - *-** *-*
+[V:A] z4 | z fff | f3 e | e2 c2 |
+w: mi-se-ri-cor-di-ae su-
+[V:T] B3 A | A2 F2- | FD F/G/A/B/ | c>B A2 |
+w: cor-di-ae su- **-*** *-*
+[V:B] g3 f | fd3/2 e/f/g/ | ab a2 | z4 |
+w: cor-di-ae su -** -* ae,
+%
+%%vskip 0.5cm
+%
+[V:S] G2 z B | BB B2- | BA A2 | "\#"FG2 ^F | G4 |]
+w: ae, mi-se-ri-cor- -di-ae su -* ae.
+[V:A] d4- | d4- | d4- | d4- | d4 |]
+w: ae. ****
+[V:T] GBBB | B/A/G/F/ G2- | G^FFA- | AB A2 | G4 |]
+w: ae, mi-se-ri- cor **-* - di-ae su- *-* ae.
+[V:B] z ggg | g2 G2 | d4 | d4 | G4 |]
+w: mi-se-ri-cor-di-ae su-ae.
+
+%---------------------------------------------------------------------------
+X:11
+%
+%%barnumbers -1
+%%topspace -0.5cm
+%%staffwidth 12cm
+%%nostems
+%
+%-- try & error value for leftmargin to achive centered staff
+%-- Reason: %%leftmargin is partly affected by %%scale
+%%leftmargin 4.50cm
+%
+L:1/4
+M:none
+K:GDorian
+%
+V:Choral clef=treble8
+FG FBB BBBB cB |
+w: Si-cut lo-c\'u-tus est ad pa-tres n\'o-stros:
+BBB B BBB BB A FGG ||
+w: A-bra-ham et se-mi-ni e-j\'us in sae-cu-la
+%
+%-- vskip: trick to force reset of leftmargin before next tune
+%%vskip 0cm
+%%leftmargin 1.8cm
+
+%---------------------------------------------------------------------------
+X:12
+%
+%%barnumbers 0
+%%barnumberfirst 122
+%%topspace -1.5cm
+%
+L:1/4
+M:C|
+K:F
+%
+V:S clef=treble bracket=4
+V:A clef=treble8
+V:T clef=treble8
+V:B clef=bass
+%
+[V:S] F4 | G4 | F4 | B4 | B2 z2 | B4 |
+w: Glo-ri-a pa-tri et
+[V:A] d4 | d2 _e2 | d4 | d4 | z Bcd- | d/c/B/A/ G/F/ B- |
+w: Glo-ri-a pa-tri et fi - ***-***
+[V:T] B4 | B2 c2 | A2 BF | G3/2 F/G/A/ B- | BGFD | G>ABd |
+w: Glo-ri-a pa-tri et fi *-** - li-o, et fi -* li-
+[V:B] B4 | G2 c2 | d3/2 c/B/A/ B | G4 | z gab- | b/a/g/f/ _eB |
+w: Glo-ri-a pa -*** tri et fi - **-** li-
+%
+[V:S] c>Bcd- | d/c/B/A/ G/F/ B- | B A/G/ AA | B4 | z4 |
+w: fi *-* ***-*** **-* li-o
+[V:A] B A/G/ AA | BG d>e | fd f2 | z dg>f | _e/d/ _e2 c |
+w: -**- li-o, et fi *- li-o, et fi - **- li-
+[V:T] c2 F2 | z2 B2 | c>Bcd- | d/c/B/A/ G/F/ B- | B A/G/ AA |
+w: o,* et fi *-* ***-*** **-* li-
+[V:B] f2 z d | g3 g | f3 d | g>f _ed | c3 c |
+w: o, et fi-li-o, et fi *-* - li-
+%
+[V:S] z2 B2 | BB B2- | B2 A2 | FG2 ^F | G2 z2 |
+w: et spi-ri-tu- - i san - - cto,
+[V:A] dfff | f3 d | fgef- | fedc | d2 f2 |
+w: o, et spi-ri-tu-i san *-* *-** cto, et
+[V:T] Bddd | d3 B | d_ecd- | dcBA | G2 z d |
+w: o, et spi-ri-tu-i san *-* *-** cto, et
+[V:B] B4- | B4 | z4 | z4 | z bbb |
+w: o,* et spi-ri-
+%
+%%newpage
+%
+[V:S] z4 | z4 | z BBB | B3 A | FG2 ^F |
+w: et spi-ri-tu-i san -*
+[V:A] ff f2- | fdc>d | _e d/c/ d2 | d4- | d2 z2 |
+w: spi-ri-tu- - i san - **-* cto,*
+[V:T] dd D/E/F/G/ | AB A2 | G2 z G | GG D/E/F/G/ | AB A2 |
+w: spi-ri-tu *-* - i san-cto, et spi-ri-tu *-* - i san-
+[V:B] b3 a | fg2 ^f | gGGG | G3/2 A/B/c/ d- | dBcd |
+w: tu-i san -* cto, et spi-ri-tu *-** - i san -
+%
+%%vskip 0.5cm
+%
+[V:S] G2 z G | GG G2- | GDG>F | _EDCc- | c =B/A/ =B2 |]
+w: cto, et spi-ri-tu- - i san - *-** -** cto.
+[V:A] z _eee | _e3 d | B>cd_e | cd _e2 | d4 |]
+w: et spi-ri-tu-i san -** *-* cto.
+[V:T] G4- | G4- | G4- | G4- | G4 |]
+w: cto. ****
+[V:B] Gccc | c3 B | G>A =Bc- | c=B c2 | G4 |]
+w: cto, et spi-ri-tu-i san -** *-* cto.
+
+%---------------------------------------------------------------------------
+X:13
+%
+%%barnumbers -1
+%%topspace -0.5cm
+%%staffwidth 12cm
+%%nostems
+%
+%-- try & error value for leftmargin to achive centered staff
+%-- Reason: %%leftmargin is partly affected by %%scale
+%%leftmargin 4.50cm
+%
+L:1/4
+M:none
+K:GDorian
+%
+V:Choral clef=treble8
+FG FB BBBBB BBB cB |
+w: Si-cut e-r\'at in prin-ci-pi-o et nunc et s\'em-per.
+BB BBB BBBA FG ||
+w: Et in sae-cu-la sae-cu-l\'o-rum. A-men.

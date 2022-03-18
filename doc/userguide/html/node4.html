@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Information fields</TITLE>
+<META NAME="description" CONTENT="Information fields">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html106"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html108"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">Music</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node3.html">General structure</A>
+ &nbsp; <B>  <A ID="tex2html107"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html109"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html110"
+  HREF="node4.html#SECTION00041000000000000000">Overview</A>
+<LI><A ID="tex2html111"
+  HREF="node4.html#SECTION00042000000000000000">Particular fields</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00040000000000000000">
+Information fields</A>
+</H1>
+
+<P>
+
+<H2><A ID="SECTION00041000000000000000">
+Overview</A>
+</H2>
+Any line beginning with a letter 
+followed by a colon (:) is interpreted as an information field.
+These fields carry information like title, meter, key, clef etc.
+
+<P>
+<A NAME="47"></A>
+Most of the information fields are used in the header,
+but some may also occur in the tune body. If you need an information
+filed inside of a line (e.g. a clef change) you must enclose the
+field in brackets (e.g. "[K:bass]"). 
+
+<P>
+The following table summarizes names and scopes of all 
+information fields.
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT"><B>Field</B></TD>
+<TD CLASS="LEFT"><B>Meaning</B></TD>
+<TD CLASS="LEFT"><B>Scope</B></TD>
+<TD CLASS="LEFT"><B>Example</B></TD>
+</TR>
+<TR><TD CLASS="LEFT">A:</TD>
+<TD CLASS="LEFT">area</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">A:Hintertupfingen</TD>
+</TR>
+<TR><TD CLASS="LEFT">B:</TD>
+<TD CLASS="LEFT">book</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">B:Manuscript Siena</TD>
+</TR>
+<TR><TD CLASS="LEFT">C:</TD>
+<TD CLASS="LEFT">composer</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">C:P.D.Q. Bach</TD>
+</TR>
+<TR><TD CLASS="LEFT">D:</TD>
+<TD CLASS="LEFT">discography</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">E:</TD>
+<TD CLASS="LEFT">layout parameter</TD>
+<TD CLASS="LEFT">header, body</TD>
+<TD CLASS="LEFT">(see sec. <I>Format fine tuning</I>)</TD>
+</TR>
+<TR><TD CLASS="LEFT">F:</TD>
+<TD CLASS="LEFT">file name</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">F:http://www.abc.org/bla.abc</TD>
+</TR>
+<TR><TD CLASS="LEFT">G:</TD>
+<TD CLASS="LEFT">group</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">G:Passiontide</TD>
+</TR>
+<TR><TD CLASS="LEFT">H:</TD>
+<TD CLASS="LEFT">history</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">H:bla fasel....</TD>
+</TR>
+<TR><TD CLASS="LEFT">K:</TD>
+<TD CLASS="LEFT">key and clef</TD>
+<TD CLASS="LEFT">header (last entry), body</TD>
+<TD CLASS="LEFT">K:D treble</TD>
+</TR>
+<TR><TD CLASS="LEFT">L:</TD>
+<TD CLASS="LEFT">default note length</TD>
+<TD CLASS="LEFT">header, body</TD>
+<TD CLASS="LEFT">L:1/8</TD>
+</TR>
+<TR><TD CLASS="LEFT">M:</TD>
+<TD CLASS="LEFT">meter</TD>
+<TD CLASS="LEFT">header, body</TD>
+<TD CLASS="LEFT">M:3/4</TD>
+</TR>
+<TR><TD CLASS="LEFT">N:</TD>
+<TD CLASS="LEFT">notes</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">N:see also EKG 280</TD>
+</TR>
+<TR><TD CLASS="LEFT">O:</TD>
+<TD CLASS="LEFT">origin</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">O:Jiddish</TD>
+</TR>
+<TR><TD CLASS="LEFT">P:</TD>
+<TD CLASS="LEFT">parts</TD>
+<TD CLASS="LEFT">header, body</TD>
+<TD CLASS="LEFT">P:A</TD>
+</TR>
+<TR><TD CLASS="LEFT">Q:</TD>
+<TD CLASS="LEFT">tempo</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">Q:"Andante"</TD>
+</TR>
+<TR><TD CLASS="LEFT">S:</TD>
+<TD CLASS="LEFT">source</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">S:Zupfgeigenhansel 1908</TD>
+</TR>
+<TR><TD CLASS="LEFT">T:</TD>
+<TD CLASS="LEFT">title</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">T:Yesterday</TD>
+</TR>
+<TR><TD CLASS="LEFT">V:</TD>
+<TD CLASS="LEFT">voice</TD>
+<TD CLASS="LEFT">header, body</TD>
+<TD CLASS="LEFT">V: Vc clef=bass</TD>
+</TR>
+<TR><TD CLASS="LEFT">w:</TD>
+<TD CLASS="LEFT">lyrics</TD>
+<TD CLASS="LEFT">body</TD>
+<TD CLASS="LEFT">w:Ye-ster-day all my troub-les</TD>
+</TR>
+<TR><TD CLASS="LEFT">W:</TD>
+<TD CLASS="LEFT">words</TD>
+<TD CLASS="LEFT">body</TD>
+<TD CLASS="LEFT">W: 2. Yesterday life was such an</TD>
+</TR>
+<TR><TD CLASS="LEFT">X:</TD>
+<TD CLASS="LEFT">reference number</TD>
+<TD CLASS="LEFT">header (first entry)</TD>
+<TD CLASS="LEFT">X:1</TD>
+</TR>
+<TR><TD CLASS="LEFT">Z:</TD>
+<TD CLASS="LEFT">transcription note</TD>
+<TD CLASS="LEFT">header</TD>
+<TD CLASS="LEFT">Z:from photocopy</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A ID="SECTION00042000000000000000">
+Particular fields</A>
+</H2>
+<DL>
+<DD><A NAME="60"></A>
+</DD>
+<DT><STRONG>T:</STRONG></DT>
+<DD>Tune title. 
+Some tunes have more than one title and  so  this
+field  can  be used more than once per tune - the first time will
+generate the title whilst  subsequent  usage  will  generate  the
+alternatives  in  small  print.   The  T:  field can also be used
+within a tune to name parts of a tune - in this  case  it  should
+come before any key or meter changes.
+<P>
+<A NAME="61"></A> 
+</DD>
+<DT><STRONG>K:</STRONG></DT>
+<DD>Key and clef. See section 
+key and clefsec:KeyAndClef for
+more details.
+
+<P>
+<A NAME="66"></A>
+</DD>
+<DT><STRONG>L:</STRONG></DT>
+<DD>Default note length. 
+Examples are "L:1/4" (quarter note),  
+"L:1/8" (eighth note), "L:1/16" (sixteenth). If not specified, the
+default note length is calculated automatically from the meter  field:
+the time signature is converted to its decimal value; if the value is 
+0.75 or higher, the default is L:1/8; if the value is less than 0.75, 
+the default is L:1/16. Beware however that it is generally not a good idea
+to use implicit defaults.
+
+<P>
+<A NAME="67"></A>
+</DD>
+<DT><STRONG>M:</STRONG></DT>
+<DD>Meter. 
+Apart from the normal meters, e.g. "<code>M:6/8</code>" or 
+"<code>M:4/4</code>", the symbols "<code>M:C</code>"and "<code>M:C|</code>"
+give common time and cut time respectively. The denominator
+can be ommitted, in which case "4" is assumed for the denominator
+and only the numerator is printed in the music; this is most often
+used for triple time "<code>M:3</code>".
+<BR>
+To avoid the printing of a meter notation you can specify 
+"<code>M:none</code>", which implicitly assumes 4/4 for the calculation of 
+the default note length. "<code>M:none</code>" is the default meter value.
+<BR>
+In case the printed meter specification differs from the mathematical
+meter (eg. "<code>C|</code>" is used for 2/2, 2/1 or any other even time),
+you can add the parameter <I>display</I>, eg. "<code>M:2/1 display=C|</code>"
+which will print "<code>C|</code>", but use 2/1 for internal bar numbering.
+Note that this is incompatible to the abc standard; for a compatible
+way, use the format parameter <I>%%meterdisplay</I><I>%%meterdisplay</I> (see section )sec:FormatFineTuning.
+
+<P>
+</DD>
+<DT><STRONG>P:</STRONG></DT>
+<DD>Parts. Can be used in the header to state the order in  which
+the  tune parts are played, i.e. "P:ABABCDCD", and then inside the
+tune to mark each part, i.e. "P:A" or "P:B".
+
+<P>
+<A NAME="73"></A> <A NAME="74"></A>
+</DD>
+<DT><STRONG>Q:</STRONG></DT>
+<DD>Tempo. 
+Prints out tempo denotations.
+General form is Q: w1 w2 w3 ... where each word is either
+string in double quotes such as <I>"Andante"</I> or <I>"Bossa Nova"</I>
+or a metronome mark such as <I>C</I> or <I>C=120</I> or <I>120</I>.
+Strings are printed directly, metronome marks are translated 
+to the form note=100. When you only need metronome marks for 
+<I>abc2midi</I>, but do not want them printed, use the format parameter
+<I>%%printmetronome</I><I>%%printmetronome</I> 
+(see section )sec:FormatFineTuning.
+
+<P>
+</DD>
+<DT><STRONG>G:</STRONG></DT>
+<DD>Group. To group together tunes for indexing purposes.
+
+<P>
+</DD>
+<DT><STRONG>H:</STRONG></DT>
+<DD>History. Can be used for multi-line stories/anecdotes, all of
+which will be ignored until the next field occurs.
+
+<P>
+</DD>
+<DT><STRONG>V:</STRONG></DT>
+<DD>Voice. See section <I>Scores</I> for details on how to
+specify and address different voices.
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html106"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html108"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">Music</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node3.html">General structure</A>
+ &nbsp; <B>  <A ID="tex2html107"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html109"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

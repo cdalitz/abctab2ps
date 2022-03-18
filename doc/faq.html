@@ -1,0 +1,453 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>abctab2ps FAQ</title>
+</head>
+<body>
+
+<h1>
+abctab2ps - Frequently Asked Questions</h1>
+
+<hr>
+<h2>
+Contents</h2>
+
+<dl>
+<a href="#Installation">1 Installation</a>
+<dl><a href="#Q1.1">1.1</a> Compiling with "make" does not work on MacOs X
+<br><a href="#Q1.2">1.2</a> I cannot start abctab2ps on Win32 from another 
+location than the installation directory
+<br><a href="#Q1.3">1.3</a> The DOS shell on Win32 is a pain to use. Are
+there alternatives?
+<br><a href="#Q1.4">1.4</a> "make install" stops with an error on Unix
+<br><a href="#Q1.5">1.5</a> "make rpm" does not work on Linux
+<br><a href="#Q1.6">1.6</a> I have installed the MacOs X binary package and
+cannot find the documentation.
+<br><a href="#Q1.7">1.7</a> Can abctab2ps do any harm to my system?
+</dl>
+<a href="#Usage">2 Usage</a>
+<dl><a href="#Q2.1">2.1</a> When called without filename, abctab2ps seems
+to hang
+<br><a href="#Q2.2">2.2</a> How do I enter frets above the 9th?
+<br><a href="#Q2.3">2.3</a> The letters in French tablature are too small
+<br><a href="#Q2.4">2.4</a> How can I change the default paper size of abctab2ps?
+<br><a href="#Q2.5">2.5</a> How can I get more notes on a staff?
+<br><a href="#Q2.6">2.6</a> Voice and meter change are ignored
+<br><a href="#Q2.7">2.7</a> I cannot create proper abc files with 
+<i>notepad</i> on Win32
+<br><a href="#Q2.8">2.8</a> abctab2ps cannot process files that have been
+created on a Macintosh
+<br><a href="#Q2.9">2.9</a> Some abc files that worked fine with abctab2ps 1.3
+now produce incorrect output
+<br><a href="#Q2.10">2.10</a> Ties across line breaks are not displayed
+<br><a href="#Q2.11">2.11</a> Can I add footnotes to the music text?
+<br><a href="#Q2.12">2.12</a> How can I add advisory accidentals?
+</dl>
+<a href="#Utilities">3 Utilities</a>
+<dl><a href="#Q3.1">3.1</a> Can I convert StringWalker or Fronimo files
+into abc format?
+<br><a href="#Q3.2">3.2</a> How do I embed the output of abctab2ps in
+other publishing software?
+<br><a href="#Q3.3">3.3</a> Can I create PDF files with abctab2ps?
+</dl>
+<a href="#License">4 Licensing Terms</a>
+<dl><a href="#Q4.1">4.1</a> Are there any usage/distribution restrictions?
+<br><a href="#Q4.2">4.2</a> How does the "GNU General Public License" apply to abctab2ps?
+<br><a href="#Q4.3">4.3</a> Is the Postscript output of abctab2ps also covered by the GPL?
+<br><a href="#Q4.4">4.4</a> May I redistribute the fonts seperately from abctab2ps?
+</dl>
+</dl>
+
+<h2>
+<a NAME="Installation"></a>1 Installation</h2>
+
+<h4>
+<a NAME="Q1.1"></a>1.1 Compiling with "make" does not work on MacOs X</h4>
+Make sure that you have installed the developer's CD that ships
+with MacOs X. Although the developer's CD contains the GNU C compiler,
+its name is <i>cc</i> rather than <i>gcc</i> before version 10.2 of MacOS X.
+In that case you must edit the Makefile (with <i>vi</i> or <i>TextEdit</i>) and
+change the line "CC=gcc" into "CC=cc". Then "make" should work.
+
+<h4>
+<a NAME="Q1.2"></a>1.2 I cannot start abctab2ps on Win32 from another location
+than the installation directory</h4>
+Solution A:
+<ul>
+<li>
+Put the abctab2ps binary into a directory in your search path (eg. <i>C:\Windows</i>).
+If you do not know how your search path is set you can find it out with
+the DOS command "path".</li>
+<li>
+On Windows 9x add the following line to <i>autoexec.bat<br>
+</i><tt>&nbsp;&nbsp;&nbsp; set ABCTABFONTS=\path\to\your\abctabfonts</tt></li>
+<li>
+On Windows NT add a new environment variable <i>ABCTABFONTS</i> in the 
+register card "Umgebung" under "Start/Einstellungen/System" (sorry, I do 
+not know the menu entries in the english version of Windows NT) and
+set it to the full path of the abctab2ps font directory.</li>
+</ul>
+Solution B:
+<ul>
+<li>
+Put the following DOS script as <i>abctab2ps.bat</i> into a directory in
+your search path (eg. <i>C:\Windows</i>):<br>
+<br>
+<tt>&nbsp;&nbsp;&nbsp; @echo off<br>
+&nbsp;&nbsp;&nbsp; set ABCTABFONTS=\path\to\your\abctabfonts<br>
+&nbsp;&nbsp;&nbsp; \full\path\to\abctab2ps.exe %*</tt></li>
+</ul>
+Solution A is more robust with respect to the invocation of abctab2ps from
+GUI's. In order to avoid troubles with the DOS shell, your paths to 
+abctab2ps and to the fonts should not contain spaces and should not
+contain Umlauts.
+
+<h4>
+<a NAME="Q1.3"></a>1.3 The DOS shell on Win32 is a pain to use. Are
+there alternatives?</h4>
+
+If you are used to the conveniences of some other shell like <i>bash</i>,
+<i>ksh</i>, <i>zsh</i> or <i>tcsh</i>, you should try to install
+your favourite shell on Win32.
+<p>
+Even for the crappy DOS shell there are some tricks that can make
+your life a lot easier:
+<ul>
+<li>
+On Windows 9x, command line editing is turned off by default. To
+enable it, add the line<br>
+<tt>&nbsp;&nbsp;&nbsp; doskey /insert</tt><br>
+to <i>autoexec.bat</i> and reboot.</li>
+<li>
+The following registry trick adds a right click option for directories
+in the "Explorer" so that that you can open a DOS shell in an arbitrary
+directory with a right mouse click:
+<ul>
+<li>
+Create a new sub-key called "CommandPrompt" under <i>HKEY_CLASSES_ROOT/Directory/shell</i></li>
+<li>
+Change the value of "default" within the key equal to the text you would 
+like on the right click menu, eg. "DOS shell here"</li>
+<li>
+Create another new sub-key under the newly created key and name it "command"
+as in <i>HKEY_CLASSES_ROOT/Directory/shell/CommandPrompt/command</i></li>
+<li>
+Change the value of "default" within this key to<br>
+<tt>&nbsp;&nbsp;&nbsp; command.com /k cd "%1"</tt><br>
+(on Windows NT use <i>cmd.exe</i> instead of <i>command.com</i>)</li>
+</ul>
+</li>
+</ul>
+Note that the registry trick adding a right click option on directories
+for opening a shell prompt in that directory also works with other shells.
+You only need to use a different command in the last "default" value, eg.
+for <i>bash</i>:
+<p>
+<tt>&nbsp;&nbsp;&nbsp; C:\path\to\sh.exe -c 'cd "%L" && exec /bin/bash --login'</tt><br>
+
+<h4>
+<a NAME="Q1.4"></a>1.4 "make install" stops with an error on Unix</h4>
+
+Since version 1.2.0, the default font location has moved from
+<i>/usr/local/<b>lib</b>/abctab2ps</i> to <i>/usr/local/<b>share</b>/abctab2ps</i>.
+Moreoever, versions before 1.2.0 required the environment variable
+<i>ABCTABFONTS</i> in order to find their fonts. This is no longer
+required because abctab2ps now looks in some default locations when
+ABCTABFONTS is unset (see man page for details).
+<p>
+This means however, that when you install a new version of abctab2ps
+over an old version and forget to unset ABCTABFONTS, abctab2ps will
+still use the old fonts. If the install script recognizes this
+situation, it will stop with an error.
+<p>
+Solution: uninstall the old version first and do no longer set
+the environment variable ABCTABFONTS.
+
+<h4>
+<a NAME="Q1.5"></a>1.5 "make rpm" does not work on Linux</h4>
+
+First, you need to install the <a href="http://www.easysw.com/epm/">ESP Package Manager (epm)</a>.
+<p>
+Second, <i>rpm</i> writes the resulting packages in a central directory
+which is configured as "topdir" in <i>/usr/lib/rpmrc</i> or <i>/etc/rpmrc</i>.
+Thus you must make sure that you can write to that directory. The easiest
+way to do so is with a <i>chmod 1777</i> on that directory (the leading
+"1", which sets the "sticky bit", is strongly recommended on a multi user
+system for security reasons).
+
+<h4>
+<a NAME="Q1.6"></a>1.6 I have installed the MacOs X binary package and
+cannot find the documentation.</h4>
+
+The man page (describes abctab2ps' command line options) can be read
+with <i>man abctab2ps</i>. The users' guide, this FAQ's and the examples
+are installed under <i>/usr/share/doc/abctab2ps</i>.
+
+<h4>
+<a NAME="Q1.7"></a>1.7 Can abctab2ps do any harm to my system?</h4>
+
+Some string processing routines in abctab2ps are written so poorly
+that a "buffer overflow" may occur. D.J. Bernstein and Limin Wang have
+proven for abctab2ps 1.6.3 that a malicious hacker could utilize this
+when an especially prepared abc file is opened with abctab2ps. Although
+the reported problems have been fixed in version 1.6.4, there might be
+other hidden buffer overflow bugs. To be on the safe side you should
+take care of two points:
+<ul>
+<li>never run abctab2ps as a user with administrator privileges
+<li>before running abctab2ps on an abc file from an unknown source,
+  check its content in an editor
+</ul>
+
+<h2>
+<a NAME="Usage"></a>2 Usage</h2>
+
+<h4>
+<a NAME="Q2.1"></a>2.1 When called without filename, abctab2ps seems to
+hang</h4>
+When called without an abc file as parameter, abctab2ps expects its input
+from stdin, that is from the terminal or from a pipe. You can stop abctab2ps'
+waiting for input with Ctrl-C (quits process) or Ctrl-D (closes stdin).
+<p>This is a useful feature, because you can pipe the output from another
+command directly into abctab2ps, eg.
+<blockquote><tt>abcselect -V 1,2 -Q 3-6 sample.abc | abctab2ps</tt></blockquote>
+
+<h4>
+<a NAME="Q2.2"></a>2.2 How do I enter frets above the 9th?</h4>
+abctab2ps supports fret numbers and letters up to the 15th fret. The only
+quibble is that the letter "j" is not used in french tablature. Thus the
+9th fret is "k" etc.
+<h4>
+<a NAME="Q2.3"></a>2.3 The letters in French tablature are too small</h4>
+The parameter <i>tabfontsize </i>(or command line option <i>-tabsize</i>)
+not only changes the font size of the tablature font but also the line
+distance between adjacent tablature lines. Try to set the parameter <i>tabfontscale
+</i>(see the section "Tablature/Format parameters" in the user's guide)
+greater than one, eg
+<blockquote><tt>%%tabfontscale 1.2</tt></blockquote>
+
+<h4>
+<a NAME="Q2.4"></a>2.4 How can I change the default paper size of abctab2ps?</h4>
+Since version 1.3.0 the paper size is determined automatically on most Linux
+systems. The mechanism is adopted from <i>libpaper</i> and works as follows:
+<ol>
+<li>
+If the environment variable <i>PAPERSIZE</i> is set, the paper format ("a4", 
+"letter") is taken from its value. The evaluation is not casesensitive.
+<li>
+Otherwise the paper format is read from <i>/etc/papersize</i>.</li>
+<li>
+The full path name of the papersize file can be overridden by the environment
+variable <i>PAPERCONF</i>.</li>
+<li>
+If these methods do not yield a paper format, the default "a4" is used.
+<p>
+<u>Warning:</u> Before version 1.1.13 of libpaper the meaning of the
+variables PAPERSIZE and PAPERCONFIG were reversed (oh my!). abctab2ps
+adopted the new meaning of these variables with version 1.6.3. Older
+versions of abctab2ps still used the old convention. To avoid confusion
+it is best, not to use these environment variables at all.
+</ol>
+
+In any case, you can always override the paper format with the command line 
+option <i>-paper</i> or set the actual page dimensions explicitly with
+the parameters <i>pageheight, staffwidth, leftmargin, topmargin,
+botmargin </i> (see "Format fine tuning/Page layout parameters"
+in the user's guide).
+
+<p>
+If you generate PDF with <i>ghostscript</i> or <i>ps2pdf</i> and the first 
+page is ok, but subsequent pages are clipped, you should try to give
+the papersize as a command line option to the conversion program, eg.
+<blockquote><tt>$ ps2pdf -sPAPERSIZE=letter bla.ps</tt></blockquote>
+
+<h4>
+<a NAME="Q2.5"></a>2.5 How can I get more notes on a staff?</h4>
+You might try the command line option "-a" (see the man page for details).
+This does not work very well though.
+<p>
+If you have single staff lute tablature there is another more reliable
+way: reduce the default note length and decrease <i>tabaddflags</i> 
+accordingly. Beware however, that this might mess up automatic bar
+numbering.
+
+<h4>
+<a NAME="Q2.6"></a>2.6 Voice and meter change are ignored</h4>
+A voice (V:) or meter (M:) field inside the tune body only applies
+to the current voice. If you have more than one voice, you must
+specify the key or meter change in each voice.
+
+<h4>
+<a NAME="Q2.7"></a>2.7 I cannot create proper abc files with 
+<i>notepad</i> on Win32</h4>
+<i>notepad</i> usually appends the extension "txt" to new files. By
+default this extension is hidden in the <i>Explorer</i>. Thus you see
+a file "bla.abc" in the <i>Explorer</i>, but its real name is "bla.abc.txt".
+There are two solutions:
+<ul>
+<li>Use a different editor. You can easily find free alternatives while
+searching for "win32" and "text editor" in your favorite search engine.
+<li>If you insist on <i>notepad</i>, put double quotes around the filename
+in the "Save As" dialog.
+</ul>
+
+<h4>
+<a NAME="Q2.8"></a>2.8 abctab2ps cannot process files that have been
+created on a Macintosh</h4>
+<u>Note:</u> This has been fixed since version 1.5.3.
+<p>
+The Unix and Win32 version of abctab2ps expect the <i>newline</i> (\n)
+sign as line seperator while most Mac editors only use <i>carriage 
+return</i> (\r).
+<p>
+The following simple command converts each <i>carriage return</i> in the
+file "mac.abc" to <i>newline</i>:
+<blockquote><tt>$ tr '\r' '\n' < mac.abc > unix.abc</tt></blockquote>
+Remark: In order to make this command work on Win32 you will need to install
+the GNU textutils forst; these are available either as a 
+<a href="http://unxutils.sourceforge.net/">standalone packet for Win32</a> or 
+as part of <a href="http://sourceware.cygnus.com/cygwin/">Cygwin</a> 
+(recommended).
+
+<h4>
+<a NAME="Q2.9"></a>2.9 Some abc files that worked fine with abctab2ps 1.3
+now produce incorrect output</h4>
+abctab2ps 1.4.0 introduced <i>multi bar rests</i> which are notated with
+capital <i>Z</i> in abc. Older versions used both <i>z</i> and <i>Z</i>
+for normal rests.<br>
+Solution: replace all occurences of upper case <i>Z</i> in the music body of 
+your abc file with lower case <i>z</i>.
+
+<h4>
+<a NAME="Q2.10"></a>2.10 Ties across line breaks are not displayed</h4>
+<u>Note:</u> This has been fixed since version 1.6.0
+<p>
+This happens when the line does not end with a bar line. As a workaround
+you can insert an <i>invisible bar</i> <tt>[|]</tt> at the end of the line.
+
+<h4>
+<a NAME="Q2.11"></a>2.11 Can I add footnotes to the music text?</h4>
+Footnotes are necessary for the critical report of editorial corrections.
+Use guitar chords in the music for footnote numbers and reference these
+in <i>W:</i> lines.
+
+<h4>
+<a NAME="Q2.12"></a>2.12 How can I add advisory accidentals?</h4>
+Use guitar chords with <tt>\#, \b, \=</tt>. This will print the accidentals
+above the notes.
+
+<h2>
+<a NAME="Utilities"></a>3 Utilities</h2>
+
+<h4>
+<a NAME="Q3.1"></a>3.1 Can I convert StringWalker or Fronimo files
+into abc format?</h4>
+StringWalker and Fronimo use undocumented proprietary binary file formats
+which can be read only with the respective programs. So if you have such
+a file without the corresponding program, you are at a loss.
+<p>
+However, if you know the person who has created the files, there is
+a way out:
+<ul>
+<li>If he is using StringWalker, ask him to directly export abc
+(works since StringWalker version 4.2)
+<li>Otherwise, ask this person to export the tablature in Wayne Cripps' 
+TAB format
+<li>Convert this format with <i>tab2abc</i> into abc; tab2abc is available 
+from the <a href="http://www.lautengesellschaft.de/cdmm/">abctab2ps home page</a>
+</ul>
+
+<h4>
+<a NAME="Q3.2"></a>3.2 How do I embed the output of abctab2ps in
+other publishing software?</h4>
+This depends on the publishing software you are using. Here are solutions
+for some programs:
+<ul>
+<li><i>LaTeX</i> supports the import of EPS (encapsulated postscript). To 
+generate EPS, use abctab2ps' command line option -E.
+<li><i>Pdftex</i> cannot directly import EPS images. It accepts however 
+images in bitmap formats (eg. PNG) and in PDF. 
+Although PNG can be generated from postscript with ghostscript,
+this is not recommended due to a heavy quality loss. It is better to
+convert the EPS output to PDF, eg. with <i>epstopdf</i> which is shipped
+with most TeX distributions.
+<li><i>Microsoft Word</i> only accepts images in bitmap formats, which is 
+inadequate for use with abctab2ps.
+<li>Unix WYSIWIG text processors like <i>Applixware</i> support the import of
+EPSI files. This variant of EPS includes a low quality bitmap
+of the graphics, which the word processor uses for its online display.
+EPSI can be generated from postscript with the program <i>ps2psi</i>
+(comes with ghostscript).
+</ul>
+
+<h4>
+<a NAME="Q3.3"></a>3.3 Can I create PDF files with abctab2ps?</h4>
+abctab2ps creates postscript files, which can be converted to PDF
+with a number of third party programs. One option is to use <i>ghostscript</i>
+and some wrapper script like <i>ps2pdf</i> (comes with ghostscript) or
+<a href="http://www.tug.org/applications/pdftex/epstopdf">epstopdf</a>.
+<p>
+Beware however, that PDF has a number of disadvantages compared to
+Postscript:
+<ul>
+<li>PDF does not supports type3 outline fonts. This means that the 
+tablature fonts are converted to bitmap fonts and look rather poor in 
+Acrobat Reader.
+<li>Unlike EPS ("Encapsulated PostScript"), there is no encapsulated
+PDF format. Thus PDF files are difficult to embedd in other documents.
+<li>In most cases PDF files are considerably larger even than 
+uncompressed postscript files. Compared to gzipped postscript, PDF
+files are approximately five to ten times larger.
+<li>While there is a great deal of free postscript manipulation
+software available, even the most primitive PDF software is generally 
+very expensive.
+</ul>
+
+<h2>
+<a NAME="License"></a>4 Licensing Terms</h2>
+
+<h4>
+<a NAME="Q4.1"></a>4.1 Are there any usage/distribution restrictions?</h4>
+abctab2ps can be used without any restrictions. Moreover you are allowed to
+make and distribute as many copies of abctab2ps as you like.
+
+<h4>
+<a NAME="Q4.2"></a>4.2 How does the "GNU General Public License" apply to abctab2ps?</h4>
+The "GNU General Public License" (GPL) guarantees the free usage and
+redistribution of abctab2ps. Moreover it demands that the distribution
+of modified versions of abctab2ps are distributed again under the terms of the
+GPL.
+<p>
+That said, there are however two exceptions from the GPL in the abctab2ps
+licensing terms (see subsequent questions for more explanation):
+<ul>
+<li>The postscript output is <i>not</i> considered a derived work.
+<li>The tablature fonts are copyrighted by their creators.
+</ul>
+
+<h4>
+<a NAME="Q4.3"></a>4.3 Is the Postscript output of abctab2ps also covered by the GPL?</h4>
+According to the GPL this would be the case, because the Postscript output
+contains code from abctab2ps and thus is a "derived work" in the sense of
+the GPL (this is the so called "infectious character" of the GPL).
+<p>
+This would mean a serious restriction to the usability of abctab2ps, and
+therefore the postscript output of abctab2ps is explicitly excluded from
+the scope of the GPL in the abctab2ps licensing terms (see the file LICENSE
+in the abctab2ps distribution).
+<p>
+Thus you are free to distribute the abctab2ps output files at terms of your
+choice.
+
+<h4>
+<a NAME="Q4.4"></a>4.4 May I redistribute the fonts seperately from abctab2ps?</h4>
+The tablature fonts are copyrighted by their creators (see the font files
+for details), who have granted permission to use them with abctab2ps. If you
+want to use or distribute them seperately, you must ask the copyright owners
+for permission.
+
+<p>
+<hr><i>Last changed 2006-01-16</i>
+</body>
+</html>

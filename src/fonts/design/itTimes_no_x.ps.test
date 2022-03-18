@@ -1,0 +1,246 @@
+%!PS-Adobe-3.0 Resource-Font
+%-----------------------------------------------
+%
+% Font for American style folk/rock tablature
+% using "10" for 10th fret and "x" to indicate
+% choked string. Modified from original
+% itTimes.ps.
+%
+% Font for italian tablature in abctab2ps
+% simply uses digits of Times font
+% Copyright (c) 2000 Christoph Dalitz
+
+% Help functions for drawing letters with a pen
+%
+% lower end of pen, must be set before call to penfunctions
+/penend 2 array def
+
+% parameters in the following functions refer to upper end of pen
+
+/penlineto { % usage like lineto
+  currentpoint 4 2 roll % save startpoint
+  lineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll penend 0 get add
+  2 1 roll penend 1 get add
+  lineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/pencurveto { % usage like curveto
+  6 copy currentpoint 8 2 roll   % save position and arguments
+  curveto
+  currentpoint 10 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  4 2 roll pop pop 4 2 roll 6 2 roll
+  3 {
+    6 5 roll penend 0 get add
+    6 5 roll penend 1 get add
+  } repeat
+  curveto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+%
+% here starts the font definition
+%
+%%BeginResource: font ItalianTabfont
+/itabfont 10 dict def
+itabfont begin
+
+/FontType 3 def
+
+% chars are defined in 20x20 System
+/FontBBox [0 0 20 20] def
+/FontMatrix [0.05 0 0 0.05 0 0 ] def
+
+% pen definitions for different font types
+/Timespen [ -2 -2 ] def   % letters in frenchtab
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+Encoding
+% frenchtab:  a-o
+% italiantab: 0-13
+dup  97 /italian_0 put
+dup  98 /italian_1 put
+dup  99 /italian_2 put
+dup 100 /italian_3 put
+dup 101 /italian_4 put
+dup 102 /italian_5 put
+dup 103 /italian_6 put
+dup 104 /italian_7 put
+dup 105 /italian_8 put
+dup 106 /italian_x put
+dup 107 /italian_9 put
+dup 108 /italian_10 put
+dup 109 /italian_11 put
+dup 110 /italian_12 put
+dup 111 /italian_13 put
+% french bourdons: D-G
+dup  68 /bourdon_4 put  % D
+dup  69 /bourdon_5 put  % E
+dup  70 /bourdon_6 put  % F
+dup  71 /bourdon_7 put  % G
+% italian bourdons: H-N
+dup  72 /bourdon_8  put % H
+dup  73 /bourdon_9  put % I
+dup  74 /bourdon_10 put % J
+dup  75 /bourdon_11 put % K
+dup  76 /bourdon_12 put % L
+dup  77 /bourdon_13 put % M
+dup  78 /bourdon_14 put % N
+
+  116 /test_t put
+
+% drawing procedures
+/drawchar 4 dict def
+drawchar begin
+  /.notdef {} def
+
+  % italian numbers
+  /italian_0 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (0) show
+  } def
+  /italian_1 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (1) show
+  } def
+  /italian_2 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (2) show
+  } def
+  /italian_3 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (3) show
+  } def
+  /italian_4 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (4) show
+  } def
+  /italian_5 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (5) show
+  } def
+  /italian_6 {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 3 moveto (6) show
+  } def
+  /italian_7 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 moveto (7) show
+  } def
+  /italian_8 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 moveto (8) show
+  } def
+  /italian_x {
+    /Times 20 selectfont 1.5 1.1 scale
+    2.5 4 moveto (x) show
+  } def
+  /italian_9 {
+    /Times 20 selectfont 1.5 1 scale
+    2.5 3 moveto (9) show
+  } def
+  /italian_10 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 moveto (1) show
+    8.5 4 moveto (0) show
+  } def
+  /italian_11 {
+    /Times 20 selectfont 1 0.9 scale
+    3 4 moveto (1) show
+    9 4 moveto (1) show
+  } def
+  /italian_12 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 moveto (1) show
+    8.5 4 moveto (2) show
+  } def
+  /italian_13 {
+    /Times 20 selectfont 1 0.9 scale
+    1.5 4 moveto (1) show
+    8.5 4 moveto (3) show
+  } def
+    
+  % french bourdons
+  % (not used in italiantab)
+  /bourdon_4 {
+  } def
+  /bourdon_5 {
+  } def
+  /bourdon_6 {
+  } def
+  /bourdon_7 {
+  } def
+
+  % italian bourdons
+  /bourdon_8 {
+    /Times 20 selectfont 1.5 1.2 scale
+    2.5 2 moveto (8) show
+  } def
+  /bourdon_9 {
+    /Times 20 selectfont 1.5 1.2 scale
+    2.5 2 moveto (9) show
+  } def
+  /bourdon_10 {
+    /Times 20 selectfont 1.2 1.2 scale
+    2.5 2 moveto (X) show
+  } def
+  /bourdon_11 {
+    /Times 20 selectfont 1.2 1.2 scale
+    2.5 2 moveto (V) show
+  } def
+  % alternative version
+  %/bourdon_11 {
+  %  /Times 20 selectfont 1.2 1.2 scale
+  %  1.0 2 moveto (1) show
+  %  7.0 2 moveto (1) show
+  %} def
+  /bourdon_12 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 moveto (1) show
+    7.0 2 moveto (2) show
+  } def
+  /bourdon_13 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 moveto (1) show
+    7.0 2 moveto (3) show
+  } def
+  /bourdon_14 {
+    /Times 20 selectfont 1.2 1.2 scale
+    0.0 2 moveto (1) show
+    7.0 2 moveto (4) show
+  } def
+
+  /test_t {   % test output
+  } def
+end
+
+% enable new font
+/BuildChar {
+20 0
+0 0 20 20
+setcachedevice
+/char exch def
+0.1 setlinewidth
+begin
+  Encoding char get
+  drawchar exch get
+  exec
+  end
+}def
+
+end
+
+/ItalianTabfont itabfont definefont pop
+%%EndResource
+%----------------------------------------------------------------
+

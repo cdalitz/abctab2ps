@@ -1,0 +1,717 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Format fine tuning</TITLE>
+<META NAME="description" CONTENT="Format fine tuning">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html149"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html151"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node10.html">Other utilities</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node8.html">Tablature</A>
+ &nbsp; <B>  <A ID="tex2html150"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html152"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html153"
+  HREF="node9.html#SECTION00091000000000000000">Staff breaking</A>
+<LI><A ID="tex2html154"
+  HREF="node9.html#SECTION00092000000000000000">Fonts</A>
+<LI><A ID="tex2html155"
+  HREF="node9.html#SECTION00093000000000000000">Page layout parameters</A>
+<LI><A ID="tex2html156"
+  HREF="node9.html#SECTION00094000000000000000">Scope of parameters</A>
+<LI><A ID="tex2html157"
+  HREF="node9.html#SECTION00095000000000000000">Spontaneous alignment</A>
+<LI><A ID="tex2html158"
+  HREF="node9.html#SECTION00096000000000000000">Historic layout</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00090000000000000000"></A>
+<A ID="sec:FormatFineTuning"></A><A NAME="642"></A> <A NAME="643"></A>
+<BR>
+Format fine tuning
+</H1>
+Some layout parameter can be set by command line options (see the
+man page of abctab2ps or for details), but most are set via
+<I>pseudo comments</I>. Pseudo comments are lines beginning with 
+two percentage signs %%. The syntax of a 
+pseudo comment is<PRE>
+%%&lt;parameter&gt; &lt;value&gt;
+</PRE>
+This changes the layout parameter <I><code>&lt;</code>parameter<code>&gt;</code> </I> to 
+<I><code>&lt;</code>value<code>&gt;</code> </I> in subsequent lines.
+
+<P>
+These layout settings may also be collected in a <I>format file</I>
+with the extension ".fmt", which can be included with the
+command line option -F. This is useful eg. for a songbook because 
+the layout of all songs can be maintained in a single file.
+Layout parameter in a format file must not start with %%.
+A line consisting of the word "end" in a fmt file skips the
+rest of the file.
+
+<P>
+To see the settings for all the parameters, use flag -H.
+When used in conjunction with other flags such as -p, -P, or -F,
+the corresponding parameters are shown. If you redirect the
+output to a file and edit out the header line, you immediately
+have a prototype fmt file which specifies all the parameters.
+
+<P>
+There are some parameters which can also be set in the E: info field.
+These are
+<BLOCKQUOTE>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">shrink</TD>
+<TD CLASS="LEFT">set glue mode to compress</TD>
+</TR>
+<TR><TD CLASS="LEFT">space</TD>
+<TD CLASS="LEFT">set to natural glue widths</TD>
+</TR>
+<TR><TD CLASS="LEFT">stretch</TD>
+<TD CLASS="LEFT">stretched glue mode</TD>
+</TR>
+<TR><TD CLASS="LEFT">fill</TD>
+<TD CLASS="LEFT">normal mode to fill staffs</TD>
+</TR>
+<TR><TD CLASS="LEFT">break</TD>
+<TD CLASS="LEFT">ignore continuations</TD>
+</TR>
+<TR><TD CLASS="LEFT">xref</TD>
+<TD CLASS="LEFT">write xref numbers to output</TD>
+</TR>
+<TR><TD CLASS="LEFT">one</TD>
+<TD CLASS="LEFT">write one tune per page.</TD>
+</TR>
+<TR><TD CLASS="LEFT">newpage</TD>
+<TD CLASS="LEFT">start new page for next tune</TD>
+</TR>
+<TR><TD CLASS="LEFT">lw <I>ppp</I></TD>
+<TD CLASS="LEFT">set local staff width to <I>ppp</I> points.</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+For example, to output a single tune in a narrower format,
+put "E:lw 400" into the header of this tune. If this is put
+after the header but within the tune body, only the music is set 
+with a different width and the title is written as before.
+
+<P>
+
+<H2><A ID="SECTION00091000000000000000"></A>
+<A NAME="660"></A> <A NAME="661"></A>
+<BR>
+Staff breaking
+</H2>
+Generally one line of abc  notation  will  produce  one  line  of
+music,  although  if  the music is too long it will overflow onto
+the next line. You can counteract this by changing either the note 
+spacing with  the  E: field or break the line of abc notation. If, 
+however, you wish to use two  lines  of input  to  generate  one  
+line  of  music  then simply put a backslash (<code>\</code>) at the 
+end  of the first line.
+
+<P>
+The best output is usually obtained if the staff breaks are
+chosen explicitly by suitable line breaks in the input file.
+In this standard usage, the program tries to set the music as well 
+as possible for each line separately. The symbols "*" and "**" at 
+the end of a line are ignored, as well as the field "E:" for
+the elementary length.
+
+<P>
+If a line is too long to fit onto one staff, the overhang 
+is spilled onto the next staff in this version. This makes it possible 
+to get reasonable output even when the input is one long logical line. 
+In practice, this is equivalent to automatic line breaking. 
+
+<P>
+To control line breaking, the following command line options to
+abctab2ps are available:
+<BLOCKQUOTE>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">-b</TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>break at all line ends, even if they end with the
+       continuation symbol "<code>\</code>".</TD>
+</TR>
+<TR><TD CLASS="LEFT">-c</TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>consider the input as one long line, ie., implicitly append 
+       a backslash to every line of music.</TD>
+</TR>
+<TR><TD CLASS="LEFT">-B <I>n</I></TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>try to typeset with <I>n</I> bars on each line.</TD>
+</TR>
+<TR><TD CLASS="LEFT">-a <SPAN CLASS="MATH"><IMG STYLE="" SRC="img15.png"
+ ALT="$\alpha$"></SPAN></TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>set the maximal amount of permitted shrinking to <SPAN CLASS="MATH"><IMG STYLE="" SRC="img15.png"
+ ALT="$\alpha$"></SPAN>,
+       where <SPAN CLASS="MATH"><IMG STYLE="" SRC="img15.png"
+ ALT="$\alpha$"></SPAN> lies between 0 and 1.</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+
+<P>
+
+<H2><A ID="SECTION00092000000000000000"></A>
+<A NAME="670"></A> <A NAME="671"></A> <A NAME="672"></A>
+<BR>
+Fonts
+</H2>
+Fonts are specified in pseudo comments of the form<PRE>
+%%&lt;itemfont&gt; &lt;postscript font&gt; &lt;size&gt;
+</PRE>
+<I><code>&lt;</code>postscript font<code>&gt;</code> </I> must be a valid postscript
+font. The standard postscript fonts that are supported by all postscript
+devices are: <I>AvantGarde-Demi, AvantGarde-DemiOblique,
+AvantGarde-Book, AvantGarde-BookOblique,
+Bookman-Light, Bookman-LightItalic, Bookman-Demi, Bookman-DemiItalic,
+Courier, Courier-Oblique, Courier-Bold, Courier-BoldOblique,
+Helvetica, Helvetica-Oblique, Helvetica-Bold, Helvetica-BoldOblique,
+Helvetica-Narrow, Helvetica-NarrowOblique, 
+Helvetica-NarrowBold, Helvetica-NarrowBoldOblique,
+NewCenturySchlbk-Roman, NewCenturySchlbk-Italic, NewCenturySchlbk-Bold,
+NewCenturySchlbk-BoldItalic,
+Palatino-Roman, Palatino-Italic, Palatino-Bold, Palatino-BoldItalic,
+Symbol, Times-Roman, Times-Italic, Times-Bold, Times-BoldItalic, 
+ZapfChancery-MediumItalic, ZapfDingbats.</I>
+
+<P>
+<I><code>&lt;</code>size<code>&gt;</code> </I> is the font size in points 
+(eg. 14). Note however that the font size (like the size of the music) 
+will be effected by the parameter <I>scale</I> (see next section);
+eg. if <I>scale </I> is set to 0.7 (which is the default) a font size
+of 14 will actually result in a <!-- MATH
+ $0.7 * 14{\rm pt} \approx 10{\rm pt}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="vertical-align:-0px" SRC="img16.png"
+ ALT="$0.7 * 14{\rm pt} \approx 10{\rm pt}$"></SPAN> font. 
+
+<P>
+<I><code>&lt;</code>itemfont<code>&gt;</code> </I> specifies the scope of the font like title, guitar 
+chords etc. It can be any of the following values (values without
+explanation are deemed obvious):
+<BLOCKQUOTE>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">titlefont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">subtitlefont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">composerfont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">partsfont</TD>
+<TD CLASS="LEFT">for part labels (P: filed)</TD>
+</TR>
+<TR><TD CLASS="LEFT">tempofont</TD>
+<TD CLASS="LEFT">for tempo marks (Q: filed)</TD>
+</TR>
+<TR><TD CLASS="LEFT">vocalfont</TD>
+<TD CLASS="LEFT">for lyrics or vocals under a staff (w: field)</TD>
+</TR>
+<TR><TD CLASS="LEFT">gchordfont</TD>
+<TD CLASS="LEFT">for guitar chords</TD>
+</TR>
+<TR><TD CLASS="LEFT">textfont</TD>
+<TD CLASS="LEFT">for text under the tune, or between tunes</TD>
+</TR>
+<TR><TD CLASS="LEFT">wordsfont</TD>
+<TD CLASS="LEFT">for words under the tune (W: field)</TD>
+</TR>
+<TR><TD CLASS="LEFT">voicefont</TD>
+<TD CLASS="LEFT">for voice names (V: field)</TD>
+</TR>
+<TR><TD CLASS="LEFT">barnumberfont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">barlabelfont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">indexfont</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+In printed music, the bar numbers are often made more visible
+by putting a box around them. This is also possible.
+In fact, a box can be put around most bits of text by
+adding the word "box" to the font specification, e.g.:<PRE>
+%%barnumberfont Times-Italic 11 box
+</PRE>
+This can be done for the title, guitar chords, vocals, etc.
+To switch on the box without changing the font style and/or size,
+the character * can be used, as in:<PRE>
+%%titlefont * * box
+</PRE>
+
+<P>
+Because ISO fonts are needed for special characters and
+accents, all fonts must be known when the header of the PS file
+is written. The program tries to be as clever as it can
+about this, but a font might be undefined if it is invoked
+for the first time further down in a file. For this reason, 
+a line like this can be put into the fmt file:<PRE>
+font Palatino-Bold
+</PRE>
+or alternatively at the top of the abc file:<PRE>
+%%font Palatino-Bold
+</PRE>
+Either of these will define the corresponding ISO font in the header.
+To make things even easier, the program always looks for a file
+"fonts.fmt" and loads it if it exists. So, the often-used fonts
+can be defined there once and for all.
+
+<P>
+
+<H2><A ID="SECTION00093000000000000000"></A>
+<A ID="sec:LayoutParams"></A><A NAME="708"></A>
+<A NAME="709"></A>
+<A NAME="710"></A>
+<BR>
+Page layout parameters
+</H2>
+Page layout parameter are usually specified by pseudo comments.
+Beside dimensionless factors (decimals) or integer values, the parameter 
+value can be of the type "logical" or "dimension". Logicals
+must be one of <I>1, yes, true</I> for "true" or one of <I>0, no,
+false</I> for "false"; if nothing is specified, this is equivalent to true.
+Dimensions can be given in <I>mm</I>, <I>cm</I>, <I>in</I>, or <I>pt</I>, 
+where <I>pt</I> is the default.
+Examples:<PRE>
+%%pageheight 29cm             % height of page
+%%staffwidth 5in              % width of staff
+%%leftmargin 1.8cm            % left margin
+%%titlespace 1cm              % vertical space before the title
+%%scale 0.9                   % size of musical symbols
+%%staffsep  60pt              % space between staves
+</PRE>
+The following table lists all possible parameters and their
+equivalent command line option (if there is one). Parameters
+without explanation are deemed obvious.
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT"><B>Parameter</B></TD>
+<TD CLASS="LEFT"><B>Type</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=51><B>abctab2ps option</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=204><B>Description</B></TD>
+</TR>
+<TR><TD CLASS="LEFT">pageheight</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">staffwidth</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-w</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">topmargin</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">botmargin</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">leftmargin</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-m</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">topspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>vertical space at the top of a tune. (see remark 1.)</TD>
+</TR>
+<TR><TD CLASS="LEFT">titlespace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space before the title. (see remark 1.)</TD>
+</TR>
+<TR><TD CLASS="LEFT">subtitlespace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space before the subtitle.</TD>
+</TR>
+<TR><TD CLASS="LEFT">composerspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space before the composer.</TD>
+</TR>
+<TR><TD CLASS="LEFT">musicspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space between the composer and the music.</TD>
+</TR>
+<TR><TD CLASS="LEFT">partsspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space ("up") between the "parts" and the music.</TD>
+</TR>
+<TR><TD CLASS="LEFT">vocalspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space above a line of vocals.</TD>
+</TR>
+<TR><TD CLASS="LEFT">wordsspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space above the words at the end of a tune.</TD>
+</TR>
+<TR><TD CLASS="LEFT">textspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-n</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space above the text such as history.</TD>
+</TR>
+<TR><TD CLASS="LEFT">gchordspace</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>space between staff and guitar chords (music only).</TD>
+</TR>
+<TR><TD CLASS="LEFT">staffsep</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-d</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>separation between staves. One-half of this distance is 
+	added above and below each staff.</TD>
+</TR>
+<TR><TD CLASS="LEFT">sysstaffsep</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>in multi stave music separation between staves within
+	one system.</TD>
+</TR>
+<TR><TD CLASS="LEFT">systemsep</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>in multi stave music separation between systems.</TD>
+</TR>
+<TR><TD CLASS="LEFT">stafflinethickness</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>thickness of a single music and tablature staffline.</TD>
+</TR>
+<TR><TD CLASS="LEFT">indent</TD>
+<TD CLASS="LEFT">dimension</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>amount to indent the first staff. Indentation is done at 
+    the start of the piece and after a T: field, but not
+    after a P: field.</TD>
+</TR>
+<TR><TD CLASS="LEFT">scale</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-s</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>symbol size; eg. 1.0 is used in the "pretty" output.</TD>
+</TR>
+<TR><TD CLASS="LEFT">maxshrink</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-a</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>how much to compress horizontally when staff breaks
+	are chosen automatically. Between 0 and 1.</TD>
+</TR>
+<TR><TD CLASS="LEFT">strictness1</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-X</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>strictness for single stave music.</TD>
+</TR>
+<TR><TD CLASS="LEFT">strictness2</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-X</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>strictness for multi stave music. <BR>
+In multi stave music, it is often a good idea to space the notes 
+	somewhat more strictly according to their duration than in 
+	single stave music. For strictness=1, the spacings for notes
+	with short durations is reasonably strictly proportional to
+	their duration. For strictness=0, they are spaced about
+	equally. Good defaults are strictness1=0.5 and strictness2=0.8.</TD>
+</TR>
+<TR><TD CLASS="LEFT">lineskipfac</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>factor for spacing between lines of text:
+	1.0 gives single-space output, 2.0 double etc.</TD>
+</TR>
+<TR><TD CLASS="LEFT">parskipfac</TD>
+<TD CLASS="LEFT">decimal</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>similar factor for space after a paragraph of text.</TD>
+</TR>
+<TR><TD CLASS="LEFT">barsperstaff</TD>
+<TD CLASS="LEFT">integer</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-B</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>try to put as many bars per staff.</TD>
+</TR>
+<TR><TD CLASS="LEFT">barnumbers</TD>
+<TD CLASS="LEFT">integer</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-k</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>write bar number every <I>n</I>-th bar. <I>n=0</I> writes
+    bar number on the first bar in each staff.</TD>
+</TR>
+<TR><TD CLASS="LEFT">barnumberfirst</TD>
+<TD CLASS="LEFT">integer</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>Start barnumbering with this number instead of <I>1</I>.</TD>
+</TR>
+<TR><TD CLASS="LEFT">landscape</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-l</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>landscape orientation if true</TD>
+</TR>
+<TR><TD CLASS="LEFT">titleleft</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>title flushed left if true.</TD>
+</TR>
+<TR><TD CLASS="LEFT">titlecaps</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>title in capital letters</TD>
+</TR>
+<TR><TD CLASS="LEFT">musiconly</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-M</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>no lyrics if true</TD>
+</TR>
+<TR><TD CLASS="LEFT">stretchstaff</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>stretches underfull staves across page</TD>
+</TR>
+<TR><TD CLASS="LEFT">stretchlast</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>stretches last staff if underfull.</TD>
+</TR>
+<TR><TD CLASS="LEFT">writehistory</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-n</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>writes notes, history etc if true.</TD>
+</TR>
+<TR><TD CLASS="LEFT">continueall</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-c</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>continue all lines if true.</TD>
+</TR>
+<TR><TD CLASS="LEFT">breakall</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-b</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>break at all line ends.</TD>
+</TR>
+<TR><TD CLASS="LEFT">oneperpage</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-1</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>each tune on separate page.</TD>
+</TR>
+<TR><TD CLASS="LEFT">withxrefs</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>-x</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>print out X: xref number in title.</TD>
+</TR>
+<TR><TD CLASS="LEFT">squarebrevis</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>draw square brevis (<code>|=|</code>) instead of round (<code>|o|</code>).</TD>
+</TR>
+<TR><TD CLASS="LEFT">slurisligatura</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>draw ligatura brackets instead of slurs.</TD>
+</TR>
+<TR><TD CLASS="LEFT">historicstyle</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>draw diamond shaped note heads music in order to emulate historic prints.
+	Mostly used in connection with <I>nobeams</I></TD>
+</TR>
+<TR><TD CLASS="LEFT">nobeams</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>do not draw beams in music</TD>
+</TR>
+<TR><TD CLASS="LEFT">nogracestroke</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>do not draw stroke through flag of single grace notes</TD>
+</TR>
+<TR><TD CLASS="LEFT">printmetronome</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>set to <I>false</I> or <I>no</I> when metronome marks in <SPAN style="font-family:monospace">Q:</SPAN> fields
+	shall not be printed</TD>
+</TR>
+<TR><TD CLASS="LEFT">endingdots</TD>
+<TD CLASS="LEFT">logical</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>draw a dot after the number in first/second endings.</TD>
+</TR>
+<TR><TD CLASS="LEFT">meterdisplay</TD>
+<TD CLASS="LEFT">text</TD>
+<TD CLASS="LEFT TOP"  WIDTH=51>&nbsp;</TD>
+<TD CLASS="LEFT TOP"  WIDTH=204>for printing different meter specification, eg. <I>%%meterdisplay
+	3/2=3</I> will print &ldquo;3&rdquo; when &ldquo;M:3/2&rdquo; is given.</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+Remarks:
+
+<OL>
+<LI>Usually, one only sees the sum of <I>topspace</I> and 
+<I>titlespace</I>. However, if text is written preceeding a tune, it
+will come after <I>topspace</I> and before <I>titlespace</I>.
+</LI>
+<LI><I>vocalspace, wordsspace</I> and <I>textspace</I> count to the top 
+of a line of text. That is, the relevant text size (eg. "12pt") is added.
+</LI>
+</OL>
+
+<P>
+
+<H2><A ID="SECTION00094000000000000000"></A>
+<A NAME="749"></A>
+<BR>
+Scope of parameters
+</H2>
+Generally, layout parameters only affect the current tune in which
+they are declared. To make a layout parameter global for all tunes,
+declare it before the first X: field or use a separate 
+format file(see beginning of section )sec:FormatFineTuning.
+
+<P>
+Several parameters (eg. <I>titlefont</I>, <I>barnumbers</I>,
+<I>barnumberfirst</I>) will only have any effect when they are
+declared before the T: field. It is generally the safest
+bet to declare format parameters between the X: and T: field.
+
+<P>
+There is one notable exception from this general scope rules:
+tablature font settingstablature font settings (see section )sec:TabFormatParameters
+are global and must be set before or in the first tune.
+
+<P>
+
+<H2><A ID="SECTION00095000000000000000"></A>
+<A NAME="762"></A> <A NAME="763"></A> <A NAME="764"></A>
+<BR>
+Spontaneous alignment
+</H2>
+If you do not want to change a layout parameter, but simply
+want to insert some space or a page break a single position,
+you can use the following pseudo comments (all parameters
+are of the type "dimension"):
+<BLOCKQUOTE>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">%%sep</TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>draws a short centred line as a separator</TD>
+</TR>
+<TR><TD CLASS="LEFT">%%sep <I>h1 h2 len</I></TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>draws a separator of length <I>len</I> with space 
+           <I>h1</I> above, space <I>h2</I> below.</TD>
+</TR>
+<TR><TD CLASS="LEFT">%%vskip <I>h</I></TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>adds vertical space of height <I>h</I></TD>
+</TR>
+<TR><TD CLASS="LEFT">%%newpage</TD>
+<TD CLASS="LEFT TOP"  WIDTH=283>writes a page break</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+
+<P>
+
+<H2><A ID="SECTION00096000000000000000"></A>
+<A NAME="777"></A> <A NAME="778"></A>
+<BR>
+Historic layout
+</H2>
+If you prefer the look of historic 16th century prints over modern
+prints, you can obtain diamond shaped note heads with <I>%%historicstyle</I>
+and suppress beaming with <I>%%nobeams</I>. Note that both
+parameters only effect music, so that it is still possible to use
+grid rhythm flags in tablature in combination with a historic music
+layout.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html149"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html151"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node10.html">Other utilities</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node8.html">Tablature</A>
+ &nbsp; <B>  <A ID="tex2html150"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html152"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

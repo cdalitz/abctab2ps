@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>General structure</TITLE>
+<META NAME="description" CONTENT="General structure">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html100"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html102"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node4.html">Information fields</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node2.html">Version and history</A>
+ &nbsp; <B>  <A ID="tex2html101"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html103"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html104"
+  HREF="node3.html#SECTION00031000000000000000">Program options</A>
+<LI><A ID="tex2html105"
+  HREF="node3.html#SECTION00032000000000000000">abc input</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00030000000000000000">
+General structure</A>
+</H1>
+
+<P>
+
+<H2><A ID="SECTION00031000000000000000">
+Program options</A>
+</H2>
+<A NAME="837"></A>
+If the very first line of an abc file starts with the two magic 
+characters "%!", abctab2ps parses that line for command
+line options (see the man page for a detailed list of all possible 
+command line options). This can be useful for options which cannot
+be specified otherwise in the abc file, eg.
+
+<P><PRE>
+%!abctab2ps -noitaliantab -k 5 -tabsize 14 -paper letter
+</PRE>
+
+<P>
+On an older Macintosh, this is the only way to pass command line options
+to abctab2ps because old MacOs' ship without a command line.
+
+<P>
+Immediately after "%!", the program must follow for which the 
+options are intended. Currently only abctab2ps supports this
+feature, other programs will interpret this line as comment.
+
+<P>
+If the same option is specified both on the command line and
+in the first line of the abc file, the "%!"-line wins because
+it is interpreted <I>after</I> the command line.
+
+<P>
+
+<H2><A ID="SECTION00032000000000000000">
+abc input</A>
+</H2>
+Each abc input file can contain one or more <I>tunes</I>. Each tune
+starts with an "X:" (reference number) info field and is terminated by a 
+blank line or the end of the file. Thus, no blank lines are permitted 
+within a tune.
+
+<P>
+Each block describing one single tune is subdivided into a header and the
+musical data. The header consists of various info fields which specify
+things like title, composer, key signature and time signature.
+The header ends when the first musical information is encountered.
+(Remark: previously, and according to the standard abc specifications, the
+header ends with the K: (key) line, used to specify the key. However, most
+people are not conscious of this, leading to considerable confusion
+for multi-stave music. Therefore a new convention was used in abc2ps from
+version 1.3.3.)
+After the header, the music follows.
+
+<P>
+<A NAME="40"></A>
+A percentage sign (%) starts a comment and causes the 
+remainder of the line to be ignored. Comments may appear everywhere in 
+an abc file.
+
+<P>
+An example for a valid tune block is as follows:
+
+<P><PRE>
+X:1    % here begins a header
+T:Sample Tune
+M:4/4
+L:1/4
+K:C
+% here begins the music
+abcd | ABCD |
+abcd | ABCD |
+</PRE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html100"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html102"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node4.html">Information fields</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node2.html">Version and history</A>
+ &nbsp; <B>  <A ID="tex2html101"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html103"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

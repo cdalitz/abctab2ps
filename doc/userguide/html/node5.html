@@ -1,0 +1,525 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Music</TITLE>
+<META NAME="description" CONTENT="Music">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html112"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html114"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node6.html">Text</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node4.html">Information fields</A>
+ &nbsp; <B>  <A ID="tex2html113"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html115"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html116"
+  HREF="node5.html#SECTION00051000000000000000">Key and Clef</A>
+<LI><A ID="tex2html117"
+  HREF="node5.html#SECTION00052000000000000000">Pitch</A>
+<LI><A ID="tex2html118"
+  HREF="node5.html#SECTION00053000000000000000">Rhythm</A>
+<LI><A ID="tex2html119"
+  HREF="node5.html#SECTION00054000000000000000">Bars and repeats</A>
+<LI><A ID="tex2html120"
+  HREF="node5.html#SECTION00055000000000000000">Beams, ties and slurs, ligaturae</A>
+<LI><A ID="tex2html121"
+  HREF="node5.html#SECTION00056000000000000000">Graces and decorations</A>
+<LI><A ID="tex2html122"
+  HREF="node5.html#SECTION00057000000000000000">Chords</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00050000000000000000">
+Music</A>
+</H1>
+
+<P>
+
+<H2><A ID="SECTION00051000000000000000"></A>
+<A ID="sec:KeyAndClef"></A><A NAME="90"></A> <A NAME="91"></A>
+<A NAME="92"></A>
+<BR>
+Key and Clef
+</H2>
+Key and clef are usually specified in the K: field. In 
+multi stave music,multi stave music, (see section )
+sec:MultiStaveMusic the clef is specified in the V: field.
+For a key change inmidst a music line, use the inline version <code>[K:]</code>.
+
+<P>
+The general form of a K: field is:<PRE>
+K:&lt;key and mode&gt; &lt;global accidentals&gt; [clef=]&lt;clef and octave&gt;
+</PRE>
+
+<P>
+Every option in the K: field may be omitted, but the order must not
+be permutated. The meaning of the individual options is:
+<DL>
+<DT><STRONG>key and mode:</STRONG></DT>
+<DD>The key signature should be  specified  with  a 
+capital letter (major mode) which  may  be  followed  by  
+a  "#" or "b" for sharp or flat respectively. The mode determines
+the accidentals and can follow immediately after the key letter
+or with white spaces separated; possible mode names are 
+<I>maj(or)</I> (this is the default), <I>min(or), m(inor), ion(ian),
+mix(olydian), dor(ian), phr(ygian), lyd(ian), loc(rian), aeo(lian)</I>.
+Mode names are not case sensitive.
+<BR>
+When key and mode are omitted <I>C major</I> is assumed.
+</DD>
+<DT><STRONG>global accidentals:</STRONG></DT>
+<DD>Global accidentals are accidentals that
+always override key specific accidentals. For  example, "K:D =c"
+would write the key signature as two sharps (key of D) but then mark
+every c as natural  (which  is
+conceptually  the same as D mixolydian).  Note that the there can
+be several global  accidentals,  separated  by  spaces  and  each
+specified  with  an  accidental, __,  _, =, ^  or ^ ^ , 
+followed by a  letter  in  lower  case.  Global  accidentals  are
+overridden  by  accidentals  attached to notes within the body of
+the abc tune and are reset by each change of signature.
+</DD>
+<DT><STRONG>clef and octave:</STRONG></DT>
+<DD>The clef specification must be the last word
+in the key field. Optionally it may start with a "clef=" prefix.
+Classical Western music notation has only three clef signs (G, F
+and C) which can appear on different music lines. abctab2ps supports
+the following clef names: <I>treble</I> (G on line 2; this
+is the default), <I>treble8</I> (like <I>treble</I>, but with an "8" 
+printed below), <I>treble8up</I> (like <I>treble</I>, but with an "8" 
+printed above), <I>frenchviolin</I> (G on line 1), <I>bass</I> (F on line 4),
+<I>varbaritone</I> (F on line 3), <I>subbass</I> (F on line 5),
+<I>alto</I> (C on line 3), <I>tenor</I> (C on line 4), 
+<I>baritone</I> (C on line 5), <I>soprano</I> (C on line 1), 
+<I>mezzosoprano</I> (C on line 2).
+<BR>
+Optionally the clef may contain an appended octave modifier 
+(eg. "treble-8"), which changes the pitch interpretation (see next section).
+</DD>
+</DL>
+
+<P>
+
+<H2><A ID="SECTION00052000000000000000"></A>
+<A NAME="124"></A>
+<BR>
+Pitch
+</H2>
+Pitches are specified by the letters A-G and a-g, optionally followed
+by an apostrophe or a comma. Capital letters denote the lower octave
+on the staff. An apostrophe raises the pitch by one octave, a comma
+lowers the pitch by one octave. These codes are illustrated below:
+
+<P>
+<DIV class="CENTER">
+<IMG STYLE="" SRC="img1.png"
+ ALT="\includegraphics{sample1}">
+
+</DIV>
+
+<P>
+<A NAME="128"></A>
+Note how the clef influences the default octave. 
+The default octave can be lowered or raised with the modifier "-8" or
+"+8" after the clef in the K: field, e.g. "K:D treble-8". To reset
+the octave modifier, use "[K:treble+0]".
+
+<P>
+<A NAME="129"></A> <A NAME="130"></A> <A NAME="131"></A> <A NAME="132"></A>
+The symbols =,^  and _  are  used  (before  a  note)  to  generate
+respectively a natural, sharp or flat. 
+Double sharps and flats are available with ^ ^  and __ respectively.
+
+<P>
+
+<H2><A ID="SECTION00053000000000000000"></A>
+<A ID="sec:MusicRhythm"></A><A NAME="138"></A>
+<BR>
+Rhythm
+</H2>
+By default, a letter generates a note with the default length,
+specified in the L: info field. If a the letter is followed by /
+or /2, the length is halved. If the letter is followed by an integer,
+the length is multiplied. Both modifiers can be combined, so that
+the multiplier 3/2 produces a dot.
+
+<P>
+<DIV class="CENTER">
+<IMG STYLE="" SRC="img2.png"
+ ALT="\includegraphics{sample2}">
+
+</DIV>
+
+<P>
+<A NAME="142"></A> For dotted rhythms 
+there is a shorthand notation: "<code>&gt;</code>" means
+`the previous note is dotted, the next note halved' and "<code>&lt;</code>" means
+`the previous note is halved, the next dotted'. Similarly, "<code>&gt;&gt;</code>"
+and "<code>&lt;&lt;</code>" can be used for double dotting.
+
+<P>
+<A NAME="143"></A>
+Rests are generated with a <I>z</I> and can be modified in 
+length  in exactly the same way as notes can.
+
+<P>
+<DIV class="CENTER">
+<IMG STYLE="" SRC="img3.png"
+ ALT="\includegraphics{sample3-edited}">
+
+</DIV>
+
+<P>
+<A NAME="148"></A>
+Invisible rests are generated with a <I>x</I>. These count like regular 
+rests, but they are not printed. This can be useful in multistave 
+music, eg. if one voice has a longer pickup than another voice.
+
+<P>
+<A NAME="150"></A>
+Multi bar rests are generated with a capital <I>Z</I> followed by the
+number of bars. When using bar numbering (command line option &ldquo;-k&rdquo; or
+format parameter <I>%%barnumbers</I>), abctab2ps takes care of multi bar
+rests.
+
+<P>
+<A NAME="153"></A> Triplets can be simply coded with the notation "(3abc".
+Similarly, "(2ab" makes a duplet, "(4abcd" a quadruplet, etc., 
+up to "(9". The musical meanings are:
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT">Notation</TD>
+<TD CLASS="LEFT">Meaning</TD>
+</TR>
+<TR><TD CLASS="LEFT">(2</TD>
+<TD CLASS="LEFT">2 notes in the time of 3</TD>
+</TR>
+<TR><TD CLASS="LEFT">(3</TD>
+<TD CLASS="LEFT">3 notes in the time of 2</TD>
+</TR>
+<TR><TD CLASS="LEFT">(4</TD>
+<TD CLASS="LEFT">4 notes in the time of 3</TD>
+</TR>
+<TR><TD CLASS="LEFT">(5</TD>
+<TD CLASS="LEFT">5 notes in the time of n</TD>
+</TR>
+<TR><TD CLASS="LEFT">(6</TD>
+<TD CLASS="LEFT">6 notes in the time of 2</TD>
+</TR>
+<TR><TD CLASS="LEFT">(7</TD>
+<TD CLASS="LEFT">7 notes in the time of n</TD>
+</TR>
+<TR><TD CLASS="LEFT">(8</TD>
+<TD CLASS="LEFT">8 notes in the time of 3</TD>
+</TR>
+<TR><TD CLASS="LEFT">(9</TD>
+<TD CLASS="LEFT">9 notes in the time of n</TD>
+</TR>
+</TABLE>
+</DIV>
+If the time signature is compound (3/8, 6/8, 9/8, 3/4, etc.) then
+<I>n</I> is three, otherwise <I>n</I> is two.
+
+<P>
+<A NAME="161"></A>
+More general tuplets can be specified using the syntax <I>(p:q:r</I>
+which  means `put <I>p</I> notes into the time of <I>q</I> for the next <I>r</I>
+notes'. If <I>q</I>  is not given, it defaults as above. If <I>r</I> is not
+given,  it  defaults  to <I>p</I>.  For example, "(3:2:2" is equivalent to
+"(3::2" and "(3:2:3" is equivalent to "(3:2", "(3" or even 
+"(3::". This
+can  be  useful  to  include  notes of different lengths within a
+tuplet, for example "(3:2:2G4c2" or "(3:2:4G2A2Bc" and also describes
+more precisely how the simple syntax works in cases like "(3D2E2F2"
+or even "(3D3EF2". The number written over the tuplet is <I>p</I>.
+
+<P>
+<A NAME="170"></A> <A NAME="171"></A>
+The notation of nonmetric music like plainchant requires <I>stemless notes</I>.
+These can be enforced with the format parameter <I>%%nostems</I>.
+Note that notes still have lengths, so that it is in principle possible
+to notate nonmetric music with more than one part (like medieval organa).
+To adjust the notes vertically, use invisible rests (<I>x</I>). Invisible
+rests can also be used for separating note groups in monophonic stemless
+notation.
+
+<P>
+
+<H2><A ID="SECTION00054000000000000000"></A>
+<A NAME="176"></A> <A NAME="177"></A> <A NAME="178"></A>
+<BR>
+Bars and repeats
+</H2>
+Bar lines are specified with a "<code>|</code>". abctab2ps does no 
+plausibility check whether a bar is over or underfull, so you can 
+put bar lines where you please. The following symbols are supported:
+
+<P>
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT">Notation</TD>
+<TD CLASS="LEFT">Meaning</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>|</code></TD>
+<TD CLASS="LEFT">bar line</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>|]</code></TD>
+<TD CLASS="LEFT">thin-thick double bar line</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>||</code></TD>
+<TD CLASS="LEFT">thin-thin double bar line</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>[|</code></TD>
+<TD CLASS="LEFT">thick-thin double bar line</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>:|</code></TD>
+<TD CLASS="LEFT">left repeat</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>|:</code></TD>
+<TD CLASS="LEFT">right repeat</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>::</code></TD>
+<TD CLASS="LEFT">left-right repeat</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>[|]</code></TD>
+<TD CLASS="LEFT">invisible bar line</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+Invisible bars lines are workarounds if you need labels on the
+first bar or put a line break in the middle of a bar.
+
+<P>
+First and second repeats can be generated with the symbols "<code>[1</code>" 
+and "<code>[2</code>",  e.g.<PRE>
+faf gfe|[1 dfe dBA:|[2 d2e dcB|]
+</PRE>
+When adjacent to bar lines, these can be shortened to 
+"<code>|1</code>" and "<code>:|2</code>", but with  regard  to
+spaces, i.e. "<code>| [1</code>" is legal, "<code>| 1</code>" is not.
+If you want a dot after the number in first and second repeats, use
+the format parameter <I>%%endingdots</I>.
+
+<P>
+
+<H2><A ID="SECTION00055000000000000000"></A>
+<A NAME="190"></A>
+<BR>
+Beams, ties and slurs, ligaturae
+</H2>
+To group notes together under one beam  they  should  be  grouped
+together without spaces. Thus in 2/4, "A2BC" will produce an eighth
+note followed by two sixteenth notes under one beam whilst "A2 B C"
+will  produce  the  same notes separated. It is possible to put 
+rests (z) under a beam, e.g "aza". The beam slopes and the
+choice of upper or lower staffs are generated automatically.
+
+<P>
+<A NAME="191"></A> <A NAME="192"></A>
+You can tie two notes together either across or within a bar with
+a  "-" symbol, e.g. "<code>abc-|cba</code>" or "<code>abc-cba</code>". 
+More general slurs can be put in with "()" symbols.  Thus "(DEFG)" 
+puts a slur  over  the  four notes.  Spaces within a slur are ok, e.g. 
+"(D E F G)", but the open bracket  should  come  immediately  
+before a note (and its accents/accidentals,  etc.)  and  the  close  
+bracket should come immediately after a note (and its octave 
+marker or length).  Thus "(=b c'2)" is correct but ( =b c'2 ) is not.
+
+<P>
+To abctab2ps, slurs outside chords and slurs within chords are 
+different kinds of animals. A slur outside of chord brackets always
+applies to the top notes of the enclosed chords and it may span
+several notes. A slur within chord brackets however must be 
+closed in the immediately following chord. E.g. in order to
+tie the top note of a chord to the next single note, you may write
+"([afd] b)" or "[(afd] [b)]", but not "[(afd] b)" (in the last
+version, the slur is opened inside chord but closed outside which
+is not allowed).
+
+<P>
+<A NAME="193"></A>
+In transcriptions of mensural notation into common music notation
+<I>ligaturae</I> are often indicated by square brackets. This is possible
+with the pseudocomment <I>%%slurisligatura</I>, which prints ligatura
+brackets instead of slurs. Note that this only applies to slurs outside
+chords and not to ties.
+
+<P>
+
+<H2><A ID="SECTION00056000000000000000"></A>
+<A NAME="197"></A> <A NAME="198"></A> <A NAME="199"></A> <A NAME="200"></A>
+<A NAME="201"></A>
+<A NAME="202"></A> <A NAME="203"></A> <A NAME="204"></A>
+<A NAME="205"></A> <A NAME="206"></A> <A NAME="207"></A> <A NAME="208"></A>
+<BR>
+Graces and decorations
+</H2>
+Grace notes can be written by enclosing them in curly braces (<code>{}</code>):
+
+<P>
+<DIV class="CENTER">
+<IMG STYLE="" SRC="img4.png"
+ ALT="\includegraphics{sample4a}">
+
+</DIV>
+
+<P>
+The first two examples show the meaning of grace notes according to the 
+abc standard, which specifies that grace notes have no explicit time values
+and the following meaning:
+
+<UL>
+<LI>A single grace note is an accacciatura
+  (see the second example above). In <EM>abctab2ps</EM>, the stroke through
+  the flag can optionally be suppressed with the format parameter 
+  <EM>%%nogracestroke</EM>.
+</LI>
+<LI>Multiple grace notes are drawn as beamed sixteenth notes.
+</LI>
+</UL>
+This does not allow for the notation of long appoggiaturas. To overcome this
+limitation, <EM>abctab2ps</EM> allows for a length specifier in the grace notes
+(see the third example above).
+The length applies to all grace notes within the same pair of braces; when 
+more than one length is specified, the last length holds (see the last example
+above).
+
+<P>
+When the following note is a chord, appogiaturas and accacciaturas
+are tied to the first note given in the chord.
+
+<P>
+Other decorations are indicated either by a magic character (e.g. "T" for a
+trill) or by their name in exclamation marks (e.g. "!trill!").
+The decoration signs must appear immediately before a note, e.g.
+"TG" or "!trill!G" for a trill above middle G. If notes are grouped in chords,
+the decoration sign must appear outside and immediately before the chord.
+abctab2ps currently supports the following decorations:
+
+<P>
+<DIV class="CENTER">
+<IMG STYLE="" SRC="img5.png"
+ ALT="\includegraphics{sample4b}">
+
+</DIV>
+
+<P>
+
+<H2><A ID="SECTION00057000000000000000"></A>
+<A NAME="221"></A> <A NAME="222"></A>
+<BR>
+Chords
+</H2>
+Chords (i.e. more than one note head on a  single  stem)  can  be
+coded  with brackets ([]) around the notes, e.g. "[CEGc]" produces the
+chord  C  major.  They  can  be  grouped   in   beams,   e.g.
+"[d2f2][ce][df]" but there should be no spaces within a chord.
+A chord with two identical notes makes a unison (one head
+with stems going both up and down), eg: "[AA]".
+
+<P>
+<SPAN ID="txt223">Important notice:</SPAN> The old style chord notation with
+plus signs, eg. "+ac+", which was an undocumented non standard abc 
+feature of <I>abc2ps</I> is no longer supported in abctab2ps.
+
+<P>
+The abc notation formally permits notes with different durations 
+on the same stem: "[a/bc2]" and so on. However, abctab2ps assigns all
+notes in a chord the duration of the first note in the bracket.
+If you are looking for <I>polyphonie</I>, see the remark on 
+abcm2psabcm2ps in section sec:PolyphonicMusic.
+
+<P>
+Slurs and ties within chords are possible:
+<BLOCKQUOTE>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT"><code>[(a(b] [c)d)]</code></TD>
+<TD CLASS="LEFT">slurs a to c, b to d</TD>
+</TR>
+<TR><TD CLASS="LEFT"><code>[a-b] [ac]</code></TD>
+<TD CLASS="LEFT">ties a to a</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html112"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html114"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node6.html">Text</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node4.html">Information fields</A>
+ &nbsp; <B>  <A ID="tex2html113"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html115"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

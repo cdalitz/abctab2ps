@@ -1,0 +1,813 @@
+%!PS-Adobe-3.0 Resource-Font
+%-----------------------------------------------
+% Font for German tablature in abctab2ps
+% emulating a historic Fraktur font
+% Copyright (c) 2007 Michael Burzan and Christoph Dalitz
+
+%%BeginResource: font GermanTabfont
+/detabfont 15 dict def
+detabfont begin
+/M { moveto } bind def
+/L { lineto } bind def
+/dePenend [ -2 -2 ] def % lower end of pen
+/dePl { % penlineto - usage like lineto
+  currentpoint 4 2 roll % save startpoint
+  lineto
+  currentpoint 4 2 roll % save targetpoint
+  dePenend 0 get dePenend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll dePenend 0 get add
+  2 1 roll dePenend 1 get add
+  lineto
+  dePenend 0 get neg dePenend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+  } def
+/dePc {
+	6 copy currentpoint 8 2 roll   % save position and arguments
+	curveto
+        currentpoint 10 2 roll % save targetpoint
+        dePenend 0 get dePenend 1 get rlineto
+        % compute parameters for parallel line
+        4 2 roll pop pop 4 2 roll 6 2 roll
+        3 {
+        	6 5 roll dePenend 0 get add
+                6 5 roll dePenend 1 get add
+          } repeat
+        curveto
+        dePenend 0 get neg dePenend 1 get neg rlineto
+        eofill moveto % fill and move to targetpoint
+} def
+  
+
+
+/FontType 3 def
+
+% helper functions
+
+% chars are defined in 20x20 System
+/FontBBox [0 -5 20 20] def
+/FontMatrix [0.05 0 0 0.05 0 0 ] def
+
+% pen definitions for different font types
+/Timespen [ -2 -2 ] def   % letters in frenchtab
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+Encoding
+% function names: c5f0 = course 5, fret 0 etc.
+% courses 5-1
+dup  32 /c5f0 put
+dup  33 /c4f0 put
+dup  34 /c3f0 put
+dup  35 /c2f0 put
+dup  36 /c1f0 put
+dup  37 /c5f1 put
+dup  38 /c4f1 put
+dup  39 /c3f1 put
+dup  40 /c2f1 put
+dup  41 /c1f1 put
+dup  42 /c5f2 put
+dup  43 /c4f2 put
+dup  44 /c3f2 put
+dup  45 /c2f2 put
+dup  46 /c1f2 put
+dup  47 /c5f3 put
+dup  48 /c4f3 put
+dup  49 /c3f3 put
+dup  50 /c2f3 put
+dup  51 /c1f3 put
+dup  52 /c5f4 put
+dup  53 /c4f4 put
+dup  54 /c3f4 put
+dup  55 /c2f4 put
+dup  56 /c1f4 put
+dup  57 /c5f5 put
+dup  58 /c4f5 put
+dup  59 /c3f5 put
+dup  60 /c2f5 put
+dup  61 /c1f5 put
+dup  62 /c5f6 put
+dup  63 /c4f6 put
+dup  64 /c3f6 put
+dup  65 /c2f6 put
+dup  66 /c1f6 put
+dup  67 /c5f7 put
+dup  68 /c4f7 put
+dup  69 /c3f7 put
+dup  70 /c2f7 put
+dup  71 /c1f7 put
+dup  72 /c5f8 put
+dup  73 /c4f8 put
+dup  74 /c3f8 put
+dup  75 /c2f8 put
+dup  76 /c1f8 put
+dup  77 /c5f9 put
+dup  78 /c4f9 put
+dup  79 /c3f9 put
+dup  80 /c2f9 put
+dup  81 /c1f9 put
+dup  82 /c5f10 put
+dup  83 /c4f10 put
+dup  84 /c3f10 put
+dup  85 /c2f10 put
+dup  86 /c1f10 put
+% course 6 in brummerstyle 'ABC'
+dup 128 /c6f0_ABC put
+dup 129 /c6f1_ABC put
+dup 130 /c6f2_ABC put
+dup 131 /c6f3_ABC put
+dup 132 /c6f4_ABC put
+dup 133 /c6f5_ABC put
+dup 134 /c6f6_ABC put
+dup 135 /c6f7_ABC put
+dup 136 /c6f8_ABC put
+dup 137 /c6f9_ABC put
+dup 138 /c6f10_ABC put
+% course 6 in brummerstyle '1AB'
+dup 144 /c6f0_1AB put
+dup 145 /c6f1_1AB put
+dup 146 /c6f2_1AB put
+dup 147 /c6f3_1AB put
+dup 148 /c6f4_1AB put
+dup 149 /c6f5_1AB put
+dup 150 /c6f6_1AB put
+dup 151 /c6f7_1AB put
+dup 152 /c6f8_1AB put
+dup 153 /c6f9_1AB put
+dup 154 /c6f10_1AB put
+% course 6 in brummerstyle '123'
+dup 160 /c6f0_123 put
+dup 161 /c6f1_123 put
+dup 162 /c6f2_123 put
+dup 163 /c6f3_123 put
+dup 164 /c6f4_123 put
+dup 165 /c6f5_123 put
+dup 166 /c6f6_123 put
+dup 167 /c6f7_123 put
+dup 168 /c6f8_123 put
+dup 169 /c6f9_123 put
+dup 170 /c6f10_123 put
+
+
+% drawing procedures
+/drawchar 50 dict def
+drawchar begin
+  /.notdef {} def
+
+  % courses 5-1
+  /c5f0 { %eins
+    7 13 M 9 15 12 16 13 16 dePc
+    13 16 M 13 4 dePl
+  newpath
+    11 3 M
+    11 0 lineto
+    13 4 lineto
+   closepath  fill
+
+  } def
+  /c4f0 { % zwei
+    9 4 M 16 10   11 14  8 12 dePc     
+    9 4 M 12 6 14 6 16 4 dePc
+    14 5 M 15 4 16 4 17 6 dePc
+  } def
+  /c3f0 { % drei
+   	7 16 M 10 17 12 15 14 16 dePc
+        1 setlinewidth
+	8 10 M 14 15 lineto stroke
+        8 11 M 13 11 14 10 14 9 dePc
+        14 9 M 15 7 14 5 13 4 dePc
+        11 2 M 9 3 8 3 7 2 dePc
+  } def
+  /c2f0 { %vier
+    14 16 M 14 12 14 6 14 2 dePc
+    6.5 7 M  16 7 dePl
+    15 7 M 16 7 16.5 8.5 16 8 dePc
+    5 5 M 4 5 lineto stroke
+    4 5 M 13.9 17 lineto stroke
+    14 17 M 13.9 16 lineto stroke
+    13.9 16 M 5 5 lineto stroke
+    newpath
+    5 5 M 4 5 lineto 13.9 17 lineto 13.9 16 lineto 5 5 lineto
+    closepath
+    fill
+  } def
+  /c1f0 { %fuenf 
+    9 17 M 17 17 dePl
+    9 17 M 8 11 dePl
+    8 11 M 19 10  13 0  8 2  dePc      
+  } def
+  /c5f1 { % a
+       10 12.5 M 12 11.5 13 11.5 14 12 dePc
+       14 6 dePl 15 4 16 4 17 6  dePc
+       10 12.5 M 7 9  7 7 10 4 dePc  11 5 12 6 13 7 dePc
+  } def
+  /c4f1 { % b 
+    9 18 M 8 17.5  8 16.5 8 16 dePc
+    8 5 dePl 10 2 dePl
+    13 13 M 14 12 16 8 10 2 dePc
+    13 13 M  12 12.5 11 12 9 7 dePc
+  } def
+  /c3f1 { % c
+      9 12 M 8 10  8 3 11 4 dePc
+      10 13 M 11.5 12 12.5 12 13 13 dePc
+  } def
+  /c2f1 { %d
+	10 16 M 8 14 8 12 12 10 dePc
+	16 8 16 6 14 2 dePc
+        7 2.5   7 7  11 11 dePc	
+  } def
+  /c1f1 { % e
+     9 14 M 8 10 8 3 11 4 dePc
+     10 15 M 11.5 13 12.5 13 14 14 dePc
+     1 setlinewidth
+     8 7 M 13 13 lineto stroke
+  } def
+  /c5f2 { %f
+    15 15 M 10  17  10  17  9 15 dePc
+    9 15 M  9 14  9 10  9 5  dePc
+    7 10 M 10 11  12 9  13 10 dePc
+ newpath 
+    7 4 M 
+    7 0 lineto    
+    9 5 lineto 
+    closepath  fill 
+  } def
+  /c4f2 { %g
+    14 17 M 13  13   15 10 14 7 dePc
+    14 7 M 12 1.5   9 1.5   7 7 dePc
+    10 17.5 M 12 16.5 13 16.5 14 17 dePc
+    10 17.5 M 6.5 14  6.5 11    10 8 dePc
+    10 8 M 11 9     12 11   12.5  12  dePc
+
+  } def
+  /c3f2 {%h
+    8 17 M 8 5 dePl
+    8 9 M 8 11 8 17  9 18 dePc
+    13 13 M 16 11 16 9    13  2 dePc
+    9 9 M 9 10 11 12 13 13 dePc
+  } def
+  /c2f2 {% i
+     10 15 M 11 15 10.5 12.5 10 13 dePc
+     7 10 M  9 11 dePl 10.5 9.5 dePl
+     10 9.5 M 10 4 dePl 
+     11 3  12 3 13 5 dePc
+  } def
+  /c1f2 { %k
+        9.6 18 M 8.6 17 8.6 16 8.6 15 dePc
+        8.6 15 M 8.6 5 dePl
+        8.6 7 M 8.6 2 10.6 2 11.6 3 dePc
+        7.6 10 M 10.6 11  12.6 9  13.6 10 dePc
+        12 16 M 11 15.5 13 13 12 12 dePc
+  } def
+  /c5f3 { % l
+    8 13 M 8 5 dePl
+    8 6 M 8 2  13 2 15 3 dePc 
+    8 13 M 10 14 12 14 14 13 dePc 
+    15 11 14 10 13 9 dePc
+    10 8 8 7 6 6 dePc
+  } def
+  /c4f3 { % m
+    5 13 M 6 13 7 12 7 11 dePc 
+    7 11 M 7 5 dePl 
+    7.5 5 7.5 4 8 4 dePc
+    7 11 M 10 13 dePl 
+    10 13 M
+    11 11 dePl
+    11 5 dePl 
+    11.5 4 11.5 4 12 4 dePc
+    11 11 M 14 13 dePl 
+    15 11 dePl 15 5 dePl
+    15.5 4 15.5 4 16 4 dePc 
+    16 4 16.5 4 17 4.5 dePc
+  } def
+  /c3f3 { % n
+    6 13 M 7 13 8 12 8 11 dePc
+    8 11 M 8 5 dePl 8.5 5 8.5 4 9 4 dePc
+    8 11 M 11 13 dePl 14 12 dePl 14 6 dePl
+    14.5 4 14.5 4 15 4 dePc 15 4 16 4 17 5 dePc
+  } def
+  /c2f3 { %o 
+   8 12.5 M 8  6 dePl 10 4 dePl
+   16.5 6      14 11      10 15 dePc
+  } def
+  /c1f3 {% p
+    8 15 M 7 14 7 13 7 12 dePc
+    7 12 M 8 10 8 9 8 8 dePc
+    8 8 M 8 2 8 1 8 -1 dePc
+    13 4 M 9 4  7 5  6 4 dePc  
+    12 12 M 14.5 9 14.5 7 13 4 dePc
+    1 setlinewidth 7 7 M 12 12 lineto stroke 	
+  } def
+  /c5f4 { %q
+    10 14.5 M 12 13.5 13 13.5 14 14 dePc
+    10 14.5 M 6.5 11  6.5 8    10 3.5 dePc
+    10 3.5 M 10 4     11 4.5   12  6  dePc 
+    14 14 M 14 -1 dePl
+  } def
+  /c4f4 { %r 
+    8 12 M 9 12 10 11 10 10 dePc
+    10 10 M 10 5 dePl 10.5 5 10.5 4 11 4 dePc
+    10 10 M 12 11.5 dePl 13 12 14 12 15 11 dePc
+  } def
+  /c3f4 { %s
+    8 12 M 9 8.5 dePl 13 10.5 dePl 15 10 15 8 14 6 dePc
+    6 4 M 9 6 10 5 12 4 dePc 10 14 M 12 13.5 13 13.5 15 14 dePc
+  } def
+  /c2f4 {%t 
+        10 15 M 9 14  10 13 9 12 dePc
+        9 13 M 9 5 dePl
+        9 7 M 9 2 11 2 12 3 dePc
+        7 11 M 11 13 13 9  14 11 dePc
+  } def
+  /c1f4 {%v
+    8 16 M 7 15 7 14 7 13 dePc
+    7 13 M 8 12.5 8 12.5  8 12 dePc
+    8 12 M 8 7 dePl 10 4 dePl
+    13 15 M  14.5 12 14.5 8 10 4 dePc
+    13 15 M  12 14.5 11 14 8 9 dePc
+  } def
+  /c5f5 { %x 
+    8 15 M 9 15 10 14 10 13 dePc
+    10 13 M 10 8 dePl 10.5 8 10.5 7 12 6 dePc
+    10 13 M 12 14.5 dePl 13 15 14 15 15 14 dePc
+    10 10 M 9 7 8 4   6 2 dePc     
+  } def
+  /c4f5 { %y
+     7 15 M  11 6 dePl
+     12 14.5  M 16 14.5 11 6 8 2 dePc
+     10 12 M 10.5 13.5 11 14.5 12 14.5 dePc
+  } def
+  /c3f5 { % z
+ 	7 10 M 15 7 12 4 11 2 dePc
+        8 0 8 6 9 7 dePc
+        9 17 M  7 16 7 15 9 14 dePc
+        11 13 11 12   10.5 11.5 dePc
+  } def
+  /c2f5 { % et
+	7 14 M 14.5 14 dePl
+        9 8   8 3  14.5 4 dePc
+        7 8 M 14.5 8 dePl
+  } def
+  /c1f5 { %con
+	9 16 M 15 18  17 9  10 2 dePc 
+        9 16 M 8 16  5 9     12.5 7.5 dePc
+ } def
+  /c5f6 { %a mit Kurve
+       10 12.5 M 12 11.5 13 11.5 14 12 dePc
+       14 6 dePl 15 4 16 4 17 6  dePc
+       10 12.5 M 7 9  7 7 10 4 dePc  11 5 12 6 13 7 dePc
+       1.0 setlinewidth 4.5 12.5 moveto 2 2 9 2 11 0 rcurveto stroke
+
+  } def
+  /c4f6 { % b mit Kurve
+    9 18 M 8 17.5  8 16.5 8 16 dePc
+    8 5 dePl 10 2 dePl
+    13 13 M 14 12 16 8 10 2 dePc
+    13 13 M  12 12.5 11 12 9 7 dePc
+    1.0 setlinewidth 4.5 18 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f6 { %c mit Kurve
+         9 12 M 8 10  8 3 11 4 dePc
+	 10 13 M 11.5 12 12.5 12 13 13 dePc
+         1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f6 { %d mit Kurve 
+        10 16 M 8 14 8 12 12 10 dePc
+        16 8 16 6 14 2 dePc
+        7 2.5   7 7  11 11 dePc
+        1.0 setlinewidth 4.5 17 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f6 { % e mit Kurve
+     9 14 M 8 10 8 3 11 4 dePc
+     10 15 M 11.5 13 12.5 13 14 14 dePc
+     1 setlinewidth 8 7 M 13 13 lineto stroke
+     1.0 setlinewidth 4.5 15.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f7 { % f mit Kurve
+    15 15 M 10  17  10  17  9 15 dePc
+    9 15 M  9 14  9 10  9 5  dePc
+    7 10 M 10 11  12 9  13 10 dePc
+    newpath
+    	7 4 M
+    	7 0 lineto
+   	 9 5 lineto
+    closepath  fill
+    1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f7 { %g mit Kurve
+    14 17 M 13  13   15 10 14 7 dePc
+    14 7 M 12 1.5   9 1.5   7 7 dePc
+    10 17.5 M 12 16.5 13 16.5 14 17 dePc
+    10 17.5 M 6.5 14  6.5 11    10 8 dePc
+    10 8 M 11 9     12 11   12.5  12  dePc
+    1.0 setlinewidth 4.5 17 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f7 { % h mit Kurve
+    8 17 M 8 5 dePl
+    8 9 M 8 11 8 17  9 18 dePc
+    13 13 M 16 11 16 9    13  2 dePc
+    9 9 M 9 10 11 12 13 13 dePc
+    1.0 setlinewidth 4.5 17.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f7 { % i mit Kurve
+     10 15 M 11 15 10.5 12.5 10 13 dePc
+     7 10 M  9 11 dePl 10.5 9.5 dePl
+     10 9.5 M 10 4 dePl 
+     11 3  12 3 13 5 dePc
+     1.0 setlinewidth 4.5 15 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f7 { % k mit Kurve
+    9.6 18 M 8.6 17 8.6 16 8.6 15 dePc
+    8.6 15 M 8.6 5 dePl
+    8.6 7 M 8.6 2 10.6 2 11.6 3 dePc
+    7.6 10 M 10.6 11  12.6 9  13.6 10 dePc
+    12 16 M 11 15.5 13 13 12 12 dePc
+    1.0 setlinewidth 4.5 17 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f8 { % l mit Kurve
+    8 13 M 8 5 dePl
+    8 6 M 8 2  13 2 15 3 dePc
+    8 13 M 10 14 12 14 14 13 dePc
+    15 11 14 10 13 9 dePc
+    10 8 8 7 6 6 dePc
+    1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f8 { % m mit kurve 
+    5 13 M 6 13 7 12 7 11 dePc 
+    7 11 M 7 5 dePl 
+    7.5 5 7.5 4 8 4 dePc
+    7 11 M 10 13 dePl 
+    10 13 M
+    11 11 dePl
+    11 5 dePl 
+    11.5 4 11.5 4 12 4 dePc
+    11 11 M 14 13 dePl 
+    15 11 dePl 15 5 dePl
+    15.5 4 15.5 4 16 4 dePc 
+    16 4 16.5 4 17 4.5 dePc
+    1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f8 { % n mit kurve
+    6 13 M 7 13 8 12 8 11 dePc
+    8 11 M 8 5 dePl 8.5 5 8.5 4 9 4 dePc
+    8 11 M 11 13 dePl 14 12 dePl 14 6 dePl
+    14.5 4 14.5 4 15 4 dePc 15 4 16 4 17 5 dePc
+    1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f8 { % o mit Kurve
+   8 12.5 M 8  6 dePl 10 4 dePl
+   16.5 6      14 11      10 15 dePc
+   1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f8 { % p mit kurve
+     8 15 M 7 14 7 13 7 12 dePc
+     7 12 M 8 10 8 9 8 8 dePc
+     8 8 M 8 2 8 1 8 -1 dePc
+     13 4 M 9 4  7 5  6 4 dePc  
+     12 12 M 14.5 9 14.5 7 13 4 dePc
+     1  setlinewidth
+     7 7 M 12 12 lineto stroke 	
+     1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f9 { % q mit kurve
+    10 14.5 M 12 13.5 13 13.5 14 14 dePc
+    10 14.5 M 6.5 11  6.5 8    10 3.5 dePc
+    10 3.5 M 10 4     11 4.5   12  6  dePc 
+    14 14 M 14 -1 dePl
+    1.0 setlinewidth 4.5 14.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f9 { % r mit kurve
+    8 12 M 9 12 10 11 10 10 dePc
+    10 10 M 10 5 dePl 10.5 5 10.5 4 11 4 dePc
+    10 10 M 12 11.5 dePl 13 12 14 12 15 11 dePc
+    1.0 setlinewidth 4.5 13.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f9 { % s mit kurve
+    8 12 M 9 8.5 dePl 13 10.5 dePl 15 10 15 8 14 6 dePc
+    6 4 M 9 6 10 5 12 4 dePc 10 14 M 12 13.5 13 13.5 15 14 dePc
+    1.0 setlinewidth 4.5 15.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f9 { % t mit kurve
+    	10 15 M 9 14  10 13 9 12 dePc
+        9 13 M 9 5 dePl
+        9 7 M 9 2 11 2 12 3 dePc
+        7 11 M 11 13 13 9  14 11 dePc
+    	1.0 setlinewidth 4.5 15 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f9 { % v mit kurve
+    8 16 M 7 15 7 14 7 13 dePc
+    7 13 M 8 12.5 8 12.5  8 12 dePc
+    8 12 M 8 7 dePl 10 4 dePl
+    13 15 M  14.5 12 14.5 8 10 4 dePc
+    13 15 M  12 14.5 11 14 8 9 dePc
+    1.0 setlinewidth 4.5 16 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c5f10 { % x mit kurve
+    8 15 M 9 15 10 14 10 13 dePc
+    10 13 M 10 8 dePl 10.5 8 10.5 7 12 6 dePc
+    10 13 M 12 14.5 dePl 13 15 14 15 15 14 dePc
+    10 10 M 9 7 8 4   6 2 dePc
+    1.0 setlinewidth 4.5 16.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c4f10 { % y mit kurve
+     7 15 M  11 6 dePl
+     12 14.5  M 16 14.5 11 6 8 2 dePc
+     10 12 M 10.5 13.5 11 14.5 12 14.5 dePc
+	1.0 setlinewidth 4.5 15.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c3f10 { % z mit kurve
+ 	7 10 M 15 7 12 4 11 2 dePc
+        8 0 8 6 9 7 dePc
+        9 17 M  7 16 7 15 9 14 dePc
+        11 13 11 12   10.5 11.5 dePc
+        1.0 setlinewidth 4.5 17 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c2f10 { % et mit kurve
+        7 14 M 14.5 14 dePl
+        9 8   8 3  14.5 4 dePc
+        7 8 M 14.5 8 dePl
+        1.0 setlinewidth 4.5 15.5 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  /c1f10 { % con mit kurve
+        9 16 M 15 18  17 9  10 2 dePc 
+        9 16 M 8 16  5 9     12.5 7.5 dePc        
+     	1.0 setlinewidth 4.5 17 moveto 2 2 9 2 11 0 rcurveto stroke
+  } def
+  % course 6 in brummerstyle 'ABC'
+  /c6f0_ABC {% A
+        5 16 M 11 19 11 7 5 2   dePc
+        7 4 9 2 10 2 dePc
+	13 17 M 12 13    12 1  15 2 dePc 
+        10 2 M 10.5 4 11.5 4.5 12 5 dePc 
+  } def
+  /c6f1_ABC { % B
+    6 16 M 12 13   9 4 5 2 dePc 
+    7 4  11 1  15 3 dePc 
+    17 5   17 12  10 10 dePc
+    13 18 M  11 17 11 16 13 15 dePc
+    15 14 15 13   14.5 12.5 dePc
+    13 18 M 12 17 11 16 10 15  dePc 
+  } def
+  /c6f2_ABC { % C
+   8 17 M  4 10  8 1 17 2 dePc 
+   12 16.5 M 10 14.5  14 11.5 12 8.5 dePc 
+   12 16.5 M 13 15 15 15 17 16.5 dePc 
+ } def
+  /c6f3_ABC { % D
+   	5 17.5 M 6 15.5 7 15.5  13 15.5 dePc
+        19 13  19 7  15 3 dePc
+        5 2 M 10 4  13 1 15 3 dePc
+        9 12.5 M 7 9.5 11 6.5  8 4.5 dePc
+  } def
+  /c6f4_ABC { % E
+ 	  8 17 M  4 10  8 1 17 2 dePc
+  	  12 16.5 M 10 14.5  14 11.5 12 8.5 dePc
+  	  12 16.5 M 13 15 15 15 17 16.5 dePc
+          14 10 M 15 11 16 11 17 10 dePc
+  } def
+  /c6f5_ABC { % F
+   10 16.5 M 12 18.5 13 18.5 15 16.5 dePc
+   10 16.5 M 9 13   12 6    10 4 dePc 
+   10 4 M 8 1 8 1 6 3 dePc
+   7.5 10 M 13 10 dePl
+  } def
+  /c6f6_ABC { % G
+       7 17 M  3 10  5 1 14 2 dePc
+       16 4 19 10 12 10 dePc
+       14 12 16 14 18 16 dePc
+       16 15  14 15  10 16  dePc
+       8 14 12 12 10 10 dePc 
+  } def
+  /c6f7_ABC { % H
+    8  17  M  7  13   9  10    7 6 dePc
+    8  17  M  10 16 13 16 15 17.5 dePc
+    10 12 M  16 16   19 9  14 4 dePc
+    12 2 M 11 0  13 0   15 2  curveto stroke
+    5 3 M 6 4  7 4 8 3 dePc
+  } def
+  /c6f8_ABC { % I
+    7 16.5 M 5 14.5 9 12.5 7 10.5 dePc
+    7 16.5 M 8 18.5  15 16.5  17 17.5 dePc
+    16.5 16 M  14 13  18 8 15 5 dePc 
+    12.5 3 M  12 2  10 2  8.5 4 dePc
+  } def
+  /c6f9_ABC { % K
+	9 17 M 8 13  10 9   8 6 dePc
+        5 7 M 3 3  7  4  11 1 dePc
+        9 17 M  11 19  18 17    17 12 dePc
+        11 8 M 16 10  17 1 19 2 dePc
+        12 13 M 14 11 dePl
+        11 8 M 12 9 13 10 14 11 dePc
+        12 13 M 11 12 10 11  9 10  dePc
+  } def
+  /c6f10_ABC { % L
+    5 5 M 8 6  14 0 17 2 dePc
+    9 16 M  7 11 11 7    7 5.5 dePc
+    9 16 M 14 19   16 14     15 13 dePc
+    13 11 M 12 9 14 8 16 11 curveto stroke
+  } def
+  % course 6 in brummerstyle '1AB'
+  /c6f0_1AB { % eins mit strich drueber
+    7 13 M 9 15 12 16 13 16 dePc
+    13 16 M 13 4 dePl
+    newpath
+    11 3 M
+    11 0 lineto
+    13 4 lineto
+    closepath  fill
+    1.0 setlinewidth 4 17.5 M 13 0 rlineto stroke
+  } def
+  /c6f1_1AB { % A
+  	5 16 M 11 19 11 7 5 2   dePc
+        7 4 9 2 10 2 dePc
+        13 17 M 12 13    12 1  15 2 dePc
+        10 2 M 10.5 4 11.5 4.5 12 5 dePc
+} def
+  /c6f2_1AB { %B 
+    6 16 M 12 13   9 4 5 2 dePc
+    7 4  11 1  15 3 dePc
+    17 5   17 12  10 10 dePc
+    13 18 M  11 17 11 16 13 15 dePc
+    15 14 15 13   14.5 12.5 dePc
+    13 18 M 12 17 11 16 10 15  dePc
+  } def
+  /c6f3_1AB { % C
+   8 17 M  4 10  8 1 17 2 dePc
+   12 16.5 M 10 14.5  14 11.5 12 8.5 dePc
+   12 16.5 M 13 15 15 15 17 16.5 dePc
+  } def
+  /c6f4_1AB { % D
+        5 17.5 M 6 15.5 7 15.5  13 15.5 dePc
+        19 13  19 7  15 3 dePc
+        5 2 M 10 4  13 1 15 3 dePc
+        9 12.5 M 7 9.5 11 6.5  8 4.5 dePc
+  } def
+  /c6f5_1AB { % E
+          8 17 M  4 10  8 1 17 2 dePc
+          12 16.5 M 10 14.5  14 11.5 12 8.5 dePc
+          12 16.5 M 13 15 15 15 17 16.5 dePc
+          14 10 M 15 11 16 11 17 10 dePc
+  } def
+  /c6f6_1AB { % F
+   10 16.5 M 12 18.5 13 18.5 15 16.5 dePc
+   10 16.5 M 9 13   12 6    10 4 dePc 
+   10 4 M 8 1 8 1 6 3 dePc
+   7.5 10 M 13 10 dePl
+  } def
+  /c6f7_1AB { % G
+       7 17 M  3 10  5 1 14 2 dePc
+       16 4 19 10 12 10 dePc
+       14 12 16 14 18 16 dePc
+       16 15  14 15  10 16  dePc
+       8 14 12 12 10 10 dePc
+  } def
+  /c6f8_1AB { % H
+    8  17  M  7  13   9  10    7 6 dePc
+    8  17  M  10 16 13 16 15 17.5 dePc
+    10 12 M  16 16   19 9  14 4 dePc
+    12 2 M 11 0  13 0   15 2  curveto stroke
+    5 3 M 6 4  7 4 8 3 dePc
+  } def
+  /c6f9_1AB { % I 
+    7 16.5 M 5 14.5 9 12.5 7 10.5 dePc
+    7 16.5 M 8 18.5  15 16.5  17 17.5 dePc
+    16.5 16 M  14 13  18 8 15 5 dePc 
+    12.5 3 M  12 2  10 2  8.5 4 dePc
+  } def
+  /c6f10_1AB { % K
+        9 17 M 8 13  10 9   8 6 dePc
+        5 7 M 3 3  7  4  11 1 dePc
+        9 17 M  11 19  18 17    17 12 dePc
+        11 8 M 16 10  17 1 19 2 dePc
+        12 13 M 14 11 dePl
+        11 8 M 12 9 13 10 14 11 dePc
+	12 13 M 11 12 10 11  9 10  dePc
+  } def
+  % course 6 in brummerstyle '123'
+  /c6f0_123 { % eins mit strich
+        7 13 M 9 15 12 16 13 16 dePc
+        13 16 M 13 4 dePl
+        newpath
+        11 3 M
+        11 0 lineto
+        13 4 lineto
+        closepath  fill
+        1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f1_123 { % zwei mit strich
+    9 4 M 16 10   11 14  8 12 dePc     
+    9 4 M 12 6 14 6 16 4 dePc
+    14 5 M 15 4 16 4 17 6 dePc
+    1.0 setlinewidth 4 6 M 13 5 rlineto stroke
+  } def
+  /c6f2_123 { % drei mit strich 
+        7 16 M 10 17 12 15 14 16 dePc
+        1 setlinewidth
+	8 10 M 14 15 lineto stroke
+ 	8 11 M 13 11 14 10 14 9 dePc
+    	14 9 M 15 7 14 5 13 4 dePc
+    	11 2 M 9 3 8 3 7 2 dePc
+        1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f3_123 { % vier mit strich
+        14 16 M 14 12 14 6 14 2 dePc
+        6.5 7 M  16 7 dePl
+        15 7 M 16 7 16.5 8.5 16 8 dePc
+        5 5 M 4 5 lineto stroke
+        4 5 M 13.9 17 lineto stroke
+        14 17 M 13.9 16 lineto stroke
+        13.9 16 M 5 5 lineto stroke
+        newpath
+        5 5 M 4 5 lineto 13.9 17 lineto 13.9 16 lineto 5 5 lineto
+        closepath
+        fill
+
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f4_123 { % fuenf mit strich 
+	9 17 M 17 17 dePl
+    	9 17 M 8 11 dePl
+	8 11 M 19 10  13 0  8 2  dePc
+	1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f5_123 { % sechs mit strich 
+         
+	 13 16 M 12 17 11 16 10 15 dePc
+	 7 14 7 1 12 2 dePc 
+	 15 6  14 8   13 10 dePc
+         12 9 11 8 10 7 dePc  
+	1.0 setlinewidth 4 5 M 13 5 rlineto stroke
+  } def
+  /c6f6_123 { % sieben mit strich 
+ 
+	7 15 M  9 16  12  14      16 16 dePc    
+	15 14  15 5 10 2 dePc
+	11 9 M 12 10  15 10  17 9 dePc
+	1.0 setlinewidth 6 5 M 13 5 rlineto stroke
+  } def
+  /c6f7_123 { % acht mit strich
+               10 16 M 8 14 8 12 12 10 dePc
+               16 8 16 6 14 2 dePc
+               10 16 M 15 17  18 14  13 9 dePc
+               11 10 M  7 6  7 1      14 2 dePc
+               1.0 setlinewidth 4 6 M 13 5 rlineto stroke
+  } def
+  /c6f8_123 { % neun mit strich
+    10 7 M 7 10 7 14  10 16 dePc
+    10 16 M 18 13  14 7  9 2 dePc
+    10 7 M 11 8 12 9 13 10 dePc
+    1.0 setlinewidth 4 7 M 13 5 rlineto stroke
+  } def
+  /c6f9_123 { % zehn mit Strich
+    3 13 M 5 15 8 16 9 16 dePc
+    9 16 M 9 4 dePl
+    newpath
+    7 3 M
+    7 0 lineto
+    9 4 lineto
+    closepath  fill
+    15 16 M 12 13  12 1 15 2 dePc
+    20    5             20     17          15 16 dePc
+    1.0 setlinewidth 2 7 M 17.5 5 rlineto stroke
+  } def
+  /c6f10_123 { % elf mit strich 
+    3 13 M 5 15 8 16 9 16 dePc
+    9 16 M 9 4 dePl
+    newpath
+    7 3 M
+    7 0 lineto
+    9 4 lineto
+    closepath  fill
+    11 13 M 13 15 16 16 16 16 dePc
+    16 16 M 16 4 dePl
+    newpath
+    14 3 M
+    14 0 lineto
+    16 4 lineto
+    closepath  fill
+    1.0 setlinewidth 2 7 M 17.5 5 rlineto stroke
+
+  } def
+
+end
+
+% enable new font
+/BuildChar {
+20 0
+0 -5 20 20
+setcachedevice
+/char exch def
+0.1 setlinewidth
+begin
+  Encoding char get
+  drawchar exch get
+  exec
+  end
+}def
+
+end
+
+/GermanTabfont detabfont definefont pop
+%%EndResource
+%----------------------------------------------------------------

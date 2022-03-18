@@ -1,0 +1,10 @@
+% general formatting of
+% abc2ps User's Guide
+
+scale 0.7
+staffwidth 15cm
+
+% note that fonts are scaled by 0.7
+vocalfont Times-Roman 14
+gchordfont Times-Roman 14
+

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Other utilities</TITLE>
+<META NAME="description" CONTENT="Other utilities">
+<META NAME="keywords" CONTENT="userguide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="userguide.css">
+
+<LINK REL="next" HREF="node11.html">
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html159"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html161"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node11.html">References and credits</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node9.html">Format fine tuning</A>
+ &nbsp; <B>  <A ID="tex2html160"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html162"
+  HREF="node12.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html163"
+  HREF="node10.html#SECTION000101000000000000000">abc</A>
+<LI><A ID="tex2html164"
+  HREF="node10.html#SECTION000102000000000000000">Postscript</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION000100000000000000000">
+Other utilities</A>
+</H1>
+
+<P>
+
+<H2><A ID="SECTION000101000000000000000">
+abc</A>
+</H2>
+Although abctab2ps supports some command line options for the
+selection of voices or tunes for output, it is often desirable
+to write such selections into another abc file. This is achieved
+with <I>abcselect</I>, which is also available from the
+abctab2ps homepage
+http://www.lautengesellschaft.de/cdmm/
+<I>abcselect</I> is a platform independent Perl script.
+
+<P>
+A graphical editor for abc files with syntax highlighting and automatic
+invocation of abctab2ps and other third party software (like ghostview)
+is available as <EM>flabc</EM> from the abctab2ps homepage
+http://www.lautengesellschaft.de/cdmm/.
+
+<P>
+If you do not like to edit plain text files for the abc input
+but prefer some GUI stuff, you can try Jean F. Moine's <I>tclabc</I>.
+As it based upon Tcl/Tk, it runs on almost every platform.
+However, <I>tclabc</I> only supports music, no tablature.
+
+<P>
+
+<H2><A ID="SECTION000102000000000000000"></A>
+<A NAME="793"></A> <A NAME="794"></A>
+<BR>
+Postscript
+</H2>
+As abctab2ps produces postscript output, you also need some tools 
+for processing postscript files (ok, you do not need them necessarily
+if you have a postscript printer, but even then some of the following tools 
+are useful). If you run Linux, all of these tools should already
+be installed on your system; on other operating systems you
+possibly need to download, build and install them yourself. 
+
+<P>
+In order to print postscript files on a non postscript printer,
+you need <I>ghostscript</I>. Ghostcript can not only convert postscript
+into almost all printer languages, it even can produce output formats which
+may be viewed on the screen. This capability is utilised by the online
+previewers <I>ghostview</I> and <I>gv</I> (same as ghostview,
+but more polished GUI).
+
+<P>
+There is a number of PS-utilities for manipulating postscript files.
+Useful are <I>psselect</I> (for extracting particular pages, e.g. all
+odd or even pages or pages 1 to 7),
+<I>psresize</I> (e.g. for converting EU A4 to US letter and 
+vice versa) and <I>psbook</I> (reorders pages for book printing).
+
+<P>
+WYSIWIG text processors generally do not allow direct import of plain 
+postscript files. In order to display the image in their editor
+window, they need a particular version of <I>encapsulated postscript</I>
+named EPSI. EPSI contains a (low quality) bitmap used by the text 
+processor for its online preview; on printing the original (high quality)
+postscript is used. The tool <I>ps2epsi</I> converts postscript
+to EPSI.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="userguide.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html159"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html161"
+  HREF="node12.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node11.html">References and credits</A>
+<B> Up:</B> <A
+ HREF="userguide.html">abctab2ps User's Guide</A>
+<B> Previous:</B> <A
+ HREF="node9.html">Format fine tuning</A>
+ &nbsp; <B>  <A ID="tex2html160"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html162"
+  HREF="node12.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,224 @@
+%!PS-Adobe-3.0 Resource-Font
+%-----------------------------------------------
+% Font for french tablature in abctab2ps
+% designed after baroque lute fonts
+% Copyright (c) 04/2000 Markus Lutz
+
+%%BeginResource: font FrenchTabfont
+/ftabfont 10 dict def
+ftabfont begin
+
+/FontType 3 def
+
+% helper functions
+%
+/M { moveto } bind def
+/L { lineto } bind def
+/penend [ -2.5 -2.5 ] def % lower end of pen
+/pl { % penlineto - usage like lineto
+  currentpoint 4 2 roll % save startpoint
+  lineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll penend 0 get add
+  2 1 roll penend 1 get add
+  lineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} def
+/pc { % pencurveto - usage like curveto
+  6 copy currentpoint 8 2 roll   % save position and arguments
+  curveto
+  currentpoint 10 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  4 2 roll pop pop 4 2 roll 6 2 roll
+  3 {
+    6 5 roll penend 0 get add
+    6 5 roll penend 1 get add
+  } repeat
+  curveto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} def
+
+
+% chars are defined in 20x20 System
+/FontBBox [0 -10 25 30] def  % ml changed height and width
+/FontMatrix [0.05 0 0 0.05 0 0 ] def
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+Encoding
+% frenchtab:  a-o
+% italiantab: 0-13
+dup  97 /french_a put
+dup  98 /french_b put
+dup  99 /french_c put
+dup 100 /french_d put
+dup 101 /french_e put
+dup 102 /french_f put
+dup 103 /french_g put
+dup 104 /french_h put
+dup 105 /french_i put
+% 106 unused
+dup 107 /french_k put
+dup 108 /french_l put
+dup 109 /french_m put
+dup 110 /french_n put
+dup 111 /french_o put
+% french bourdons: D-G
+dup  68 /bourdon_4 put  % D
+dup  69 /bourdon_5 put  % E
+dup  70 /bourdon_6 put  % F
+dup  71 /bourdon_7 put  % G
+% italian bourdons: H-N
+dup  72 /bourdon_8  put % H
+dup  73 /bourdon_9  put % I
+dup  74 /bourdon_10 put % J
+dup  75 /bourdon_11 put % K
+dup  76 /bourdon_12 put % L
+dup  77 /bourdon_13 put % M
+dup  78 /bourdon_14 put % N
+dup  79 /bourdon_15 put % O
+
+
+% drawing procedures
+/drawchar 50 dict def
+drawchar begin
+  /.notdef {} def
+
+  % french letters
+  /french_a {
+    19.5 12 M 12 14 9 11 8 7 pc 7 3 13 2 17 5 pc
+    21 14 M 17 6  20 2 22 3 pc
+  } def
+  /french_b {
+    12 21 M 10 3 pl
+	12 10 M 17 13 22 13 21 8 pc 20 5 19 0 11 5 pc
+  } def
+  /french_c {
+    11 12 M 13 14 16 14 15 9 pc 14 3 pl
+    15 9 M 19 15 21 15 23 11 pc
+  } def
+  /french_d {
+    20 10 M 16 13 10 9 11 6 pc
+	12 0 24 2 22 10 pc 21 17 2 17 3 5 pc
+  } def
+  /french_e {
+    11 12 M 13 16 23 13 15 5 pc
+    11 12 M 7 2 19 1 25 6 pc
+  } def
+  /french_f {
+    25 22 M 17 24 18 22 15 10 pc 14 -6 9 -8 5 -3 pc
+    11 11 M 14 8 17 8 20 10 pc
+  } def
+  /french_g {
+    21 11 M 13 16 8 11 10 7 pc 12 3 15 3 18 5 pc
+    21 14 M 21 -4 20 -8 7 -3 pc
+   } def
+  /french_h {
+    11 21 M 9 3 pl
+    11 10 M 16 13 21 13 20 8 pc 19.5 4 pl 18.5 2 21.5 2 23.5 4 pc
+    } def
+  /french_i {
+    13 12 M 12 4 pl 11 2 14 2 16 4 pc
+    14 19 M 13 16 pl
+  } def
+  /french_k {
+    12 21 M 10 3 pl 1.5 setlinewidth
+    19 16 M 11 9 L stroke 12 11 M 20 2 pl
+  } def
+  /french_l {
+    15 22 M 13 4 pl 12 2 15 2 17 4 pc
+  } def
+  /french_m {
+    6 11 M 8 13 11 13 10 8 pc 9 2.5 pl
+    10 10 M 14 13 18 13 17 8 pc 16 2.5 pl
+    17 10 M 21 13 25 13 24 8 pc 23 4 pl 22 2 25 2 27 4 pc
+  } def
+  /french_n {
+    7 11 M 9 13 12 13 11 8 pc 10 2.5 pl
+	11 10 M 16 13 21 13 20 8 pc 19 4 pl 18 2 21 2 23 4 pc
+  } def
+  /french_o {
+    20 8 M 17 14 11 13 10 8 pc 10 0 23 2 20 8 pc
+  } def
+
+  % french bourdons
+  /bourdon_4 {
+    18 24 M 17 2 pl 13 23 M 12 13 10 12 7 10 pc 23 10 pl
+  } def
+  /bourdon_5 {
+    21 23 M 12 23 pl 11 13 pl 24 17 24 -3 8 3 pc
+  } def
+  /bourdon_6 {
+    19 24 M 5 20 5 3 11 2 pc 10 12 M 23 19 20 0 11 2 pc
+  } def
+  /bourdon_7 {
+    8 24 M 20 24 pl 10 2 pl 11 12 M 19 12 pl
+  } def
+
+  % italian bourdons
+  /bourdon_8 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    12 19 M -2 15 28 5 12 1 curveto -4 5 26 15 12 19 curveto stroke
+  } def
+  /bourdon_9 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    14 19 M 2 18 9 2 16 14 curveto 14 19 M 17 18 18 10 8 0 curveto stroke
+  } def
+  /bourdon_10 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    4 14 M 5 20 7 18 9 15 curveto 17 1 L 7 1 M 17 18 L stroke
+  } def
+  /bourdon_11 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    6 19 M 6 9 6 9 15 9 curveto 16 19 M 16 4 12 5 8 1 curveto stroke
+  } def
+  /bourdon_12 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    5 18 M 5 1 L 3 1 M 9 1 L
+	10 10 M 9 15 10 19 15 19 curveto 20 19 20 9 12 1 curveto 20 1 L stroke
+  } def
+  /bourdon_13 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    5 18 M 5 1 L 3 1 M 9 1 L
+    10 10 M 8 15 10 19 14 19 curveto 20 19 17 11 14 9 curveto
+    21 9 21 1 13 1 curveto stroke
+  } def
+  /bourdon_14 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    5 18 M 5 1 L 3 1 M 9 1 L
+	12 19 M 12 16 11 8 9 6 curveto 19 6 L
+    17 19 M 17 1 L stroke
+  } def
+  /bourdon_15 {
+    1.5 setlinewidth 1 setlinecap 1 setlinejoin
+    5 18 M 5 1 L 3 1 M 9 1 L
+    17 19 M 10 19 L 10 11 L
+    18 13 20 6 12 1 curveto stroke
+  } def
+end
+
+% enable new font
+/BuildChar {
+20 0
+0 -10 25 30
+setcachedevice
+/char exch def
+0.2 setlinewidth 
+begin
+  Encoding char get
+  drawchar exch get
+  exec
+  end
+}def
+
+end
+
+/FrenchTabfont ftabfont definefont pop
+%%EndResource
+%----------------------------------------------------------------

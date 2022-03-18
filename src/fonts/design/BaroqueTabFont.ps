@@ -1,0 +1,134 @@
+%--------------------------------------------------------------------------------------------
+%Baroque Tablature font definition
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+8 dict begin 
+
+/FontType 3 def
+/FontMatrix [0.05 0 tabfontslant 0.05 0 tabfontslant]  def
+/FontBBox [-10 0 20 20] def
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+
+Encoding 48 /0_glyph put
+Encoding 49 /1_glyph put
+Encoding 50 /2_glyph put
+Encoding 51 /3_glyph put
+Encoding 52 /4_glyph put
+Encoding 53 /5_glyph put
+Encoding 54 /6_glyph put
+Encoding 55 /7_glyph put
+Encoding 56 /8_glyph put
+Encoding 57 /9_glyph put
+
+Encoding  97 /a_glyph put
+Encoding  98 /b_glyph put
+Encoding  99 /c_glyph put
+Encoding 100 /d_glyph put
+Encoding 101 /e_glyph put
+Encoding 102 /f_glyph put
+Encoding 103 /g_glyph put
+Encoding 104 /h_glyph put
+Encoding 105 /i_glyph put
+Encoding 107 /k_glyph put
+Encoding 108 /l_glyph put
+Encoding 109 /m_glyph put
+Encoding 110 /n_glyph put
+Encoding 111 /o_glyph put
+
+Encoding 120 /char_120 put
+Encoding 121 /char_121 put
+Encoding 122 /char_122 put
+Encoding 123 /char_123 put
+Encoding 124 /char_124 put
+Encoding 125 /char_125 put
+Encoding 126 /char_126 put
+
+% drawing procedures
+/drawchar 30 dict def
+drawchar begin
+
+/.notdef {} def
+%------------------------------------
+/a_glyph { glyphpath bletter_a closepath } bind def
+/b_glyph { glyphpath bletter_b closepath } bind def
+/c_glyph { glyphpath bletter_c closepath } bind def
+/d_glyph { glyphpath bletter_d closepath } bind def
+/e_glyph { glyphpath bletter_e closepath } bind def
+/f_glyph { glyphpath bletter_f closepath } bind def
+/g_glyph { glyphpath bletter_g closepath } bind def
+/h_glyph { glyphpath bletter_h closepath } bind def
+/i_glyph { glyphpath bletter_i closepath } bind def
+/k_glyph { glyphpath bletter_k closepath } bind def
+/l_glyph { glyphpath bletter_l closepath } bind def
+/m_glyph { glyphpath bletter_m closepath } bind def
+/n_glyph { glyphpath bletter_n closepath } bind def
+/o_glyph { glyphpath bletter_o closepath } bind def
+%------------------------------------
+/0_glyph { glyphpath letter_0 closepath } bind def
+/1_glyph { glyphpath letter_1 closepath } bind def
+/2_glyph { glyphpath letter_2 closepath } bind def
+/3_glyph { glyphpath letter_3 closepath } bind def
+/4_glyph { glyphpath letter_4 closepath } bind def
+/5_glyph { glyphpath letter_5 closepath } bind def
+/6_glyph { glyphpath letter_6 closepath } bind def
+/7_glyph { glyphpath letter_7 closepath } bind def
+/8_glyph { glyphpath letter_8 closepath } bind def
+/9_glyph { glyphpath letter_9 closepath } bind def
+%------------------------------------
+%------------------------------------
+end % of drawchars
+
+% enable new font
+/BuildGlyph {
+20 0
+-10 0 20 20
+setcachedevice
+exch /drawchar get exch
+2 copy known not { pop /.notdef}
+if
+get exec
+} bind def
+
+/BuildChar
+{ 1 index /Encoding get exch get
+  1 index /BuildGlyph get exec
+} bind def
+
+currentdict
+end
+
+/BaroqueTabFont exch definefont pop
+%--------------------------------------------------------------------------------------------
+%GLYPHS
+%--------------------------------------------------------------------------------------------
+/bletter_a { 6 1.5 M -2.1 -0 a_shape 9.85 2 M -3 -3 -3 base 0 6 penrlineto -1 0 penrlineto } bind def
+/bletter_b { 9 7 M 8 0 h_shape 2 4 a_shape } bind def
+/bletter_b1 { 5 6 M 1.2 1 1.2 t_curve 9 0 h_shape 1.6 3 a_shape } bind def
+/bletter_c { 6 1 M -2.5 0 a_shape } bind def
+/bletter_d { -4 5 M 4 10 -4 rh_shape -2 2 a_shape } bind def
+/bletter_d1 { 2 4 M 3 3 3.5 f_curve 2 4 M 3 -3 -3 f_curve -7 12 M 4 4 4 t_curve 3.6 c_arc } bind def
+/bletter_e { 7 1 M -2.5 0 a_shape -6 -4 -8 base } bind def
+/bletter_f { 3 9 M 3 2 8 f_curve 3 10 M -3 -2 -8 f_curve -1 10 M 4 2 1 r2curve } bind def
+/bletter_g { -3 10 M -8.3 0 h_shape -2.1 -2.7 a_shape } bind def
+/bletter_h { 9 6 M 9 -4 h_shape 5 0 M 5 4 h_shape } bind def
+/bletter_i { -1 5 M 10 16 0 t2_curve } bind def
+/bletter_k { 9 7 M 9 -7 h_shape 7 0 M -6 5 6 l_curve 6 -4 1 parabole_left } bind def
+/bletter_l { 7 2 M 4 -2 -3 leg 1 12 penrlineto } bind def
+/bletter_m { -7 9 M 2 -7 n_leg -2 9 M 3 -6 n_leg 5 9 M 3 -6 n_leg } bind def 
+/bletter_n { -1 9 M 2 -7 n_leg 3 8 M 4 -4 n_leg } bind def 
+/bletter_o { 1 10 M 3 c_arc -3 c_arc } bind def
+
+/letter_0 { 3 0 M 6 circle } bind def
+/letter_1 { 3 8 M 3 3 6 parabole 0 -14 penrlineto } bind def 
+/letter_2 { 0 10 M 7.0 .3 b_arc 5 3 4 r2curve } bind def
+/letter_3 { 1 11 M 4.5 .1 b_arc 1.82 0 a_shape } bind def
+/letter_4 { 9 4 M -10 0 penrlineto 5 7.5 7 rcurve 0 -4 penrlineto } bind def
+/letter_5 { 9 12 M -6 0 penrlineto 0 -5 penrlineto 5 5 -7 rc_curve } bind def 
+/letter_6 { 9 13 M -9 0 -9 parabole 6 0 5 semi_top -6 0 -5 semi_top } bind def
+/letter_7 { -1 13 M 2 1 7 t_curve -5 -13 penrlineto } bind def
+/letter_8 { 5 7.5 M 12 -3 -4.5 circle 7 2 3.4 circle } bind def
+/letter_9 { 9 9.5 M  -5 -2 -4.5 semi_top 5 2 4.5 semi_top 0 -6 penrlineto -5 -2 -5 semi_top } bind def
+%--------------------------------------------------------------------------------------------

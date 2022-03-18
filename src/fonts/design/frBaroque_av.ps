@@ -1,0 +1,623 @@
+%--------------------------------------------------------------------------------------------
+%------------------------------------------- Pen definitions --------------------------------
+%--------------------------------------------------------------------------------------------
+/penend 2 array def
+/flagpen [ 1 1 ] def
+/frenchpen [ -1.5 -1.5 ] def
+/tabfontslant 0.0 def
+/glyphpath { newpath frenchpen penend copy pop } bind def
+/flagpath { newpath flagpen penend copy pop } bind def
+
+/RM { rmoveto } bind def
+
+/penlineto { % usage like lineto
+  currentpoint 4 2 roll % save startpoint
+  lineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll penend 0 get add
+  2 1 roll penend 1 get add
+  lineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/penrlineto { % usage like rlineto
+  2 copy   % save arguments
+  rlineto
+  currentpoint 4 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  2 1 roll neg
+  2 1 roll neg
+  rlineto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/pencurveto { % usage like curveto
+  6 copy currentpoint 8 2 roll   % save position and arguments
+  curveto
+  currentpoint 10 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  4 2 roll pop pop 4 2 roll 6 2 roll
+  3 {
+    6 5 roll penend 0 get add
+    6 5 roll penend 1 get add
+  } repeat
+  curveto
+  penend 0 get neg penend 1 get neg rlineto
+  eofill moveto % fill and move to targetpoint
+} bind def
+
+/penrcurveto { % usage like rcurveto
+  6 copy   % save arguments
+  rcurveto
+  currentpoint 8 2 roll % save targetpoint
+  penend 0 get penend 1 get rlineto
+  % compute parameters for parallel line
+  neg exch neg exch 
+  6 2 roll exch 5 index add exch 4 index add
+  4 2 roll exch 5 index add exch 4 index add
+  6 -2 roll
+  rcurveto
+  penend 0 get neg penend 1 get neg rlineto
+  fill moveto % fill and move to targetpoint
+} bind def
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+%Flags font
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+22 dict begin 
+
+/FontType 3 def
+/FontMatrix [0.05 0 0.0 0.05 0 0.0] def
+/FontBBox [0 0 20 20] def
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+%Baroque flags
+Encoding 46 /char_46 put
+Encoding 48 /char_48 put
+Encoding 49 /char_49 put
+Encoding 50 /char_50 put
+Encoding 51 /char_51 put
+Encoding 52 /char_52 put
+Encoding 53 /char_53 put
+Encoding 54 /char_54 put
+
+%English flags
+Encoding 55 /char_55 put
+Encoding 56 /char_56 put
+Encoding 57 /char_57 put
+Encoding 58 /char_58 put
+Encoding 59 /char_59 put
+Encoding 60 /char_60 put
+Encoding 61 /char_61 put
+
+%Modern flags
+Encoding 62 /char_62 put
+Encoding 63 /char_63 put
+Encoding 64 /char_64 put
+Encoding 65 /char_65 put
+Encoding 66 /char_66 put
+Encoding 67 /char_67 put
+Encoding 68 /char_68 put
+
+%Italian flags
+Encoding 69 /char_69 put
+Encoding 70 /char_70 put
+Encoding 71 /char_71 put
+Encoding 72 /char_72 put
+Encoding 73 /char_73 put
+Encoding 74 /char_74 put
+Encoding 75 /char_75 put
+
+% drawing procedures
+/drawchar 30 dict def
+drawchar begin
+
+/.notdef {} def
+%------------------------------------
+%English flags
+/char_46 { flagpath B_dot  closepath } bind def
+/char_55 { flagpath 0_flag closepath } bind def
+/char_56 { flagpath 1_flag closepath } bind def
+/char_57 { flagpath 2_flag closepath } bind def
+/char_58 { flagpath 3_flag closepath } bind def
+/char_59 { flagpath 4_flag closepath } bind def
+/char_60 { flagpath 5_flag closepath } bind def
+/char_61 { flagpath 5_flag closepath } bind def
+%------------------------------------
+%Baroque flags
+/char_48 { flagpath B_0flag closepath  } bind def
+/char_49 { flagpath B_1flag closepath } bind def
+/char_50 { flagpath B_2flag closepath } bind def
+/char_51 { flagpath B_3flag closepath } bind def
+/char_52 { flagpath B_4flag closepath } bind def
+/char_53 { flagpath B_5flag closepath } bind def
+/char_54 { flagpath B_6flag closepath } bind def
+%------------------------------------
+%Baroque flags
+/char_62 { flagpath M_1note closepath  } bind def
+/char_63 { flagpath M_2note closepath } bind def
+/char_64 { flagpath M_4note closepath } bind def
+/char_65 { flagpath M_8note closepath } bind def
+/char_66 { flagpath M_16note closepath } bind def
+/char_67 { flagpath M_32note closepath } bind def
+/char_68 { flagpath M_64note closepath } bind def
+%------------------------------------
+%Italian flags
+/char_69 { flagpath I_1note closepath  } bind def
+/char_70 { flagpath I_2note closepath } bind def
+/char_71 { flagpath I_4note closepath } bind def
+/char_72 { flagpath I_8note closepath } bind def
+/char_73 { flagpath I_16note closepath } bind def
+/char_74 { flagpath I_32note closepath } bind def
+/char_75 { flagpath I_64note closepath } bind def
+end % of drawchars
+
+% enable new font
+/BuildGlyph {
+20 0
+0 0 20 20
+setcachedevice
+exch /drawchar get exch
+2 copy known not { pop /.notdef}
+if
+get exec
+} bind def
+
+/BuildChar
+{ 1 index /Encoding get exch get
+  1 index /BuildGlyph get exec
+} bind def
+
+currentdict
+end
+
+/FlagsFont exch definefont pop
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+%--------------------------------  SHAPES DEFINITIONS ---------------------------------------
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+/base {
+/l exch def /d exch def /t exch def
+	0 0 t d l 0 penrcurveto
+} bind def
+%--------------------------------------------------------------------------------------------
+/parabole {
+/l exch def /d exch def /t exch def
+	t d t l t l penrcurveto
+} bind def
+%--------------------------------------------------------------------------------------------
+/parabole_left {
+/l exch def /d exch def /t exch def currentpoint 
+ t d l parabole 
+ M currentpoint
+ 0 l 2 mul RM
+ t d neg l neg parabole
+ M
+} bind def
+%--------------------------------------------------------------------------------------------
+/parabole_up {
+/l exch def /d exch def /t exch def currentpoint 
+ t d l parabole 
+ M currentpoint
+ t neg d l parabole M
+} bind def
+%----------------------------
+/semi_side {
+ /l exch def  /d exch 3 div def  /t exch def   
+    t d t l d add 0 l d 2 mul add penrcurveto
+} bind def
+%----------------------------
+/semi_circle { dup dup semi_side } bind def
+%----------------------------
+/circle { dup semi_circle neg semi_circle } bind def
+%----------------------------
+/semi_top
+{
+  /l exch def /d exch 3 div def /t exch def
+  d l t d 2 mul add l t d 3 mul add 0 penrcurveto
+} bind def
+%/semi_tcircle { /dt exch def dt dt dt semi_top } bind def
+%----------------------------
+/semi_tcircle { dup dup semi_top } bind def
+%----------------------------
+/tcircle { dup semi_tcircle neg semi_tcircle } bind def
+%----------------------------
+/p_parabole {
+	/l exch def /d exch def /t exch def
+	0 0 t d 0 l penrcurveto
+} bind def
+%----------------------------
+/r_hyperbole {
+	/l exch def /d exch def /t exch def 
+	0 t l t l 2 mul d penrcurveto
+} bind def
+%----------------------------
+/rcurve { 
+/l exch def /d exch def /t exch def 
+t d l d 2 mul l 0 penrcurveto 
+} bind def
+%----------------------------
+/r2curve { 
+ /t exch def /d exch def /l exch def 
+ t d l d 2 mul neg l 2 mul 0 penrcurveto 
+} bind def
+%----------------------------
+/rbcurve { 
+/l exch def /d exch def /t exch def 
+l d t d 2 mul t 0 penrcurveto 
+} bind def
+%----------------------------
+/rc_curve 
+{ 
+/l exch def /d exch def /t exch def 
+t d t 2 mul d neg 0 l penrcurveto
+} bind def
+%----------------------------
+/t_curve 
+{ 
+/l exch def /d exch def /t exch def 
+ t d l d neg l t add 0 penrcurveto
+} bind def
+%----------------------------
+/tv_curve 
+{ 
+/l exch def /d exch def /t exch def 
+ t d t neg l 0 l d add penrcurveto
+} bind def
+%----------------------------
+/l_curve
+{
+/l exch def /d exch def /t exch def 
+t 2 div d 2 div t l t l penrcurveto
+} bind def
+%----------------------------
+/lv_curve
+{
+/l exch def /d exch def /t exch def 
+t 2 div neg d 2 div 0 l 0 l penrcurveto
+} bind def
+%----------------------------
+/t2_curve 
+{ 
+/l exch def /d exch def /t exch def 
+ t d l d neg l add l t add l penrcurveto
+} bind def
+%----------------------------
+/f_curve 
+{ 
+/l exch def /d exch def /t exch def 
+% 0 0 t d t 2 mul l penrcurveto
+  0 l t l d add t 2 mul l penrcurveto
+} bind def
+%----------------------------
+%	One parameter 
+%----------------------------
+/c_arc { /d exch def d d d 4 mul 0 d 2 mul d 3 mul neg penrcurveto } bind def
+%----------------------------
+/rc_arc { 
+ /d exch def 
+	d d 0 d 3 mul d 2 mul neg d 3 mul penrcurveto
+} bind def
+%----------------------------
+/b_arc {
+/t exch def /d exch def 
+ t d d 2 mul t 2 mul t neg d neg penrcurveto 
+} bind def
+%--------------------------------------------------------------------------------------------
+/tall_curve { 
+ /d exch def
+ d neg d 2 mul d neg d 3 mul 0 d 4 mul penrcurveto
+} bind def
+%--------------------------------------------------------------------------------------------
+%--------------------------------- LETTER ELEMENTS ------------------------------------------
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+/M_note { 4 4 M -1 .5 -3.5 0 -4 -2.5 rcurveto 0 -2.5 5 -2 4.8 2 rcurveto 0 12.4 rlineto -0.8 0 rlineto 0 -12.4 rlineto  } bind def 
+/DM_note { 16 16 M 1 -.5 3.5 0 4 2.5 rcurveto 0 2.5 -5 2 -4.8 -2 rcurveto eofill } bind def
+%--------------------------------------------------------------------------------------------
+/leg { /d exch def /t exch def /h exch def d t d 2 mul t d 2 mul h penrcurveto } bind def
+%--------------------------------------------------------------------------------------------
+/n_leg { /l exch def /d exch def 
+        d neg d d leg 0 l penrlineto 
+} bind def
+%--------------------------------------------------------------------------------------------
+/a_shape {
+/l exch def /d exch def 
+ d c_arc d neg l n_leg
+} bind def
+%--------------------------------------------------------------------------------------------
+/h_shape {
+/h exch def /d exch def 
+ d d d neg rcurve 0 h penrlineto
+} bind def
+%--------------------------------------------------------------------------------------------
+/rh_shape {
+/h exch def /d exch def 
+ d neg d d rcurve 0 h penrlineto
+} bind def
+%----------------------------
+/f_flag { 
+/d exch def 
+d neg d neg d 4 mul 0 d 3 mul d 2 mul neg penrcurveto 
+} bind def
+/h_moon
+{ 
+/h exch def /l exch def /d exch def /t exch def 
+  t d l d l t add h rcurveto
+currentpoint
+  t neg d h sub -1 add 
+  l neg d h sub -1 add 
+  l t add neg h neg rcurveto
+
+  eofill M
+} bind def
+%--------------------------------------------------------------------------------------------
+/sharp { /t exch def /d { t 1 add 2 div } def 
+currentlinewidth .8 setlinewidth 1 setlinecap
+t d sub d neg RM
+t neg 0 rlineto 0 d neg RM
+t 0 rlineto 
+t d sub 2 div neg t d sub 2 div neg RM 
+0 t rlineto d neg 0 RM
+0 t neg rlineto
+stroke setlinewidth
+} bind def
+%--------------------------------------------------------------------------------------------
+/arrow { % head size - length - stem height - 
+currentlinewidth 3 1 roll
+setlinewidth 
+0 rlineto currentpoint stroke M 
+1 0 RM
+setlinewidth
+dup dup dup dup dup neg 2 1 roll rlineto 
+2 mul neg 0 exch rlineto
+rlineto 
+fill
+} bind def
+%--------------------------------------------------------------------------------------------
+/distortion {
+1 setlinecap 
+currentlinewidth exch setlinewidth exch 
+dup dup 2 div 0 rlineto 
+0 exch rlineto currentpoint stroke M
+/t exch 4 div def
+t neg 0 rlineto
+t t rlineto
+t t neg rlineto
+fill
+setlinewidth
+} bind def
+%--------------------------------------------------------------------------------------------
+/zig { 
+currentpoint 3 2 roll
+dup xcurve dup 1 sub neg xcurve 3 1 roll
+M currentpoint 3 2 roll
+dup neg xcurve 
+dup 1 sub xcurve 
+3 add 
+3 2 roll add 2 1 roll penlineto 
+exch pop 
+} bind def
+%--------------------------------------------------------------------------------------------
+/desc_zigzag { /d exch def
+1 1 d { exch dup 1 sub exch zig } for
+%pop 
+} bind def
+%--------------------------------------------------------------------------------------------
+/asc_zigzag { /d exch def 
+1 1 d { exch 1 add dup zig } for
+%pop 
+} bind def
+%--------------------------------------------------------------------------------------------
+/ornament { 
+dup 3 1 roll asc_zigzag 
+exch desc_zigzag 
+pop
+} bind def
+%/xcurve { tall_curve } def 
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+%English flags definition
+/stem { 0 18 penrlineto } bind def
+/flag { 15 6 -6 t2_curve } bind def
+/0_flag { 4 18 M -4 0 penrlineto 10 0 M stem } bind def
+/1_flag { 4 0 M stem } bind def
+/2_flag { 3 0 M stem 3 18 M 3.4 f_flag } bind def
+/3_flag { 2_flag 3 14 M 3.4 f_flag } bind def
+/4_flag { 3_flag 3 10 M 3.4 f_flag } bind def
+/5_flag { 4_flag 3 6 M 3.4 f_flag } bind def
+%--------------------------------------------------------------------------------------------
+%Flags definitions
+/B_dot   { 10 4 1 0 360 arc fill } bind def
+/B_0flag { 2 6 M 5 tcircle } bind def
+/B_1flag { 6 3 M -3 tcircle 0 16 penrlineto } bind def
+/B_2flag { 3 1 M stem } bind def
+/B_3flag { 3 0 M 4 tall_curve 2.5 c_arc } bind def
+/B_4flag { 3 0 M 4.3 tall_curve 2.5 c_arc 2 c_arc } bind def
+/B_5flag { 3 0 M 4.4 tall_curve 2.5 c_arc 2 c_arc 1.5 c_arc } bind def
+/B_6flag { 3 0 M 4.5 tall_curve 2 c_arc 1.7 c_arc 1.5 c_arc 1 c_arc } bind def
+%------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+%Modern flags
+/W_note
+{
+0 4 M 0 4 8 5 8 0 rcurveto 0 -4 -8 -5 -8 0 rcurveto
+4 7 M -2 0 -4 -3 0 -6 rcurveto 2 0 4 3 0 6 rcurveto
+eofill
+} bind def
+
+/n_flag { 0 -6 10 -5 7.5 -11 penrcurveto } bind def
+/M_1note { 0 4 M 0 4 8 5 8 0 rcurveto 0 -4 -8 -5 -8 0 rcurveto 4 7 M -2 0 -4 -3 0 -6 rcurveto 2 0 4 3 0 6 rcurveto eofill } bind def
+/M_2note { M_note 4 2.9 M -1 1 -3 0 -3.3 -1.4 rcurveto 0 -2 3 0 3.3 1.4 rcurveto eofill } def 
+/M_4note { M_note eofill } bind def 
+/M_8note { M_4note 4 16 M 0 -4 10 -6 4 -12 penrcurveto } bind def
+/M_16note { M_4note 4 17 M n_flag 4 12 M n_flag } bind def 
+/M_32note { M_4note 4 17 M n_flag 4 14 M n_flag 4 11 M n_flag } bind def
+/M_64note { M_4note 4 20 M n_flag 4 17 M n_flag 4 14 M n_flag 4 11 M n_flag } bind def
+%--------------------------------------------------------------------------------------------
+%Italian flags
+/i_flag { /d exch def 0 0 d 5 mul 0 d d 3 mul neg penrcurveto } bind def
+/I_1note {
+4 4 M 1 4 4 4 5 0 rcurveto -1 -5 -3 -5 -5 0 rcurveto 
+5 4 M 1.5 4 2 1 3 0 rcurveto 0 -2 -2 -4.7 -3 0 rcurveto eofill
+} bind def 
+/I_2note {
+4 4 M 1 4 3 4 4 0 rcurveto -1 -5 -3 -5 -4 0 rcurveto 
+5 4 M 1.5 3.5 2 1 2.4 0 rcurveto 0 -2 -2 -4.2 -2.4 0 rcurveto eofill
+5.5 18 M 0 -12 penrlineto 
+} bind def
+/I_4note {
+4 4 M 1 4 3 4 4 0 rcurveto -1 -5 -3 -5 -4 0 rcurveto eofill
+5.5 18 M 0 -12 penrlineto 
+} bind def
+/I_8note { I_4note 5.5 18 M  2.5 i_flag } bind def
+/I_16note { I_8note 1.5 i_flag } bind def
+/I_32note { I_16note 1 i_flag } bind def
+/I_64note { I_32note .5 i_flag } bind def
+%------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+%Baroque Tablature font definition
+%--------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------
+8 dict begin 
+
+/FontType 3 def
+/FontMatrix [0.05 0 tabfontslant 0.05 0 tabfontslant]  def
+/FontBBox [-10 0 20 20] def
+
+% connect ASCII code to drawing procedures
+/Encoding 256 array def
+0 1 255 { Encoding exch /.notdef put } for
+
+Encoding 48 /0_glyph put
+Encoding 49 /1_glyph put
+Encoding 50 /2_glyph put
+Encoding 51 /3_glyph put
+Encoding 52 /4_glyph put
+Encoding 53 /5_glyph put
+Encoding 54 /6_glyph put
+Encoding 55 /7_glyph put
+Encoding 56 /8_glyph put
+Encoding 57 /9_glyph put
+
+Encoding  97 /a_glyph put
+Encoding  98 /b_glyph put
+Encoding  99 /c_glyph put
+Encoding 100 /d_glyph put
+Encoding 101 /e_glyph put
+Encoding 102 /f_glyph put
+Encoding 103 /g_glyph put
+Encoding 104 /h_glyph put
+Encoding 105 /i_glyph put
+Encoding 107 /k_glyph put
+Encoding 108 /l_glyph put
+Encoding 109 /m_glyph put
+Encoding 110 /n_glyph put
+Encoding 111 /o_glyph put
+
+Encoding 120 /char_120 put
+Encoding 121 /char_121 put
+Encoding 122 /char_122 put
+Encoding 123 /char_123 put
+Encoding 124 /char_124 put
+Encoding 125 /char_125 put
+Encoding 126 /char_126 put
+
+% drawing procedures
+/drawchar 30 dict def
+drawchar begin
+
+/.notdef {} def
+%------------------------------------
+/a_glyph { glyphpath bletter_a closepath } bind def
+/b_glyph { glyphpath bletter_b closepath } bind def
+/c_glyph { glyphpath bletter_c closepath } bind def
+/d_glyph { glyphpath bletter_d closepath } bind def
+/e_glyph { glyphpath bletter_e closepath } bind def
+/f_glyph { glyphpath bletter_f closepath } bind def
+/g_glyph { glyphpath bletter_g closepath } bind def
+/h_glyph { glyphpath bletter_h closepath } bind def
+/i_glyph { glyphpath bletter_i closepath } bind def
+/k_glyph { glyphpath bletter_k closepath } bind def
+/l_glyph { glyphpath bletter_l closepath } bind def
+/m_glyph { glyphpath bletter_m closepath } bind def
+/n_glyph { glyphpath bletter_n closepath } bind def
+/o_glyph { glyphpath bletter_o closepath } bind def
+%------------------------------------
+/0_glyph { glyphpath letter_0 closepath } bind def
+/1_glyph { glyphpath letter_1 closepath } bind def
+/2_glyph { glyphpath letter_2 closepath } bind def
+/3_glyph { glyphpath letter_3 closepath } bind def
+/4_glyph { glyphpath letter_4 closepath } bind def
+/5_glyph { glyphpath letter_5 closepath } bind def
+/6_glyph { glyphpath letter_6 closepath } bind def
+/7_glyph { glyphpath letter_7 closepath } bind def
+/8_glyph { glyphpath letter_8 closepath } bind def
+/9_glyph { glyphpath letter_9 closepath } bind def
+%------------------------------------
+%------------------------------------
+end % of drawchars
+
+% enable new font
+/BuildGlyph {
+20 0
+-10 0 20 20
+setcachedevice
+exch /drawchar get exch
+2 copy known not { pop /.notdef}
+if
+get exec
+} bind def
+
+/BuildChar
+{ 1 index /Encoding get exch get
+  1 index /BuildGlyph get exec
+} bind def
+
+currentdict
+end
+
+%/BaroqueTabFont exch definefont pop
+/FrenchTabfont exch definefont pop
+%--------------------------------------------------------------------------------------------
+%GLYPHS
+%--------------------------------------------------------------------------------------------
+/bletter_a { 6 1.5 M -2.1 -0 a_shape 9.85 2 M -3 -3 -3 base 0 6 penrlineto -1 0 penrlineto } bind def
+/bletter_b { 9 7 M 8 0 h_shape 2 4 a_shape } bind def
+/bletter_b1 { 5 6 M 1.2 1 1.2 t_curve 9 0 h_shape 1.6 3 a_shape } bind def
+/bletter_c { 6 1 M -2.5 0 a_shape } bind def
+/bletter_d { -4 5 M 4 10 -4 rh_shape -2 2 a_shape } bind def
+/bletter_d1 { 2 4 M 3 3 3.5 f_curve 2 4 M 3 -3 -3 f_curve -7 12 M 4 4 4 t_curve 3.6 c_arc } bind def
+/bletter_e { 7 1 M -2.5 0 a_shape -6 -4 -8 base } bind def
+/bletter_f { 3 9 M 3 2 8 f_curve 3 10 M -3 -2 -8 f_curve -1 10 M 4 2 1 r2curve } bind def
+/bletter_g { -3 10 M -8.3 0 h_shape -2.1 -2.7 a_shape } bind def
+/bletter_h { 9 6 M 9 -4 h_shape 5 0 M 5 4 h_shape } bind def
+/bletter_i { -1 5 M 10 16 0 t2_curve } bind def
+/bletter_k { 9 7 M 9 -7 h_shape 7 0 M -6 5 6 l_curve 6 -4 1 parabole_left } bind def
+/bletter_l { 7 2 M 4 -2 -3 leg 1 12 penrlineto } bind def
+/bletter_m { -7 9 M 2 -7 n_leg -2 9 M 3 -6 n_leg 5 9 M 3 -6 n_leg } bind def 
+/bletter_n { -1 9 M 2 -7 n_leg 3 8 M 4 -4 n_leg } bind def 
+/bletter_o { 1 10 M 3 c_arc -3 c_arc } bind def
+
+/letter_0 { 3 0 M 6 circle } bind def
+/letter_1 { 3 8 M 3 3 6 parabole 0 -14 penrlineto } bind def 
+/letter_2 { 0 10 M 7.0 .3 b_arc 5 3 4 r2curve } bind def
+/letter_3 { 1 11 M 4.5 .1 b_arc 1.82 0 a_shape } bind def
+/letter_4 { 9 4 M -10 0 penrlineto 5 7.5 7 rcurve 0 -4 penrlineto } bind def
+/letter_5 { 9 12 M -6 0 penrlineto 0 -5 penrlineto 5 5 -7 rc_curve } bind def 
+/letter_6 { 9 13 M -9 0 -9 parabole 6 0 5 semi_top -6 0 -5 semi_top } bind def
+/letter_7 { -1 13 M 2 1 7 t_curve -5 -13 penrlineto } bind def
+/letter_8 { 5 7.5 M 12 -3 -4.5 circle 7 2 3.4 circle } bind def
+/letter_9 { 9 9.5 M  -5 -2 -4.5 semi_top 5 2 4.5 semi_top 0 -6 penrlineto -5 -2 -5 semi_top } bind def
+%--------------------------------------------------------------------------------------------

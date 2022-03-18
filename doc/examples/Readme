@@ -1,0 +1,89 @@
+Comments on examples for abctab2ps
+------------------------------
+
+Makefile
+    GNU makefile for generation of the examples
+    make
+        translates all examples
+    make filename.ps
+        translates only filename.abc
+    make clean
+        deletes all generated postscript files
+
+kuehnel.abc
+    - figured bass
+    - inline clef changes
+    - different movements in one abc file
+    - an invisible rest is necessary in the upbeat of the
+      second part of the Corrente
+
+regnart.abc
+    - lyrics
+    - lute tablature
+
+victoria.abc
+    - varying voice number
+    - continuous bar numbering over different "tunes" (X:)
+    - stemless note for gregorian chant
+
+ortiz.abc
+    - from this file you can generate different part books:
+       o for the recorder player with
+         abctab2ps -O ortiz_flauto -V 1,2 -k 0 ortiz.abc
+       o for the lutanist with
+         abctab2ps -O ortiz_liuto -V 1,3 -k 0 ortiz.abc 
+      If you have installed abcselect, you can achieve the same with
+      abcselect -V 1,3 ortiz.abc | abctab2ps -k 0
+
+vallet.abc
+francisque.abc
+    - single stave lute tablature
+      you can change the distance between systems with
+      the pseudocomment %%staffsep
+    - frenchtab with modern rhstyle
+    - right hand fingering (please note that the signs must
+      stand BEFORE the first course of a chord)
+    - triple time (francisque.abc)
+    - scale factor for tabfont (francisque.abc)
+    - appoggiaturas and trills (vallet.abc)
+
+daCrema.abc
+    - single stave italian tablature
+    
+kapsberger.abc
+    - italian7tab with bourdons
+
+telemann.abc
+    - contains blank tab system for a handwritten continuo realization
+
+banjo.abc
+    - banjo5tab with tabrhstyle "none"
+    - abuse of "guitar chords" for right hand fingering and deco signs
+
+attaignant.abc
+    - french5tab for a six course instrument
+
+carcassi.abc
+    - guitartab with beams
+    - dynamic marks !mf! and !f!
+    - %%right for "Fine" and "Da Capo" marks
+
+molinaro.abc
+    - italian8tab
+    - use of second tune with smaller scale factor for editorial comments
+
+bataille.abc
+    - letter y used for ties starting/ending on unplucked courses
+
+sanz.abc
+    - !strumup! and !strumdown!; note that this is italiantab
+      thus strumup is an arrow down (sic)
+
+adriaenssen.abc
+    - shows use of historicstyle and nobeams for emulating
+      (somewhat) a historic print
+    - gchordspace is used for avoiding clash of editorial
+      accidentals with vocals
+
+waissel.abc
+    - german tablature

@@ -1,0 +1,1139 @@
+<!-- Creator     : groff version 1.19.1 -->
+<!-- CreationDate: Fri May 18 21:47:55 2007 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<title>ABCTAB2PS</title>
+</head>
+<body>
+
+<h1 align=center>ABCTAB2PS</h1>
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#ENVIRONMENT">ENVIRONMENT</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+<a href="#VERSION">VERSION</a><br>
+<a href="#COPYRIGHT">COPYRIGHT</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+<a name="NAME"></a>
+<h2>NAME</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>abctab2ps</b> &minus; typesets music in abc format
+directly in postscript</p>
+</td>
+</table>
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>abctab2ps [-1bcEhHIlnNopPx] [-a <i>alfa</i>] [-B
+<i>barsperline</i>] [-d <i>distance</i>] [-D <i>fmtdir</i>]
+[-eCRST <i>selectors</i>] [-f <i>infile</i>] [-F
+<i>formatfile</i>] [-g shrink|space|stretch|fill] [-k
+<i>nbars</i>] [-m <i>margin</i>] [-paper <i>format</i>]
+[-noauthor] [-notab] [-nofrenchtab] [-noitaliantab]
+[-nogermantab] [-O <i>outfile</i>] [-s <i>scale</i>] [-t
+<i>transposition</i>] [-tabsize <i>fontsize</i>]
+[-transposegchords] [-v <i>verbosity</i>] [-V <i>voices</i>]
+[-w <i>width</i>] [-X <i>strictness</i>]
+[<i>infile</i>[.abc]]</p>
+</td>
+</table>
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>abctab2ps</b> reads an input file containing music in
+abc format and typesets it directly in PostScript. For a
+description of the abc syntax, please see the separate
+user&rsquo;s guide.</p>
+<!-- INDENTATION -->
+<p>Basically, the usage is <i>abctab2ps file1 file2 ...</i>
+where file1, file2 ... are the abc input files. This will
+write the Postscript output to the file <i>Out.ps</i>; for a
+different filename use flag -O. If no input file is
+specified, abctab2ps reads its input from stdin so that you
+can pipe the output of some other abc tool into
+abctab2ps.</p>
+<!-- INDENTATION -->
+<p>Note that most flags (see OPTIONS) can be used in any
+sequence. However, the position does matter for flags
+e,f,C,S,R,T since these determine how the following
+arguments are interpreted.</p>
+<!-- INDENTATION -->
+<p>Flags can be contracted together if the meaning is clear,
+and a numerical argument for the last flag can be appended.
+That is, &quot;-b -s 0.7 -v 1&quot; can be contracted to
+&quot;-bs0.7 -v1&quot;.</p>
+</td>
+</table>
+<a name="OPTIONS"></a>
+<h2>OPTIONS</h2>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="5" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-1</b></p>
+</td>
+<td width="8%"></td>
+<td width="56%">
+
+<p>writes every tune on a separate page.</p>
+</td>
+<td width="22%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-a</b> <i>alfa</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>set the maximal amount of permitted shrinking to
+<i>alfa</i>, where 0 &lt;= <i>alfa</i> &lt;= 1. A value of
+0.0 means that no shrinking is allowed, and a value of 1.0
+allows shrinking until the symbols are almost touching. In
+conjunction with -c, by default alfa is set to an
+intermediate value (displayed with &quot;abctab2ps -c
+-h&quot;). When -c is not used, maximal shrinking and
+stretching are allowed.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-b</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>break at all line ends, even if they end with the
+continuation symbol &quot;\&quot;.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-B</b> <i>barsperline</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>try to typeset with <i>barsperline</i> bars on each
+line.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-c</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>consider the input as one long line, ie., implicitly
+append the continuation symbol &rsquo;\&rsquo; to every line
+of music. When doing automatic line breaking with -c, the
+user can control the spacing of the symbols along the staff
+by specifying the &quot;compression parameter&quot; alfa
+with the -a flag.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-d</b> <i>distance</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>set staff distance to <i>distance</i> (cm/in/pt).</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-D</b> <i>fmtdir</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>look for format files in directory <i>fmtdir</i>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-e</b> <i>selector1 [selector2 ...]</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>typesets only the tunes matching the xref numbers
+<i>selector1 [selector2 ...]</i>. Optionally, the search can
+be done on other fields using in place of -e the flags -R
+(seaches the rhythm field), -C (searches the composer
+field), -S (searches the source field), -T (seaches the
+title field (default)).</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-E</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>make EPSF (encapsulated postscript) output. Each tune is
+then put into a separate file with a correct bounding box
+and no page breaks.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-f</b> <i>infile</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the input file. Has the same effect as omitting this
+flag.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-F</b> <i>formatfile</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>read format from file <i>formatfile</i>.fmt. The
+directory can be set with flag -D.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-g</b> shrink|space|stretch|fill</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the &quot;glue mode&quot;. The default mode is fill,
+which fills the staff. This flag is useful when changing the
+layout parameters, to see what effect the changes have for
+each mode separately.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-h</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>quick help, equivalent to &quot;abctab2ps&quot; without
+any arguments. This also shows the default settings for some
+parameters.</p>
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-H</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>show the default format parameters.</p>
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-I</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>write index file &quot;Ind.ps&quot;.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-k</b> <i>nbars</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>number every <i>nbars</i>. To number every first bar per
+staff, set <i>nbars</i> to 0.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="5" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-l</b></p>
+</td>
+<td width="8%"></td>
+<td width="36%">
+
+<p>print in landscape mode.</p>
+</td>
+<td width="42%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-m</b> <i>margin</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the left margin to <i>margin</i> (cm/in/pt).</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-maxs</b> <i>nsymbols</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>obsolete option for different memory allocation. No
+longer necessary because memory is now allocated
+dynamically.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-maxv</b> <i>nvoices</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>obsolete option for different memory allocation. No
+longer necessary because memory is now allocated
+dynamically.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-noauthor</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>suppresses the postscript DSC comment for the author
+(%%For). Useful when abctab2ps is run automatically on a
+webserver or when you do not want your name listed in the
+ouput file.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+<p><b>-notab</b></p>
+</td>
+<td width="2%"></td>
+<td width="78%">
+
+<p>suppresses all tablature specific postscript routines
+and fonts in the output file; useful for music only input,
+because the resulting output file is smaller. Basically,
+<i>abctab2ps</i> should behave like <i>abc2ps</i> with this
+option.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-nofrenchtab</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>does not include the font for french tab into the output
+file; useful if you only use a different tab, because the
+resulting output file is smaller.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-noitaliantab</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>does not include the font for italian tab (and other
+number based tabs) into the output file; useful if you only
+use a different tab, because the resulting output file is
+smaller.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-nogermantab</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>does not include the font for german tab into the output
+file; useful if you only use a different tab, because the
+resulting output file is smaller.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-n</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>includes historical notes and other stuff at the bottom
+of each tune.</p>
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-N</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>write page numbers</p>
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-o</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>obsolete option that is ignored. In abc2ps, only with
+this option postscript output was generated.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-O</b> <i>outfile</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>in PS (EPS) mode, the output is written to
+<i>outfile</i>.ps (<i>outfile</i>001.eps). If the parameter
+to -O is &rsquo;=&rsquo;, output for &quot;foo.abc&quot; is
+written to &quot;foo.ps&quot; (&quot;foo001.eps&quot;).</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-p</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>generates pretty output, with more whitespace between
+tunes, larger fonts for titles, and larger music symbols. By
+default, the layout squeezes the tunes to reduce the number
+of pages.</p>
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-P</b></p>
+</td>
+<td width="8%"></td>
+<td width="78%">
+
+<p>another pretty output format.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-paper</b> <i>format</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets paper format. Typical values for <i>format</i> are
+&quot;a4&quot; or &quot;letter&quot;. This command line
+option overrides the system-wide default papersize given in
+<i>/etc/papersize</i>. For a list of all possible values try
+an invalid value for <i>format</i>; this will also print the
+default papersize on your system.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-s</b> <i>scale</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>scales the music output by factor <i>scale</i>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-t</b> <i>transposition</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>transpose all music. If <i>transposition</i> is a number,
+the music is transposed up as many halftones; for downward
+transposition start the number with an underscore
+&quot;_&quot;. If <i>transposition</i> is a note name, this
+note becomes the root.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-tabsize</b> <i>fontsize</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the size of the tablature font TabFont to
+<i>fontsize</i>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-transposegchords</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>transpose guitar chords too (in combination with option
+-t), in case you use guitar chords actually for chord
+letters</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-v</b> <i>verbosity</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the verbosity for output to the screen to
+<i>verbosity</i>. Hereby -v0 gives very little, -v1,v2,v3..
+show successively more information. Verbosity &gt;= 10 is
+for debugging.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-V</b> <i>voices</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>select specified voices, eg. &quot;-V 1,4-5&quot;</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-w</b> <i>width</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>sets the width of the staff to <i>width</i>
+(cm/in/pt).</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="5" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+<p><b>-x</b></p>
+</td>
+<td width="8%"></td>
+<td width="67%">
+
+<p>includes the xref numbers in the tune title.</p>
+</td>
+<td width="11%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>-X</b> <i>strictness</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>set strictness for note spacing; 0 &lt; <i>strictness</i>
+&lt; 1.</p>
+</td>
+</table>
+<a name="ENVIRONMENT"></a>
+<h2>ENVIRONMENT</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>ABCTABFONTS</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>Semicolon separated list of directories which abctab2ps
+searches for tablature font files. If unset, fonts files are
+searched in <i>/usr/share/abctab2ps</i>,
+<i>/usr/local/share/abctab2ps</i> and <i>fonts</i> (in that
+order) on Unix/Win32/MacOs X and in <i>:fonts</i> on MacOs
+8/9. Please note that the separator is a semicolon
+&quot;;&quot; rather than a colon &quot;:&quot;. This is
+necessary because colons are part of path names on MacOs and
+Win32.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>PAPERSIZE</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>Sets the default paper format (<i>a4</i> or
+<i>letter</i>); overrides entry in
+<i>/etc/papersize</i>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>PAPERCONF</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>Full path to a file containing the default paper size
+(<i>a4</i> or <i>letter</i>). If unset,
+<i>/etc/papersize</i> is used.</p>
+</td>
+</table>
+<a name="FILES"></a>
+<h2>FILES</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p><b>/etc/papersize</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="78%">
+<p>Contains the name of the system-wide default paper size
+(<i>a4</i> or <i>letter</i>). A different file can be given
+with the environment variable <i>PAPERCONF</i>.</p>
+</td>
+</table>
+<a name="EXAMPLES"></a>
+<h2>EXAMPLES</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Typeset all tunes from mytunes.abc into Out.ps, choosing
+all line breaks automatically:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps mytunes.abc -c</tt></p>
+</td>
+<td width="74%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Squeeze notes together more and write the output to
+mytunes.ps:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps mytunes.abc -O &rsquo;=&rsquo; -c
+-a0.9</tt></p>
+</td>
+<td width="74%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Equivalent commands to typeset tunes 1 to 10 in bla.abc
+and 11-20 in fasel.abc:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps bla -e 1-10 -f fasel -e 11-20</tt></p>
+</td>
+<td width="74%">
+</td>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps bla.abc 1-10 fasel.abc 11-20</tt></p>
+</td>
+<td width="74%">
+</td>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps bla 1-10 fasel.abc 11-20</tt></p>
+</td>
+<td width="74%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Typeset all tunes with the string &rsquo;House&rsquo; in
+the title or with xref numbers 10-12, in all abc files whose
+name starts with X, including historical notes and xref
+numbers in the output, forcing a line break at continuation
+lines, with reduced size of the symbols, putting one tune
+per page:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="8%">
+
+<p><tt>abctab2ps X*.abc -e House 10,11,12 -nx -s0.9
+-b1</tt></p>
+</td>
+<td width="74%">
+</td>
+</table>
+<a name="BUGS"></a>
+<h2>BUGS</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>abctab2ps currently has a number of hard coded
+limits:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="5" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+<p>-</p>
+</td>
+<td width="10%"></td>
+<td width="64%">
+
+<p>Info fields must not exceed 300 characters</p>
+</td>
+<td width="14%">
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+<p>-</p>
+</td>
+<td width="10%"></td>
+<td width="64%">
+
+<p>file names must not exceed 100 characters</p>
+</td>
+<td width="14%">
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+<p>-</p>
+</td>
+<td width="10%"></td>
+<td width="64%">
+
+<p>the size of an output page is limited</p>
+</td>
+<td width="14%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>If you encounter a limit, you currently need to change
+the hard coded value in <i>abctab2ps.h</i> and
+recompile.</p>
+</td>
+</table>
+<a name="AUTHOR"></a>
+<h2>AUTHOR</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Christoph Dalitz
+&lt;christoph(dot)dalitz[at]hs-niederrhein(dot)de&gt;</p>
+</td>
+</table>
+<a name="VERSION"></a>
+<h2>VERSION</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>This man page describes abctab2ps version 1.8.1 from May
+2007. This version is built on Michael Methfessel&rsquo;s
+abc2ps 1.3.3 from December 1998.</p>
+</td>
+</table>
+<a name="COPYRIGHT"></a>
+<h2>COPYRIGHT</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>Copyright 1999-2007 by Christoph Dalitz</p>
+<!-- INDENTATION -->
+<p>abctab2ps is supplied &quot;as is&quot; without any
+warranty. It is free software and can be used, copied,
+modified and distributed without fee under the terms of the
+GNU General Public License.</p>
+</td>
+</table>
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="89%">
+<p>abcselect(1)</p>
+</td>
+</table>
+<hr>
+</body>
+</html>
