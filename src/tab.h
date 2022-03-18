@@ -86,6 +86,7 @@ struct TABFORMAT {         /* tablature format parameters */
   float gchordspace;       /* distance between gchord and tablature */
   int brummer;             /* sytle for brumemr in german tab */
   int germansepline;       /* draw separator line in German tab */
+  int underline8;          /* draw 8th course with underline instead of slash */
   TABFORMAT() {
     addflags = 2;
     rhstyle = RHSIMPLE;
@@ -96,6 +97,7 @@ struct TABFORMAT {         /* tablature format parameters */
     gchordspace = 10;
     brummer = BRUMMER_ABC;
     germansepline = 1;
+    underline8 = 0;
   }
 };
 

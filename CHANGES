@@ -1,6 +1,10 @@
 Change log of abctab2ps
 =======================
 
+ - new boolean option %%tab8underline to draw 8th course in frenchtab
+   with underline and following courses with one slash less
+
+
 Version 1.8.18, Mar 16 2022
 ---------------------------
 

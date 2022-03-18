@@ -39,7 +39,7 @@ abctab2ps User's Guide}
 Christoph Dalitz
 \\\textless christoph {\it dot} dalitz {\it at} hs-niederrhein {\it dot} de\textgreater
 }
-\date{describes abctab2ps version 1.8.18\\[1.0ex]
+\date{describes abctab2ps version 1.8.19\\[1.0ex]
 March 2022}
 \maketitle
 
@@ -142,6 +142,8 @@ changes in abctab2ps itself, see the file CHANGES.
 1.8.12 & 2019.11.05 & CD & tabbourdons encoding until "O" (15)
     \\ \hline
 1.8.18 & 2022.03.17 & CD & tabtype "neapoltab" added
+    \\ \hline
+1.8.19 & 2022.03.18 & CD & option "tab8underline" added
     \\ \hline
 \end{longtable}
 \end{center}
@@ -1384,6 +1386,9 @@ tabfirstflag & & logical & when true, rhythm flags are only printed when the
     rhythm changes or after a bar line \\ \hline
 tabledgeabove & & logical & when true, ledger lines for french bourdons
     are printed above the note rather than before. \\ \hline
+tab8underline & & logical & when true, the 8th course is marked with an
+    underline in frenchtab and all following courses are drawn with one
+    slash less. \\ \hline
 tabbrummer & & keyword & style for the sixth course (``Brummer'') in
     german tablature. Possible values are {\it ABC}, {\it 1AB} or {\it 123}.
     \\ \hline

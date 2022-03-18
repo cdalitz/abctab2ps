@@ -336,6 +336,10 @@ int read_tab_format (char* line)
     g_logv(line,value,&(tabfmt.germansepline));
     return 1;
   }
+  if (!strcmp(param,"tab8underline")) {
+    g_logv(line,value,&(tabfmt.underline8));
+    return 1;
+  }
 
   return 0;
 }
@@ -1221,10 +1225,27 @@ void draw_tabnote (float x, struct SYMBOL *s, float* gchy)
       } else {
         if (islower(s->accs[j])) {
           /* bourdons on fingerboard */
-          if (!tabfmt.ledgeabove)
-            PUT4("%.1f %d %d (%c) tabfbourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);
+          if (tabfmt.underline8) {
+            /* special case with 8c = underline, >8c = one slash less */
+            if (s->pits[j] == 7) {
+              PUT4("%.1f %d %d (%c) tabfbourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);
+            }
+            else if (s->pits[j] == 8) {
+              PUT4("%.1f %d %d (%c) tabflinebourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);
+            }
+            else {
+              if (!tabfmt.ledgeabove)
+                PUT4("%.1f %d %d (%c) tabfbourdon ", x, nbourdon, s->pits[j]-8, s->accs[j]);
+              else
+                PUT4("%.1f %d %d (%c) tabf1bourdon ", x, nbourdon, s->pits[j]-8, s->accs[j]);
+            }
+          } else {
+            /* normal case: slashes */
+            if (!tabfmt.ledgeabove)
+              PUT4("%.1f %d %d (%c) tabfbourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);
           else
             PUT4("%.1f %d %d (%c) tabf1bourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);
+          }
           nbourdon++;
         } else {
           /* long bass strings */
@@ -3038,7 +3059,22 @@ void def_tabsyms (FILE *fp)
            0.5*tabfont.size-2.5, tabfont.size-2, 
            tabfont.size, tabfont.size*tabfont.scale
            );
-  /* alternative version with ledger lines ABOVE letter */
+  /* version with ledger lines BELOW letter */
+  fprintf (fp,
+           "\n/tabflinebourdon { %% x m n (c) - n-th bourdon stopped at c drawn at course 7+m in frenchtab\n"
+           "  gsave .75 setlinewidth\n"
+           "  4 1 roll 2 index\n"
+           "  -%.1f add 2 index 1 add -%d mul -2 add moveto\n"
+           "  { %.1f 0 rlineto -%.1f -2 rmoveto} repeat stroke\n"
+           "  1 add -%d mul 1 add moveto\n"
+           "  /FrenchTabfont %.1f selectfont\n"
+           "  /bx false def cshow grestore\n"
+           "} bind def\n",
+           tabfont.size/2.0, tabfont.size,
+           (double)tabfont.size, (double)tabfont.size,
+           tabfont.size, tabfont.size*tabfont.scale
+           );
+  /* version with ledger lines ABOVE letter */
   fprintf (fp,
            "\n/tabf1bourdon { %% x m n (c) - n-th bourdon stopped at c drawn at course 7+m in frenchtab\n"
            "  gsave .75 setlinewidth\n"
