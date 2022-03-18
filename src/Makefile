@@ -116,7 +116,7 @@ install:
 	install -d $(FONTDIR)
 	install -m 644 $(FONTS) $(FONTDIR)
 	install -d $(DOCDIR)
-	install -m 644 ../doc/faq.html ../README ../CHANGES ../LICENSE $(DOCDIR)
+	install -m 644 ../doc/faq.html ../README.md ../CHANGES ../LICENSE $(DOCDIR)
 	install -m 644 ../doc/manpages/abctab2ps-man.html $(DOCDIR)
 	install -d $(DOCDIR)/userguide/html
 	install -m 644 ../doc/userguide/html/*.html $(DOCDIR)/userguide/html
@@ -143,7 +143,7 @@ uninstall:
 	done
 	rmdir $(FONTDIR) || :
 	rm -f $(DOCDIR)/faq.html $(DOCDIR)/abctab2ps-man.html 
-	rm -f $(DOCDIR)/README $(DOCDIR)/CHANGES $(DOCDIR)/LICENSE
+	rm -f $(DOCDIR)/README.md $(DOCDIR)/CHANGES $(DOCDIR)/LICENSE
 	rm -f $(DOCDIR)/userguide/html/*
 	rmdir $(DOCDIR)/userguide/html || :
 	rmdir $(DOCDIR)/userguide || :

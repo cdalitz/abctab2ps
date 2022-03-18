@@ -5,7 +5,7 @@
 %copyright 1999-2022 by Christoph Dalitz, based upon code by Michael Methfessel
 %vendor Christoph Dalitz
 %license ../LICENSE
-%readme ../README
+%readme ../README.md
 %description A music and tablature typesetting program based on
 %description Chris Walshaw's abc music language. abctab2ps converts
 %description abc files directly into postscript without the need
@@ -31,7 +31,7 @@ f 644 root root $fontdir ../src/fonts/fr*.ps
 f 644 root root $fontdir ../src/fonts/de*.ps
 
 d 755 root root $docdir
-f 644 root root $docdir/README ../README
+f 644 root root $docdir/README.md ../README.md
 f 644 root root $docdir/CHANGES ../CHANGES
 f 644 root root $docdir/LICENSE ../LICENSE
 f 644 root root $docdir/faq.html ../doc/faq.html
