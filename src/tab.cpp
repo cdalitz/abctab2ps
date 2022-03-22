@@ -378,6 +378,7 @@ void print_tab_format ()
   printf ("  tabfontitalian %s\n", tabfont.itfont);
   printf ("  tabfontgerman  %s\n", tabfont.defont);
   printf ("  tabledgeabove  %s\n", (tabfmt.ledgeabove) ? "yes" : "no");
+  printf ("  tab8underline  %s\n", (tabfmt.underline8) ? "yes" : "no");
   printf ("  tabflagspace   %.1fpt\n", tabfmt.flagspace);
   printf ("  tabgchordspace %.1fpt\n", tabfmt.gchordspace);
   switch (tabfmt.brummer) {
