@@ -72,7 +72,7 @@ DIR=abctab2ps-$VERSION
 ln -s . $DIR
 
 # Readme, License, History
-echo $DIR/README > $LF
+echo $DIR/README* > $LF
 echo $DIR/CHANGES >> $LF
 echo $DIR/LICENSE >> $LF
 
