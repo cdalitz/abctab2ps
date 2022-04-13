@@ -83,7 +83,10 @@ dup  76 /bourdon_12 put % L
 dup  77 /bourdon_13 put % M
 dup  78 /bourdon_14 put % N
 dup  79 /bourdon_15 put % O
-
+dup  80 /bourdon_16 put % P
+dup  81 /bourdon_17 put % Q
+dup  82 /bourdon_18 put % R
+dup  83 /bourdon_18 put % S
 
 % drawing procedures
 /drawchar 50 dict def
@@ -200,6 +203,22 @@ drawchar begin
     5 18 M 5 1 L 3 1 M 9 1 L
     17 19 M 10 19 L 10 11 L
     18 13 20 6 12 1 curveto stroke
+  } def
+  /bourdon_16 {
+    /Times 16 selectfont 1.5 1.2 scale
+    2.5 2 M (16) show
+  } def
+  /bourdon_17 {
+    /Times 16 selectfont 1.5 1.2 scale
+    2.5 2 M (17) show
+  } def
+  /bourdon_18 {
+    /Times 16 selectfont 1.5 1.2 scale
+    2.5 2 M (18) show
+  } def
+  /bourdon_19 {
+    /Times 16 selectfont 1.5 1.2 scale
+    2.5 2 M (19) show
   } def
 end
 

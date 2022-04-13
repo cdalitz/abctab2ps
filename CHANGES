@@ -1,6 +1,15 @@
 Change log of abctab2ps
 =======================
 
+Version 1.8.20, Apr 13 2022
+---------------------------
+
+- italian style bourdons can now also been stacked,
+   e.g. [{8}{10}{12}]
+
+ - fonts frFrancisque and frBaroqueml now support bourdons up to 19
+
+
 Version 1.8.19, Mar 22 2022
 ---------------------------
 

@@ -1250,7 +1250,8 @@ void draw_tabnote (float x, struct SYMBOL *s, float* gchy)
           nbourdon++;
         } else {
           /* long bass strings */
-          PUT2("%.1f 7.4 (%c) tabfshow ", x, s->accs[j]);
+          PUT3("%.1f %.1f (%c) tabfshow ", x, 7.4 + nbourdon, s->accs[j]);
+          nbourdon++;
         }
         /* extra space for guitar chords */
         *gchy=*gchy+2-tabfont.size;
@@ -1273,7 +1274,8 @@ void draw_tabnote (float x, struct SYMBOL *s, float* gchy)
           nbourdon++;
         } else {
           /* long bass strings */
-          PUT2("%.1f 7.4 (%c) tabfshow ", x, s->accs[j]);
+          PUT3("%.1f %.1f (%c) tabfshow ", x, 7.4 + nbourdon, s->accs[j]);
+          nbourdon++;
         }
         /* extra space for guitar chords */
         if (s->pits[j] == 6) *gchy=*gchy+2-tabfont.size;
@@ -1296,7 +1298,8 @@ void draw_tabnote (float x, struct SYMBOL *s, float* gchy)
           nbourdon++;
         } else {
           /* long bass strings */
-          PUT2("%.1f 7.4 (%c) tabfshow ", x, s->accs[j]);
+          PUT3("%.1f %.1f (%c) tabfshow ", x, 7.4 + nbourdon, s->accs[j]);
+          nbourdon++;
         }
         /* extra space for guitar chords */
         if (s->pits[j] == 5) *gchy=*gchy+2-tabfont.size;
