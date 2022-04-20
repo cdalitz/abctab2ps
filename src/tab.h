@@ -87,6 +87,7 @@ struct TABFORMAT {         /* tablature format parameters */
   int brummer;             /* sytle for brumemr in german tab */
   int germansepline;       /* draw separator line in German tab */
   int underline8;          /* draw 8th course with underline instead of slash */
+  int underscoreis8;       /* interpret {_a} as 8th course */
   TABFORMAT() {
     addflags = 2;
     rhstyle = RHSIMPLE;
@@ -98,6 +99,7 @@ struct TABFORMAT {         /* tablature format parameters */
     brummer = BRUMMER_ABC;
     germansepline = 1;
     underline8 = 0;
+    underscoreis8 = 0;
   }
 };
 

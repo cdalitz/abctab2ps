@@ -340,6 +340,10 @@ int read_tab_format (char* line)
     g_logv(line,value,&(tabfmt.underline8));
     return 1;
   }
+  if (!strcmp(param,"tabunderscoreis8")) {
+    g_logv(line,value,&(tabfmt.underscoreis8));
+    return 1;
+  }
 
   return 0;
 }
@@ -379,6 +383,7 @@ void print_tab_format ()
   printf ("  tabfontgerman  %s\n", tabfont.defont);
   printf ("  tabledgeabove  %s\n", (tabfmt.ledgeabove) ? "yes" : "no");
   printf ("  tab8underline  %s\n", (tabfmt.underline8) ? "yes" : "no");
+  printf ("  tabunderscoreis8 %s\n", (tabfmt.underscoreis8) ? "yes" : "no");
   printf ("  tabflagspace   %.1fpt\n", tabfmt.flagspace);
   printf ("  tabgchordspace %.1fpt\n", tabfmt.gchordspace);
   switch (tabfmt.brummer) {
@@ -797,9 +802,24 @@ int parse_tab_chord(void)
         course = 7;
         p++;
         while ((*p!='}') && (*p!='\0')) {
-          if (*p==',') {
+          if (tabfmt.underscoreis8 && *p =='_') {
+            course++;
+            p++;
+            if (isalpha(*p)) {
+              symv[ivc][k].pits[m] = course;
+              symv[ivc][k].accs[m] = tolower(*p);
+              npitch++;
+            } else {
+              syntax("_ in burdon must be followed by letter",p);
+            }
+            break;
+          }
+          else if (*p==',') {
             course++;
           } else if (isalpha(*p)) {
+            if (tabfmt.underscoreis8 && course > 7) {
+              course++;
+            }
             symv[ivc][k].pits[m] = course;
             symv[ivc][k].accs[m] = tolower(*p);
             npitch++;
@@ -1226,7 +1246,7 @@ void draw_tabnote (float x, struct SYMBOL *s, float* gchy)
       } else {
         if (islower(s->accs[j])) {
           /* bourdons on fingerboard */
-          if (tabfmt.underline8) {
+          if (tabfmt.underline8 || tabfmt.underscoreis8) {
             /* special case with 8c = underline, >8c = one slash less */
             if (s->pits[j] == 7) {
               PUT4("%.1f %d %d (%c) tabfbourdon ", x, nbourdon, s->pits[j]-7, s->accs[j]);

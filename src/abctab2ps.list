@@ -12,7 +12,7 @@
 %description of additional software.
 %description In addition to the abc standard which only supports
 %description music, abctab2ps supports lute and guitar tablature.
-%version 1.8.20
+%version 1.8.21
 
 # definitions for installation directories
 $prefix=/usr

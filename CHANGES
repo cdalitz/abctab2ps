@@ -1,6 +1,14 @@
 Change log of abctab2ps
 =======================
 
+Version 1.8.21, Apr 20 2022
+---------------------------
+
+ - new boolean option %%tabunderscoreis8 which interprets {_a} as 8th course
+   and draws underline under this diapason;
+   other diapasons, e.g. {,a}, are drawn as is
+
+
 Version 1.8.20, Apr 13 2022
 ---------------------------
 

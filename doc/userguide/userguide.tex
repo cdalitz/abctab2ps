@@ -39,8 +39,8 @@ abctab2ps User's Guide}
 Christoph Dalitz
 \\\textless christoph {\it dot} dalitz {\it at} hs-niederrhein {\it dot} de\textgreater
 }
-\date{describes abctab2ps version 1.8.19\\[1.0ex]
-March 2022}
+\date{describes abctab2ps version 1.8.21\\[1.0ex]
+April 2022}
 \maketitle
 
 
@@ -144,6 +144,8 @@ changes in abctab2ps itself, see the file CHANGES.
 1.8.18 & 2022.03.17 & CD & tabtype "neapoltab" added
     \\ \hline
 1.8.19 & 2022.03.18 & CD & option "tab8underline" added
+    \\ \hline
+1.8.21 & 2022.04.20 & CD & option "tabunderscoreis8" added
     \\ \hline
 \end{longtable}
 \end{center}
@@ -1389,6 +1391,10 @@ tabledgeabove & & logical & when true, ledger lines for french bourdons
 tab8underline & & logical & when true, the 8th course is marked with an
     underline in frenchtab and all following courses are drawn with one
     slash less. \\ \hline
+tabunderscoreis8 & & logical & when true, \verb|{_a}| denotes the 8th course
+    and is marked with an underline in frenchtab; other courses are drawn with
+    the specified number of slashes (in contrast to {\em tab8underline}).
+    \\ \hline
 tabbrummer & & keyword & style for the sixth course (``Brummer'') in
     german tablature. Possible values are {\it ABC}, {\it 1AB} or {\it 123}.
     \\ \hline
