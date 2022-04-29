@@ -13,11 +13,16 @@
 # uncomment the following line for universal binary on OSX
 #ARCH = -arch i386 -arch ppc
 
+# for support of older macos versions (comment out if unwanted)
+ifeq ($(shell uname -s),Darwin)
+	OSXMINVERSION = -mmacosx-version-min=10.10
+endif 
+
 # settings for GNU C compiler
 CC = g++
 #CFLAGS = -Wimplicit -Wformat -g -fpermissive $(ARCH)
-CFLAGS = -Wimplicit -Wformat -O2 -fpermissive 
-LDFLAGS = -lstdc++ -lm $(ARCH)
+CFLAGS = -Wimplicit -Wformat -O2 -fpermissive $(OSXMINVERSION)
+LDFLAGS = -lstdc++ -lm $(ARCH) $(OSXMINVERSION)
 LDSTATIC = --static
 
 
