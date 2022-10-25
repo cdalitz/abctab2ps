@@ -44,10 +44,10 @@ int nwords (char *str);
 int getword (int iw, char *str, char *str1);
 
 /* ----- abbrev: check for valid abbreviation ----- */
-int abbrev (char str[], char ab[], int nchar);
+int abbrev (char str[], const char ab[], int nchar);
 
 /* ----- strext: set extension on a file identifier ----- */
-void strext (char fid1[], char fid[], char ext[], int force);
+void strext (char fid1[], char fid[], const char ext[], int force);
 
 /* ----- cutext: cut off extension on a file identifier ----- */
 void cutext (char fid[]);

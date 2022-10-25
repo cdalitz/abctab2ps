@@ -522,7 +522,7 @@ int set_keysig(char *s, struct KEYSTR *ks, int init)
 int set_clef(char* s, struct KEYSTR *ks)
 {
   struct {  /* zero terminated list of music clefs */
-    char* name; int value;
+    const char* name; int value;
   } cleflist[] = {
     {"treble", TREBLE},
     {"treble8", TREBLE8},
@@ -1030,10 +1030,11 @@ int find_voice (char *vid, int *newv)
 }
 
 /* ----- switch_voice: read spec for a voice, return voice number ----- */
-int switch_voice (char *str)
+int switch_voice (const char *str)
 {
   int j,np,newv;
-  char *r,*q;
+  const char *r;
+  char *q;
   char t1[STRLINFO],t2[STRLINFO];
 
   if (!do_this_tune) return 0;
@@ -1646,7 +1647,7 @@ int parse_deco ()
   int deco,n;
   /* mapping abc code to decorations */
   /* for no abbreviation, set abbrev=0; for no !..! set fullname="" */
-  struct s_deconame { int index; char abbrev; char* fullname; };
+  struct s_deconame { int index; char abbrev; const char* fullname; };
   static struct s_deconame deconame[] = {
     {D_GRACE,   '~', "!grace!"},
     {D_STACC,   '.', "!staccato!"},
@@ -2267,8 +2268,7 @@ int parse_music_line (char *line)
   p1=p=p0=line;
   pmx=p+strlen(p);
 
-  while (*p != 0) {
-    if (p>pmx) break;                /* emergency exit */
+  while ((p <= pmx) && (*p != 0)) {
     type=parse_sym();
     n=voice[ivc].nsym;
     i=n-1;

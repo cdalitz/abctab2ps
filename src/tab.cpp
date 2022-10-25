@@ -216,11 +216,13 @@ int is_tab_line (char *line)
 int read_tab_format (char* line)
 {
   char param[STRLFMT];
+  char  scanfstring[256];
   char* value;
   int nch;
   static int usraddflags = 0; /* true if user explicitly sets that parameter */
 
-  sscanf(line,"%s%n",param,&nch);
+  sprintf(scanfstring, "%%%is%%n", STRLFMT-1);
+  sscanf(line,scanfstring,param,&nch);
   value = line + nch;
 
   if (!strcmp(param,"tabfontsize")) {
@@ -281,29 +283,38 @@ int read_tab_format (char* line)
   }
   if (!strcmp(param,"tabfontfrench")) {
     char buf[STRLFMT];
-    sscanf(value,"%s",buf); /*remove whitespace*/
+    sprintf(scanfstring, "%%%is", STRLFMT-1);
+    sscanf(value,scanfstring,buf); /*remove whitespace*/
     if (!strncmp(buf,"fr",2) || !strcmp(buf,"none"))
       strcpy(tabfont.frfont,buf);
-    else
-      sprintf(tabfont.frfont,"fr%s",buf);
+    else {
+      snprintf(tabfont.frfont, STRLFMT, "fr%s",buf);
+      tabfont.frfont[STRLFMT-1] = '\0';
+    }
     return 1;
   }
   if (!strcmp(param,"tabfontitalian")) {
     char buf[STRLFMT];
-    sscanf(value,"%s",buf); /*remove whitespace*/
+    sprintf(scanfstring, "%%%is", STRLFMT-1);
+    sscanf(value,scanfstring,buf); /*remove whitespace*/
     if (!strncmp(buf,"it",2) || !strcmp(buf,"none"))
       strcpy(tabfont.itfont,buf);
-    else
-      sprintf(tabfont.itfont,"it%s",buf);
+    else {
+      snprintf(tabfont.itfont, STRLFMT, "it%s",buf);
+      tabfont.itfont[STRLFMT-1] = '\0';
+    }
     return 1;
   }
   if (!strcmp(param,"tabfontgerman")) {
     char buf[STRLFMT];
-    sscanf(value,"%s",buf); /*remove whitespace*/
+    sprintf(scanfstring, "%%%is", STRLFMT-1);
+    sscanf(value,scanfstring,buf); /*remove whitespace*/
     if (!strncmp(buf,"de",2) || !strcmp(buf,"none"))
       strcpy(tabfont.defont,buf);
-    else
-      sprintf(tabfont.defont,"de%s",buf);
+    else {
+      snprintf(tabfont.defont, STRLFMT, "de%s",buf);
+      tabfont.defont[STRLFMT-1] = '\0';
+    }
     return 1;
   }
   if (!strcmp(param,"tabledgeabove")) {
@@ -456,8 +467,7 @@ int parse_tab_line (char *line)
   p=p0=line;
   pmx=p+strlen(p);
 
-  while (*p != 0) {
-    if (p>pmx) break;                /* emergency exit */
+  while ((p <= pmx) && (*p != 0)) {
     type=parse_tab_sym();
     n=voice[ivc].nsym;
     i=n-1;
@@ -637,7 +647,7 @@ int parse_tab_chord(void)
   int course,length,invis;   /*symbol characteristics*/
   char *q,*q0;
   int ndeco;      /*chord decorations*/
-  char* tabdecos = "'UVX*#L";  /*decos that may appear inside chord*/
+  const char* tabdecos = "'UVX*#L";  /*decos that may appear inside chord*/
   int notedeco;              /*note decoration inside chord*/
   GchordList::iterator ii;
 
@@ -955,7 +965,7 @@ int parse_tabdeco ()
   int deco,n;
   /* mapping abc code to decorations */
   /* for no abbreviation, set abbrev=0; for no !..! set fullname="" */
-  struct s_deconame { int index; char abbrev; char* fullname; };
+  struct s_deconame { int index; char abbrev; const char* fullname; };
   static struct s_deconame deconame[] = {
     {D_HOLD,       'H', "!fermata!"},
     {D_TABTRILL,   'T', "!trill!"},

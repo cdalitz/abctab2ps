@@ -1740,7 +1740,7 @@ void draw_timesig (float x, struct SYMBOL s)
 {
   if (s.invis) return;
 
-  char* historic;
+  const char* historic;
   if (cfmt.historicstyle) historic="h"; else historic="";
   if (s.w==1) 
     PUT2("%.1f csig%s\n", x, historic);
@@ -1988,7 +1988,7 @@ void set_ending (int i)
 void draw_endings (void)
 {
   int i,j;
-  char* dot;
+  const char* dot;
   float gchy,top;
 
 
@@ -2258,7 +2258,7 @@ void draw_basic_note (float x, float w, float d, struct SYMBOL *s, int m)
 {
   int y,i,yy;
   float dotx,doty,xx,dx,avail,add,fac;
-  char* historic;
+  const char* historic;
 
   if (cfmt.historicstyle) historic = "h"; else historic = "";
 
@@ -2595,7 +2595,7 @@ float draw_note (float x, float w, float d, struct SYMBOL *s, int fl, float *gch
   char c,cc;
   int y,i,m;
   float yc,slen,slen0,top,top2,xx;
-  char* historic;
+  const char* historic;
   slen0=STEM;
 
   draw_gracenotes (x, w, d, s);                /* draw grace notes */
@@ -4749,7 +4749,7 @@ void process_textblock(FILE *fpin, FILE *fp, int job)
 
     w1 = (char*) malloc(sizeof(char)*(ln.length()+4));
     w1[0] = '\0';
-    sscanf(ln.c_str(),"%s",w1);
+    sscanf(ln.c_str(),"%s", w1);
     if (!strcmp(w1,"endtext")) break;
     free(w1);
 
@@ -4781,12 +4781,12 @@ void process_pscomment (FILE *fpin, FILE *fp, char *line)
   for (i=2;i<strlen(line);i++)
     if (line[i]=='%' && line[i-1]!='\\') line[i]='\0';
   strcpy(w," ");
-  sscanf(line,"%s%n", w, &nch);
+  sscanf(line,"%80s%n", w, &nch);
 
   if (!strcmp(w,"begintext")) {
     if (epsf && !within_block) return;
     strcpy(fstr,"");
-    sscanf(line, "%*s %s", fstr);
+    sscanf(line, "%*s %80s", fstr);
     if (isblankstr(fstr)) strcpy(fstr,"obeylines");
     if      (!strcmp(fstr,"obeylines")) job=OBEYLINES;
     else if (!strcmp(fstr,"align"))     job=ALIGN;
@@ -4823,7 +4823,7 @@ void process_pscomment (FILE *fpin, FILE *fp, char *line)
     strcpy(unum1,"");
     strcpy(unum2,"");
     strcpy(unum3,"");
-    sscanf(line,"%*s %s %s %s", unum1,unum2,unum3);
+    sscanf(line,"%*s %40s %40s %40s", unum1,unum2,unum3);
     g_unum(unum1,unum1,&h1);
     g_unum(unum2,unum1,&h2);
     g_unum(unum3,unum1,&len);
@@ -4840,7 +4840,7 @@ void process_pscomment (FILE *fpin, FILE *fp, char *line)
     if (within_block && !do_this_tune) return;
     output_music (fp);
     strcpy(unum1,"");
-    sscanf(line,"%*s %s", unum1);
+    sscanf(line,"%*s %40s", unum1);
     g_unum(unum1,unum1,&h1);
     if (h1*h1<0.00001) h1=0.5*CM;
     bskip (h1);
@@ -5009,9 +5009,11 @@ void process_line (FILE *fp, int type, char *xref_str, int npat, char (*pat)[STR
         }
         else {
           nepsf++;
-          sprintf (fnm, "%s%03d.eps", outf, nepsf);
+          snprintf (fnm, STRLFMT, "%s%03d.eps", outf, nepsf);
+          fnm[STRLFMT-1] = '\0';
         }
-        sprintf (finf, "%s (%d)", in_file[0], xrefnum); 
+        snprintf (finf, MAXINF, "%s (%d)", in_file[0], xrefnum); 
+        finf[MAXINF-1] = '\0';
         if ((feps = fopen (fnm,"w")) == NULL) 
             rx ("Cannot open output file ", fnm);
         init_ps (feps, finf, 1,

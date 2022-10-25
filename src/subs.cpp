@@ -287,7 +287,7 @@ int parse_args (int ac, char **av)
         paper = get_papersize(av[i]);
         if (!paper) {
           int j;
-          char* psdefault = get_system_papersize()->name;
+          const char* psdefault = get_system_papersize()->name;
           printf("+++ Unknown papersize %s. "
                  "Possible papersizes are (* = default):\n", av[i]);
           for (j=0; papersizes[j].name; j++) {
@@ -519,7 +519,7 @@ void process_cmdline (char *line)
   char** av;
   int allocav=10;
   char* ap;
-  char* whitespace=" \t\n";
+  const char* whitespace=" \t\n";
   char* linecopy;
 
   linecopy = strdup(line);
@@ -852,7 +852,7 @@ int tex_str (const char *str, string *s, float *wid)
 
 
 /* ----- put_str: output a string in postscript ----- */
-void put_str (char *str)
+void put_str (const char *str)
 {
   string s;
   float w;
@@ -979,7 +979,7 @@ void open_output_file (char *fnam, char *tstr)
 
 
 /* ----- open_index_file ------- */
-void open_index_file (char *fnam)
+void open_index_file (const char *fnam)
 {
   if (vb>=8) printf("Open index file \"%s\"\n", fnam);
   if ((findex = fopen (fnam,"w")) == NULL) 
@@ -1002,9 +1002,9 @@ void close_index_file (void)
 }
 
 /* ----- add_to_text_block ----- */
-void add_to_text_block (char *ln, int add_final_nl)
+void add_to_text_block (const char *ln, int add_final_nl)
 {
-  char *c;
+  const char *c;
   string word = "";
   int nl;
 
@@ -1210,7 +1210,7 @@ void put_words (FILE *fp)
 }
 
 /* ----- put_text ------- */
-void put_text (FILE *fp, int type, char *str)
+void put_text (FILE *fp, int type, const char *str)
 {
   int i,n;
   float baseskip,parskip;

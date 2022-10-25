@@ -44,7 +44,7 @@ int set_page_format (void);
 int tex_str (const char *str, string *s, float *wid);
 
 /* ----- put_str: output a string in postscript ----- */
-void put_str (char *str);
+void put_str (const char *str);
 
 /* ----- set_font ----- */
 void set_font (FILE *fp, struct FONTSPEC font, int add_bracket);
@@ -65,13 +65,13 @@ int close_output_file (void);
 void open_output_file (char fnam[], char tstr[]);
 
 /* ----- open_index_file ------- */
-void open_index_file (char fnam[]);
+void open_index_file (const char *fnam);
 
 /* ----- close_index_file ------- */
 void close_index_file (void);
 
 /* ----- add_to_text_block ----- */
-void add_to_text_block (char ln[], int add_final_nl);
+void add_to_text_block (const char ln[], int add_final_nl);
 
 /* ----- write_text_block ----- */
 void write_text_block (FILE *fp, int job);
@@ -80,7 +80,7 @@ void write_text_block (FILE *fp, int job);
 void put_words (FILE *fp);
 
 /* ----- put_text ------- */
-void put_text (FILE *fp, int type, char str[]);
+void put_text (FILE *fp, int type, const char str[]);
 
 /* ----- put_history ------- */
 void put_history (FILE *fp);

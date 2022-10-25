@@ -35,7 +35,7 @@ struct PAPERSIZE papersizes[] = {
 
  
 /* ----- fontspec ----- */
-void fontspec (struct FONTSPEC *f, char *name, float size, int box)
+void fontspec (struct FONTSPEC *f, const char *name, float size, int box)
 {
   strcpy (f->name, name);
   f->size = size;
@@ -300,13 +300,13 @@ void print_format (struct FORMAT f)
 
 
 /* ----- g_unum: read a number with a unit ----- */
-void g_unum (char *l, char *s, float *num)
+void g_unum (const char *l, char *s, float *num)
 {
   float a,b;
   char unit[81];
 
   strcpy(unit,"pt");
-  sscanf(s,"%f%s", &a, unit);
+  sscanf(s,"%f%80s", &a, unit);
 
   if      (!strcmp(unit,"cm")) b=a*CM;
   else if (!strcmp(unit,"mm")) b=a*CM*0.1;
@@ -320,13 +320,13 @@ void g_unum (char *l, char *s, float *num)
 }
 
 /* ----- g_logv: read a logical variable ----- */ 
-void g_logv (char *l, char *s, int *v)
+void g_logv (const char *l, char *s, int *v)
 {
   int k;
   char t[31];
 
   strcpy(t,"1");
-  sscanf (s,"%s", t);
+  sscanf (s,"%30s", t);
   if (!strcmp(t,"1") || !strcmp(t,"yes") || !strcmp(t,"true"))
     k=1;
   else if (!strcmp(t,"0") || !strcmp(t,"no") || !strcmp(t,"false"))
@@ -363,13 +363,15 @@ void g_intv (char *l, int nch, int *v)
 void g_fspc (char *l, int nch, struct FONTSPEC *fn)
 {
   char  fname[STRLFILE],ssiz[STRLFILE],sbox[STRLFILE];
+  char  scanfstring[256];
   float fsize;
 
   fsize=fn->size;
   strcpy(sbox,"SnOt");
   strcpy(ssiz,"SnOt");
 
-  sscanf (l+nch,"%s %s %s", fname, ssiz, sbox); 
+  sprintf(scanfstring, "%%%is %%%is %%%is", STRLFILE-1, STRLFILE-1, STRLFILE-1);
+  sscanf (l+nch, scanfstring, fname, ssiz, sbox); 
   if (strcmp(fname,"*")) strcpy (fn->name, fname);
 
   if (strcmp(ssiz,"*")) sscanf(ssiz,"%f",&fsize);
@@ -388,6 +390,7 @@ void g_fspc (char *l, int nch, struct FONTSPEC *fn)
 int interpret_format_line (char *line, struct FORMAT *f)
 {
   char l[STRLFMT],w[STRLFMT],fnm[STRLFMT];
+  char  scanfstring[256];
   int nch,i,fnum,pos;
   char *s;
   struct FONTSPEC tempfont;
@@ -396,7 +399,8 @@ int interpret_format_line (char *line, struct FORMAT *f)
   strnzcpy(l,line,STRLFMT);
 
   strcpy(w,"");
-  sscanf(l,"%s%n", w, &nch);
+  sprintf(scanfstring, "%%%is%%n", STRLFMT-1);
+  sscanf(l, scanfstring, w, &nch);
   if (!strcmp(w,"")) return 0;
   if (w[0]=='%') return 0;
   if (vb>=6) printf ("Interpret format line: %s\n", l);
@@ -470,7 +474,8 @@ int interpret_format_line (char *line, struct FORMAT *f)
   else if (!strcmp(w,"indexfont"))     g_fspc(l,nch,&f->indexfont);
 
   else if (!strcmp(w,"font")) {
-    sscanf(l,"%*s %s", fnm);
+    sprintf(scanfstring, "%%*s %%%is", STRLFMT-1);
+    sscanf(l, scanfstring, fnm);
     fnum=-1;
     for (i=0;i<nfontnames;i++) {
       if (!strcmp(fnm,fontnames[i])) fnum=i; 
@@ -505,7 +510,7 @@ int interpret_format_line (char *line, struct FORMAT *f)
 }
 
 /* ----- read_fmt_file ----- */
-int read_fmt_file (char *filename, char *dirname, struct FORMAT *f)
+int read_fmt_file (const char *filename, char *dirname, struct FORMAT *f)
 {
   FILE *fp;
   string line;
@@ -556,7 +561,7 @@ struct PAPERSIZE* get_papersize (const char* name)
 /* If no system setting is found, the first entry in papersizes is returned */
 struct PAPERSIZE* get_system_papersize ()
 {
-  char* papersizefile = DIRSEPCHAR "etc" DIRSEPCHAR "papersize";
+  const char* papersizefile = DIRSEPCHAR "etc" DIRSEPCHAR "papersize";
   char* envvar;
   struct PAPERSIZE* retval;
   FILE* fp;

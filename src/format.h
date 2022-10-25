@@ -10,7 +10,7 @@
 
  
 /* ----- fontspec ----- */
-void fontspec (struct FONTSPEC *f, char name[], float size, int box);
+void fontspec (struct FONTSPEC *f, const char name[], float size, int box);
  
 /* ----- add_font - checks font list, adds font if new ----- */
 int add_font (struct FONTSPEC *f);
@@ -34,10 +34,10 @@ void print_font (const char *str, struct FONTSPEC fs);
 void print_format (struct FORMAT f);
 
 /* ----- g_unum: read a number with a unit ----- */
-void g_unum (char *l, char *s, float *num);
+void g_unum (const char *l, char *s, float *num);
 
 /* ----- g_logv: read a logical variable ----- */ 
-void g_logv (char *l, char *s, int *v);
+void g_logv (const char *l, char *s, int *v);
 
 /* ----- g_fltv: read a float variable, no units ----- */ 
 void g_fltv (char *l, int nch, float *v);
@@ -53,11 +53,11 @@ void g_fspc (char *l, int nch, struct FONTSPEC *fn);
 int interpret_format_line (char l[], struct FORMAT *f);
 
 /* ----- read_fmt_file ----- */
-int read_fmt_file (char filename[], char dirname[], struct FORMAT *f);
+int read_fmt_file (const char filename[], char dirname[], struct FORMAT *f);
 
 /* ----- handling international papersizes ----- */
 struct PAPERSIZE {        /* dimension of a paper norm */
-  char* name;
+  const char* name;
   float pagewidth;
   float pageheight;
   float leftmargin;

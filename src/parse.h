@@ -88,7 +88,7 @@ int is_cmdline (const char str[]);
 int find_voice (char vid[], int *newv);
 
 /* ----- switch_voice: read spec for a voice, return voice number ----- */
-int switch_voice (char str[]);
+int switch_voice (const char *str);
 
 /* ----- info_field: identify info line, store in proper place  ---- */
 int info_field (char str[]);

@@ -131,7 +131,7 @@ int getline(string* s, FILE *fp)
 void strip (char *str1, char *str)
 {
   int l,i,i1,i2;
-  char* blank = " \t\r\n";
+  const char* blank = " \t\r\n";
   l=strlen(str);
 
   i1=0;
@@ -148,7 +148,7 @@ void strip (char *str1, char *str)
 }
 void strip (string* str)
 {
-  char* blank = " \t\r\n";
+  const char* blank = " \t\r\n";
   int b,e;
 
   if(str->length() == 0) return;
@@ -208,7 +208,7 @@ int getword (int iw, char *str, char *str1)
 
 
 /* ----- abbrev: check for valid abbreviation ----- */
-int abbrev (char *str, char *ab, int nchar)
+int abbrev (char *str, const char *ab, int nchar)
 {
   int i,nc;
   if (strlen(str) > strlen(ab)) return 0;
@@ -221,12 +221,14 @@ int abbrev (char *str, char *ab, int nchar)
 /* ----- strext: set extension on a file identifier ----- */
 /*  force=1 forces change even if fid already has an extension */
 /*  force=0 does not change the extension if there already is one */
-void strext (char *fid1, char *fid, char *ext, int force)
+void strext (char *fid1, char *fid, const char *ext, int force)
 {
   int i,l;
   char *p,*q;
 
-  strcpy (fid1, fid);
+  if (fid1 != fid) {
+    strcpy (fid1, fid);
+  }
   l=strlen(fid1);
   p=fid1;
   for (i=0;i<l;i++) 
@@ -538,6 +540,7 @@ int strnzcpy (char* dst, const char* src, int len)
 }
 
 
+#if 0
 /*
  * fgets() variant that works with \r and \n and \r\n and even \n\r
  * (the latter occurs on MacOs 8/9, because MPW swaps \r and \n)
@@ -547,7 +550,7 @@ int strnzcpy (char* dst, const char* src, int len)
 int fgets_rn (string* s, FILE* fp)
 {
 }
-
+#endif
 
 /* key-value list: 
  *   add or replace new entry
