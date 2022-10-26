@@ -1,7 +1,10 @@
 Change log of abctab2ps
 =======================
 
-TODO - memory for vocals dynamically allocated
+Version 1.8.22, Oct 26 2022
+---------------------------
+
+ - memory for vocals dynamically allocated
 
  - security changes to avoid crashes on wrong input
    (thanks to James Allwright)

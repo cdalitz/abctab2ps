@@ -2167,8 +2167,12 @@ char *add_wd(char *str)
 
   l=strlen(str);
   if (l==0) return 0;
-  if (nwpool+l+1>NWPOOL) 
-    rx ("Overflow while parsing vocals; increase NWPOOL and recompile.","");
+  if (nwpool+l+1>maxNwpool) {
+    //rx ("Overflow while parsing vocals; increase maxNwpool and recompile.","");
+    wpool = (char *)zrealloc(wpool,maxNwpool,maxNwpool+allocNwpool,sizeof(char));
+    if (wpool==NULL) rx("Out of memory","");
+    maxNwpool += allocNwpool;
+  }
   
   strcpy(wpool+nwpool, str);
   rp=wpool+nwpool;

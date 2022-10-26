@@ -66,7 +66,9 @@ float lbnp,bbnp,rbnp,lbnx,bbnx,rbnx;      /*   bar-note spacing */
 float lnbp,bnbp,rnbp,lnbx,bnbx,rnbx;      /*   note-bar spacing */
 
 
-char wpool[NWPOOL];            /* pool for vocal strings */
+char* wpool = NULL;            /* pool for vocal strings */
+int maxNwpool = 0;             /* alloced size of wpool */
+int allocNwpool = 4000;        /* incrase size for malloc of wpool */
 int nwpool,nwline;             /* globals to handle wpool */
 
 struct SYMBOL zsym;            /* symbol containing zeros */
@@ -230,6 +232,9 @@ int main(int argc, char **argv)
   }
 
   alloc_structs ();
+
+  maxNwpool = allocNwpool;
+  wpool = (char *)zrealloc(NULL, 0, maxNwpool, sizeof(char));
 
   /* ----- set the page format ----- */
   nfontnames=0;

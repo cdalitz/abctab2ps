@@ -22,8 +22,8 @@ using std::map;
 /* -------------- general macros ------------- */
 
 #define VERSION              "1.8"      /* version */
-#define REVISION             "22a"        /* revison */
-#define VDATE        "Oct 25 2022"      /* version date */
+#define REVISION             "22"        /* revison */
+#define VDATE        "Oct 26 2022"      /* version date */
 #define VERBOSE0           2            /* default verbosity */
 #define DEBUG_LV           0            /* debug output level */
 #define OUTPUTFILE      "Out.ps"        /* standard output file */
@@ -99,7 +99,6 @@ typedef vector<string> StringVector;
 #define BUFFSZ  50000           /* size of output buffer */
 #define BUFFSZ1  3000           /* buffer reserved for one staff */
 #define BUFFLN    100           /* max number of lines in output buffer */
-#define NWPOOL   8000           /* char pool for vocals */
 #define NWLINE     16           /* max number of vocal lines per staff */
 #define MAXGCHLINES 8           /* max number of lines in guitar chords */
 #define MAXGRACE   30           /* max number of grace notes */
@@ -469,7 +468,8 @@ extern float lbnp,bbnp,rbnp,lbnx,bbnx,rbnx;      /*   bar-note spacing */
 extern float lnbp,bnbp,rnbp,lnbx,bnbx,rnbx;      /*   note-bar spacing */
 
 
-extern char wpool[NWPOOL];            /* pool for vocal strings */
+extern char* wpool;                   /* pool for vocal strings */
+extern int maxNwpool, allocNwpool;    /* for malloc of wpool */
 extern int nwpool,nwline;             /* globals to handle wpool */
 
 extern struct SYMBOL zsym;            /* symbol containing zeros */

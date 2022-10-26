@@ -39,7 +39,7 @@ then
     :
 else
     echo "Version in source code ($_srcversion) different from $VERSION"
-    echo -n "Continue? (y/n) [n] "; read ok
+    printf "Continue? (y/n) [n] "; read ok
     test "$ok" = "y" -o "$ok" = "Y" || exit
 fi
 if grep -q "^%version $VERSION" src/abctab2ps.list
@@ -54,7 +54,7 @@ then
     :
 else
     echo "Version in user's guide different from $VERSION" 1>&2
-    echo -n "Continue? (y/n) [n] "; read ok
+    printf "Continue? (y/n) [n] "; read ok
     test "$ok" = "y" -o "$ok" = "Y" || exit
 fi
 if [ \( doc/userguide/userguide.tex -nt doc/userguide/userguide.pdf \) ]
