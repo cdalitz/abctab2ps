@@ -15,6 +15,13 @@ LF=Include
 
 USAGEMSG="USAGE: `basename $0` -v version"
 
+if [ "`uname -s`" == 'Darwin' ]
+then
+	TAR=gtar
+else
+	TAR=tar
+fi
+
 while [ $# -gt 0 ]
 do
     case "$1" in
@@ -105,7 +112,7 @@ echo "$DIR/doc/faq.html" >> $LF
 # write archive
 #-----------------
 
-tar czvf abctab2ps-$VERSION.tar.gz -T $LF
+$TAR czvf abctab2ps-$VERSION.tar.gz -T $LF
 
 
 # clean up
