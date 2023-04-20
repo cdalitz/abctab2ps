@@ -1,6 +1,9 @@
 Change log of abctab2ps
 =======================
 
+ - separator line in German tab now respects %%índent
+
+
 Version 1.8.22, Oct 26 2022
 ---------------------------
 
@@ -21,7 +24,7 @@ Version 1.8.21, Apr 20 2022
 Version 1.8.20, Apr 13 2022
 ---------------------------
 
-- italian style bourdons can now also been stacked,
+ - italian style bourdons can now also been stacked,
    e.g. [{8}{10}{12}]
 
  - fonts frFrancisque and frBaroqueml now support bourdons up to 19

@@ -4683,13 +4683,14 @@ void output_music (FILE *fp)
             mstave_deco (fp,ip1,ip2,wid0,hsys,htab,get_staffheight(ivc,ALMOSTBRUTTO));
           if (voice[ivc].key.ktype != GERMANTAB)
             PUT2("%.2f %d tabN\n", staffwidth, tab_numlines(&voice[ivc].key));
-		  PUT0("grestore\n");
-          bskip(-lscale*bpos);
           if (voice[ivc].key.ktype == GERMANTAB && tabfmt.germansepline) {
             /* separator line between German tab systems */
-            PUT2("%.2f %.2f tab1\n", staffwidth*lscale,
-                 lscale*tabfont.size*0.75);
+            bskip(-bpos);
+            PUT2("%.2f %.2f tab1\n", staffwidth, tabfont.size*0.75);
+            bskip(bpos);
           }
+          PUT0("grestore\n");
+          bskip(-lscale*bpos);
           hsys=hsys+0.5*spa2+get_staffheight(ivc,ALMOSTBRUTTO)-bpos;
           /* do not count flagheight for top voice in system height */
           if (is_highestvc(ivc)) {
