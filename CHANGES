@@ -1,6 +1,9 @@
 Change log of abctab2ps
 =======================
 
+Version 1.8.23, Apr 24 2023
+---------------------------
+
  - separator line in German tab now respects %%índent
 
 

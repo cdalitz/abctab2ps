@@ -15,8 +15,8 @@
 
 # settings for GNU C compiler
 CC = g++
-CFLAGS = -Wimplicit -Wformat -g -fpermissive $(ARCH)
-#CFLAGS = -Wimplicit -Wformat -Os -fpermissive 
+#CFLAGS = -Wformat -g -fpermissive $(ARCH)
+CFLAGS = -Wformat -O2 -fpermissive 
 LDFLAGS = -lstdc++ -lm $(ARCH)
 LDSTATIC = --static
 

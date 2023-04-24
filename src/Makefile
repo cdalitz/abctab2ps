@@ -21,7 +21,7 @@ endif
 # settings for GNU C compiler
 CC = g++
 #CFLAGS = -Wimplicit -Wformat -g -fpermissive $(ARCH)
-CFLAGS = -Wimplicit -Wformat -O2 -fpermissive $(OSXMINVERSION)
+CFLAGS = -Wformat -O2 -fpermissive $(OSXMINVERSION)
 LDFLAGS = -lstdc++ -lm $(ARCH) $(OSXMINVERSION)
 LDSTATIC = --static
 

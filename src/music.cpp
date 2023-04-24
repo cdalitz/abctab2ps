@@ -4888,7 +4888,7 @@ void check_selected(FILE *fp, char *xref_str, int npat, char (*pat)[STRLFILE], i
 /* ----- process_line ----- */
 void process_line (FILE *fp, int type, char *xref_str, int npat, char (*pat)[STRLFILE], int sel_all, int search_field)
 {
-  char fnm[81],finf[MAXINF];
+  char fnm[STRLFMT],finf[STRLINFO];
   FILE *feps;
 
   if ((vb>15) || ((verbose>10)&&within_block)) {
@@ -5013,8 +5013,8 @@ void process_line (FILE *fp, int type, char *xref_str, int npat, char (*pat)[STR
           snprintf (fnm, STRLFMT, "%s%03d.eps", outf, nepsf);
           fnm[STRLFMT-1] = '\0';
         }
-        snprintf (finf, MAXINF, "%s (%d)", in_file[0], xrefnum); 
-        finf[MAXINF-1] = '\0';
+        snprintf (finf, STRLINFO, "%s (%d)", in_file[0], xrefnum); 
+        finf[STRLINFO-1] = '\0';
         if ((feps = fopen (fnm,"w")) == NULL) 
             rx ("Cannot open output file ", fnm);
         init_ps (feps, finf, 1,
