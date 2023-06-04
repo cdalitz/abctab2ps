@@ -451,7 +451,7 @@ void set_sym_chars (int n1, int n2, struct SYMBOL *symb)
 /* ----- set_beams: decide on beams ---- */
 void set_beams (int n1, int n2, struct SYMBOL *symb, int istab)
 {
-  int j,lastnote,start_flag,numflags;
+  int j,i,lastnote,start_flag,numflags;
   
   /* separate words at notes without flags */
   start_flag=0;
@@ -484,6 +484,7 @@ void set_stems (int n1, int n2, struct SYMBOL *symb)
 {
   int beam,j,k,n,stem,laststem;
   float avg,slen,lasty,dy;
+  bool nostem;
   
   /* set stem directions; near middle, use previous direction */
   beam=0;
@@ -493,9 +494,16 @@ void set_stems (int n1, int n2, struct SYMBOL *symb)
     if (symb[j].type!=NOTE) laststem=0; 
 
     if (symb[j].type==NOTE) {
-
       symb[j].stem=0;
-      if (cfmt.nostems) continue;
+      nostem = cfmt.nostems;
+      /* check whether this note has no stem */
+      for (k=0; k<symb[j].dc.n; k++) {
+        if (symb[j].dc.t[k] == D_NOSTEM) {
+          nostem = true;
+          break;
+        }
+      }
+      if (nostem) continue;
       if (symb[j].len<WHOLE) symb[j].stem=1;
       if (symb[j].yav>=12) symb[j].stem=-symb[j].stem;
       if ((j>n1) && (symb[j].yav>11) && (symb[j].yav<13) && (laststem!=0)) {
@@ -2597,9 +2605,18 @@ float draw_note (float x, float w, float d, struct SYMBOL *s, int fl, float *gch
   float yc,slen,slen0,top,top2,xx;
   const char* historic;
   slen0=STEM;
+  bool nostem = cfmt.nostems; 
 
   draw_gracenotes (x, w, d, s);                /* draw grace notes */
 
+  /* check whether this note has no stem */
+  for (i=0; i<s->dc.n; i++) {
+    if (s->dc.t[i] == D_NOSTEM) {
+      nostem = true;
+      break;
+    }
+  }
+  
   if (cfmt.historicstyle) historic = "h"; else historic = "";
 
   c = 'd'; cc='u';
@@ -2611,7 +2628,7 @@ float draw_note (float x, float w, float d, struct SYMBOL *s, int fl, float *gch
     draw_basic_note (x,w,d,s,m);             /* draw note heads */
     xx=3*(s->pits[m]-18)+s->yadd-s->y;
     xx=xx*xx;
-    if (!cfmt.nostems) {  /* stems can be suppressed */
+    if (!nostem) {  /* stems can be suppressed */
       if (xx<0.01) {                                 /* add stem */
         if (s->stem) PUT3(" %.1f s%c%s",slen,c,historic);
         if (fl && (s->flags>0))                      /* add flags */
