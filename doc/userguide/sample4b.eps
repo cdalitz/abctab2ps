@@ -1,20 +1,23 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%BoundingBox: 50 540 477 746
-% EPSF created by ps2eps 1.35
+%%BoundingBox: 50 540 478 747
+%%HiResBoundingBox: 50.5 540.5 477 746
 %%Title: sample4b.abc
-%%Creator: abctab2ps 1.8.5
-%%CreationDate: Aug 15 16:27 2008
-%%For: Christoph Dalitz,,,
+%%Creator: abctab2ps 1.8.24
+%%CreationDate: Jun  5 10:12 2023
+%%For: Christoph Dalitz
 %%LanguageLevel: 2
 %%EndComments
+% EPSF created by ps2eps 1.70
 %%BeginProlog
 save
 countdictstack
 mark
 newpath
 /showpage {} def
+/setpagedevice {pop} def
 %%EndProlog
 %%Page 1 1
+%%BeginSetup
 /Times-Roman findfont
 dup length dict begin
    {1 index /FID ne {def} {pop pop} ifelse} forall
@@ -115,6 +118,14 @@ dup 3 1 roll moveto gsave 0.6 setlinewidth lineto stroke grestore
 } bind def
 /st8clef {
   0.85 div gsave 0.85 0.85 scale t8clef grestore
+} bind def
+/t8upclef { % x t8upclef - treble 8va clef
+  dup 2 gclef 33 moveto
+  gsave /Times-Italic 12 selectfont
+  /bx false def (8) cshow grestore
+} bind def
+/st8upclef {
+  0.85 div gsave 0.85 0.85 scale t8upclef grestore
 } bind def
 /fclef { % x n fclef - F clef on line n
   4 sub 6 mul moveto
@@ -424,7 +435,7 @@ fill
   0 -8 rmoveto -6 8 rlineto stroke grestore
 } bind def
 /dyn { % (s) x y cross - dynamic mark s
-  /Times-BoldItalic 16 selectfont 5 add moveto cshow
+  gsave /Times-BoldItalic 16 selectfont 5 add moveto cshow grestore
 } bind def
 /hld { % x y hld - hold sign
   2 copy moveto 2 copy 1.5 add 1.3 0 360 arc moveto
@@ -862,7 +873,7 @@ gsave translate 0.7 0.7 scale 0 0 dsh0 grestore
    /NewCenturySchlbk-Bold 19 selectfont cshow
 } bind def
 /staff { % l staff - draw staff
-  gsave 0.6 setlinewidth 0 0 moveto
+  gsave 0.75 setlinewidth 0 0 moveto
   dup 0 rlineto dup neg 6 rmoveto
   dup 0 rlineto dup neg 6 rmoveto
   dup 0 rlineto dup neg 6 rmoveto
@@ -928,12 +939,19 @@ gsave translate 0.7 0.7 scale 0 0 dsh0 grestore
 /T {translate} bind def
 /M {moveto} bind def
 0 setlinecap 0 setlinejoin 0.8 setlinewidth
-gsave 51.03 813.64 translate
+%%EndSetup
+% --- page 1
+%%Page: 1 1
+%%BeginPageSetup
+gsave 51.03 813.65 translate
+%%EndPageSetup
+% --- tune 1 
 0 -22.68 T
 0 -20.67 T
 15.0 0 F0 () 212.6 0 M cshow
 0 -16.67 T
 0 -5.67 T
+% --- ln 1 vc 1 
 0 -29.40 T
 gsave 0.700 0.700 scale 0.80 setlinewidth
  0.00 0 T 607.50 staff
@@ -947,6 +965,7 @@ gsave 0.700 0.700 scale 0.80 setlinewidth
 555.4 15 hd 20.0 sd 555.4 30.00 hat
 12.0 0 F2 14.0 0 F0 (T) 56.0 -23.0 wd (P) 139.3 -23.0 wd (M) 228.6 -23.0 wd (~) 314.1 -23.0 wd (R) 390.3 -23.0 wd (L or k) 458.2 -23.0 wd (K) 551.1 -23.0 wd (!trill!) 47.2 -38.4 wd (!uppermordent!) 105.7 -38.4 wd (!lowermordent!) 197.0 -38.4 wd (!grace!) 300.7 -38.4 wd (!roll!) 382.1 -38.4 wd (!emphasis!) 446.8 -38.4 wd (!sforzando!) 528.3 -38.4 wd (or !pralltriller!) 108.4 -53.8 wd (or !mordent!) 204.0 -53.8 wd (or !accent!) 447.3 -53.8 wd 12.0 0 F0 grestore
 0 -50.26 T
+% --- ln 2 vc 1 
 0 -29.40 T
 gsave 0.700 0.700 scale 0.80 setlinewidth
 607.50 staff
@@ -960,22 +979,27 @@ gsave 0.700 0.700 scale 0.80 setlinewidth
 558.8 15 hd 20.0 sd 558.8 27.0 hld
 12.0 0 F2 14.0 0 F0 (!breath!) 46.7 -23.0 wd (N) 142.8 -23.0 wd (.) 229.1 -23.0 wd (u) 386.9 -23.0 wd (v) 471.9 -23.0 wd (H) 554.6 -23.0 wd (!tenuto!) 128.5 -38.4 wd (!staccato!) 207.9 -38.4 wd (!wedge!) 288.7 -38.4 wd (!upbow!) 369.9 -38.4 wd (!downbow!) 447.7 -38.4 wd (!fermata!) 537.0 -38.4 wd 12.0 0 F0 grestore
 0 -39.48 T
+% --- ln 3 vc 1 
 0 -29.40 T
 gsave 0.700 0.700 scale 0.80 setlinewidth
 607.50 staff
 13.5 2 gclef
-68.8 15 hd 20.0 sd 68.8 27.0 sgno
-159.2 15 hd 20.0 sd 159.2 27.0 coda
-251.2 15 hd 20.0 sd 251.2 27.0 cross
-345.7 15 hd 20.0 sd 345.7 27.0 plus
-438.7 15 hd 20.0 sd 438.7 27.0 turn
-527.3 15 hd 20.0 sd (p) 527.3 27.0 dyn
+66.4 15 hd 20.0 sd 66.4 27.0 sgno
+140.0 15 hd 20.0 sd 140.0 27.0 coda
+214.2 15 hd 20.0 sd 214.2 27.0 cross
+290.9 15 hd 20.0 sd 290.9 27.0 plus
+367.0 15 hd
+441.5 15 hd 20.0 sd 441.5 27.0 turn
+528.5 15 hd 20.0 sd (p) 528.5 27.0 dyn
 607.5 fbar2
-12.0 0 F2 14.0 0 F0 (S) 65.6 -23.0 wd (O) 155.0 -23.0 wd (X) 246.9 -23.0 wd (!plus!) 332.0 -23.0 wd (!turn!) 425.3 -23.0 wd (!p! \(also !pp!, !mp!, !f!,) 471.1 -23.0 wd (!segno!) 51.2 -38.4 wd (!coda!) 144.2 -38.4 wd (!x!) 244.3 -38.4 wd (or !+!) 332.1 -38.4 wd (!ff!, !mf!, !sf!, !sfz!\)) 478.8 -38.4 wd 12.0 0 F0 grestore
+12.0 0 F2 14.0 0 F0 (S) 63.1 -23.0 wd (O) 135.8 -23.0 wd (X) 209.9 -23.0 wd (!plus!) 277.2 -23.0 wd (!nostem!) 346.1 -23.0 wd (!turn!) 428.1 -23.0 wd (!p! \(also !pp!, !mp!, !f!,) 472.3 -23.0 wd (!segno!) 48.7 -38.4 wd (!coda!) 125.0 -38.4 wd (!x!) 207.3 -38.4 wd (or !+!) 277.3 -38.4 wd (!ff!, !mf!, !sf!, !sfz!\)) 480.0 -38.4 wd 12.0 0 F0 grestore
 0 -39.48 T
 12.0 0 F0 
+%%PageTrailer
 grestore
 showpage
+%%Trailer
+%%Pages: 1
 %EOF
 %%Trailer
 cleartomark

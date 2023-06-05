@@ -59,7 +59,7 @@ $(UGUIDE).pdf: $(UGUIDE).tex
 
 %.eps: %.abc $(FORMATFILE)
 	$(ABCTAB2PS) $< -O =
-	ps2eps -l $*.ps
+	ps2eps -l -f $*.ps
 	epstopdf $*.eps
 	rm $*.ps
 

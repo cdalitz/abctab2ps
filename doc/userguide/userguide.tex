@@ -39,8 +39,8 @@ abctab2ps User's Guide}
 Christoph Dalitz
 \\\textless christoph {\it dot} dalitz {\it at} hs-niederrhein {\it dot} de\textgreater
 }
-\date{describes abctab2ps version 1.8.21\\[1.0ex]
-April 2022}
+\date{describes abctab2ps version 1.8.24\\[1.0ex]
+June 2023}
 \maketitle
 
 
@@ -146,6 +146,8 @@ changes in abctab2ps itself, see the file CHANGES.
 1.8.19 & 2022.03.18 & CD & option "tab8underline" added
     \\ \hline
 1.8.21 & 2022.04.20 & CD & option "tabunderscoreis8" added
+    \\ \hline
+1.8.24 & 2023.06.04 & CD & deco !nostem! added
     \\ \hline
 \end{longtable}
 \end{center}
@@ -308,7 +310,9 @@ meter (eg. "\verb$C|$" is used for 2/2, 2/1 or any other even time),
 you can add the parameter {\it display}, eg. "\verb$M:2/1 display=C|$"
 which will print "\verb$C|$", but use 2/1 for internal bar numbering.
 Note that this is incompatible to the abc standard; for a compatible
-way, use the format parameter \hyperref{{\it \%\%meterdisplay}}{{\it \%\%meterdisplay} (see section }{)}{sec:FormatFineTuning}.
+way, use the format parameter {\it \%\%meterdisplay}.
+%\hyperref{{\it \%\%meterdisplay}}{{\it \%\%meterdisplay} (see section }{)}{sec:FormatFineTuning}.
+%{\it \%\%meterdisplay} (see section \hyperref{Format Fine Tuning}{}{}{sec:FormatFineTuning}).
 
 \item[P:] Parts. Can be used in the header to state the order in  which
 the  tune parts are played, i.e. "P:ABABCDCD", and then inside the
@@ -323,8 +327,9 @@ or a metronome mark such as {\it C} or {\it C=120} or {\it 120}.
 Strings are printed directly, metronome marks are translated 
 to the form note=100. When you only need metronome marks for 
 {\it abc2midi}, but do not want them printed, use the format parameter
-\hyperref{{\it \%\%printmetronome}}{{\it \%\%printmetronome} 
-(see section }{)}{sec:FormatFineTuning}.
+{\it \%\%printmetronome}.
+%\hyperref{{\it \%\%printmetronome}}{{\it \%\%printmetronome} (see section }{)}{sec:FormatFineTuning}.
+%{\it \%\%printmetronome} (see section \hyperref{Format Fine Tuning}{}{}{sec:FormatFineTuning}).
 
 \item[G:] Group. To group together tunes for indexing purposes.
 
@@ -502,7 +507,8 @@ Note that notes still have lengths, so that it is in principle possible
 to notate nonmetric music with more than one part (like medieval organa).
 To adjust the notes vertically, use invisible rests ({\it x}). Invisible
 rests can also be used for separating note groups in monophonic stemless
-notation.
+notation. If you only need some stemless notes, use the decoration
+{\it !nostem!}.
 
 \subsection{Bars and repeats}
 %-------------------------------------------------------------
@@ -1066,7 +1072,8 @@ to notate bourdon strings in italian tablature, you must specify
 \item[italian8tab] Additionally to {\it italian7tab}, stopped courses on
 the eighth course are possible. This results in more space between
 tabstaff and flags, which might be compensated with a negative value
-for \hyperref{\%\%tabflagspace}{{\it \%\%tabflagspace} (see section }{)}{sec:TabFormatParameters}.
+for {\it \%\%tabflagspace}.
+%\hyperref{\%\%tabflagspace}{{\it \%\%tabflagspace} (see section }{)}{sec:TabFormatParameters}.
 
 \item[italian4tab, italian5tab] Like {\it italiantab}, but with four resp.
 five tablature lines; not more than four resp five courses.
@@ -1902,14 +1909,12 @@ Although abctab2ps supports some command line options for the
 selection of voices or tunes for output, it is often desirable
 to write such selections into another abc file. This is achieved
 with {\it abcselect}, which is also available from the
-\htmladdnormallink{abctab2ps homepage}
-{http://www.lautengesellschaft.de/cdmm/}
+\href{http://www.lautengesellschaft.de/cdmm/}{abctab2ps homepage}
 {\it abcselect} is a platform independent Perl script.
 \par
 A graphical editor for abc files with syntax highlighting and automatic
 invocation of abctab2ps and other third party software (like ghostview)
-is available as {\em flabc} from the \htmladdnormallink{abctab2ps homepage}
-{http://www.lautengesellschaft.de/cdmm/}.
+is available as {\em flabc} from the \href{http://www.lautengesellschaft.de/cdmm/}{abctab2ps homepage}.
 \par
 If you do not like to edit plain text files for the abc input
 but prefer some GUI stuff, you can try Jean F. Moine's {\it tclabc}.
@@ -1956,8 +1961,7 @@ user interface ({\em flabc}) is always
 avilable from the {\it abctab2ps homepage}, hosted by the German
 Lute Society:
 \begin{quote}
-\htmladdnormallink{http://www.lautengesellschaft.de/cdmm/}
-{http://www.lautengesellschaft.de/cdmm/}
+\href{http://www.lautengesellschaft.de/cdmm/}{http://www.lautengesellschaft.de/cdmm/}
 \end{quote}
 \par
 \index{abc2ps}
@@ -1966,24 +1970,21 @@ Michael Methfessel, the author of {\it abc2ps}. Moreover, significant
 parts of this user's guide have been copied from the Readmes of the
 abc2ps distribution. The current version of abc2ps is available from
 \begin{quote}
-\htmladdnormallink{http://www.ihp-ffo.de/\~{}msm/}
-{http://www.ihp-ffo.de/\~{}msm/}.
+\href{http://www.ihp-ffo.de/\~{}msm/}{http://www.ihp-ffo.de/\~{}msm/}.
 \end{quote}
 \par
 \index{abcm2ps}
 Jean F. Moine's {\it abcm2ps}, which can handle more than one
 voice per stave, and the GUI-Editor {\it tclabc}, is available from
 \begin{quote}
-\htmladdnormallink{http://moinejf.free.fr/}
-{http://moinejf.free.fr/}
+\href{http://moinejf.free.fr/}{http://moinejf.free.fr/}
 \end{quote}
 \par
 \index{abc standard}
 The {\it abc} language was originally invented by Chris Walshaw.
 On his abc home page
 \begin{quote}
-\htmladdnormallink{http://abcnotation.org.uk/}
-{http://abcnotation.org.uk/}
+\href{http://abcnotation.org.uk/}{http://abcnotation.org.uk/}
 \end{quote}
 you can find links to the official abc standard definition and to a 
 wide variety of abc related software. Beware however that {\it abctab2ps}

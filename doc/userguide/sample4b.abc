@@ -15,6 +15,6 @@ w: *       or~!pralltriller! or~!mordent! *    *      or~!accent! *
 w: !breath!     N        .          *         u       v         H         
 w: *            !tenuto! !staccato! !wedge!   !upbow! !downbow! !fermata! 
 %
-   Sc      Oc     Xc      !+!c    !turn!c   !p!c     |]
-w: S       O      X     !plus!   !turn!     !p!~(also~!pp!,~!mp!,~!f!,
-w: !segno! !coda! !x!   or~!+!   *          !ff!,~!mf!,~!sf!,~!sfz!)
+   Sc      Oc     Xc    !+!c     !nostem!c  !turn!c  !p!c     |]
+w: S       O      X     !plus!   !nostem!   !turn!   !p!~(also~!pp!,~!mp!,~!f!,
+w: !segno! !coda! !x!   or~!+!   *          *        !ff!,~!mf!,~!sf!,~!sfz!)

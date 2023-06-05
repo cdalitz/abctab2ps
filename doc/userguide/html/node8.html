@@ -1,17 +1,13 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2023 (Released January 1, 2023) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Tablature</TITLE>
-<META NAME="description" CONTENT="Tablature">
-<META NAME="keywords" CONTENT="userguide">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2023">
 
 <LINK REL="STYLESHEET" HREF="userguide.css">
 
@@ -79,9 +75,9 @@
 <HR>
 
 <H1><A ID="SECTION00080000000000000000"></A>
-<A NAME="378"></A> <A NAME="379"></A>
-<A NAME="380"></A> <A NAME="381"></A> <A NAME="382"></A>
-<A NAME="383"></A>
+<A ID="373"></A> <A ID="374"></A>
+<A ID="375"></A> <A ID="376"></A> <A ID="377"></A>
+<A ID="378"></A>
 <BR>
 Tablature
 </H1>
@@ -154,7 +150,7 @@ to notate bourdon strings in italian tablature, you must specify
 <DD>Additionally to <I>italian7tab</I>, stopped courses on
 the eighth course are possible. This results in more space between
 tabstaff and flags, which might be compensated with a negative value
-for %%tabflagspace<I>%%tabflagspace</I> (see section )sec:TabFormatParameters.
+for <I>%%tabflagspace</I>.
 
 <P>
 </DD>
@@ -229,7 +225,7 @@ were two characters wide
 the letter "k" means the 9th fret etc.
 </LI>
 </OL>
-<A NAME="431"></A> <A NAME="432"></A>
+<A ID="423"></A> <A ID="424"></A>
 <I>Bourdon strings</I> or <I>"diapasons"</I> are written in braces 
 "{}". You can use both the ledger line notation for courses 7 to 10
 and the number notation; eg. "{„,a}" and "{10}" both mean
@@ -242,7 +238,7 @@ Since grace notes are not supported in tablature, braces are abused in
 tablature notation.
 
 <P>
-<A NAME="435"></A> <A NAME="436"></A>
+<A ID="427"></A> <A ID="428"></A>
 In german lute tablature, the symbols used for the sixth course (&ldquo;Brummer&rdquo;)
 vary from print to print: some use <SPAN style="font-family:monospace">A B C D ...</SPAN>, some 
 <SPAN style="font-family:monospace">1 A B C ...</SPAN> and others <SPAN style="font-family:monospace">1 2 3 4 ...</SPAN>, where the numbers
@@ -252,7 +248,7 @@ are crossed through. You can choose the style with teh format parameter
 <P>
 
 <H2><A ID="SECTION00082000000000000000"></A>
-<A NAME="445"></A>
+<A ID="437"></A>
 <BR>
 Rhythm
 </H2>
@@ -278,16 +274,15 @@ music lines.
 
 <P>
 The code for triplets and general <I>n</I>-plets is the 
-same as in music,same as in music, (see section )
-sec:MusicRhythm, eg. "(3[a,bc1]cd".
+<a href="same as in music,#same as in music, (see section .)">sec:MusicRhythm</a>, eg. "(3[a,bc1]cd".
 
 <P>
-<A NAME="454"></A>
+<A ID="446"></A>
 There is no consistent way for the notation of rests in tablature:
 most historic sources draw a flag with no fret letters, while modern
 editions often use modern rest signs. Which rests abctab2ps draws
 depends on the 
-tabrhstyletabrhstyle (see section )sec:TabFormatParameters:
+<a href="tabrhstyle#tabrhstyle (see section .)">sec:TabFormatParameters</a>:
 in &ldquo;modern&rdquo; and &ldquo;modernbeams&rdquo; style, abctab2ps draws modern style rests;
 in all other style
 old style rests are drawn. If you need an flag without letter in tabrhstyle
@@ -301,9 +296,9 @@ factor. Moreover, invisible rests are indicated by <I>x</I>.
 <P>
 
 <H2><A ID="SECTION00083000000000000000"></A>
-<A NAME="461"></A> <A NAME="462"></A> 
-<A NAME="463"></A> <A NAME="464"></A>
-<A NAME="465"></A>
+<A ID="453"></A> <A ID="454"></A> 
+<A ID="455"></A> <A ID="456"></A>
+<A ID="457"></A>
 <BR>
 Decorations
 </H2>
@@ -338,89 +333,89 @@ they may appear within chord brackets ("applies to chord/note"):
 <DIV class="CENTER">
 <TABLE class="PAD  BORDER" style="">
 <TR><TD CLASS="LEFT"><B>Input char</B></TD>
-<TD CLASS="LEFT TOP"  WIDTH=255><B>Meaning</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=327><B>Meaning</B></TD>
 <TD CLASS="LEFT"><B>Applies to</B></TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">H</SPAN> (upper H)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>fermata (also <code>!fermata!</code>)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>fermata (also <code>!fermata!</code>)</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">S</SPAN> (upper S)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>segno sign (also <code>!segno!</code>)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>segno sign (also <code>!segno!</code>)</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">O</SPAN> (upper O)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>coda sign (also <code>!coda!</code>)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>coda sign (also <code>!coda!</code>)</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">!p! !pp! !mp!</SPAN></TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>dynamic marks (also <code>!f! !ff! !mf! !sf! !sfz!</code>)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>dynamic marks (also <code>!f! !ff! !mf! !sf! !sfz!</code>)</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">.</SPAN> (dot)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>right hand fingering: index finger. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>right hand fingering: index finger. <BR>
 Is drawn as a single dot under lowest plucked course.</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">:</SPAN> (colon)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>right hand fingering: middle finger. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>right hand fingering: middle finger. <BR>
 Is drawn as a double dot under lowest plucked course.</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">;</SPAN> (semicolon)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>right hand fingering: ring finger. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>right hand fingering: ring finger. <BR>
 Is drawn as a triple dot under lowest plucked course.</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">+</SPAN> (plus)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>right hand fingering: thumb. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>right hand fingering: thumb. <BR>
 Representation depends on tablature type: in spanishtab/guitartab
     it is drawn as a plus, in frenchtab or italiantab it is drawn
     as a vertical stroke.</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">'</SPAN> (quote)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an accent after the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an accent after the note. <BR>
 In historic sources often used for an appoggiatura or trill
     from above.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">X</SPAN> (upper X)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an 'x' after the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an 'x' after the note. <BR>
 In historic sources often used for a trill or vibrato.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">U</SPAN> (upper U)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an U-shaped arc after the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an U-shaped arc after the note. <BR>
 In historic sources often used for an appoggiatura or trill
     from below.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">V</SPAN> (upper V)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an U-shaped arc below the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an U-shaped arc below the note. <BR>
 The only difference to "U" is that the arc is drawn below
     the tabletter rather than behind.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">#</SPAN> (sharp)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an '#' after the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an '#' after the note. <BR>
 In historic sources used for a trill or vibrato.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">*</SPAN> (asterisque)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>an '*' after the note. <BR>
+<TD CLASS="LEFT TOP"  WIDTH=327>an '*' after the note. <BR>
 In historic sources used for a vibrato or bass note damping.</TD>
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">T</SPAN> (upper T)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>prints 'tr.' below the chord in italiantab. (also <code>!trill!</code>)
+<TD CLASS="LEFT TOP"  WIDTH=327>prints 'tr.' below the chord in italiantab. (also <code>!trill!</code>)
 <BR>
 In frenchtab, it is drawn as an accent on the top note of the chord,
     because the 'tr.' symbol would interfere with bourdons.</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">L</SPAN> (upper L)</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>An oblique line under the note; when applied to
+<TD CLASS="LEFT TOP"  WIDTH=327>An oblique line under the note; when applied to
     a chord, it is drawn under the <I>bottom</I> note of the chord.
 <BR>
 In banjo tablature used to indicate longer notes; in baroque
@@ -428,11 +423,11 @@ In banjo tablature used to indicate longer notes; in baroque
 <TD CLASS="LEFT">note</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">!strumup!</SPAN></TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>An arrow indicating a chord strummed bottom up</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>An arrow indicating a chord strummed bottom up</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 <TR><TD CLASS="LEFT"><SPAN style="font-family:monospace">!strumdown!</SPAN></TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>An arrow indicating a chord strummed top down</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>An arrow indicating a chord strummed top down</TD>
 <TD CLASS="LEFT">chord</TD>
 </TR>
 </TABLE>
@@ -441,7 +436,7 @@ In banjo tablature used to indicate longer notes; in baroque
 <P>
 
 <H2><A ID="SECTION00084000000000000000"></A>
-<A NAME="502"></A>
+<A ID="494"></A>
 <BR>
 Text below notes
 </H2>
@@ -459,7 +454,7 @@ indicated by <code>\n</code>.
 <P>
 
 <H2><A ID="SECTION00085000000000000000"></A>
-<A NAME="507"></A> <A NAME="508"></A> <A NAME="509"></A>
+<A ID="499"></A> <A ID="500"></A> <A ID="501"></A>
 <BR>
 Beams, ties and slurs
 </H2>
@@ -509,7 +504,7 @@ Remarks:
 </UL>
 Beams in the tablature rhythm flags are only drawn when the
 rhythm style is set to <I>%%tabrhstyle grid</I> or <I>modernbeams</I> (see 
-Format parameterssection sec:TabFormatParameters).
+<a href="Format parameters#section ">sec:TabFormatParameters</a>).
 When this rhythm style is set, the rhythm flags of notes which are
 grouped together without white space are connected with beams.
 This results in grid shaped rhythm flags as used in some english
@@ -518,7 +513,7 @@ This results in grid shaped rhythm flags as used in some english
 <P>
 
 <H2><A ID="SECTION00086000000000000000"></A>
-<A NAME="531"></A>
+<A ID="523"></A>
 <BR>
 Tenuto strokes
 </H2>
@@ -552,7 +547,7 @@ Here are some examples which also show the use of the invisible fret symbol:
 <P>
 
 <H2><A ID="SECTION00087000000000000000"></A>
-<A ID="sec:TabFormatParameters"></A><A NAME="551"></A> <A NAME="552"></A>
+<A ID="sec:TabFormatParameters"></A><A ID="543"></A> <A ID="544"></A>
 <BR>
 Format parameters
 </H2>
@@ -563,9 +558,7 @@ the same parameter is specified more than once, the last value
 overwrites the previous specifications.
 
 <P>
-In addition to the general parameter format
-general parameter format (see section )
-sec:LayoutParams, tablature format parameters can be of
+In addition to the <a href="general parameter format#general parameter format (see section .)">sec:LayoutParams</a>, tablature format parameters can be of
 the type <I>keyword</I> which means a value from a list of special
 keywords.
 
@@ -578,18 +571,18 @@ The following parameters are supported:
 <TR><TD CLASS="LEFT"><B>Parameter</B></TD>
 <TD CLASS="LEFT"><B>abctab2ps option</B></TD>
 <TD CLASS="LEFT"><B>Type</B></TD>
-<TD CLASS="LEFT TOP"  WIDTH=204><B>Description</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=261><B>Description</B></TD>
 </TR>
 <TR><TD CLASS="LEFT">tabfontsize</TD>
 <TD CLASS="LEFT">-tabsize</TD>
 <TD CLASS="LEFT">integer</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>distance (in pt) between tablature 
+<TD CLASS="LEFT TOP"  WIDTH=261>distance (in pt) between tablature 
     lines and (if tabfontscale=1.0) size of tablature font</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabfontscale</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">decimal</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>scale factor for tablature font.
+<TD CLASS="LEFT TOP"  WIDTH=261>scale factor for tablature font.
     If greater than one, tablature letters/numbers are larger than
     the tablature line distance. Can be useful for fonts, which
     are too large or to small (eg. frFrancisque) for your taste.</TD>
@@ -597,28 +590,25 @@ The following parameters are supported:
 <TR><TD CLASS="LEFT">tabfontfrench</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">keyword</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>font file from which the font for french tablature
-    is loaded. (see Tablature Fontssection 
-    sec:TablatureFonts)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=261>font file from which the font for french tablature
+    is loaded. (see <a href="Tablature Fonts#section ">sec:TablatureFonts</a>)</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabfontitalian</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">keyword</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>font file from which the font for italian 
-    tablature is loaded. (see Tablature Fontssection 
-    sec:TablatureFonts)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=261>font file from which the font for italian 
+    tablature is loaded. (see <a href="Tablature Fonts#section ">sec:TablatureFonts</a>)</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabfontgerman</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">keyword</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>font file from which the font for german tablature
-    is loaded. (see Tablature Fontssection 
-    sec:TablatureFonts)</TD>
+<TD CLASS="LEFT TOP"  WIDTH=261>font file from which the font for german tablature
+    is loaded. (see <a href="Tablature Fonts#section ">sec:TablatureFonts</a>)</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabaddflags</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">integer</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>how many flags shall be added to tab rhythm signs.
+<TD CLASS="LEFT TOP"  WIDTH=261>how many flags shall be added to tab rhythm signs.
     Eg. a value of 2 means that a quarter note (no flag) in music is 
     printed as sixteenth (two flags) in tablature. Negative values are
     possible but probably not very useful.</TD>
@@ -626,20 +616,20 @@ The following parameters are supported:
 <TR><TD CLASS="LEFT">tabflagspace</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">dimension</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>additional space between rhythm flags
+<TD CLASS="LEFT TOP"  WIDTH=261>additional space between rhythm flags
     and tablature system. Only necessary when the chosen tablature font
     exceeds its bounding box.</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabgchordspace</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">dimension</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>space between gchord text 
+<TD CLASS="LEFT TOP"  WIDTH=261>space between gchord text 
     and tablature system.</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabrhstyle</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">keyword</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>style of the rhythm signs. Possible values are
+<TD CLASS="LEFT TOP"  WIDTH=261>style of the rhythm signs. Possible values are
     <I>simple</I> (headless 16c french style),  <I>grid</I> (same as simple,
     but with support for beams), <I>modern</I> (17c french 
     style with heads), <I>modernbeams</I> (same as modern, but with support
@@ -649,45 +639,45 @@ The following parameters are supported:
 <TR><TD CLASS="LEFT">taballflags</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when true, rhythm flags are printed above all
+<TD CLASS="LEFT TOP"  WIDTH=261>when true, rhythm flags are printed above all
 	notes, even on those without a length factor</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabfirstflag</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when true, rhythm flags are only printed when the
+<TD CLASS="LEFT TOP"  WIDTH=261>when true, rhythm flags are only printed when the
     rhythm changes or after a bar line</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabledgeabove</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when true, ledger lines for french bourdons
+<TD CLASS="LEFT TOP"  WIDTH=261>when true, ledger lines for french bourdons
     are printed above the note rather than before.</TD>
 </TR>
 <TR><TD CLASS="LEFT">tab8underline</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when true, the 8th course is marked with an
+<TD CLASS="LEFT TOP"  WIDTH=261>when true, the 8th course is marked with an
     underline in frenchtab and all following courses are drawn with one
     slash less.</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabunderscoreis8</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when true, <code>{_a}</code> denotes the 8th course
+<TD CLASS="LEFT TOP"  WIDTH=261>when true, <code>{_a}</code> denotes the 8th course
     and is marked with an underline in frenchtab; other courses are drawn with
     the specified number of slashes (in contrast to <EM>tab8underline</EM>).</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabbrummer</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">keyword</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>style for the sixth course (&ldquo;Brummer&rdquo;) in
+<TD CLASS="LEFT TOP"  WIDTH=261>style for the sixth course (&ldquo;Brummer&rdquo;) in
     german tablature. Possible values are <I>ABC</I>, <I>1AB</I> or <I>123</I>.</TD>
 </TR>
 <TR><TD CLASS="LEFT">tabgermansepline</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">logical</TD>
-<TD CLASS="LEFT TOP"  WIDTH=204>when false, separator lines between german
+<TD CLASS="LEFT TOP"  WIDTH=261>when false, separator lines between german
     tablature systems are suppressed.</TD>
 </TR>
 </TABLE>
@@ -714,7 +704,7 @@ Remarks:
 <P>
 
 <H2><A ID="SECTION00088000000000000000"></A>
-<A ID="sec:TablatureFonts"></A><A NAME="600"></A>
+<A ID="sec:TablatureFonts"></A><A ID="592"></A>
 <BR>
 Tablature Fonts
 </H2>
@@ -769,10 +759,10 @@ italiantab (spanishtab):
 <DIV class="CENTER">
 <TABLE class="PAD  BORDER" style="">
 <TR><TD CLASS="LEFT"><B>Character Codes</B></TD>
-<TD CLASS="LEFT TOP"  WIDTH=255><B>Symbols</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=327><B>Symbols</B></TD>
 </TR>
 <TR><TD CLASS="LEFT">97-119 (ASCII 'a'-'w')</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>FrenchTabFont: letters for french tablature.
+<TD CLASS="LEFT TOP"  WIDTH=327>FrenchTabFont: letters for french tablature.
 <BR>
 ItalianTabFont: numbers for italian tablature.
 <BR>
@@ -783,14 +773,14 @@ There is no need to implement all codes; 97-111 ('a'-'o') should
     suffice for almost all purposes.</TD>
 </TR>
 <TR><TD CLASS="LEFT">121 (ASCII 'y')</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>should not be used, because it is reserved as an invisible anchor for
+<TD CLASS="LEFT TOP"  WIDTH=327>should not be used, because it is reserved as an invisible anchor for
     slurs or decorations on unplucked courses.</TD>
 </TR>
 <TR><TD CLASS="LEFT">68-71 (ASCII 'D'-'G')</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>Numbers '4'-'7' for the french habit of numbering bourdons</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>Numbers '4'-'7' for the french habit of numbering bourdons</TD>
 </TR>
 <TR><TD CLASS="LEFT">72-78 (ASCII 'H'-'O')</TD>
-<TD CLASS="LEFT TOP"  WIDTH=255>Numbers '8'-'15' for the italian habit of numbering bourdons</TD>
+<TD CLASS="LEFT TOP"  WIDTH=327>Numbers '8'-'15' for the italian habit of numbering bourdons</TD>
 </TR>
 </TABLE>
 </DIV>
@@ -805,23 +795,23 @@ For germantab, you must adhere to the following encoding scheme:
 <DIV class="CENTER">
 <TABLE class="PAD  BORDER" style="">
 <TR><TD CLASS="LEFT"><B>Character Codes</B></TD>
-<TD CLASS="LEFT TOP"  WIDTH=283><B>Symbols</B></TD>
+<TD CLASS="LEFT TOP"  WIDTH=363><B>Symbols</B></TD>
 </TR>
 <TR><TD CLASS="LEFT">32-97</TD>
-<TD CLASS="LEFT TOP"  WIDTH=283>symbols for courses 1-5, starting with course 5, fret 0 (c5f0, the
+<TD CLASS="LEFT TOP"  WIDTH=363>symbols for courses 1-5, starting with course 5, fret 0 (c5f0, the
     symbol '1' in germantab) and then c4f0, c3f0, c2f0, c1f0, c5f1, c4f1 etc.
     <BR>
 There is no need to implement all codes; 32-87 (up to fret 12) should
     suffice for most purposes.</TD>
 </TR>
 <TR><TD CLASS="LEFT">128-143</TD>
-<TD CLASS="LEFT TOP"  WIDTH=283>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = 'ABC'</TD>
+<TD CLASS="LEFT TOP"  WIDTH=363>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = 'ABC'</TD>
 </TR>
 <TR><TD CLASS="LEFT">144-159</TD>
-<TD CLASS="LEFT TOP"  WIDTH=283>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = '1AB'</TD>
+<TD CLASS="LEFT TOP"  WIDTH=363>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = '1AB'</TD>
 </TR>
 <TR><TD CLASS="LEFT">160-176</TD>
-<TD CLASS="LEFT TOP"  WIDTH=283>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = '123'</TD>
+<TD CLASS="LEFT TOP"  WIDTH=363>symbols for course 6 (&ldquo;Brummer&rdquo;) for <I>%%tabbrummer</I> = '123'</TD>
 </TR>
 </TABLE>
 </DIV>

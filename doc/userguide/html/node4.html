@@ -1,17 +1,13 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2023 (Released January 1, 2023) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Information fields</TITLE>
-<META NAME="description" CONTENT="Information fields">
-<META NAME="keywords" CONTENT="userguide">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2023">
 
 <LINK REL="STYLESHEET" HREF="userguide.css">
 
@@ -78,7 +74,7 @@ followed by a colon (:) is interpreted as an information field.
 These fields carry information like title, meter, key, clef etc.
 
 <P>
-<A NAME="47"></A>
+<A ID="47"></A>
 Most of the information fields are used in the header,
 but some may also occur in the tune body. If you need an information
 filed inside of a line (e.g. a clef change) you must enclose the
@@ -213,7 +209,7 @@ information fields.
 Particular fields</A>
 </H2>
 <DL>
-<DD><A NAME="60"></A>
+<DD><A ID="60"></A>
 </DD>
 <DT><STRONG>T:</STRONG></DT>
 <DD>Tune title. 
@@ -224,15 +220,15 @@ alternatives  in  small  print.   The  T:  field can also be used
 within a tune to name parts of a tune - in this  case  it  should
 come before any key or meter changes.
 <P>
-<A NAME="61"></A> 
+<A ID="61"></A> 
 </DD>
 <DT><STRONG>K:</STRONG></DT>
 <DD>Key and clef. See section 
-key and clefsec:KeyAndClef for
+<a href="key and clef">sec:KeyAndClef</a> for
 more details.
 
 <P>
-<A NAME="66"></A>
+<A ID="66"></A>
 </DD>
 <DT><STRONG>L:</STRONG></DT>
 <DD>Default note length. 
@@ -245,7 +241,7 @@ the default is L:1/16. Beware however that it is generally not a good idea
 to use implicit defaults.
 
 <P>
-<A NAME="67"></A>
+<A ID="67"></A>
 </DD>
 <DT><STRONG>M:</STRONG></DT>
 <DD>Meter. 
@@ -265,7 +261,7 @@ meter (eg. "<code>C|</code>" is used for 2/2, 2/1 or any other even time),
 you can add the parameter <I>display</I>, eg. "<code>M:2/1 display=C|</code>"
 which will print "<code>C|</code>", but use 2/1 for internal bar numbering.
 Note that this is incompatible to the abc standard; for a compatible
-way, use the format parameter <I>%%meterdisplay</I><I>%%meterdisplay</I> (see section )sec:FormatFineTuning.
+way, use the format parameter <I>%%meterdisplay</I>.
 
 <P>
 </DD>
@@ -275,7 +271,7 @@ the  tune parts are played, i.e. "P:ABABCDCD", and then inside the
 tune to mark each part, i.e. "P:A" or "P:B".
 
 <P>
-<A NAME="73"></A> <A NAME="74"></A>
+<A ID="70"></A> <A ID="71"></A>
 </DD>
 <DT><STRONG>Q:</STRONG></DT>
 <DD>Tempo. 
@@ -286,8 +282,7 @@ or a metronome mark such as <I>C</I> or <I>C=120</I> or <I>120</I>.
 Strings are printed directly, metronome marks are translated 
 to the form note=100. When you only need metronome marks for 
 <I>abc2midi</I>, but do not want them printed, use the format parameter
-<I>%%printmetronome</I><I>%%printmetronome</I> 
-(see section )sec:FormatFineTuning.
+<I>%%printmetronome</I>.
 
 <P>
 </DD>

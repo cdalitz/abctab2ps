@@ -1,17 +1,13 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2023 (Released January 1, 2023) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Music</TITLE>
-<META NAME="description" CONTENT="Music">
-<META NAME="keywords" CONTENT="userguide">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2023">
 
 <LINK REL="STYLESHEET" HREF="userguide.css">
 
@@ -81,14 +77,13 @@ Music</A>
 <P>
 
 <H2><A ID="SECTION00051000000000000000"></A>
-<A ID="sec:KeyAndClef"></A><A NAME="90"></A> <A NAME="91"></A>
-<A NAME="92"></A>
+<A ID="sec:KeyAndClef"></A><A ID="84"></A> <A ID="85"></A>
+<A ID="86"></A>
 <BR>
 Key and Clef
 </H2>
 Key and clef are usually specified in the K: field. In 
-multi stave music,multi stave music, (see section )
-sec:MultiStaveMusic the clef is specified in the V: field.
+<a href="multi stave music,#multi stave music, (see section .)">sec:MultiStaveMusic</a> the clef is specified in the V: field.
 For a key change inmidst a music line, use the inline version <code>[K:]</code>.
 
 <P>
@@ -119,7 +114,7 @@ would write the key signature as two sharps (key of D) but then mark
 every c as natural  (which  is
 conceptually  the same as D mixolydian).  Note that the there can
 be several global  accidentals,  separated  by  spaces  and  each
-specified  with  an  accidental, __,  _, =, ^  or ^ ^ , 
+specified  with  an  accidental, __,  _, =, ˆ  or ˆ ˆ , 
 followed by a  letter  in  lower  case.  Global  accidentals  are
 overridden  by  accidentals  attached to notes within the body of
 the abc tune and are reset by each change of signature.
@@ -146,7 +141,7 @@ Optionally the clef may contain an appended octave modifier
 <P>
 
 <H2><A ID="SECTION00052000000000000000"></A>
-<A NAME="124"></A>
+<A ID="118"></A>
 <BR>
 Pitch
 </H2>
@@ -163,22 +158,22 @@ lowers the pitch by one octave. These codes are illustrated below:
 </DIV>
 
 <P>
-<A NAME="128"></A>
+<A ID="122"></A>
 Note how the clef influences the default octave. 
 The default octave can be lowered or raised with the modifier "-8" or
 "+8" after the clef in the K: field, e.g. "K:D treble-8". To reset
 the octave modifier, use "[K:treble+0]".
 
 <P>
-<A NAME="129"></A> <A NAME="130"></A> <A NAME="131"></A> <A NAME="132"></A>
-The symbols =,^  and _  are  used  (before  a  note)  to  generate
+<A ID="123"></A> <A ID="124"></A> <A ID="125"></A> <A ID="126"></A>
+The symbols =,ˆ  and _  are  used  (before  a  note)  to  generate
 respectively a natural, sharp or flat. 
-Double sharps and flats are available with ^ ^  and __ respectively.
+Double sharps and flats are available with ˆ ˆ  and __ respectively.
 
 <P>
 
 <H2><A ID="SECTION00053000000000000000"></A>
-<A ID="sec:MusicRhythm"></A><A NAME="138"></A>
+<A ID="sec:MusicRhythm"></A><A ID="132"></A>
 <BR>
 Rhythm
 </H2>
@@ -196,14 +191,14 @@ the multiplier 3/2 produces a dot.
 </DIV>
 
 <P>
-<A NAME="142"></A> For dotted rhythms 
+<A ID="136"></A> For dotted rhythms 
 there is a shorthand notation: "<code>&gt;</code>" means
 `the previous note is dotted, the next note halved' and "<code>&lt;</code>" means
 `the previous note is halved, the next dotted'. Similarly, "<code>&gt;&gt;</code>"
 and "<code>&lt;&lt;</code>" can be used for double dotting.
 
 <P>
-<A NAME="143"></A>
+<A ID="137"></A>
 Rests are generated with a <I>z</I> and can be modified in 
 length  in exactly the same way as notes can.
 
@@ -215,20 +210,20 @@ length  in exactly the same way as notes can.
 </DIV>
 
 <P>
-<A NAME="148"></A>
+<A ID="142"></A>
 Invisible rests are generated with a <I>x</I>. These count like regular 
 rests, but they are not printed. This can be useful in multistave 
 music, eg. if one voice has a longer pickup than another voice.
 
 <P>
-<A NAME="150"></A>
+<A ID="144"></A>
 Multi bar rests are generated with a capital <I>Z</I> followed by the
 number of bars. When using bar numbering (command line option &ldquo;-k&rdquo; or
 format parameter <I>%%barnumbers</I>), abctab2ps takes care of multi bar
 rests.
 
 <P>
-<A NAME="153"></A> Triplets can be simply coded with the notation "(3abc".
+<A ID="147"></A> Triplets can be simply coded with the notation "(3abc".
 Similarly, "(2ab" makes a duplet, "(4abcd" a quadruplet, etc., 
 up to "(9". The musical meanings are:
 <DIV class="CENTER">
@@ -266,7 +261,7 @@ If the time signature is compound (3/8, 6/8, 9/8, 3/4, etc.) then
 <I>n</I> is three, otherwise <I>n</I> is two.
 
 <P>
-<A NAME="161"></A>
+<A ID="155"></A>
 More general tuplets can be specified using the syntax <I>(p:q:r</I>
 which  means `put <I>p</I> notes into the time of <I>q</I> for the next <I>r</I>
 notes'. If <I>q</I>  is not given, it defaults as above. If <I>r</I> is not
@@ -279,19 +274,20 @@ more precisely how the simple syntax works in cases like "(3D2E2F2"
 or even "(3D3EF2". The number written over the tuplet is <I>p</I>.
 
 <P>
-<A NAME="170"></A> <A NAME="171"></A>
+<A ID="164"></A> <A ID="165"></A>
 The notation of nonmetric music like plainchant requires <I>stemless notes</I>.
 These can be enforced with the format parameter <I>%%nostems</I>.
 Note that notes still have lengths, so that it is in principle possible
 to notate nonmetric music with more than one part (like medieval organa).
 To adjust the notes vertically, use invisible rests (<I>x</I>). Invisible
 rests can also be used for separating note groups in monophonic stemless
-notation.
+notation. If you only need some stemless notes, use the decoration
+<I>!nostem!</I>.
 
 <P>
 
 <H2><A ID="SECTION00054000000000000000"></A>
-<A NAME="176"></A> <A NAME="177"></A> <A NAME="178"></A>
+<A ID="171"></A> <A ID="172"></A> <A ID="173"></A>
 <BR>
 Bars and repeats
 </H2>
@@ -350,7 +346,7 @@ the format parameter <I>%%endingdots</I>.
 <P>
 
 <H2><A ID="SECTION00055000000000000000"></A>
-<A NAME="190"></A>
+<A ID="185"></A>
 <BR>
 Beams, ties and slurs, ligaturae
 </H2>
@@ -362,7 +358,7 @@ rests (z) under a beam, e.g "aza". The beam slopes and the
 choice of upper or lower staffs are generated automatically.
 
 <P>
-<A NAME="191"></A> <A NAME="192"></A>
+<A ID="186"></A> <A ID="187"></A>
 You can tie two notes together either across or within a bar with
 a  "-" symbol, e.g. "<code>abc-|cba</code>" or "<code>abc-cba</code>". 
 More general slurs can be put in with "()" symbols.  Thus "(DEFG)" 
@@ -384,7 +380,7 @@ version, the slur is opened inside chord but closed outside which
 is not allowed).
 
 <P>
-<A NAME="193"></A>
+<A ID="188"></A>
 In transcriptions of mensural notation into common music notation
 <I>ligaturae</I> are often indicated by square brackets. This is possible
 with the pseudocomment <I>%%slurisligatura</I>, which prints ligatura
@@ -394,10 +390,10 @@ chords and not to ties.
 <P>
 
 <H2><A ID="SECTION00056000000000000000"></A>
-<A NAME="197"></A> <A NAME="198"></A> <A NAME="199"></A> <A NAME="200"></A>
-<A NAME="201"></A>
-<A NAME="202"></A> <A NAME="203"></A> <A NAME="204"></A>
-<A NAME="205"></A> <A NAME="206"></A> <A NAME="207"></A> <A NAME="208"></A>
+<A ID="192"></A> <A ID="193"></A> <A ID="194"></A> <A ID="195"></A>
+<A ID="196"></A>
+<A ID="197"></A> <A ID="198"></A> <A ID="199"></A>
+<A ID="200"></A> <A ID="201"></A> <A ID="202"></A> <A ID="203"></A>
 <BR>
 Graces and decorations
 </H2>
@@ -453,7 +449,7 @@ abctab2ps currently supports the following decorations:
 <P>
 
 <H2><A ID="SECTION00057000000000000000"></A>
-<A NAME="221"></A> <A NAME="222"></A>
+<A ID="216"></A> <A ID="217"></A>
 <BR>
 Chords
 </H2>
@@ -465,7 +461,7 @@ A chord with two identical notes makes a unison (one head
 with stems going both up and down), eg: "[AA]".
 
 <P>
-<SPAN ID="txt223">Important notice:</SPAN> The old style chord notation with
+<SPAN ID="txt218">Important notice:</SPAN> The old style chord notation with
 plus signs, eg. "+ac+", which was an undocumented non standard abc 
 feature of <I>abc2ps</I> is no longer supported in abctab2ps.
 
@@ -474,7 +470,7 @@ The abc notation formally permits notes with different durations
 on the same stem: "[a/bc2]" and so on. However, abctab2ps assigns all
 notes in a chord the duration of the first note in the bracket.
 If you are looking for <I>polyphonie</I>, see the remark on 
-abcm2psabcm2ps in section sec:PolyphonicMusic.
+<a href="abcm2ps#abcm2ps in section ">sec:PolyphonicMusic</a>.
 
 <P>
 Slurs and ties within chords are possible:
