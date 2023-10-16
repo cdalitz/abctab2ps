@@ -1682,6 +1682,7 @@ int parse_deco ()
     {D_BREATH,   0,  "!breath!"},
     {D_WEDGE,    0,  "!wedge!" },
     {D_NOSTEM,   0,  "!nostem!" },
+    {D_DIAMOND,  0,  "!diamond!" },
     {0, 0, ""} /*end marker*/
   };
   struct s_deconame* dn;

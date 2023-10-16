@@ -205,6 +205,18 @@ void def_stems (FILE *fp)
           "  x y moveto %.1f %.1f rmoveto neg %.1f add 0 exch rlineto stroke\n"
           "} bind def\n", 
           -STEM_XOFF, -STEM_YOFF, STEM_YOFF);
+
+  fprintf (fp, 
+           "\n/sud { %% len su - up stem diamond\n"
+           "  x y moveto %.1f %.1f rmoveto %.1f sub 0 exch rlineto stroke\n"
+           "} bind def\n", 
+           STEM_XOFF, 0.0, STEM_YOFF);
+  
+  fprintf(fp, 
+          "\n/sdd { %% len td - down stem diamond\n"
+          "  x y moveto %.1f %.1f rmoveto neg %.1f add 0 exch rlineto stroke\n"
+          "} bind def\n", 
+          -STEM_XOFF, 0.0, STEM_YOFF);
 }
 
 /* ----- def_dot ------- */

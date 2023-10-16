@@ -2269,6 +2269,13 @@ void draw_basic_note (float x, float w, float d, struct SYMBOL *s, int m)
   const char* historic;
 
   if (cfmt.historicstyle) historic = "h"; else historic = "";
+  /* diamond shaped notes are like historic note heads */
+  for (i=0; i<s->dc.n; i++) {
+    if (s->dc.t[i] == D_DIAMOND) {
+      historic = "h";
+      break;
+    }
+  }
 
   y=3*(s->pits[m]-18)+s->yadd;                    /* height on staff */
   
@@ -2618,6 +2625,14 @@ float draw_note (float x, float w, float d, struct SYMBOL *s, int fl, float *gch
   }
   
   if (cfmt.historicstyle) historic = "h"; else historic = "";
+
+  /* unlike in historicstyle, diamond shaped notes require s(u|d}d instead of s(u|d)h */
+  for (i=0; i<s->dc.n; i++) {
+    if (s->dc.t[i] == D_DIAMOND) {
+      historic = "d";
+      break;
+    }
+  }
 
   c = 'd'; cc='u';
   if (s->stem==1) { c='u'; cc='d'; }

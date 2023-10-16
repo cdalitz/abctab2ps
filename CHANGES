@@ -1,10 +1,15 @@
 Change log of abctab2ps
 =======================
 
+ - new deco !diamond! for diamond shaped note (e.g. for harmonics)
+
+ - TODO: new deco !arpeggio! (only reasonable for chords)
+
+
 Version 1.8.24, Jun 04 2023
 ---------------------------
 
-- new deco !nostem! for suppresing stem of a single note
+ - new deco !nostem! for suppresing stem of a single note
 
 
 Version 1.8.23, Apr 24 2023
