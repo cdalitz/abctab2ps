@@ -1,9 +1,9 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%BoundingBox: 50 540 478 747
-%%HiResBoundingBox: 50.5 540.5 477 746
+%%BoundingBox: 51 541 477 746
+%%HiResBoundingBox: 51.000000 541.000000 476.500000 745.500000
 %%Title: sample4b.abc
-%%Creator: abctab2ps 1.8.24
-%%CreationDate: Jun  5 10:12 2023
+%%Creator: abctab2ps 1.8.25a
+%%CreationDate: Oct 22 12:16 2023
 %%For: Christoph Dalitz
 %%LanguageLevel: 2
 %%EndComments
@@ -305,6 +305,12 @@ fill
 /sd { % len td - down stem
   x y moveto -3.5 -1.0 rmoveto neg 1.0 add 0 exch rlineto stroke
 } bind def
+/sud { % len su - up stem diamond
+  x y moveto 3.5 0.0 rmoveto 1.0 sub 0 exch rlineto stroke
+} bind def
+/sdd { % len td - down stem diamond
+  x y moveto -3.5 0.0 rmoveto neg 1.0 add 0 exch rlineto stroke
+} bind def
 /bm { % x1 y1 x2 y2 t bm - beam, depth t
   3 1 roll moveto dup 0 exch neg rlineto
   dup 4 1 roll sub lineto 0 exch rlineto fill
@@ -434,8 +440,24 @@ fill
   moveto -3 1 rmoveto 6 8 rlineto currentpoint stroke moveto
   0 -8 rmoveto -6 8 rlineto stroke grestore
 } bind def
-/dyn { % (s) x y cross - dynamic mark s
+/dyn { % (s) x y dyn - dynamic mark s
   gsave /Times-BoldItalic 16 selectfont 5 add moveto cshow grestore
+} bind def
+/arp { % h x ylow arp - arpeggio
+  gsave 90 rotate exch neg
+  4 add translate
+  0 6 3 -1 roll{
+  2 {
+    0 0.4 M
+    2 1.9 3.4 2.3 3.9 0 curveto
+    2.1 0 lineto
+    1.9 0.8 1.4 0.7 0 -0.4 curveto
+    fill
+    180 rotate -6 0 translate
+  } repeat
+  pop 6 0 translate
+  } for
+  grestore
 } bind def
 /hld { % x y hld - hold sign
   2 copy moveto 2 copy 1.5 add 1.3 0 360 arc moveto
@@ -956,43 +978,45 @@ gsave 51.03 813.65 translate
 gsave 0.700 0.700 scale 0.80 setlinewidth
  0.00 0 T 607.50 staff
 13.5 2 gclef
-59.6 15 hd 20.0 sd 59.6 30.0 trl
-142.6 15 hd 20.0 sd 142.6 27.0 umrd
-233.9 15 hd 20.0 sd 233.9 27.0 lmrd
-317.3 15 hd 20.0 sd 317.3 30.00 grm
-394.2 15 hd 20.0 sd 394.2 26.00 cpu
-472.6 15 hd 20.0 sd 472.6 30.00 att
-555.4 15 hd 20.0 sd 555.4 30.00 hat
-12.0 0 F2 14.0 0 F0 (T) 56.0 -23.0 wd (P) 139.3 -23.0 wd (M) 228.6 -23.0 wd (~) 314.1 -23.0 wd (R) 390.3 -23.0 wd (L or k) 458.2 -23.0 wd (K) 551.1 -23.0 wd (!trill!) 47.2 -38.4 wd (!uppermordent!) 105.7 -38.4 wd (!lowermordent!) 197.0 -38.4 wd (!grace!) 300.7 -38.4 wd (!roll!) 382.1 -38.4 wd (!emphasis!) 446.8 -38.4 wd (!sforzando!) 528.3 -38.4 wd (or !pralltriller!) 108.4 -53.8 wd (or !mordent!) 204.0 -53.8 wd (or !accent!) 447.3 -53.8 wd 12.0 0 F0 grestore
+57.2 15 hd 20.0 sd 57.2 30.0 trl
+128.5 15 hd 20.0 sd 128.5 27.0 umrd
+219.8 15 hd 20.0 sd 219.8 27.0 lmrd
+297.0 15 hd 20.0 sd 297.0 30.00 grm
+356.6 15 hd 20.0 sd 356.6 26.00 cpu
+419.5 15 hd 20.0 sd 419.5 30.00 att
+494.1 15 hd 20.0 sd 494.1 30.00 hat
+561.9 15 hdh 20.0 sdd
+12.0 0 F2 14.0 0 F0 (T) 53.6 -23.0 wd (P) 125.2 -23.0 wd (M) 214.6 -23.0 wd (~) 293.8 -23.0 wd (R) 352.7 -23.0 wd (L or k) 405.2 -23.0 wd (K) 489.8 -23.0 wd (!trill!) 44.8 -38.4 wd (!uppermordent!) 91.6 -38.4 wd (!lowermordent!) 182.9 -38.4 wd (!grace!) 280.4 -38.4 wd (!roll!) 344.5 -38.4 wd (!emphasis!) 393.7 -38.4 wd (!sforzando!) 467.0 -38.4 wd (!diamond!) 537.4 -38.4 wd (or !pralltriller!) 94.4 -53.8 wd (or !mordent!) 189.9 -53.8 wd (or !accent!) 394.2 -53.8 wd 12.0 0 F0 grestore
 0 -50.26 T
 % --- ln 2 vc 1 
 0 -29.40 T
 gsave 0.700 0.700 scale 0.80 setlinewidth
 607.50 staff
 13.5 2 gclef
-65.3 15 hd 20.0 sd 106.2 24.0 brth
-147.1 15 hd 20.0 sd 147.1 28.00 emb
-230.7 15 hd 20.0 sd 230.7 21 stc
-308.0 15 hd 20.0 sd 308.0 27.0 wedge
-389.8 15 hd 20.0 sd 389.8 23.0 upb
-474.8 15 hd 20.0 sd 474.8 23.0 dnb
-558.8 15 hd 20.0 sd 558.8 27.0 hld
-12.0 0 F2 14.0 0 F0 (!breath!) 46.7 -23.0 wd (N) 142.8 -23.0 wd (.) 229.1 -23.0 wd (u) 386.9 -23.0 wd (v) 471.9 -23.0 wd (H) 554.6 -23.0 wd (!tenuto!) 128.5 -38.4 wd (!staccato!) 207.9 -38.4 wd (!wedge!) 288.7 -38.4 wd (!upbow!) 369.9 -38.4 wd (!downbow!) 447.7 -38.4 wd (!fermata!) 537.0 -38.4 wd 12.0 0 F0 grestore
+64.3 15 hd 20.0 sd 100.2 24.0 brth
+136.1 15 hd 20.0 sd 136.1 28.00 emb
+205.4 15 hd 20.0 sd 205.4 21 stc
+273.2 15 hd 20.0 sd 273.2 27.0 wedge
+346.2 15 hd 20.0 sd 346.2 23.0 upb
+420.6 15 hd 20.0 sd 420.6 23.0 dnb
+498.1 15 hd 20.0 sd 498.1 27.0 hld
+560.4 15 hd 560.4 6 hd 560.4 0 hd 31.0 su 17 556.4 -2 arp
+12.0 0 F2 14.0 0 F0 (!breath!) 45.7 -23.0 wd (N) 131.8 -23.0 wd (.) 203.8 -23.0 wd (u) 343.2 -23.0 wd (v) 417.7 -23.0 wd (H) 493.8 -23.0 wd (!tenuto!) 117.5 -38.4 wd (!staccato!) 182.6 -38.4 wd (!wedge!) 254.0 -38.4 wd (!upbow!) 326.2 -38.4 wd (!downbow!) 393.5 -38.4 wd (!fermata!) 476.2 -38.4 wd (!arpeggio!) 536.0 -38.4 wd 12.0 0 F0 grestore
 0 -39.48 T
 % --- ln 3 vc 1 
 0 -29.40 T
 gsave 0.700 0.700 scale 0.80 setlinewidth
 607.50 staff
 13.5 2 gclef
-66.4 15 hd 20.0 sd 66.4 27.0 sgno
-140.0 15 hd 20.0 sd 140.0 27.0 coda
-214.2 15 hd 20.0 sd 214.2 27.0 cross
-290.9 15 hd 20.0 sd 290.9 27.0 plus
-367.0 15 hd
-441.5 15 hd 20.0 sd 441.5 27.0 turn
-528.5 15 hd 20.0 sd (p) 528.5 27.0 dyn
+63.8 15 hd 20.0 sd 63.8 27.0 sgno
+141.5 15 hd 20.0 sd 141.5 27.0 coda
+216.6 15 hd 20.0 sd 216.6 27.0 cross
+289.3 15 hd 20.0 sd 289.3 27.0 plus
+366.2 15 hd
+441.4 15 hd 20.0 sd 441.4 27.0 turn
+527.0 15 hd 20.0 sd (p) 527.0 27.0 dyn
 607.5 fbar2
-12.0 0 F2 14.0 0 F0 (S) 63.1 -23.0 wd (O) 135.8 -23.0 wd (X) 209.9 -23.0 wd (!plus!) 277.2 -23.0 wd (!nostem!) 346.1 -23.0 wd (!turn!) 428.1 -23.0 wd (!p! \(also !pp!, !mp!, !f!,) 472.3 -23.0 wd (!segno!) 48.7 -38.4 wd (!coda!) 125.0 -38.4 wd (!x!) 207.3 -38.4 wd (or !+!) 277.3 -38.4 wd (!ff!, !mf!, !sf!, !sfz!\)) 480.0 -38.4 wd 12.0 0 F0 grestore
+12.0 0 F2 14.0 0 F0 (S) 60.5 -23.0 wd (O) 137.2 -23.0 wd (X) 212.4 -23.0 wd (!plus!) 275.6 -23.0 wd (!nostem!) 345.2 -23.0 wd (!turn!) 428.0 -23.0 wd (!p! \(also !pp!, !mp!, !f!,) 470.9 -23.0 wd (!segno!) 46.2 -38.4 wd (!coda!) 126.5 -38.4 wd (!x!) 209.8 -38.4 wd (or !+!) 275.7 -38.4 wd (!ff!, !mf!, !sf!, !sfz!\)) 478.5 -38.4 wd 12.0 0 F0 grestore
 0 -39.48 T
 12.0 0 F0 
 %%PageTrailer

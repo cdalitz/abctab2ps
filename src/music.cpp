@@ -2370,6 +2370,21 @@ float draw_decorations (float x, struct SYMBOL *s, float *tp)
       yc=s->ymn;
       PUT2(" %.1f %.1f sld", yc, xc);
     }
+    
+    if (deco==D_ARPEGGIO) {                     /* arpeggion on chord */
+      xc = 4; /* horizontal shift to the left */
+      for (m=0;m<s->npitch;m++) {
+        printf("x = %f, shhd = %f\n", x, s->shhd[m]);
+        printf("x = %f, shac = %f\n", x, s->shac[m]);
+        if (xc < -s->shhd[m]) {
+          xc = -s->shhd[m] + 3;
+        }
+        if (s->accs[m] && xc < s->shac[m])
+          xc = s->shac[m] + 3;
+      }
+      printf("xc = %f\n", xc);
+      PUT3(" %d %.1f %d arp", s->ymx - s->ymn +2, x-xc, s->ymn-2);
+    }
   }
   
   top1=top;

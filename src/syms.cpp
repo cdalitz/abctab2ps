@@ -379,8 +379,25 @@ void def_deco (FILE *fp)
            "  0 -8 rmoveto -6 8 rlineto stroke grestore\n"
            "} bind def\n");
 
-  fprintf (fp, "\n/dyn { %% (s) x y cross - dynamic mark s\n"
+  fprintf (fp, "\n/dyn { %% (s) x y dyn - dynamic mark s\n"
            "  gsave /Times-BoldItalic 16 selectfont 5 add moveto cshow grestore\n"
+           "} bind def\n");
+  
+  fprintf (fp, "\n/arp { %% h x ylow arp - arpeggio\n"
+           "  gsave 90 rotate exch neg\n"
+           "  4 add translate\n"
+           "  0 6 3 -1 roll{\n"
+           "  2 {\n"
+           "    0 0.4 M\n"
+           "    2 1.9 3.4 2.3 3.9 0 curveto\n"
+           "    2.1 0 lineto\n"
+           "    1.9 0.8 1.4 0.7 0 -0.4 curveto\n"
+           "    fill\n"
+           "    180 rotate -6 0 translate\n"
+           "  } repeat\n"
+           "  pop 6 0 translate\n"
+           "  } for\n"
+           "  grestore\n"
            "} bind def\n");
 }
 

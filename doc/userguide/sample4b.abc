@@ -6,14 +6,14 @@ L:1/4
 M:none
 K:C
 %
-   Tc      Pc             Mc             ~c      Rc     kc         Kc
-w: T       P              M              \~      R      L~or~k     K
-w: !trill! !uppermordent! !lowermordent! !grace! !roll! !emphasis! !sforzando!
+   Tc      Pc             Mc             ~c      Rc     kc         Kc          !diamond!c
+w: T       P              M              \~      R      L~or~k     K           *
+w: !trill! !uppermordent! !lowermordent! !grace! !roll! !emphasis! !sforzando! !diamond!
 w: *       or~!pralltriller! or~!mordent! *    *      or~!accent! *
 %
-   !breath!c    Nc       .c         !wedge!c  uc      vc        Hc        
-w: !breath!     N        .          *         u       v         H         
-w: *            !tenuto! !staccato! !wedge!   !upbow! !downbow! !fermata! 
+   !breath!c    Nc       .c         !wedge!c  uc      vc        Hc        !arpeggio![cGE] 
+w: !breath!     N        .          *         u       v         H         *
+w: *            !tenuto! !staccato! !wedge!   !upbow! !downbow! !fermata! !arpeggio!
 %
    Sc      Oc     Xc    !+!c     !nostem!c  !turn!c  !p!c     |]
 w: S       O      X     !plus!   !nostem!   !turn!   !p!~(also~!pp!,~!mp!,~!f!,
