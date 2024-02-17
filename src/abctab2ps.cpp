@@ -231,11 +231,6 @@ int main(int argc, char **argv)
     printf("This is abctab2ps, version %s.%s (%s)\n", VERSION, REVISION, VDATE);
   }
 
-  alloc_structs ();
-
-  maxNwpool = allocNwpool;
-  wpool = (char *)zrealloc(NULL, 0, maxNwpool, sizeof(char));
-
   /* ----- set the page format ----- */
   nfontnames=0;
   if (!set_page_format()) exit (3);
@@ -256,6 +251,12 @@ int main(int argc, char **argv)
   if (epsf) cutext(outf);
   
   /* ----- initialize ----- */
+  
+  alloc_structs ();
+
+  maxNwpool = allocNwpool;
+  wpool = (char *)zrealloc(NULL, 0, maxNwpool, sizeof(char));
+
   zero_sym();
   pagenum=0;
   tunenum=tnum1=tnum2=0;
@@ -324,9 +325,17 @@ int main(int argc, char **argv)
   if (do_mode==DO_INDEX)
     printf ("Selected %d title%s of %d\n", tnum1, tnum1==1?"":"s", tnum2);
   
+  /* clean up files and memory */
+  
   if ((do_mode == DO_OUTPUT) && make_index) close_index_file ();
   rc = close_output_file ();
 
+  if (fin != NULL) fclose (fin);
+
+  free (wpool);
+  wpool=NULL;
+  free_structs ();
+  
   if ((do_mode == DO_OUTPUT) && rc)
     return 1;
   else

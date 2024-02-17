@@ -138,6 +138,7 @@ int add_sym (int type)
     realloc_structs(maxSyms+allocSyms,maxVc);
   }
   voice[ivc].nsym++;
+  delete symv[ivc][k].gchords;
   symv[ivc][k]=zsym;
   symv[ivc][k].gchords= new GchordList();
   symv[ivc][k].type = type;
@@ -157,6 +158,7 @@ int insert_sym (int type, int k)
   }
   for (i=n;i>k;i--) symv[ivc][i]=symv[ivc][i-1];
   n++;
+  delete symv[ivc][k].gchords;
   symv[ivc][k]=zsym;
   symv[ivc][k].gchords= new GchordList();
   symv[ivc][k].type = type;
@@ -1262,6 +1264,7 @@ void append_meter (const struct METERSTR* meter)
   //if (meter->display==0) return;
 
   kk=add_sym(TIMESIG);
+  delete symv[ivc][kk].gchords;
   symv[ivc][kk]=zsym;
   symv[ivc][kk].gchords= new GchordList();
   symv[ivc][kk].type = TIMESIG;
@@ -2571,56 +2574,68 @@ int get_line (FILE *fp, string *ln)
 int read_line (FILE *fp, int do_music, string* linestr)
 {
   int type,nsym0;
-  static char* line = NULL;
+  char* line = NULL;
 
-  if (!get_line(fp,linestr)) return E_O_F;
-  if (line) free(line);
-  line = strdup(linestr->c_str());
+  if (!get_line(fp,linestr))                        return E_O_F;
+  if ((linenum==1) && is_cmdline(linestr->c_str())) return CMDLINE;
+  if (isblankstr(linestr->c_str()))                 return BLANK;
+  if (is_pseudocomment(linestr->c_str()))           return PSCOMMENT;
+  if (is_comment(linestr->c_str()))                 return COMMENT;
 
-  if ((linenum==1) && is_cmdline(line)) return CMDLINE;
-  if (isblankstr(line))                 return BLANK;
-  if (is_pseudocomment(line))           return PSCOMMENT;
-  if (is_comment(line))                 return COMMENT;
+  line = strdup (linestr->c_str());
 
   decomment_line (line);
 
   if ((type=info_field(line))) {
     /* skip after history field. Nightmarish syntax, that. */
-    if (type != HISTORY) 
-      return type;
-    else {          
+    if (type == HISTORY) {
       for (;;) {
-        if (! get_line(fp,linestr)) return E_O_F;
-        if (isblankstr(linestr->c_str())) return BLANK;
-        if (line) free(line);
-        line = strdup(linestr->c_str());
-        if (is_info_field(line)) break;
+        if (! get_line(fp,linestr)) {
+          type=E_O_F;
+          break;
+        }
+        if (isblankstr(linestr->c_str())) {
+          type=BLANK;
+          break;
+        }
+        free(line);
+        line=strdup (linestr->c_str());
+        if (is_info_field(line)) {
+            type=info_field (line);
+            break;
+        }
         add_text (line, TEXT_H);
       }
-      type=info_field (line);
-      return type;
+    }
+  }
+  else {
+    if (!do_music) {
+      type=COMMENT;
+    }
+    else if (parse_vocals(line)) {
+      type=MWORDS;
+    }
+    else {
+      /* now parse a real line of music */
+      if (nvoice==0) ivc=switch_voice (DEFVOICE);
+
+      nsym0=voice[ivc].nsym;
+
+      /* music or tablature? */
+      if (is_tab_line(line)) {
+	    type=parse_tab_line (line);
+      }
+      else {
+	    type=parse_music_line (line);
+      }
+
+      if (db>1)  
+        printf ("  parsed music symbols %d to %d for voice %d\n", 
+                nsym0,voice[ivc].nsym-1,ivc);
     }
   }
   
-  if (!do_music) return COMMENT;
-  if (parse_vocals(line)) return MWORDS;
-
-  /* now parse a real line of music */
-  if (nvoice==0) ivc=switch_voice (DEFVOICE);
-
-  nsym0=voice[ivc].nsym;
-
-  /* music or tablature? */
-  if (is_tab_line(line)) {
-	type=parse_tab_line (line);
-  } else {
-	type=parse_music_line (line);
-  }
-
-  if (db>1)  
-    printf ("  parsed music symbols %d to %d for voice %d\n", 
-            nsym0,voice[ivc].nsym-1,ivc);
-  
+  free(line);
   return type;
 }
 
@@ -2629,7 +2644,7 @@ void do_index(FILE *fp, char *xref_str, int npat, char (*pat)[STRLFILE], int sel
 {
   int type,within_tune;
   string linestr;
-  static char* line = NULL;
+  char* line = NULL;
 
   linenum=0;
   verbose=vb;
@@ -2692,6 +2707,7 @@ void do_index(FILE *fp, char *xref_str, int npat, char (*pat)[STRLFILE], int sel
   if (within_block && !within_tune) 
     printf ("+++ Header not closed in for tune %d\n", xrefnum);
 
+  free(line);
 }
 
 

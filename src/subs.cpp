@@ -690,6 +690,46 @@ void realloc_structs (int newmaxSyms, int newmaxVc)
   maxVc=newmaxVc;
 }
 
+/* ----- free_structs ----- */
+void free_structs (void)
+{
+  int i, j;
+    
+  /* Don't delete gchords in sym as they are copies of those in symv and sym_st,
+     otherwise it would cause a double delete */
+  free(sym);
+  sym=NULL;
+
+  for (i=0;i<maxVc;i++) {
+    for (j=0;j<maxSyms;j++) {
+        delete symv[i][j].gchords;
+    }
+    free(symv[i]);
+  }
+  free(symv);
+  symv=NULL;
+
+  for (i=0;i<maxSyms+1;i++) {
+    free(xp[i].p);
+  }
+  free(xp);
+  xp=NULL;
+
+  free(voice);
+  voice=NULL;
+
+  for (i=0;i<maxVc;i++) {
+    for (j=0;j<MAXSYMST;j++) {
+        delete sym_st[i][j].gchords;
+    }
+    free(sym_st[i]);
+  }
+  free(sym_st);
+  sym_st=NULL;
+
+  free(nsym_st);
+  nsym_st=NULL;
+}
 
 /* ----- set_page_format ----- */
 int set_page_format (void)

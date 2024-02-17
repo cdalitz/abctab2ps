@@ -36,6 +36,7 @@ void process_cmdline (char *line);
 void *zrealloc(void* addr, size_t nold, size_t nnew, size_t size);
 void alloc_structs (void);
 void realloc_structs (int newmaxSyms, int newmaxVc);
+void free_structs (void);
 
 /* ----- set_page_format ----- */
 int set_page_format (void);
