@@ -1,7 +1,7 @@
 /*
  *  abctab2ps: a program to typeset tunes in abc format using PostScript
  *  Copyright (C) 1996 - 1998  Michael Methfessel
- *  Copyright (C) 1999 - 2019  Christoph Dalitz
+ *  Copyright (C) 1999 - 2024  Christoph Dalitz
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -179,7 +179,7 @@ float alfa_last,beta_last;         /* for last short short line.. */
 
 char in_file[MAXINF][STRLFILE];  /* list of input file names */
 int  ninf;                       /* number of input file names */
-FILE *fin;                       /* for input file */
+FILE *fin = NULL;                /* for input file */
 
 char outf[STRLFILE];             /* output file name */
 char outfnam[STRLFILE];          /* internal file name for open/close */

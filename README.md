@@ -87,7 +87,7 @@ subdirectory *doc*:
 Copyright and author
 --------------------
 
-Copyright (c) 1999-2022 by Christoph Dalitz
+Copyright (c) 1999-2024 by Christoph Dalitz
 
 Official home page of abctab2ps and the integrated editior flabc:
 <http://www.lautengesellschaft.de/cdmm/>

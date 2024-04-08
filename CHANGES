@@ -1,6 +1,9 @@
 Change log of abctab2ps
 =======================
 
+ - memory leaks fixed (thanks to Paul Overell)
+
+
 Version 1.8.25, Oct 22 2023
 ---------------------------
 
