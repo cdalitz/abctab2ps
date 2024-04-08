@@ -407,6 +407,7 @@ void set_minsyms(int ivc)
   printf ("set_minsyms:  n2=%d\n",n2);
   if (n2>0) return;
 
+  delete symv[ivc][n2].gchords;
   symv[ivc][n2]=zsym;
   symv[ivc][n2].gchords= new GchordList();
   symv[ivc][n2].type = INVISIBLE;
@@ -1052,6 +1053,7 @@ int set_initsyms (int v, float *wid0)
   k=0;
   
   /* add clef */
+  delete sym_st[v][k].gchords;
   sym_st[v][k]=zsym;
   sym_st[v][k].gchords= new GchordList();
   sym_st[v][k].type = CLEF;
@@ -1060,6 +1062,7 @@ int set_initsyms (int v, float *wid0)
   k++;
 
   /* add keysig */
+  delete sym_st[v][k].gchords;
   sym_st[v][k]=zsym;
   sym_st[v][k].gchords= new GchordList();
   sym_st[v][k].type = KEYSIG;
@@ -1074,6 +1077,7 @@ int set_initsyms (int v, float *wid0)
 
   /* add timesig */
   if (voice[ivc].meter.display) {
+    delete sym_st[v][k].gchords;
     sym_st[v][k]=zsym;
     sym_st[v][k].gchords= new GchordList();
     sym_st[v][k].type = TIMESIG;
@@ -1093,6 +1097,7 @@ int set_initsyms (int v, float *wid0)
   }
 
   if (voice[ivc].insert_btype) {
+    delete sym_st[v][k].gchords;
     sym_st[v][k]=zsym;
     sym_st[v][k].gchords= new GchordList();
     sym_st[v][k].type = BAR;
@@ -4768,7 +4773,7 @@ void output_music (FILE *fp)
 /* ----- process_textblock ----- */
 void process_textblock(FILE *fpin, FILE *fp, int job)
 {
-  char* w1;
+  char* w1 = NULL;
   string ln;
   float lwidth,baseskip,parskip;
   int i,ll,add_final_nl;
@@ -4809,6 +4814,8 @@ void process_textblock(FILE *fpin, FILE *fp, int job)
     }
   }
   if (job!=SKIP) write_text_block (fp,job);
+  
+  free(w1);
 }
 
 
