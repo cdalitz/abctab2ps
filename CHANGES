@@ -1,6 +1,9 @@
 Change log of abctab2ps
 =======================
 
+ - fixed critival bug that caused infinite loop on Raspberry Pi
+   (thanks to John Phillips for reporting the bug)
+
  - memory leaks fixed (thanks to Paul Overell)
 
 

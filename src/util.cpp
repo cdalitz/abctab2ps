@@ -95,8 +95,10 @@ int getline(string* s, FILE *fp)
 {
   *s = "";
   char c1,c2;
+  int rc;
 
-  while ((c1 = getc(fp)) != EOF) {
+  while ((rc = getc(fp)) != EOF) {
+    c1 = rc;
     if (c1 == '\n') {
       *s += '\n';
       c2 = getc(fp);
