@@ -101,14 +101,18 @@ int getline(string* s, FILE *fp)
     c1 = rc;
     if (c1 == '\n') {
       *s += '\n';
-      c2 = getc(fp);
+      rc = getc(fp);
+      if (rc == EOF) break;
+      c2 = rc;
       if (c2 != '\r')
         ungetc(c2, fp);
       break;
     }
     else if (c1 == '\r') {
       *s += '\n';
-      c2 = getc(fp);
+      rc = getc(fp);
+      if (rc == EOF) break;
+      c2 = rc;
       if (c2 != '\n')
         ungetc(c2, fp);
       break;

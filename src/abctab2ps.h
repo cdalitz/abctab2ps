@@ -23,7 +23,7 @@ using std::map;
 
 #define VERSION              "1.8"      /* version */
 #define REVISION             "26a"        /* revison */
-#define VDATE        "Dec 18 2024"      /* version date */
+#define VDATE        "Dec 20 2024"      /* version date */
 #define VERBOSE0           2            /* default verbosity */
 #define DEBUG_LV           0            /* debug output level */
 #define OUTPUTFILE      "Out.ps"        /* standard output file */
