@@ -19,9 +19,9 @@ ifeq ($(shell uname -s),Darwin)
 endif 
 
 # settings for GNU C compiler
-CC = g++
+CXX = g++
 #CFLAGS = -Wimplicit -Wformat -g -fpermissive $(ARCH)
-CFLAGS = -Wformat -Wno-format-truncation -O2 -fpermissive $(OSXMINVERSION)
+CFLAGS = -Wformat -O2 -fpermissive $(OSXMINVERSION)
 LDFLAGS = -lstdc++ -lm $(ARCH) $(OSXMINVERSION)
 LDSTATIC = --static
 
