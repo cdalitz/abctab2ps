@@ -1,10 +1,15 @@
 Change log of abctab2ps
 =======================
 
+Version 1.9.0, Jan 06 2025
+--------------------------
+
  - fixed critival bug that caused infinite loop on Raspberry Pi
    (thanks to John Phillips for reporting the bug)
 
  - memory leaks fixed (thanks to Paul Overell)
+
+ - cross compilation support with mingw (see Makefile)
 
 
 Version 1.8.25, Oct 22 2023

@@ -2,7 +2,7 @@
 
 # general information
 %product abctab2ps
-%copyright 1999-2023 by Christoph Dalitz, based upon code by Michael Methfessel
+%copyright 1999-2025 by Christoph Dalitz, based upon code by Michael Methfessel
 %vendor Christoph Dalitz
 %license ../LICENSE
 %readme ../README.md
@@ -12,7 +12,7 @@
 %description of additional software.
 %description In addition to the abc standard which only supports
 %description music, abctab2ps supports lute and guitar tablature.
-%version 1.8.25
+%version 1.9.0
 
 # definitions for installation directories
 $prefix=/usr

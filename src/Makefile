@@ -16,21 +16,25 @@
 # for support of older macos versions (comment out if unwanted)
 ifeq ($(shell uname -s),Darwin)
 	OSXMINVERSION = -mmacosx-version-min=10.10
-endif 
+else
+	WARNINGS = -Wno-format-truncation -Wno-format-bla
+endif
 
 # settings for GNU C compiler
-CXX = g++
+#CXX = g++
+CC = gcc
 #CFLAGS = -Wimplicit -Wformat -g -fpermissive $(ARCH)
-CFLAGS = -Wformat -O2 -fpermissive $(OSXMINVERSION)
+CFLAGS = -Wformat $(WARNINGS) -O2 -fpermissive $(OSXMINVERSION)
 LDFLAGS = -lstdc++ -lm $(ARCH) $(OSXMINVERSION)
 LDSTATIC = --static
 
+# uncomment the following lines for cross-compiling for Windows on Linux
+# (remember to use "make win32" instead of just "make")
+#CC = x86_64-w64-mingw32-gcc
+#CFLAGS = $(CFLAGS) -DWIN32
 
 # uncomment the following line for djgpp
 #LDFLAGS = -lstdcxx -lm
-
-# uncomment the following line on MacOS X < 10.2
-#CC = cc
 
 # uncomment the following lines on MINT
 #OSVARIANT = MINT
