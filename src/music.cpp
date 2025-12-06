@@ -503,6 +503,10 @@ void set_stems (int n1, int n2, struct SYMBOL *symb)
           nostem = true;
           break;
         }
+        if (symb[j].dc.t[k] == D_STEM) {
+          nostem = false;
+          break;
+        }
       }
       if (nostem) continue;
       if (symb[j].len<WHOLE) symb[j].stem=1;
@@ -2637,6 +2641,10 @@ float draw_note (float x, float w, float d, struct SYMBOL *s, int fl, float *gch
   for (i=0; i<s->dc.n; i++) {
     if (s->dc.t[i] == D_NOSTEM) {
       nostem = true;
+      break;
+    }
+    if (s->dc.t[i] == D_STEM) {
+      nostem = false;
       break;
     }
   }

@@ -22,8 +22,8 @@ using std::map;
 /* -------------- general macros ------------- */
 
 #define VERSION              "1.9"      /* version */
-#define REVISION             "0"        /* revison */
-#define VDATE        "Jan 06 2025"      /* version date */
+#define REVISION             "1a"        /* revison */
+#define VDATE        "Dec 06 2025"      /* version date */
 #define VERBOSE0           2            /* default verbosity */
 #define DEBUG_LV           0            /* debug output level */
 #define OUTPUTFILE      "Out.ps"        /* standard output file */
@@ -203,8 +203,9 @@ typedef vector<string> StringVector;
 #define D_BREATH    28
 #define D_WEDGE     29
 #define D_NOSTEM    30
-#define D_DIAMOND   31
-#define D_ARPEGGIO  32
+#define D_STEM      31
+#define D_DIAMOND   32
+#define D_ARPEGGIO  33
 
 
 #define H_FULL       1           /* types of heads */

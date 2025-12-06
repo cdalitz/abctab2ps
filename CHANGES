@@ -1,6 +1,9 @@
 Change log of abctab2ps
 =======================
 
+ - stem can be added to individual note in %%nostems mode with !stem!
+
+
 Version 1.9.0, Jan 06 2025
 --------------------------
 

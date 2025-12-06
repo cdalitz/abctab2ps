@@ -1685,6 +1685,7 @@ int parse_deco ()
     {D_BREATH,   0,  "!breath!"},
     {D_WEDGE,    0,  "!wedge!" },
     {D_NOSTEM,   0,  "!nostem!" },
+    {D_STEM,     0,  "!stem!" },
     {D_DIAMOND,  0,  "!diamond!" },
     {D_ARPEGGIO, 0,  "!arpeggio!" },
     {0, 0, ""} /*end marker*/
