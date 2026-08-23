@@ -1,7 +1,12 @@
 Change log of abctab2ps
 =======================
 
+Version 1.9.1, Aug 23 2026
+--------------------------
+
  - stem can be added to individual note in %%nostems mode with !stem!
+
+ - fixed n-plet drawing in tabrhstlye grid or with taballflags
 
 
 Version 1.9.0, Jan 06 2025

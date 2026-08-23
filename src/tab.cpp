@@ -2493,7 +2493,10 @@ void draw_tabtenutos (void)
 void draw_tabnplets (void)
 {
   int i,j,k,p,r,c;
-  
+  float y = get_staffheight(ivc,NETTO) + tab_flagspace(&voice[ivc].key);
+  if (tabfmt.allflags || tabfmt.rhstyle == RHGRID)
+    y += 20.0; /* shift by flagheight if flags occur under nplet */
+    
   /*find start of nplets*/
   for (i=0;i<nsym;i++) {
     if ((sym[i].type==NOTE) || (sym[i].type==REST)) {
@@ -2511,11 +2514,11 @@ void draw_tabnplets (void)
           }
         }
         /*draw nplet*/
-        output_slur (sym[i].x+2, 6*tabfont.size,
-                     sym[k].x, 6*tabfont.size,
+        output_slur (sym[i].x+2, y,
+                     sym[k].x, y,
                      1, 10, 0);
         PUT3("%.1f %.1f (%d) bnum\n", 
-             0.5*(sym[i].x+sym[k].x), 6.0*tabfont.size+5, p);
+             0.5*(sym[i].x+sym[k].x), y+7, p);
       }
     }
   }

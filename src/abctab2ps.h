@@ -22,8 +22,8 @@ using std::map;
 /* -------------- general macros ------------- */
 
 #define VERSION              "1.9"      /* version */
-#define REVISION             "1a"        /* revison */
-#define VDATE        "Dec 06 2025"      /* version date */
+#define REVISION             "1"        /* revison */
+#define VDATE        "Aug 23 2026"      /* version date */
 #define VERBOSE0           2            /* default verbosity */
 #define DEBUG_LV           0            /* debug output level */
 #define OUTPUTFILE      "Out.ps"        /* standard output file */
